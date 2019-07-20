@@ -23,7 +23,6 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>0.0.9-SNAPSHOT</version>
 		</dependency>
 		<!-- DevTools -->
 		<dependency>
