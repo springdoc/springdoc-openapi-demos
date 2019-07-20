@@ -25,9 +25,9 @@
 	</developers>
 
 	<scm>
-		<url>git@github.com:springdoc/springdoc-openapi.git</url>
-		<connection>scm:git:git@github.com:springdoc/springdoc-openapi.git</connection>
-		<developerConnection>scm:git:git@github.com:springdoc/springdoc-openapi.git</developerConnection>
+		<url>git@github.com:springdoc/springdoc-openapi-demos.git</url>
+		<connection>scm:git:git@github.com:springdoc/springdoc-openapi-demos.git</connection>
+		<developerConnection>scm:git:git@github.com:springdoc/springdoc-openapi-demos.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 	<distributionManagement>
