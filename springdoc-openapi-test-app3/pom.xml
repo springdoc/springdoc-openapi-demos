@@ -7,7 +7,7 @@
 	<name>${project.artifactId}</name>
 	<parent>
 		<groupId>org.springdoc</groupId>
-		<artifactId>springdoc-openapi</artifactId>
+	    <artifactId>springdoc-openapi-demos</artifactId>
 		<version>0.0.9-SNAPSHOT</version>
 	</parent>
 	<dependencies>
