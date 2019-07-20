@@ -63,8 +63,8 @@ springdoc.api-docs.path=/api-docs
 springdoc.swagger-ui.path=/swagger.html
 ```
 
-## [Example application 1](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
-## [Example application 2](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
+## [Demo application 1](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
+## [Demo application 2](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
 
 ![Branching](https://springdoc.github.io/springdoc-openapi-demos/images/pets.png)
 
