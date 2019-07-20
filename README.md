@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/springdoc/springdoc-openapi.svg?branch=master)](https://travis-ci.org/springdoc/springdoc-openapi)
-[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=org.springdoc%3Aspringdoc-openapi&metric=alert_status)](https://sonarcloud.io/dashboard?id=org.springdoc%3Aspringdoc-openapi)
+[![Build Status](https://travis-ci.org/springdoc/springdoc-openapi-demos.svg?branch=master)](https://travis-ci.org/springdoc/springdoc-openapi-demos)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=org.springdoc%3Aspringdoc-openapi&metric=alert_status)](https://sonarcloud.io/dashboard?id=org.springdoc%3Aspringdoc-openapi-demos)
 
 # Java libray for OpenAPI 3 with spring-boot
 
