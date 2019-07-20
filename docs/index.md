@@ -26,6 +26,7 @@ This library supports:
     * context-path: The context path of the application
 *   Documentation will be available in yaml format as well, on the following path : /v3/api-docs.yml
 *   Add the library to the list of your project dependencies. (No additional configuration is needed)
+
 ```xml
    <dependency>
       <groupId>org.springdoc</groupId>
@@ -34,6 +35,7 @@ This library supports:
    </dependency>
 ```
 *   For custom path of the OpenAPI documentation in Json format, add a custom springdoc property, in your spring-boot configuration file:
+
 ```properties
 # /api-docs endpoint custom path
 springdoc.api-docs.path=/api-docs
@@ -46,6 +48,7 @@ springdoc.api-docs.path=/api-docs
     * port: The server port
     * context-path: The context path of the application
 *   Add the library to the list of your project dependencies (No additional configuration is needed)
+
 ```xml
    <dependency>
       <groupId>org.springdoc</groupId>
@@ -54,6 +57,7 @@ springdoc.api-docs.path=/api-docs
    </dependency>
 ```
 *   For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
+
 ```properties
 # swagger-ui custom path
 springdoc.swagger-ui.path=/swagger.html
