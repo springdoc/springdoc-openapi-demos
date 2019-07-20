@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-![Octocat](https://springdoc.github.io/springdoc-openapi/images/springdoc-openapi.png)
+![Octocat](https://springdoc.github.io/springdoc-openapi-demos/images/springdoc-openapi.png)
 
 # **Introduction**
 
@@ -71,7 +71,7 @@ Snapshots:
 ## [Example application 2](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
 
 
-![Branching](https://springdoc.github.io/springdoc-openapi/images/pets.png)
+![Branching](https://springdoc.github.io/springdoc-openapi-demos/images/pets.png)
 
 
 ## Adding API Information documentation
