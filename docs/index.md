@@ -42,7 +42,6 @@ Snapshots:
 ```ruby
 # /api-docs endpoint custom path
 springdoc.api-docs.path=/api-docs
-end
 ```
 
 ### Integration of the libray in a spring-boot 2 projet:
@@ -66,8 +65,6 @@ end
 *   For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
 ```ruby
 # swagger-ui custom path
-springdoc.swagger-ui.path=/swagger.html
-end
 ```
 *   Add the library to the list of your project dependencies (No additional configuration is needed)
 
