@@ -32,13 +32,18 @@ Snapshots:
 
 ### Library for springdoc-openapi generator 
 *   Generates documentation in JSON and YAML format
-*   Documentation can be available at the following enpoint for json format: /v3/api-docs
-*   Documentation can be available at the following enpoint for YAML format: /v3/api-docs.yml
+*   Documentation can be available at the following path for json format: /v3/api-docs
+*   Documentation can be available at the following path for YAML format: /v3/api-docs.yml
 *   Documentation will be available at the following url: http://server:port/context-path/v3/api-docs
     * server: The server name or IP
     * port: The server port
     * context-path: The context path of the application
-
+*   For custom path of the OpenAPI documentation in Json format, add a custom springdoc property, in your spring-boot configuration file:
+```ruby
+# /api-docs endpoint custom path
+springdoc.api-docs.path=/api-docs
+end
+```
 
 ### Integration of the libray in a spring-boot 2 projet:
 *   Add the library to the list of your project dependencies. (No additional configuration is needed)
@@ -47,27 +52,33 @@ Snapshots:
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-core</artifactId>
-      <version>0.0.8</version>
+      <version>0.0.11</version>
    </dependency>
 ```
 
 ### Library for springdoc-openapi integration with swagger-ui 
 *   Automatically deploys swagger-ui to a spring-boot 2 application
+*   Documentation will be available in HTML format, using the official [swagger-ui jars]: (https://github.com/swagger-api/swagger-ui.git).
 *   The Swagger UI page should then be available at http://server:port/context-path/swagger-ui.html
     * server: The server name or IP
     * port: The server port
     * context-path: The context path of the application
-
+*   For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
+```ruby
+# swagger-ui custom path
+springdoc.swagger-ui.path=/swagger.html
+end
+```
 *   Add the library to the list of your project dependencies (No additional configuration is needed)
 
 ```xml
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-ui</artifactId>
-      <version>0.0.8</version>
+      <version>0.0.11</version>
    </dependency>
 ```
-## [Example application 1](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/swagger-ui.html).
+## [Example application 1](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
 ## [Example application 2](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
 
 
