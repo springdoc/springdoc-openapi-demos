@@ -20,8 +20,8 @@ spring:
         content:
           enabled: true
           paths: /webjars/swagger-ui/**.*
-management:
-   endpoints:
-      web:
-         exposure:
-            include: info, health, configprops, logfile, metrics, env, loggers
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger
