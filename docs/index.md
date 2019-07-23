@@ -72,6 +72,9 @@ springdoc.swagger-ui.path=/swagger.html
   The library uses spring-boot application auto-configured packages to scan for the following annotations in spring beans: OpenAPIDefinition and Info.
   These annotations declare, API Information: Title, version, licence, security, servers, tags, security and externalDocs
  
+## Error Handling for REST using @ControllerAdvice
+To generate documentation automatically, make sure all the methods declare the HTTP Code responses using the annotation: @ResponseStatus
+
 ## Dependencies
 
 The springdoc-openapi libraries are hosted on maven central repository. 
