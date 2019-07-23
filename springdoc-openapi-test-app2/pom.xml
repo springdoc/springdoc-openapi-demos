@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springdoc</groupId>
 		<artifactId>springdoc-openapi-demos</artifactId>
-		<version>0.0.12-SNAPSHOT</version>
+		<version>1.O.0</version>
 	</parent>
 	<properties>
 		<spring-boot.version>2.0.9.RELEASE</spring-boot.version>
