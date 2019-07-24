@@ -34,7 +34,7 @@ This library supports:
       <version>1.1.0</version>
    </dependency>
 ```
-*   For custom path of the OpenAPI documentation in Json format, add a custom springdoc property, in your spring-boot configuration file:
+*   This step is optional: For custom path of the OpenAPI documentation in Json format, add a custom springdoc property, in your spring-boot configuration file:
 
 ```properties
 # /api-docs endpoint custom path
@@ -56,7 +56,7 @@ springdoc.api-docs.path=/api-docs
       <version>1.1.0</version>
    </dependency>
 ```
-*   For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
+*   This step is optional: For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
 
 ```properties
 # swagger-ui custom path
