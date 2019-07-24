@@ -13,7 +13,7 @@ This documentation can be completed by comments using swagger-api annotations.
 
 This library supports:
 *  OpenAPI 3
-*  Spring-boot 2
+*  Spring-boot (v1 and v2)
 *  JSR-303, specifically for @NotNull, @Min, @Max, and @Size.
 *  Swagger-ui
 *  Oauth 2
