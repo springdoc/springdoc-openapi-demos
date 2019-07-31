@@ -11,14 +11,17 @@ import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -27,6 +30,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "inventory")
 public interface InventoryApi {
 
+	@GetMapping("/getme")
+	String getme(
+			@Parameter(hidden = false, in = ParameterIn.HEADER, name = HttpHeaders.ACCEPT_LANGUAGE) @RequestHeader(required = false) String language);
+
 	@Operation(description = "adds an inventory item", operationId = "addInventory", summary = "Adds an item to the system", tags = {
 			"admins", })
 	@ApiResponses(value = { @ApiResponse(responseCode = "201", description = "item created"),
@@ -34,7 +41,7 @@ public interface InventoryApi {
 			@ApiResponse(responseCode = "409", description = "an existing item already exists") })
 	@PostMapping(value = "/inventory", consumes = { "application/json" })
 	ResponseEntity<Void> addInventory(
-			@Parameter(name = "Inventory item to add") @Valid @RequestBody InventoryItem body);
+			@Parameter(description = "Inventory item to do") @Valid @RequestBody InventoryItem body);
 
 	@Operation(description = "searches inventory", operationId = "searchInventory", summary = "By passing in the appropriate options, you can search for available inventory in the system ", tags = {
 			"developers", }, parameters = {

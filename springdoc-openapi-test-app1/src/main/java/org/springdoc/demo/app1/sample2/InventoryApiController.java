@@ -33,7 +33,7 @@ public class InventoryApiController implements InventoryApi {
     }
 
 	public ResponseEntity<Void> addInventory(
-			@Parameter(name = "Inventory item to add") @Valid @RequestBody InventoryItem body) {
+			@Parameter(description = "Inventory item to add") @Valid @RequestBody InventoryItem body) {
 		@SuppressWarnings("unused")
 		String accept = request.getHeader("Accept");
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
@@ -47,5 +47,9 @@ public class InventoryApiController implements InventoryApi {
 		String accept = request.getHeader("Accept");
         return new ResponseEntity<List<InventoryItem>>(HttpStatus.NOT_IMPLEMENTED);
     }
+
+	public String getme(String language) {
+		return language;
+	}
 
 }
