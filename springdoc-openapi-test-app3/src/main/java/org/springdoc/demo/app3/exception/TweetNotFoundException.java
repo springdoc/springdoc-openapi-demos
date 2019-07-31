@@ -5,7 +5,12 @@ package org.springdoc.demo.app3.exception;
  */
 public class TweetNotFoundException extends RuntimeException {
 
-    public TweetNotFoundException(String tweetId) {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public TweetNotFoundException(String tweetId) {
         super("Tweet not found with id " + tweetId);
     }
 }

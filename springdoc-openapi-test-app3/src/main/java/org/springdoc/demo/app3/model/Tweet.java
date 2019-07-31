@@ -1,12 +1,13 @@
 package org.springdoc.demo.app3.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
 /**
@@ -29,7 +30,6 @@ public class Tweet {
     }
 
     public Tweet(String text) {
-        this.id = id;
         this.text = text;
     }
 

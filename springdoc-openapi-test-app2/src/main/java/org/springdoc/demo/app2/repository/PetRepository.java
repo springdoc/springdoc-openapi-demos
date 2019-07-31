@@ -29,7 +29,6 @@ public class PetRepository extends HashMapRepository<Pet, Long> {
         return super.save(pet);
     }
 
-	@SuppressWarnings("unlikely-arg-type")
 	public List<Pet> findPetsByStatus(List<Pet.StatusEnum> statusList) {
         return entities.values().stream()
                 .filter(entity -> entity.getStatus() != null)
