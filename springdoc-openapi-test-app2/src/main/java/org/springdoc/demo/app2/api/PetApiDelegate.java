@@ -3,6 +3,8 @@ package org.springdoc.demo.app2.api;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springdoc.demo.app2.model.ModelApiResponse;
 import org.springdoc.demo.app2.model.Pet;
 import org.springframework.http.HttpStatus;
@@ -104,7 +106,7 @@ public interface PetApiDelegate {
      */
     default ResponseEntity<ModelApiResponse> uploadFile( Long  petId,
          String  additionalMetadata,
-			List<MultipartFile> file) {
+			@Valid MultipartFile file) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
