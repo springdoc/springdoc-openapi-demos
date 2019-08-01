@@ -6,7 +6,7 @@ layout: default
 # **Introduction**
 
 springdoc-openapi java library helps automating the generation of API documentation using spring boot projects.
-springdoc-openapi works by examining an application at runtime to infer API semantics based on spring configurations, class structure and various nnotations.
+springdoc-openapi works by examining an application at runtime to infer API semantics based on spring configurations, class structure and various annotations.
 
 Automatically generates documentation in JSON/YAML and HTML format APIs. 
 This documentation can be completed by comments using swagger-api annotations.
@@ -31,7 +31,7 @@ This library supports:
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-core</artifactId>
-      <version>1.1.3</version>
+      <version>1.1.5</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the OpenAPI documentation in Json format, add a custom springdoc property, in your spring-boot configuration file:
@@ -53,7 +53,7 @@ springdoc.api-docs.path=/api-docs
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-ui</artifactId>
-      <version>1.1.3</version>
+      <version>1.1.5</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
