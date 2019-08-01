@@ -104,7 +104,7 @@ public interface PetApiDelegate {
      */
     default ResponseEntity<ModelApiResponse> uploadFile( Long  petId,
          String  additionalMetadata,
-        MultipartFile file) {
+			List<MultipartFile> file) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
