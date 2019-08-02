@@ -81,7 +81,9 @@ springdoc.api-docs.path=/api-docs
 ## Error Handling for REST using @ControllerAdvice
 To generate documentation automatically, make sure all the methods declare the HTTP Code responses using the annotation: @ResponseStatus
 
-## Dependencies
+## spring-weblfux will be available in the future release
+
+## Dependencies repository
 
 The springdoc-openapi libraries are hosted on maven central repository. 
 The artifacts can be viewed accessed at the following locations:
