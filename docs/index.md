@@ -41,7 +41,7 @@ This library supports:
 
 ```properties
 # swagger-ui custom path
-springdoc.swagger-ui.path=/swagger.html
+springdoc.swagger-ui.path=/swagger-ui.html
 ```
 
 ## [Demo application 1](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
