@@ -19,34 +19,15 @@ This library supports:
 *  Oauth 2
 
 # **Getting Started**
-## Integration of the libray in a spring-boot 2 project:
-*   Documentation will be available at the following url for json format: http://server:port/context-path/v3/api-docs
-    * server: The server name or IP
-    * port: The server port
-    * context-path: The context path of the application
-*   Documentation will be available in yaml format as well, on the following path : /v3/api-docs.yml
-*   Add the library to the list of your project dependencies. (No additional configuration is needed)
 
-```xml
-   <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-core</artifactId>
-      <version>1.1.6</version>
-   </dependency>
-```
-*   This step is optional: For custom path of the OpenAPI documentation in Json format, add a custom springdoc property, in your spring-boot configuration file:
-
-```properties
-# /api-docs endpoint custom path
-springdoc.api-docs.path=/api-docs
-```
-## Library for springdoc-openapi integration with swagger-ui 
+## Library for springdoc-openapi integration with spring-boot and swagger-ui 
 *   Automatically deploys swagger-ui to a spring-boot 2 application
 *   Documentation will be available in HTML format, using the official [swagger-ui jars]: (https://github.com/swagger-api/swagger-ui.git).
-*   The Swagger UI page should then be available at http://server:port/context-path/swagger-ui.html
+*   The Swagger UI page should then be available at http://server:port/context-path/swagger-ui.html and the OpenAPI description will be available at the following url for json format: http://server:port/context-path/v3/api-docs
     * server: The server name or IP
     * port: The server port
     * context-path: The context path of the application
+*   Documentation can be available in yaml format as well, on the following path : /v3/api-docs.yml
 *   Add the library to the list of your project dependencies (No additional configuration is needed)
 
 ```xml
@@ -70,6 +51,28 @@ springdoc.swagger-ui.path=/swagger.html
 
 ## Source code of the Demo Applications
 *   https://github.com/springdoc/springdoc-openapi-demos.git
+
+## Integration of the libray in a spring-boot 2 project without the swagger-ui:
+*   Documentation will be available at the following url for json format: http://server:port/context-path/v3/api-docs
+    * server: The server name or IP
+    * port: The server port
+    * context-path: The context path of the application
+*   Documentation will be available in yaml format as well, on the following path : /v3/api-docs.yml
+*   Add the library to the list of your project dependencies. (No additional configuration is needed)
+
+```xml
+   <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-core</artifactId>
+      <version>1.1.6</version>
+   </dependency>
+```
+*   This step is optional: For custom path of the OpenAPI documentation in Json format, add a custom springdoc property, in your spring-boot configuration file:
+
+```properties
+# /api-docs endpoint custom path
+springdoc.api-docs.path=/api-docs
+```
 
 ## Adding API Information documentation
   The library uses spring-boot application auto-configured packages to scan for the following annotations in spring beans: OpenAPIDefinition and Info.
