@@ -32,4 +32,9 @@ public class ItemController {
 				.buildAndExpand(UUID.randomUUID()).toUri();
 		return ResponseEntity.created(location).build();
 	}
+
+	@GetMapping("/items/demo")
+	public List<ItemDTO> showItemsForObject(final ItemLightDTO itemDTO) {
+		return new ArrayList<ItemDTO>();
+	}
 }
