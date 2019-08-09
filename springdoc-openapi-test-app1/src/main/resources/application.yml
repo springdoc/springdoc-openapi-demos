@@ -6,3 +6,6 @@ server:
     min-response-size: 1024
   http2:
     enabled: true
+springdoc:
+  version: '@springdoc.version@'
+    
