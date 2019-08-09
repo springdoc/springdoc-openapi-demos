@@ -34,7 +34,7 @@ This library supports:
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-ui</artifactId>
-      <version>1.1.11</version>
+      <version>1.1.12</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
@@ -44,8 +44,9 @@ This library supports:
 springdoc.swagger-ui.path=/swagger-ui.html
 ```
 
-## [Demo application 1](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
-## [Demo application 2](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
+## [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
+## [Demo Spring Boot 1 webmvc with OpenAPI 3](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
+## [Demo Spring Boot 2 webflux with OpenAPI 3](https://springdoc-openapi-test-app3-terrific-rabbit.eu-de.mybluemix.net/swagger-ui.html).
 
 ![Branching](https://springdoc.github.io/springdoc-openapi-demos/images/pets.png)
 
@@ -64,7 +65,7 @@ springdoc.swagger-ui.path=/swagger-ui.html
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-core</artifactId>
-      <version>1.1.11</version>
+      <version>1.1.12</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the OpenAPI documentation in Json format, add a custom springdoc property, in your spring-boot configuration file:
@@ -89,7 +90,7 @@ To generate documentation automatically, make sure all the methods declare the H
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-webflux-ui</artifactId>
-      <version>1.1.11</version>
+      <version>1.1.12</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
