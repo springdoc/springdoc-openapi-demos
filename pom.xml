@@ -47,7 +47,6 @@
 		<module>springdoc-openapi-test-app1</module>
 		<module>springdoc-openapi-test-app2</module>
 		<module>springdoc-openapi-test-app3</module>
-		<module>docs</module>
 	</modules>
 
 	<properties>
@@ -69,8 +68,7 @@
 		<nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
 		<jacoco-maven-plugin.version>0.8.3</jacoco-maven-plugin.version>
 		<resource.delimiter>@</resource.delimiter>
-		<springdoc.version>1.1.11</springdoc.version>
-		<spring-boot.version>2.0.9.RELEASE</spring-boot.version>
+		<springdoc.version>1.1.7</springdoc.version>
 	</properties>
 
 	<dependencyManagement>
@@ -85,13 +83,6 @@
 				<groupId>org.springdoc</groupId>
 				<artifactId>springdoc-openapi-webflux-ui</artifactId>
 				<version>${springdoc.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>${spring-boot.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -169,12 +160,6 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
 	</build>
 
 
