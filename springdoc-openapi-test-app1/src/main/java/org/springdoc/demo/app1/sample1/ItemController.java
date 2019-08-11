@@ -26,13 +26,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "items")
 public class ItemController {
 
-
 	@GetMapping("/items")
 	public List<ItemDTO> showItems(@RequestParam("cusID") @Size(min = 4, max = 6) final String customerID,
 			@Size(min = 4, max = 6) int toto) {
 		return new ArrayList<ItemDTO>();
 	}
-   
+
 	@PostMapping("/items")
 	public ResponseEntity<URI> addItem(@Valid @RequestBody final ItemLightDTO itemDTO) {
 		final URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
