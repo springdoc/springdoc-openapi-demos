@@ -8,4 +8,5 @@ server:
     enabled: true
 springdoc:
   version: '@springdoc.version@'
-    
+  api-docs:
+    enabled: true
