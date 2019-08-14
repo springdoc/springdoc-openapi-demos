@@ -44,10 +44,4 @@ public class ItemController {
 		return new ArrayList<ItemDTO>();
 	}
 
-	@GetMapping(value = "/items/empty-params")
-	@Operation(parameters = {
-			@Parameter(name = "name", in = ParameterIn.QUERY, schema = @Schema(implementation = String.class)) })
-	public void get() {
-
-	}
 }
