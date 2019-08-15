@@ -24,5 +24,5 @@ springdoc:
   api-docs:
     path: /v3/api-docs
   swagger-ui:
-    path: /swagger-ui.html
+    path: /test/swagger-ui.html
   version: '@springdoc.version@'

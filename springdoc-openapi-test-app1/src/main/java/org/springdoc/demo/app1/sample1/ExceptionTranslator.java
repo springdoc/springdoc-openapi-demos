@@ -15,7 +15,7 @@ public class ExceptionTranslator {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionTranslator.class);
 
-	@ExceptionHandler({ Exception.class })
+	@ExceptionHandler({ RuntimeException.class })
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public ResponseEntity<ErrorMessage> handleRunTimeException(RuntimeException e) {
 		return error(HttpStatus.INTERNAL_SERVER_ERROR, e);

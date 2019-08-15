@@ -10,3 +10,6 @@ springdoc:
   version: '@springdoc.version@'
   api-docs:
     enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    path: /test/swagger-ui.html
