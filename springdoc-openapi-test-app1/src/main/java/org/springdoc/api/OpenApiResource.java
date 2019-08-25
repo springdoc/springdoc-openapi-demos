@@ -1,0 +1,89 @@
+package org.springdoc.api;
+
+import static org.springdoc.core.Constants.*;
+import static org.springframework.util.AntPathMatcher.*;
+
+import java.util.Map;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springdoc.core.AbstractRequestBuilder;
+import org.springdoc.core.AbstractResponseBuilder;
+import org.springdoc.core.GeneralInfoBuilder;
+import org.springdoc.core.OpenAPIBuilder;
+import org.springdoc.core.OperationBuilder;
+import org.springdoc.core.TagsBuilder;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition;
+import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
+import org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import io.swagger.v3.core.util.Json;
+import io.swagger.v3.core.util.Yaml;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.models.OpenAPI;
+
+@RestController
+@ConditionalOnProperty(name = SPRINGDOC_ENABLED, matchIfMissing = true)
+public class OpenApiResource extends AbstractOpenApiResource {
+
+	private RequestMappingInfoHandlerMapping requestMappingHandlerMapping;
+
+	public OpenApiResource(OpenAPIBuilder openAPIBuilder, AbstractRequestBuilder requestBuilder,
+			AbstractResponseBuilder responseBuilder, TagsBuilder tagbuiBuilder, OperationBuilder operationParser,
+			GeneralInfoBuilder infoBuilder, RequestMappingInfoHandlerMapping requestMappingHandlerMapping) {
+		super(openAPIBuilder, requestBuilder, responseBuilder, tagbuiBuilder, operationParser, infoBuilder);
+		this.requestMappingHandlerMapping = requestMappingHandlerMapping;
+	}
+
+	@Operation(hidden = true)
+	@GetMapping(value = API_DOCS_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String openapiJson(HttpServletRequest request, @Value(API_DOCS_URL) String apiDocsUrl)
+			throws JsonProcessingException {
+		calculateServerUrl(request, apiDocsUrl);
+		OpenAPI openAPI = this.getOpenApi();
+		System.out.println("toto");
+		return Json.mapper().writeValueAsString(openAPI);
+	}
+
+	@Operation(hidden = true)
+	@GetMapping(value = DEFAULT_API_DOCS_URL_YAML, produces = APPLICATION_OPENAPI_YAML)
+	public String openapiYaml(HttpServletRequest request, @Value(DEFAULT_API_DOCS_URL_YAML) String apiDocsUrl)
+			throws JsonProcessingException {
+		calculateServerUrl(request, apiDocsUrl);
+		OpenAPI openAPI = this.getOpenApi();
+		return Yaml.mapper().writeValueAsString(openAPI);
+	}
+
+	@Override
+	protected void getPaths(Map<String, Object> restControllers) {
+		Map<RequestMappingInfo, HandlerMethod> map = requestMappingHandlerMapping.getHandlerMethods();
+		for (Map.Entry<RequestMappingInfo, HandlerMethod> entry : map.entrySet()) {
+			RequestMappingInfo requestMappingInfo = entry.getKey();
+			HandlerMethod handlerMethod = entry.getValue();
+			PatternsRequestCondition patternsRequestCondition = requestMappingInfo.getPatternsCondition();
+			Set<String> patterns = patternsRequestCondition.getPatterns();
+			String operationPath = patterns.iterator().next();
+			if (operationPath.startsWith(DEFAULT_PATH_SEPARATOR)
+					&& restControllers.containsKey(handlerMethod.getBean().toString())) {
+				Set<RequestMethod> requestMethods = requestMappingInfo.getMethodsCondition().getMethods();
+				calculatePath(openAPIBuilder, handlerMethod, operationPath, requestMethods);
+			}
+		}
+	}
+
+	private void calculateServerUrl(HttpServletRequest request, String apiDocsUrl) {
+		StringBuffer requestUrl = request.getRequestURL();
+		String serverBaseUrl = requestUrl.substring(0, requestUrl.length() - apiDocsUrl.length());
+		generalInfoBuilder.setServerBaseUrl(serverBaseUrl);
+	}
+}
