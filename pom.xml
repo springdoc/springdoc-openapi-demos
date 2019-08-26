@@ -69,9 +69,9 @@
 		<nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
 		<jacoco-maven-plugin.version>0.8.3</jacoco-maven-plugin.version>
 		<resource.delimiter>@</resource.delimiter>
-		<springdoc.version>1.1.28</springdoc.version>
-		<spring-boot.version>2.0.9.RELEASE</spring-boot.version>
 		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
+		<spring-boot.version>2.0.9.RELEASE</spring-boot.version>
+		<springdoc.version>1.1.29</springdoc.version>
 	</properties>
 
 	<dependencyManagement>
