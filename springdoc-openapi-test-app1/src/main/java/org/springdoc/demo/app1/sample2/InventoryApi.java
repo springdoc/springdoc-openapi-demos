@@ -11,17 +11,14 @@ import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -30,9 +27,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "inventory")
 public interface InventoryApi {
 
-	@GetMapping("/getme")
-	String getme(
-			@Parameter(hidden = false, in = ParameterIn.HEADER, name = HttpHeaders.ACCEPT_LANGUAGE) @RequestHeader(required = false) String language);
 
 	@Operation(description = "adds an inventory item", operationId = "addInventory", summary = "Adds an item to the system", tags = {
 			"admins", })
