@@ -27,14 +27,14 @@ This library supports:
     * server: The server name or IP
     * port: The server port
     * context-path: The context path of the application
-*   Documentation can be available in yaml format as well, on the following path : /v3/api-docs.yaml
+*   Documentation can be available in yaml format as well, on the following path : /v3/api-docs.yml
 *   Add the library to the list of your project dependencies (No additional configuration is needed)
 
 ```xml
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-ui</artifactId>
-      <version>1.1.37</version>
+      <version>1.1.38</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
@@ -58,14 +58,14 @@ springdoc.swagger-ui.path=/swagger-ui.html
     * server: The server name or IP
     * port: The server port
     * context-path: The context path of the application
-*   Documentation will be available in yaml format as well, on the following path : /v3/api-docs.yaml
+*   Documentation will be available in yaml format as well, on the following path : /v3/api-docs.yml
 *   Add the library to the list of your project dependencies. (No additional configuration is needed)
 
 ```xml
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-core</artifactId>
-      <version>1.1.37</version>
+      <version>1.1.38</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the OpenAPI documentation in Json format, add a custom springdoc property, in your spring-boot configuration file:
@@ -79,28 +79,19 @@ springdoc.api-docs.path=/api-docs
   The library uses spring-boot application auto-configured packages to scan for the following annotations in spring beans: OpenAPIDefinition and Info.
   These annotations declare, API Information: Title, version, licence, security, servers, tags, security and externalDocs.
   For better performance of documentation generation, declare @OpenAPIDefinition and @SecurityScheme annotations within a spring managed bean.  
-  
-## Display spring-boot-actuator endpoints on swagger-ui
- By Default, springdoc-openapi doesn't scan for spring-boot-actuator endpoints.
- In order to display spring-boot-actuator endpoints on swagger-ui, add a custom springdoc property, in your spring-boot configuration file:
-```properties
-# Display spring-boot-actuator endpoints
-springdoc.show.actuator=true
-```
-
  
 ## Error Handling for REST using @ControllerAdvice
 To generate documentation automatically, make sure all the methods declare the HTTP Code responses using the annotation: @ResponseStatus
 
 ## spring-weblfux support with Annotated Controllers
-*   Documentation can be available in yaml format as well, on the following path : /v3/api-docs.yaml
+*   Documentation can be available in yaml format as well, on the following path : /v3/api-docs.yml
 *   Add the library to the list of your project dependencies (No additional configuration is needed)
 
 ```xml
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-webflux-ui</artifactId>
-      <version>1.1.37</version>
+      <version>1.1.38</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
