@@ -79,6 +79,15 @@ springdoc.api-docs.path=/api-docs
   The library uses spring-boot application auto-configured packages to scan for the following annotations in spring beans: OpenAPIDefinition and Info.
   These annotations declare, API Information: Title, version, licence, security, servers, tags, security and externalDocs.
   For better performance of documentation generation, declare @OpenAPIDefinition and @SecurityScheme annotations within a spring managed bean.  
+  
+## Display spring-boot-actuator endpoints on swagger-ui
+ By Default, springdoc-openapi doesn't scan for spring-boot-actuator endpoints.
+ In order to display spring-boot-actuator endpoints on swagger-ui, add a custom springdoc property, in your spring-boot configuration file:
+```properties
+# Display spring-boot-actuator endpoints
+springdoc.show.actuator=true
+```
+
  
 ## Error Handling for REST using @ControllerAdvice
 To generate documentation automatically, make sure all the methods declare the HTTP Code responses using the annotation: @ResponseStatus
