@@ -75,6 +75,16 @@ springdoc.swagger-ui.path=/swagger-ui.html
 springdoc.api-docs.path=/api-docs
 ```
 
+*   For wildfly users, you need to add the following dependency to make the swagger-ui work:
+
+```xml
+   <dependency>
+	  <groupId>org.webjars</groupId>
+	  <artifactId>webjars-locator-jboss-vfs</artifactId>
+	  <version>0.1.0</version>
+   </dependency>
+```
+
 ## Adding API Information and Security documentation
   The library uses spring-boot application auto-configured packages to scan for the following annotations in spring beans: OpenAPIDefinition and Info.
   These annotations declare, API Information: Title, version, licence, security, servers, tags, security and externalDocs.
