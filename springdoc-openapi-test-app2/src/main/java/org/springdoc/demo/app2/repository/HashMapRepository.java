@@ -49,16 +49,16 @@ public abstract class HashMapRepository<T, ID> implements CrudRepository<T, ID> 
     public List<T> findAll(Pageable pageable) {
         final List<T> result;
         final Sort sort = pageable.getSort();
-        if (sort == null) {
+        if (sort != null) {
             Comparator<T> comp = new Comparator<T>() {
                 @Override
-                public int compare(T t, T t1) {
+                public int compare(T t1, T t2) {
                     int result = 0;
                     for (Sort.Order o : sort) {
                         final String prop = o.getProperty();
                         PropertyDescriptor propDesc = entityBeanInfo.getPropertyDescriptor(prop);
-                        result = ((Comparable<T>) propDesc.createPropertyEditor(t).getValue())
-                                .compareTo((T) propDesc.createPropertyEditor(t1).getValue());
+                        result = ((Comparable<T>) propDesc.createPropertyEditor(t1).getValue())
+                                .compareTo((T) propDesc.createPropertyEditor(t2).getValue());
                         if (o.isDescending()) {
                             result = -result;
                         }
@@ -67,7 +67,7 @@ public abstract class HashMapRepository<T, ID> implements CrudRepository<T, ID> 
                     return result;
                 }
             };
-            Set<T> set = new TreeSet<>(comp);
+            final Set<T> set = new TreeSet<>(comp);
             set.addAll(entities.values());
             result = Collections.unmodifiableList(new ArrayList<>(set));
         } else {
