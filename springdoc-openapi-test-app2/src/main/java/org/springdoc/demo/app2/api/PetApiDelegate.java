@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.springdoc.demo.app2.model.ModelApiResponse;
 import org.springdoc.demo.app2.model.Pet;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -117,6 +119,10 @@ public interface PetApiDelegate {
         });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
+    }
+
+    default ResponseEntity<List<Pet>> getAllPets(@NotNull Pageable pageable) {
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

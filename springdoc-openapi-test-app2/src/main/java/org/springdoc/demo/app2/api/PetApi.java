@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springdoc.demo.app2.model.ModelApiResponse;
 import org.springdoc.demo.app2.model.Pet;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -137,6 +138,16 @@ public interface PetApi {
 			@Parameter(description = "Additional data to pass to server") @RequestParam(value = "additionalMetadata", required = false) String additionalMetadata,
 			@Parameter(description = "file detail") @Valid @RequestPart("file") MultipartFile file) {
 		return getDelegate().uploadFile(petId, additionalMetadata, file);
+	}
+
+	@Operation(summary = "Get all Pets paged", description = "Get all Pets paged", security = {
+			@SecurityRequirement(name = "petstore_auth", scopes = { "write:pets", "read:pets" }) }, tags = { "pet" })
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Pet.class))))
+	})
+	@GetMapping(value = "/pet", produces = { "application/xml", "application/json" })
+	default ResponseEntity<List<Pet>> getAllPets(@NotNull Pageable pageable) {
+		return getDelegate().getAllPets(pageable);
 	}
 
 }
