@@ -21,7 +21,7 @@ public abstract class HashMapRepository<T, ID> implements CrudRepository<T, ID> 
 
     private final BeanWrapper entityBeanInfo;
 
-    public HashMapRepository(Class<T> clazz) {
+    protected HashMapRepository(Class<T> clazz) {
         entityBeanInfo = new BeanWrapperImpl(clazz);
     }
 
@@ -69,11 +69,33 @@ public abstract class HashMapRepository<T, ID> implements CrudRepository<T, ID> 
             };
             final Set<T> set = new TreeSet<>(comp);
             set.addAll(entities.values());
-            result = Collections.unmodifiableList(new ArrayList<>(set));
+            result = getPageSlice(pageable, set);
         } else {
-            result = Collections.unmodifiableList(new ArrayList<>(entities.values()));
+            result = getPageSlice(pageable, entities.values());
         }
         return result;
+    }
+
+    private List<T> getPageSlice(Pageable pageable, Collection<T> col) {
+        final ArrayList<T> all = new ArrayList<>(col);
+        final int size = all.size();
+        final int psize = pageable.getPageSize();
+        final int pnum = pageable.getPageNumber();
+        if (pnum < 1) {
+            throw new IllegalArgumentException("page number must be 1 or more");
+        }
+        if (psize < 1) {
+            throw new IllegalArgumentException("page size must be 1 or more");
+        }
+        // inclusive
+        final int begin = (pnum - 1) * psize;
+        // exclusive
+        final int end = Math.min(begin + psize, size);
+        if (size < begin) {
+            return new ArrayList<>();
+        }
+        // return of slice is valid because all is local to this method
+        return all.subList(begin, end);
     }
 
     @Override
