@@ -71,7 +71,7 @@
 		<resource.delimiter>@</resource.delimiter>
 		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
 		<spring-boot.version>2.2.0.RELEASE</spring-boot.version>
-		<springdoc.version>1.2.7</springdoc.version>
+		<springdoc.version>1.2.8</springdoc.version>
 	</properties>
 
 	<dependencyManagement>
