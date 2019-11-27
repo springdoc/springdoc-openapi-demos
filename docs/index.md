@@ -36,7 +36,7 @@ This is a community-based project, not maintained by the Spring Framework Contri
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-ui</artifactId>
-      <version>1.2.11</version>
+      <version>1.2.12</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
@@ -67,7 +67,7 @@ springdoc.swagger-ui.path=/swagger-ui.html
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-webmvc-core</artifactId>
-      <version>1.2.11</version>
+      <version>1.2.12</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the OpenAPI documentation in Json format, add a custom springdoc property, in your spring-boot configuration file:
@@ -95,6 +95,20 @@ springdoc.api-docs.path=/api-docs
 ## Error Handling for REST using @ControllerAdvice
 To generate documentation automatically, make sure all the methods declare the HTTP Code responses using the annotation: @ResponseStatus
 
+## Disabling the springdoc-openapi endpoints
+In order to disable the springdoc-openapi endpoint (/v3/api-docs by default) use the following property:
+```properties
+# Disabling the /v3/api-docs enpoint
+springdoc.api-docs.enabled=false
+```
+
+## Disabling the swagger-ui
+In order to disable the swagger-ui, use the following property:
+```properties
+# Disabling the swagger-ui
+springdoc.swagger-ui.enabled=false
+```
+
 ## spring-weblfux support with Annotated Controllers
 *   Documentation can be available in yaml format as well, on the following path : /v3/api-docs.yml
 *   Add the library to the list of your project dependencies (No additional configuration is needed)
@@ -103,7 +117,7 @@ To generate documentation automatically, make sure all the methods declare the H
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-webflux-ui</artifactId>
-      <version>1.2.11</version>
+      <version>1.2.12</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
@@ -122,7 +136,7 @@ The plugin works in conjunction with spring-boot-maven plugin.
 You can test it during the integration tests phase using the maven command:
 
 ```properties
-mvn verify
+mvn verify -Dspring.application.admin.enabled=true
 ```
 
 In order to use this functionality, you need to add the plugin declaration on the plugins section of your pom.xml:

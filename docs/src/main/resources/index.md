@@ -95,6 +95,20 @@ springdoc.api-docs.path=/api-docs
 ## Error Handling for REST using @ControllerAdvice
 To generate documentation automatically, make sure all the methods declare the HTTP Code responses using the annotation: @ResponseStatus
 
+## Disabling the springdoc-openapi endpoints
+In order to disable the springdoc-openapi endpoint (/v3/api-docs by default) use the following property:
+```properties
+# Disabling the /v3/api-docs enpoint
+springdoc.api-docs.enabled=false
+```
+
+## Disabling the swagger-ui
+In order to disable the swagger-ui, use the following property:
+```properties
+# Disabling the swagger-ui
+springdoc.swagger-ui.enabled=false
+```
+
 ## spring-weblfux support with Annotated Controllers
 *   Documentation can be available in yaml format as well, on the following path : /v3/api-docs.yml
 *   Add the library to the list of your project dependencies (No additional configuration is needed)
@@ -122,7 +136,7 @@ The plugin works in conjunction with spring-boot-maven plugin.
 You can test it during the integration tests phase using the maven command:
 
 ```properties
-mvn verify
+mvn verify -Dspring.application.admin.enabled=true
 ```
 
 In order to use this functionality, you need to add the plugin declaration on the plugins section of your pom.xml:
