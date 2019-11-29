@@ -10,6 +10,9 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import io.swagger.v3.oas.annotations.enums.Explode;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.enums.ParameterStyle;
 import org.springdoc.demo.app2.model.ModelApiResponse;
 import org.springdoc.demo.app2.model.Pet;
 import org.springframework.http.ResponseEntity;
@@ -77,11 +80,11 @@ public interface PetApi {
 			@ApiResponse(responseCode = "400", description = "Invalid status value") })
 	@GetMapping(value = "/pet/findByStatus", produces = { "application/xml", "application/json" })
 	default ResponseEntity<List<Pet>> findPetsByStatus(
-			@NotNull @Parameter(description = "Status values that need to be considered for filter", required = true) @Valid @RequestParam(value = "status", required = true) List<String> status) {
+			@NotNull @Parameter(name = "status", in = ParameterIn.QUERY, description = "Status values that need to be considered for filter", required = false, explode = Explode.TRUE, style = ParameterStyle.FORM, schema = @Schema(type = "string", defaultValue = "available", allowableValues = {"available", "pending", "sold"})) @Valid @RequestParam(value = "status", required = false) List<String> status) {
 		return getDelegate().findPetsByStatus(status);
 	}
 
-	@Operation(summary = "Finds Pets by tags", description = "Muliple tags can be provided with comma separated strings. Use         tag1, tag2, tag3 for testing.", security = {
+	@Operation(deprecated = true, summary = "Finds Pets by tags", description = "Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.", security = {
 			@SecurityRequirement(name = "petstore_auth", scopes = { "write:pets", "read:pets" }) }, tags = { "pet" })
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Pet.class)))),
@@ -104,9 +107,11 @@ public interface PetApi {
 		return getDelegate().getPetById(petId);
 	}
 
-	@Operation(summary = "Update an existing pet", description = "", security = {
+	@Operation(summary = "Update an existing pet", description = "Update an existing pet by Id",operationId = "updatePet", security = {
 			@SecurityRequirement(name = "petstore_auth", scopes = { "write:pets", "read:pets" }) }, tags = { "pet" })
-	@ApiResponses(value = { @ApiResponse(responseCode = "400", description = "Invalid ID supplied"),
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Successful operation", content = @Content(schema = @Schema(implementation = Pet.class))),
+			@ApiResponse(responseCode = "400", description = "Invalid ID supplied"),
 			@ApiResponse(responseCode = "404", description = "Pet not found"),
 			@ApiResponse(responseCode = "405", description = "Validation exception") })
 	@PutMapping(value = "/pet", consumes = { "application/json", "application/xml" })
