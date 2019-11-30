@@ -1,5 +1,6 @@
 package org.springdoc.demo.app2.api;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.Map;
 
@@ -46,8 +47,8 @@ public class StoreApiDelegateImpl implements StoreApiDelegate {
 
 
     @Override
-    public ResponseEntity<Void> deleteOrder(String orderId) {
-        Order order = orderRepository.findById(Long.valueOf(orderId))
+    public ResponseEntity<Void> deleteOrder(Long orderId) {
+        Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         orderRepository.delete(order);
         return ResponseEntity.ok().build();
