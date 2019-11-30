@@ -109,7 +109,7 @@ In order to disable the swagger-ui, use the following property:
 springdoc.swagger-ui.enabled=false
 ```
 
-## spring-weblfux support with Annotated Controllers
+## Spring-weblfux support with Annotated Controllers
 *   Documentation can be available in yaml format as well, on the following path : /v3/api-docs.yml
 *   Add the library to the list of your project dependencies (No additional configuration is needed)
 
@@ -125,6 +125,28 @@ springdoc.swagger-ui.enabled=false
 ```properties
 # swagger-ui custom path
 springdoc.swagger-ui.path=/swagger-ui.html
+```
+
+## Spring Pageable support
+The support for Pageable of spring-data-commons is available.
+The projects that use Pageable type should add this dependency together with the springdoc-openapi-ui dependency.
+```xml
+   <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-data-rest</artifactId>
+      <version>@springdoc.version@</version>
+   </dependency>
+```
+
+## Spring security support
+For a project that uses spring-security, you should add the following dependency, together with the springdoc-openapi-ui dependency:
+This dependency helps ignoring @AuthenticationPrincipal in case its used on REST Controllers.
+```xml
+   <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-security</artifactId>
+      <version>@springdoc.version@</version>
+   </dependency>
 ```
 
 ## **Introduction to springdoc-openapi-maven-plugin**
