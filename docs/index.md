@@ -36,7 +36,7 @@ This is a community-based project, not maintained by the Spring Framework Contri
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-ui</artifactId>
-      <version>1.2.15</version>
+      <version>1.2.16</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
@@ -67,7 +67,7 @@ springdoc.swagger-ui.path=/swagger-ui.html
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-webmvc-core</artifactId>
-      <version>1.2.15</version>
+      <version>1.2.16</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the OpenAPI documentation in Json format, add a custom springdoc property, in your spring-boot configuration file:
@@ -108,7 +108,29 @@ In order to disable the swagger-ui, use the following property:
 # Disabling the swagger-ui
 springdoc.swagger-ui.enabled=false
 ```
+## Swagger-ui configuration
+The library supports the swagger-ui official properties:
+- https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/
 
+You need to declare swagger-ui properties as spring-boot properties.
+All these properties should be declared with the following prefix: springdoc.swagger-ui
+
+## Selecting the Rest Controllers to include in the documentation 
+Additionally to @Hidden annotation from swagger-annotations, its possible to restrict the generated OpenAPI description using package or path configuration.
+
+For the list of packages to include, use the following property:
+```properties
+# Packages to include
+springdoc.packagesToScan=com.package1, com.package2
+```
+
+For the list of paths to include, use the following property:
+```properties
+# Paths to include
+springdoc.pathsToMatch=/v1, /api/balance/**
+```
+
+packages or paths 
 ## Spring-weblfux support with Annotated Controllers
 *   Documentation can be available in yaml format as well, on the following path : /v3/api-docs.yml
 *   Add the library to the list of your project dependencies (No additional configuration is needed)
@@ -117,7 +139,7 @@ springdoc.swagger-ui.enabled=false
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-webflux-ui</artifactId>
-      <version>1.2.15</version>
+      <version>1.2.16</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
@@ -134,7 +156,7 @@ The projects that use Pageable type should add this dependency together with the
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-data-rest</artifactId>
-      <version>1.2.15</version>
+      <version>1.2.16</version>
    </dependency>
 ```
 
@@ -145,7 +167,7 @@ This dependency helps ignoring @AuthenticationPrincipal in case its used on REST
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-security</artifactId>
-      <version>1.2.15</version>
+      <version>1.2.16</version>
    </dependency>
 ```
 
