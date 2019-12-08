@@ -113,7 +113,7 @@ The library supports the swagger-ui official properties:
 - https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/
 
 You need to declare swagger-ui properties as spring-boot properties.
-All these properties should be declared with the following prefix: springdoc.swagger-ui
+All these properties should be declared with the following prefix: **springdoc.swagger-ui**
 
 ## Selecting the Rest Controllers to include in the documentation 
 Additionally to @Hidden annotation from swagger-annotations, its possible to restrict the generated OpenAPI description using package or path configuration.
