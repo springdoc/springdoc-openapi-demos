@@ -90,7 +90,7 @@ springdoc.swagger-ui.enabled=false
 - If you are using JAX-RS and as implementation Jersey (@Path for example), we do not support it.
 - We only support exposing Rest Endpoints using spring managed beans (@RestController for example).
 - You can have a look at swagger-jaxrs2 project:
-  - https://github.com/swagger-api/swagger-samples/tree/2.0/java/java-jersey2-minimal
+  - [https://github.com/swagger-api/swagger-samples/tree/2.0/java/java-jersey2-minimal](https://github.com/swagger-api/swagger-samples/tree/2.0/java/java-jersey2-minimal).
 
 ### Can springdoc-openapi generate API only for @RestController?
 - @RestController is equivalent to @Controller + @RequestMapping on the type level.
@@ -173,12 +173,12 @@ springdoc.swagger-ui.path= /swagger-ui/api-docs.html
 
 ### How can i test the Swagger UI?
 - You can have a look on this sample test of the ui:
-- https://github.com/springdoc/springdoc-openapi/blob/master/springdoc-openapi-ui/src/test/java/test/org/springdoc/ui/app1/SpringDocApp1Test.java
+- [https://github.com/springdoc/springdoc-openapi/blob/master/springdoc-openapi-ui/src/test/java/test/org/springdoc/ui/app1/SpringDocApp1Test.java](https://github.com/springdoc/springdoc-openapi/blob/master/springdoc-openapi-ui/src/test/java/test/org/springdoc/ui/app1/SpringDocApp1Test.java).
 
 ### How can i customise the OpenAPI object ?
 - You can write your own implementation of OpenApiCustomiser.
 - An example is available on:
-  - https://github.com/springdoc/springdoc-openapi/blob/master/springdoc-openapi-webmvc-core/src/test/java/test/org/springdoc/api/app39/SpringDocApp39Test.java
+  - [https://github.com/springdoc/springdoc-openapi/blob/master/springdoc-openapi-webmvc-core/src/test/java/test/org/springdoc/api/app39/SpringDocApp39Test.java](https://github.com/springdoc/springdoc-openapi/blob/master/springdoc-openapi-webmvc-core/src/test/java/test/org/springdoc/api/app39/SpringDocApp39Test.java).
 
 ```java
 @Bean
@@ -216,13 +216,13 @@ ResponseEntity<String> testme() {
 
 ### How can i get yaml and json (OpenAPI) in compile time?
 - You can use springdoc-openapi-maven-plugin for this functionnality:
-  - https://github.com/springdoc/springdoc-openapi-maven-plugin.git
+  - [https://github.com/springdoc/springdoc-openapi-maven-plugin.git](https://github.com/springdoc/springdoc-openapi-maven-plugin.git).
 - You can customise the output directory (property outputDir): The default value is: ${project.build.directory}
 
 ### What are the ignored types in the documentation?
 - Principal, Locale, HttpServletRequest and HttpServletResponse and other injectable parameters supported by Spring MVC are excluded.
 - Full documentation here:
-  - https://docs.spring.io/spring/docs/5.1.x/spring-framework-reference/web.html#mvc-ann-arguments
+  - [https://docs.spring.io/spring/docs/5.1.x/spring-framework-reference/web.html#mvc-ann-arguments](https://docs.spring.io/spring/docs/5.1.x/spring-framework-reference/web.html#mvc-ann-arguments).
 
 ### How do i add, authorization header in requests?
 - You should add the @SecurityRequirement tags to your protected APIs.
@@ -371,13 +371,13 @@ public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
 
 ### Where can i find the source code of the demo applications:
 - The source code of the application is available at the following github repository:
-  - https://github.com/springdoc/springdoc-openapi-demos.git
+  - [https://github.com/springdoc/springdoc-openapi-demos.git](https://github.com/springdoc/springdoc-openapi-demos.git).
 
 ### Does this library supports annotations from interfaces?
 - Yes
 
 ### What is the list of the excluded parameter types :
-- https://docs.spring.io/spring/docs/5.1.x/spring-framework-reference/web.html#mvc-ann-arguments
+- [https://docs.spring.io/spring/docs/5.1.x/spring-framework-reference/web.html#mvc-ann-arguments](https://docs.spring.io/spring/docs/5.1.x/spring-framework-reference/web.html#mvc-ann-arguments).
 
 ### Is file upload supported ?
 - The library supports the main file types: MultipartFile ,  @RequestPart, FilePart 
