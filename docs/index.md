@@ -36,7 +36,7 @@ This is a community-based project, not maintained by the Spring Framework Contri
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-ui</artifactId>
-      <version>1.2.17</version>
+      <version>1.2.1</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
@@ -67,7 +67,7 @@ springdoc.swagger-ui.path=/swagger-ui.html
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-webmvc-core</artifactId>
-      <version>1.2.17</version>
+      <version>1.2.1</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the OpenAPI documentation in Json format, add a custom springdoc property, in your spring-boot configuration file:
@@ -113,7 +113,7 @@ The library supports the swagger-ui official properties:
 - https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/
 
 You need to declare swagger-ui properties as spring-boot properties.
-All these properties should be declared with the following prefix: springdoc.swagger-ui
+All these properties should be declared with the following prefix: **springdoc.swagger-ui**
 
 ## Selecting the Rest Controllers to include in the documentation 
 Additionally to @Hidden annotation from swagger-annotations, its possible to restrict the generated OpenAPI description using package or path configuration.
@@ -139,7 +139,7 @@ packages or paths
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-webflux-ui</artifactId>
-      <version>1.2.17</version>
+      <version>1.2.1</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
@@ -156,7 +156,7 @@ The projects that use Pageable type should add this dependency together with the
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-data-rest</artifactId>
-      <version>1.2.17</version>
+      <version>1.2.1</version>
    </dependency>
 ```
 
@@ -167,7 +167,7 @@ This dependency helps ignoring @AuthenticationPrincipal in case its used on REST
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-security</artifactId>
-      <version>1.2.17</version>
+      <version>1.2.1</version>
    </dependency>
 ```
 

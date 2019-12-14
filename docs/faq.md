@@ -54,6 +54,7 @@ springdoc.packagesToScan=package1, package2
 ### How can i ignore @AuthenticationPrincipal parameter from spring-security ?
 - A solution workaround would be to use: @Parameter(hidden = true)
 - For a project that uses spring-security, you should add the follwing dependency, together with the springdoc-openapi-ui dependency:
+
 ```xml
 <dependency>
 	<groupId>org.springdoc</groupId>
@@ -113,6 +114,7 @@ The projects that uses spring-data should add this dependency together with the 
 
 ### How can i generate enums in the generated description?
 - You could add a property allowableValues, to @Parameter. For example
+
 ```java
 @GetMapping("/example")
 public Object example(@Parameter(name ="json", schema = @Schema(description = "var 1",type = "string", allowableValues = {"1", "2"}))
