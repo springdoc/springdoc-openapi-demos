@@ -69,7 +69,7 @@ springdoc.packagesToScan=package1, package2
 
 ### How can i configure Swagger UI?
 - The support of the swagger official properties is available on springdoc-openapi. 
-[Official doc] (https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/)
+[Official doc](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/)
 
 - You can use the same swagger properties in the documentation as spring-boot properties.
 All these properties should be declared with the following prefix: **springdoc.swagger-ui**
