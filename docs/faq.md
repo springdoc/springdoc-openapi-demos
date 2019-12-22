@@ -3,6 +3,65 @@ layout: default
 ---
 # Welcome to FAQ
 
+### How can i define multiple OpenAPI definitions in one Spring Boot project?
+You can define your own groups of API based on the combination of: API paths and packages to scan. Each group should have a unique groupName.
+The OpenAPI description of this group, will be available by default on: 
+
+- http://server:port/context-path/v3/api-docs/groupName
+
+To enable this feature, the following springdoc property needs to be added to your application.yml:
+
+ To enable this feature, the following springdoc property needs to be added to your application.yml:
+```properties
+springdoc.api-docs.groups.enabled=true
+```
+ For the support of multiple OpenAPI definitions, a bean of type GroupedOpenApi needs to be defined.
+
+For the following Group definition(based on package path), the OpenAPI description url will be :  /v3/api-docs/**stores**
+```java
+@Bean
+public GroupedOpenApi storeOpenApi() {
+	String paths[] = {"/store/**"};
+	return GroupedOpenApi.builder().setGroup("stores").pathsToMatch(paths)
+			.build();
+}
+```
+
+For the following Group definition (based on package name), the OpenAPI description url will be:  /v3/api-docs/**users**
+```java
+@Bean
+public GroupedOpenApi userOpenApi() {
+	String packagesToscan[] = {"test.org.springdoc.api.app68.api.user"};
+	return GroupedOpenApi.builder().setGroup("users").packagesToScan(packagesToscan)
+			.build();
+}
+```
+
+For the following Group definition(based on path), the OpenAPI description url will be:  /v3/api-docs/**pets**
+```java
+@Bean
+public GroupedOpenApi petOpenApi() {
+	String paths[] = {"/pet/**"};
+	return GroupedOpenApi.builder().setGroup("pets").pathsToMatch(paths)
+			.build();
+}
+```
+
+For the following Group definition (based on package name and path), the OpenAPI description url will be:  /v3/api-docs/**groups**
+```java
+@Bean
+public GroupedOpenApi groupOpenApi() {
+	String paths[] = {"/v1/**"};
+	String packagesToscan[] = {"test.org.springdoc.api.app68.api.user", "test.org.springdoc.api.app68.api.store"};
+	return GroupedOpenApi.builder().setGroup("groups").pathsToMatch(paths).packagesToScan(packagesToscan)
+			.build();
+}
+```
+
+For more details about the usage, you can have a look at the following sample Test:
+- https://github.com/springdoc/springdoc-openapi/tree/master/springdoc-openapi-webmvc-core/src/test/java/test/org/springdoc/api/app68
+
+
 ### How can i filter the resources documented in the output specification by the provided group?
 - You can use the stand swagger-ui property filter.
 ```properties
