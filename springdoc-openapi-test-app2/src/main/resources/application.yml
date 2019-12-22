@@ -22,10 +22,9 @@ spring:
           paths: /webjars/swagger-ui/**.*
 springdoc:
   api-docs:
-    path: /v5/api-docs
     groups:
       enabled: true
   swagger-ui:
-    path: /test/swagger-ui.html
+    path: /swagger-ui.html
     display-request-duration: true
   version: '@springdoc.version@'
