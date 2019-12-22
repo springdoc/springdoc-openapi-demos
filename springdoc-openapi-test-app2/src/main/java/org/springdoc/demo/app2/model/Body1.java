@@ -1,10 +1,9 @@
 package org.springdoc.demo.app2.model;
 
-import java.io.File;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.v3.oas.annotations.media.Schema;
+
+import java.io.File;
 
 public class Body1  {
   

@@ -191,7 +191,7 @@ return openApi -> openApi.getPaths().values().stream().flatMap(pathItem -> pathI
 ### How to include spring-boot-actuator endpoints to swagger-ui?
 - In order to display  spring-boot-actuator endpoints, you will need to add the following property:
 ```properties
-springdoc.show.actuator=true
+springdoc.show-actuator=true
 ```
 
 ### How can i return an empty content as response?
