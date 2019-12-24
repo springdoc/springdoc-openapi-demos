@@ -95,7 +95,43 @@ springdoc.api-docs.path=/api-docs
 ## Error Handling for REST using @ControllerAdvice
 To generate documentation automatically, make sure all the methods declare the HTTP Code responses using the annotation: @ResponseStatus
 
-## spring-weblfux support with Annotated Controllers
+## Disabling the springdoc-openapi endpoints
+In order to disable the springdoc-openapi endpoint (/v3/api-docs by default) use the following property:
+```properties
+# Disabling the /v3/api-docs enpoint
+springdoc.api-docs.enabled=false
+```
+
+## Disabling the swagger-ui
+In order to disable the swagger-ui, use the following property:
+```properties
+# Disabling the swagger-ui
+springdoc.swagger-ui.enabled=false
+```
+## Swagger-ui configuration
+The library supports the swagger-ui official properties:
+- https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/
+
+You need to declare swagger-ui properties as spring-boot properties.
+All these properties should be declared with the following prefix: **springdoc.swagger-ui**
+
+## Selecting the Rest Controllers to include in the documentation 
+Additionally to @Hidden annotation from swagger-annotations, its possible to restrict the generated OpenAPI description using package or path configuration.
+
+For the list of packages to include, use the following property:
+```properties
+# Packages to include
+springdoc.packagesToScan=com.package1, com.package2
+```
+
+For the list of paths to include, use the following property:
+```properties
+# Paths to include
+springdoc.pathsToMatch=/v1, /api/balance/**
+```
+
+packages or paths 
+## Spring-weblfux support with Annotated Controllers
 *   Documentation can be available in yaml format as well, on the following path : /v3/api-docs.yml
 *   Add the library to the list of your project dependencies (No additional configuration is needed)
 
@@ -113,6 +149,28 @@ To generate documentation automatically, make sure all the methods declare the H
 springdoc.swagger-ui.path=/swagger-ui.html
 ```
 
+## Spring Pageable support
+The support for Pageable of spring-data-commons is available.
+The projects that use Pageable type should add this dependency together with the springdoc-openapi-ui dependency.
+```xml
+   <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-data-rest</artifactId>
+      <version>@springdoc.version@</version>
+   </dependency>
+```
+
+## Spring security support
+For a project that uses spring-security, you should add the following dependency, together with the springdoc-openapi-ui dependency:
+This dependency helps ignoring @AuthenticationPrincipal in case its used on REST Controllers.
+```xml
+   <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-security</artifactId>
+      <version>@springdoc.version@</version>
+   </dependency>
+```
+
 ## **Introduction to springdoc-openapi-maven-plugin**
 
 The aim of springdoc-openapi-maven-plugin is to generate json and yaml OpenAPI description  during build time. 
@@ -122,7 +180,7 @@ The plugin works in conjunction with spring-boot-maven plugin.
 You can test it during the integration tests phase using the maven command:
 
 ```properties
-mvn verify
+mvn verify -Dspring.application.admin.enabled=true
 ```
 
 In order to use this functionality, you need to add the plugin declaration on the plugins section of your pom.xml:

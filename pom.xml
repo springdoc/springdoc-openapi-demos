@@ -47,6 +47,7 @@
 		<module>springdoc-openapi-test-app1</module>
 		<module>springdoc-openapi-test-app2</module>
 		<module>springdoc-openapi-test-app3</module>
+		<module>spring-boot-springdoc</module>
 		<module>docs</module>
 	</modules>
 
@@ -70,8 +71,8 @@
 		<jacoco-maven-plugin.version>0.8.3</jacoco-maven-plugin.version>
 		<resource.delimiter>@</resource.delimiter>
 		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
-		<spring-boot.version>2.2.0.RELEASE</spring-boot.version>
-		<springdoc.version>1.2.4</springdoc.version>
+		<spring-boot.version>2.2.1.RELEASE</spring-boot.version>
+		<springdoc.version>1.2.20</springdoc.version>
 	</properties>
 
 	<dependencyManagement>
