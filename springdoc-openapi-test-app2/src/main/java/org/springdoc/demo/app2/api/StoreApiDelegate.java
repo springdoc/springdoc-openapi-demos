@@ -24,7 +24,7 @@ public interface StoreApiDelegate {
     /**
      * @see StoreApi#deleteOrder
      */
-    default ResponseEntity<Void> deleteOrder( String  orderId) {
+    default ResponseEntity<Void> deleteOrder( Long  orderId) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
