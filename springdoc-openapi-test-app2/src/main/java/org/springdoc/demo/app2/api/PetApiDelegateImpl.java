@@ -1,11 +1,23 @@
 package org.springdoc.demo.app2.api;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+
+import javax.annotation.PostConstruct;
+import javax.validation.constraints.NotNull;
+
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springdoc.demo.app2.model.Category;
 import org.springdoc.demo.app2.model.ModelApiResponse;
 import org.springdoc.demo.app2.model.Pet;
 import org.springdoc.demo.app2.model.Tag;
 import org.springdoc.demo.app2.repository.PetRepository;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -145,6 +157,11 @@ public class PetApiDelegateImpl implements PetApiDelegate {
 			Arrays.stream(tags).map(tag -> new Tag().name(tag).id(i.incrementAndGet())).forEach(pet::addTagsItem);
 		}
 		return pet;
+	}
+
+	public ResponseEntity<List<Pet>> getAllPets(@NotNull Pageable pageable) {
+		ApiUtil.checkApiKey(request);
+		return new ResponseEntity<List<Pet>>(petRepository.findAll(pageable), HttpStatus.OK);
 	}
 
 }

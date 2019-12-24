@@ -5,6 +5,25 @@
  */
 package org.springdoc.demo.app2.api;
 
+import java.util.List;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+import org.springdoc.demo.app2.model.ModelApiResponse;
+import org.springdoc.demo.app2.model.Pet;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.Explode;
@@ -133,6 +152,16 @@ public interface PetApi {
             @Parameter(description = "Additional Metadata") @RequestParam(value = "additionalMetadata", required = false) String additionalMetadata,
             @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/octet-stream", schema = @Schema(type = "string", format = "binary"))) @Valid @RequestPart("file") MultipartFile file) {
 		return getDelegate().uploadFile(petId, additionalMetadata, file);
+	}
+
+	@Operation(summary = "Get all Pets paged", description = "Get all Pets paged", security = {
+			@SecurityRequirement(name = "petstore_auth", scopes = { "write:pets", "read:pets" }) }, tags = { "pet" })
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Pet.class))))
+	})
+	@GetMapping(value = "/pet", produces = { "application/xml", "application/json" })
+	default ResponseEntity<List<Pet>> getAllPets(@NotNull Pageable pageable) {
+		return getDelegate().getAllPets(pageable);
 	}
 
 }

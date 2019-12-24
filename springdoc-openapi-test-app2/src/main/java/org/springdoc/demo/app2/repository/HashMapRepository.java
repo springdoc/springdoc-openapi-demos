@@ -1,9 +1,15 @@
 package org.springdoc.demo.app2.repository;
 
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.util.Assert;
 
+import java.beans.BeanInfo;
+import java.beans.PropertyDescriptor;
 import java.util.*;
 
 @NoRepositoryBean
@@ -12,6 +18,12 @@ public abstract class HashMapRepository<T, ID> implements CrudRepository<T, ID> 
     Map<ID, T> entities = new HashMap<>();
 
     abstract <S extends T> ID getEntityId(S entity);
+
+    private final BeanWrapper entityBeanInfo;
+
+    protected HashMapRepository(Class<T> clazz) {
+        entityBeanInfo = new BeanWrapperImpl(clazz);
+    }
 
     @Override
     public <S extends T> S save(S entity) {
@@ -32,6 +44,58 @@ public abstract class HashMapRepository<T, ID> implements CrudRepository<T, ID> 
     @Override
     public Collection<T> findAll() {
         return entities.values();
+    }
+
+    public List<T> findAll(Pageable pageable) {
+        final List<T> result;
+        final Sort sort = pageable.getSort();
+        if (sort != null) {
+            Comparator<T> comp = new Comparator<T>() {
+                @Override
+                public int compare(T t1, T t2) {
+                    int result = 0;
+                    for (Sort.Order o : sort) {
+                        final String prop = o.getProperty();
+                        PropertyDescriptor propDesc = entityBeanInfo.getPropertyDescriptor(prop);
+                        result = ((Comparable<T>) propDesc.createPropertyEditor(t1).getValue())
+                                .compareTo((T) propDesc.createPropertyEditor(t2).getValue());
+                        if (o.isDescending()) {
+                            result = -result;
+                        }
+                        if (result != 0) break;
+                    }
+                    return result;
+                }
+            };
+            final Set<T> set = new TreeSet<>(comp);
+            set.addAll(entities.values());
+            result = getPageSlice(pageable, set);
+        } else {
+            result = getPageSlice(pageable, entities.values());
+        }
+        return result;
+    }
+
+    private List<T> getPageSlice(Pageable pageable, Collection<T> col) {
+        final ArrayList<T> all = new ArrayList<>(col);
+        final int size = all.size();
+        final int psize = pageable.getPageSize();
+        final int pnum = pageable.getPageNumber();
+        if (pnum < 1) {
+            throw new IllegalArgumentException("page number must be 1 or more");
+        }
+        if (psize < 1) {
+            throw new IllegalArgumentException("page size must be 1 or more");
+        }
+        // inclusive
+        final int begin = (pnum - 1) * psize;
+        // exclusive
+        final int end = Math.min(begin + psize, size);
+        if (size < begin) {
+            return new ArrayList<>();
+        }
+        // return of slice is valid because all is local to this method
+        return all.subList(begin, end);
     }
 
     @Override

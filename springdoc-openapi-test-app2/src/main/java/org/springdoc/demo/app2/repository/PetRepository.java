@@ -12,6 +12,10 @@ public class PetRepository extends HashMapRepository<Pet, Long> {
 
     private Long sequenceId = 1L;
 
+    public PetRepository() {
+        super(Pet.class);
+    }
+
     @Override
     <S extends Pet> Long getEntityId(S pet) {
         return pet.getId();
