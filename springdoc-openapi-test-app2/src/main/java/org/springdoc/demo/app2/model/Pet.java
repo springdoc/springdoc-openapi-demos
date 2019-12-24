@@ -3,41 +3,57 @@ package org.springdoc.demo.app2.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import io.swagger.v3.oas.annotations.media.Schema;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
+/**
+ * Pet
+ */
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-02T19:53:02.467132-01:00[Atlantic/Azores]")
+@JacksonXmlRootElement(localName = "pet")
+@XmlRootElement(name = "pet")
+@XmlAccessorType(XmlAccessType.FIELD)
 
 public class Pet {
 
     @JsonProperty("id")
+    @JacksonXmlProperty(localName = "id")
 
     private Long id;
 
 
     @JsonProperty("name")
+    @JacksonXmlProperty(localName = "name")
 
     private String name;
 
 
     @JsonProperty("category")
+    @JacksonXmlProperty(localName = "category")
 
     private Category category;
 
 
     @JsonProperty("photoUrls")
+    @JacksonXmlProperty(localName = "photoUrls")
 
     @Valid
-    private List<String> photoUrls = new ArrayList<>();
+    private List<String> photoUrls = new ArrayList<String>();
 
 
     @JsonProperty("tags")
+    @JacksonXmlProperty(localName = "tags")
 
     @Valid
     private List<Tag> tags = null;
@@ -77,6 +93,7 @@ public class Pet {
 
 
     @JsonProperty("status")
+    @JacksonXmlProperty(localName = "status")
 
     private StatusEnum status;
 

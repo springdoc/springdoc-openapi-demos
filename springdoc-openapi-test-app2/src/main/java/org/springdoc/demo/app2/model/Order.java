@@ -3,9 +3,14 @@ package org.springdoc.demo.app2.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import io.swagger.v3.oas.annotations.media.Schema;
+
 import javax.validation.Valid;
-import java.time.OffsetDateTime;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,27 +18,33 @@ import java.util.Objects;
  * Order
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-30T09:49:26.034469-01:00[Atlantic/Azores]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-02T19:53:02.467132-01:00[Atlantic/Azores]")
+@JacksonXmlRootElement(localName = "order")
+@XmlRootElement(name = "order")
+@XmlAccessorType(XmlAccessType.FIELD)
 
 public class Order {
 
     @JsonProperty("id")
+    @JacksonXmlProperty(localName = "id")
 
     private Long id;
 
 
     @JsonProperty("petId")
+    @JacksonXmlProperty(localName = "petId")
 
     private Long petId;
 
 
     @JsonProperty("quantity")
+    @JacksonXmlProperty(localName = "quantity")
 
     private Integer quantity;
 
 
     @JsonProperty("shipDate")
+    @JacksonXmlProperty(localName = "shipDate")
 
     private Date shipDate;
 
@@ -72,11 +83,13 @@ public class Order {
 
 
     @JsonProperty("status")
+    @JacksonXmlProperty(localName = "status")
 
     private StatusEnum status;
 
 
     @JsonProperty("complete")
+    @JacksonXmlProperty(localName = "complete")
 
     private Boolean complete;
 
