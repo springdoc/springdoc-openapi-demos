@@ -1,10 +1,10 @@
 package org.springdoc.demo.app2.api;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
-
 import org.springdoc.demo.app2.model.Order;
 import org.springdoc.demo.app2.repository.OrderRepository;
 import org.springdoc.demo.app2.repository.PetRepository;
@@ -13,6 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.server.ResponseStatusException;
+
+import javax.annotation.PostConstruct;
+import java.util.Date;
+import java.util.Map;
 
 @Service
 public class StoreApiDelegateImpl implements StoreApiDelegate {
@@ -46,8 +50,8 @@ public class StoreApiDelegateImpl implements StoreApiDelegate {
 
 
     @Override
-    public ResponseEntity<Void> deleteOrder(String orderId) {
-        Order order = orderRepository.findById(Long.valueOf(orderId))
+    public ResponseEntity<Void> deleteOrder(Long orderId) {
+        Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         orderRepository.delete(order);
         return ResponseEntity.ok().build();

@@ -1,15 +1,5 @@
 package org.springdoc.demo.app2.api;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
-
-import javax.annotation.PostConstruct;
-
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springdoc.demo.app2.model.Category;
 import org.springdoc.demo.app2.model.ModelApiResponse;
@@ -23,6 +13,15 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+
+import javax.annotation.PostConstruct;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 
 @Service
 public class PetApiDelegateImpl implements PetApiDelegate {

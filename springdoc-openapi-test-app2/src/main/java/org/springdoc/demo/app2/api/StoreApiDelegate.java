@@ -1,13 +1,13 @@
 package org.springdoc.demo.app2.api;
 
-import java.util.Map;
-import java.util.Optional;
-
 import org.springdoc.demo.app2.model.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.context.request.NativeWebRequest;
+
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * A delegate to be called by the {@link StoreApiController}}.
@@ -24,7 +24,7 @@ public interface StoreApiDelegate {
     /**
      * @see StoreApi#deleteOrder
      */
-    default ResponseEntity<Void> deleteOrder( String  orderId) {
+    default ResponseEntity<Void> deleteOrder( Long  orderId) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

@@ -1,13 +1,12 @@
 package com.baeldung.springdoc.repository;
 
+import com.baeldung.springdoc.model.Book;
+import org.springframework.stereotype.Repository;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-
-import org.springframework.stereotype.Repository;
-
-import com.baeldung.springdoc.model.Book;
 
 @Repository
 public class BookRepository {
