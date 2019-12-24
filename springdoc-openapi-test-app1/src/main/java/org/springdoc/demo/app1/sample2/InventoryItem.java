@@ -1,16 +1,13 @@
 package org.springdoc.demo.app1.sample2;
 
-import java.util.Objects;
-import java.util.UUID;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.Objects;
+import java.util.UUID;
 
 /**
  * InventoryItem

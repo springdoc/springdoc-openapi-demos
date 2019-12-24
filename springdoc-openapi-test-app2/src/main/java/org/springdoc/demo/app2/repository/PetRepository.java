@@ -1,11 +1,11 @@
 package org.springdoc.demo.app2.repository;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.springdoc.demo.app2.model.Pet;
 import org.springdoc.demo.app2.model.Tag;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class PetRepository extends HashMapRepository<Pet, Long> {

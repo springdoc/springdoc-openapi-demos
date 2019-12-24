@@ -108,8 +108,30 @@ In order to disable the swagger-ui, use the following property:
 # Disabling the swagger-ui
 springdoc.swagger-ui.enabled=false
 ```
+## Swagger-ui configuration
+The library supports the swagger-ui official properties:
+- https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/
 
-## spring-weblfux support with Annotated Controllers
+You need to declare swagger-ui properties as spring-boot properties.
+All these properties should be declared with the following prefix: **springdoc.swagger-ui**
+
+## Selecting the Rest Controllers to include in the documentation 
+Additionally to @Hidden annotation from swagger-annotations, its possible to restrict the generated OpenAPI description using package or path configuration.
+
+For the list of packages to include, use the following property:
+```properties
+# Packages to include
+springdoc.packagesToScan=com.package1, com.package2
+```
+
+For the list of paths to include, use the following property:
+```properties
+# Paths to include
+springdoc.pathsToMatch=/v1, /api/balance/**
+```
+
+packages or paths 
+## Spring-weblfux support with Annotated Controllers
 *   Documentation can be available in yaml format as well, on the following path : /v3/api-docs.yml
 *   Add the library to the list of your project dependencies (No additional configuration is needed)
 
@@ -125,6 +147,28 @@ springdoc.swagger-ui.enabled=false
 ```properties
 # swagger-ui custom path
 springdoc.swagger-ui.path=/swagger-ui.html
+```
+
+## Spring Pageable support
+The support for Pageable of spring-data-commons is available.
+The projects that use Pageable type should add this dependency together with the springdoc-openapi-ui dependency.
+```xml
+   <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-data-rest</artifactId>
+      <version>@springdoc.version@</version>
+   </dependency>
+```
+
+## Spring security support
+For a project that uses spring-security, you should add the following dependency, together with the springdoc-openapi-ui dependency:
+This dependency helps ignoring @AuthenticationPrincipal in case its used on REST Controllers.
+```xml
+   <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-security</artifactId>
+      <version>@springdoc.version@</version>
+   </dependency>
 ```
 
 ## **Introduction to springdoc-openapi-maven-plugin**
