@@ -9,11 +9,7 @@ The OpenAPI description of this group, will be available by default on:
 
 - http://server:port/context-path/v3/api-docs/groupName
 
- To enable this feature, the following property needs to be added to your `application.properties`:
-```properties
-springdoc.api-docs.groups.enabled=true
-```
- For the support of multiple OpenAPI definitions, a bean of type `GroupedOpenApi` needs to be defined.
+To enable the support of multiple OpenAPI definitions, a bean of type `GroupedOpenApi` needs to be defined.
 
 For the following Group definition(based on package path), the OpenAPI description url will be :  /v3/api-docs/**stores**
 ```java
@@ -196,7 +192,7 @@ public String toString() {
 - You need to make sure the following header is set in your reverse proxy configuration: `X-Forwarded-Prefix`
 - For example, using Apache 2, configuration:
 ```properties
-RequestHeader set X-Forwarded-Prefix "/custom-path"
+RequestHeader=set X-Forwarded-Prefix "/custom-path"
 ```
 - Then, in your Spring Boot application make sure your application handles this header: `X-Forwarded-For`. There are two ways to achieve this:
 ```properties

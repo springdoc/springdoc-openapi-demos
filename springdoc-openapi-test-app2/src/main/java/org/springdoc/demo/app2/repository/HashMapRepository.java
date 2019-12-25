@@ -8,22 +8,20 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.util.Assert;
 
-import java.beans.BeanInfo;
 import java.beans.PropertyDescriptor;
 import java.util.*;
 
 @NoRepositoryBean
 public abstract class HashMapRepository<T, ID> implements CrudRepository<T, ID> {
 
-    Map<ID, T> entities = new HashMap<>();
-
-    abstract <S extends T> ID getEntityId(S entity);
-
     private final BeanWrapper entityBeanInfo;
+    Map<ID, T> entities = new HashMap<>();
 
     protected HashMapRepository(Class<T> clazz) {
         entityBeanInfo = new BeanWrapperImpl(clazz);
     }
+
+    abstract <S extends T> ID getEntityId(S entity);
 
     @Override
     public <S extends T> S save(S entity) {
@@ -49,30 +47,26 @@ public abstract class HashMapRepository<T, ID> implements CrudRepository<T, ID> 
     public List<T> findAll(Pageable pageable) {
         final List<T> result;
         final Sort sort = pageable.getSort();
-        if (sort != null) {
-            Comparator<T> comp = new Comparator<T>() {
-                @Override
-                public int compare(T t1, T t2) {
-                    int result = 0;
-                    for (Sort.Order o : sort) {
-                        final String prop = o.getProperty();
-                        PropertyDescriptor propDesc = entityBeanInfo.getPropertyDescriptor(prop);
-                        result = ((Comparable<T>) propDesc.createPropertyEditor(t1).getValue())
-                                .compareTo((T) propDesc.createPropertyEditor(t2).getValue());
-                        if (o.isDescending()) {
-                            result = -result;
-                        }
-                        if (result != 0) break;
+        Comparator<T> comp = new Comparator<T>() {
+            @Override
+            public int compare(T t1, T t2) {
+                int result = 0;
+                for (Sort.Order o : sort) {
+                    final String prop = o.getProperty();
+                    PropertyDescriptor propDesc = entityBeanInfo.getPropertyDescriptor(prop);
+                    result = ((Comparable<T>) propDesc.createPropertyEditor(t1).getValue())
+                            .compareTo((T) propDesc.createPropertyEditor(t2).getValue());
+                    if (o.isDescending()) {
+                        result = -result;
                     }
-                    return result;
+                    if (result != 0) break;
                 }
-            };
-            final Set<T> set = new TreeSet<>(comp);
-            set.addAll(entities.values());
-            result = getPageSlice(pageable, set);
-        } else {
-            result = getPageSlice(pageable, entities.values());
-        }
+                return result;
+            }
+        };
+        final Set<T> set = new TreeSet<>(comp);
+        set.addAll(entities.values());
+        result = getPageSlice(pageable, set);
         return result;
     }
 
@@ -137,7 +131,7 @@ public abstract class HashMapRepository<T, ID> implements CrudRepository<T, ID> 
     @Override
     public boolean existsById(ID id) {
         Assert.notNull(id, "Id cannot be null");
-        return entities.keySet().contains(id);
+        return entities.containsKey(id);
     }
 
     public T findOne(ID id) {

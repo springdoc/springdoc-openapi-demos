@@ -20,18 +20,18 @@ import java.util.UUID;
 @Tag(name = "items")
 public class ItemController {
 
-	@GetMapping("/items")
-	public List<ItemDTO> showItems(@RequestParam("cusID") @Size(min = 4, max = 6) final String customerID,
-			@Size(min = 4, max = 6) int toto,
-			@Parameter(name = "start", in = ParameterIn.QUERY, required = false, schema = @Schema(type = "string", format = "date-time", required = false, example = "1970-01-01T00:00:00.000Z")) @RequestParam(value = "start", required = false) Instant startDate) {
-		return new ArrayList<ItemDTO>();
-	}
+    @GetMapping("/items")
+    public List<ItemDTO> showItems(@RequestParam("cusID") @Size(min = 4, max = 6) final String customerID,
+                                   @Size(min = 4, max = 6) int toto,
+                                   @Parameter(name = "start", in = ParameterIn.QUERY, required = false, schema = @Schema(type = "string", format = "date-time", required = false, example = "1970-01-01T00:00:00.000Z")) @RequestParam(value = "start", required = false) Instant startDate) {
+        return new ArrayList<ItemDTO>();
+    }
 
-	@PostMapping("/items")
-	public ResponseEntity<URI> addItem(@Valid @RequestBody final ItemLightDTO itemDTO) {
-		final URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(UUID.randomUUID()).toUri();
-		return ResponseEntity.created(location).build();
-	}
+    @PostMapping("/items")
+    public ResponseEntity<URI> addItem(@Valid @RequestBody final ItemLightDTO itemDTO) {
+        final URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(UUID.randomUUID()).toUri();
+        return ResponseEntity.created(location).build();
+    }
 
 }

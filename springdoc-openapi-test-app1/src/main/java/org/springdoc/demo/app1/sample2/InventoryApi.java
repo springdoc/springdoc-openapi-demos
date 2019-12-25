@@ -26,24 +26,24 @@ import java.util.List;
 public interface InventoryApi {
 
 
-	@Operation(description = "adds an inventory item", operationId = "addInventory", summary = "Adds an item to the system", tags = {
-			"admins", })
-	@ApiResponses(value = { @ApiResponse(responseCode = "201", description = "item created"),
-			@ApiResponse(responseCode = "400", description = "invalid input, object invalid"),
-			@ApiResponse(responseCode = "409", description = "an existing item already exists") })
-	@PostMapping(value = "/inventory", consumes = { "application/json" })
-	ResponseEntity<Void> addInventory(
-			@Parameter(description = "Inventory item to do") @Valid @RequestBody InventoryItem body);
+    @Operation(description = "adds an inventory item", operationId = "addInventory", summary = "Adds an item to the system", tags = {
+            "admins",})
+    @ApiResponses(value = {@ApiResponse(responseCode = "201", description = "item created"),
+            @ApiResponse(responseCode = "400", description = "invalid input, object invalid"),
+            @ApiResponse(responseCode = "409", description = "an existing item already exists")})
+    @PostMapping(value = "/inventory", consumes = {"application/json"})
+    ResponseEntity<Void> addInventory(
+            @Parameter(description = "Inventory item to do") @Valid @RequestBody InventoryItem body);
 
-	@Operation(description = "searches inventory", operationId = "searchInventory", summary = "By passing in the appropriate options, you can search for available inventory in the system ", tags = {
-			"developers", }, parameters = {
-					@Parameter(description = "pass an optional search string for looking up inventory", name = "searchString") })
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "search results matching criteria"),
-			@ApiResponse(responseCode = "400", description = "bad input parameter") })
-	@GetMapping(value = "/inventory", produces = { "application/json" })
-	ResponseEntity<List<InventoryItem>> searchInventory(
-			@Valid @RequestParam(value = "searchString", required = false) String searchString,
-			@Min(0) @Parameter(description = "number of records to skip for pagination") @Valid @RequestParam(value = "skip", required = true) Integer skip,
-			@Min(0) @Max(50) @Parameter(description = "maximum number of records to return") @Valid @RequestParam(value = "limit", required = true) Integer limit);
+    @Operation(description = "searches inventory", operationId = "searchInventory", summary = "By passing in the appropriate options, you can search for available inventory in the system ", tags = {
+            "developers",}, parameters = {
+            @Parameter(description = "pass an optional search string for looking up inventory", name = "searchString")})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "search results matching criteria"),
+            @ApiResponse(responseCode = "400", description = "bad input parameter")})
+    @GetMapping(value = "/inventory", produces = {"application/json"})
+    ResponseEntity<List<InventoryItem>> searchInventory(
+            @Valid @RequestParam(value = "searchString", required = false) String searchString,
+            @Min(0) @Parameter(description = "number of records to skip for pagination") @Valid @RequestParam(value = "skip", required = true) Integer skip,
+            @Min(0) @Max(50) @Parameter(description = "maximum number of records to return") @Valid @RequestParam(value = "limit", required = true) Integer limit);
 
 }

@@ -1,10 +1,5 @@
 package org.springdoc.demo.app2.api;
 
-import java.time.OffsetDateTime;
-import java.util.Date;
-import java.util.Map;
-
-import javax.annotation.PostConstruct;
 import org.springdoc.demo.app2.model.Order;
 import org.springdoc.demo.app2.repository.OrderRepository;
 import org.springdoc.demo.app2.repository.PetRepository;
@@ -23,8 +18,8 @@ public class StoreApiDelegateImpl implements StoreApiDelegate {
 
     private final OrderRepository orderRepository;
 
-	@SuppressWarnings("unused")
-	private final PetRepository petRepository;
+    @SuppressWarnings("unused")
+    private final PetRepository petRepository;
 
     private final NativeWebRequest request;
 
@@ -32,6 +27,15 @@ public class StoreApiDelegateImpl implements StoreApiDelegate {
         this.orderRepository = orderRepository;
         this.petRepository = petRepository;
         this.request = request;
+    }
+
+    private static Order createOrder(long id, long petId, Order.StatusEnum status) {
+        return new Order()
+                .id(id)
+                .petId(petId)
+                .quantity(2)
+                .shipDate(new Date())
+                .status(status);
     }
 
     @PostConstruct
@@ -48,7 +52,6 @@ public class StoreApiDelegateImpl implements StoreApiDelegate {
         orderRepository.save(createOrder(10, 3, Order.StatusEnum.PLACED));
     }
 
-
     @Override
     public ResponseEntity<Void> deleteOrder(Long orderId) {
         Order order = orderRepository.findById(orderId)
@@ -60,7 +63,7 @@ public class StoreApiDelegateImpl implements StoreApiDelegate {
     @Override
     public ResponseEntity<Map<String, Integer>> getInventory() {
         ApiUtil.checkApiKey(request);
-		return ResponseEntity.ok().build();
+        return ResponseEntity.ok().build();
     }
 
     @Override
@@ -73,14 +76,5 @@ public class StoreApiDelegateImpl implements StoreApiDelegate {
     @Override
     public ResponseEntity<Order> placeOrder(Order order) {
         return ResponseEntity.ok(orderRepository.save(order));
-    }
-
-    private static Order createOrder(long id, long petId, Order.StatusEnum status) {
-        return new Order()
-                .id(id)
-                .petId(petId)
-                .quantity(2)
-				.shipDate(new Date())
-                .status(status);
     }
 }

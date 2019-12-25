@@ -21,7 +21,19 @@ public class UserApiDelegateImpl implements UserApiDelegate {
     public UserApiDelegateImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-    
+
+    private static User createUser(long id, String username, String firstName, String lastName, String email, int userStatus) {
+        return new User()
+                .id(id)
+                .username(username)
+                .firstName(firstName)
+                .lastName(lastName)
+                .email(email)
+                .password("XXXXXXXXXXX")
+                .phone("123-456-7890")
+                .userStatus(userStatus);
+    }
+
     @PostConstruct
     private void initUsers() {
         userRepository.save(createUser(1, "user1", "first name 1", "last name 1",
@@ -98,17 +110,5 @@ public class UserApiDelegateImpl implements UserApiDelegate {
     public ResponseEntity<Void> updateUser(String username, User user) {
         user.setUsername(username);
         return createUser(user);
-    }
-
-    private static User createUser(long id, String username, String firstName, String lastName, String email, int userStatus) {
-        return new User()
-                .id(id)
-                .username(username)
-                .firstName(firstName)
-                .lastName(lastName)
-                .email(email)
-                .password("XXXXXXXXXXX")
-                .phone("123-456-7890")
-                .userStatus(userStatus);
     }
 }

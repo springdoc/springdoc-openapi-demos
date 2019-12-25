@@ -22,60 +22,60 @@ import javax.validation.Valid;
 @RestController
 public class TweetController {
 
-	@Autowired
-	private TweetRepository tweetRepository;
+    @Autowired
+    private TweetRepository tweetRepository;
 
-	@Autowired
-	private TweetMapper tweetMapper;
+    @Autowired
+    private TweetMapper tweetMapper;
 
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "get All Tweets") })
-	@GetMapping("/tweets")
-	public Flux<TweetDTO> getAllTweets() {
-		Flux<Tweet> tweet = tweetRepository.findAll();
-		return tweetMapper.toDTO(tweet);
-	}
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "get All Tweets")})
+    @GetMapping("/tweets")
+    public Flux<TweetDTO> getAllTweets() {
+        Flux<Tweet> tweet = tweetRepository.findAll();
+        return tweetMapper.toDTO(tweet);
+    }
 
-	@PostMapping("/tweets")
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "create Tweets") })
-	public Mono<TweetDTO> createTweets(@Valid @RequestBody TweetDTO tweetDTO) {
-		return tweetMapper.toDTO(tweetRepository.save(tweetMapper.toEntity(tweetDTO)));
-	}
+    @PostMapping("/tweets")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "create Tweets")})
+    public Mono<TweetDTO> createTweets(@Valid @RequestBody TweetDTO tweetDTO) {
+        return tweetMapper.toDTO(tweetRepository.save(tweetMapper.toEntity(tweetDTO)));
+    }
 
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "get Tweet By Id"),
-			@ApiResponse(responseCode = "404", description = "tweet not found") })
-	@GetMapping("/tweets/{id}")
-	public Mono<ResponseEntity<TweetDTO>> getTweetById(@PathVariable(value = "id") String tweetId) {
-		return tweetRepository.findById(tweetId).map(savedTweet -> ResponseEntity.ok(tweetMapper.toDTO(savedTweet)))
-				.defaultIfEmpty(ResponseEntity.notFound().build());
-	}
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "get Tweet By Id"),
+            @ApiResponse(responseCode = "404", description = "tweet not found")})
+    @GetMapping("/tweets/{id}")
+    public Mono<ResponseEntity<TweetDTO>> getTweetById(@PathVariable(value = "id") String tweetId) {
+        return tweetRepository.findById(tweetId).map(savedTweet -> ResponseEntity.ok(tweetMapper.toDTO(savedTweet)))
+                .defaultIfEmpty(ResponseEntity.notFound().build());
+    }
 
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "update Tweet"),
-			@ApiResponse(responseCode = "404", description = "tweet not found") })
-	@PutMapping("/tweets/{id}")
-	public Mono<ResponseEntity<TweetDTO>> updateTweet(@PathVariable(value = "id") String tweetId,
-			@Valid @RequestBody TweetDTO tweetDTO) {
-		return tweetRepository.findById(tweetId).flatMap(existingTweet -> {
-			existingTweet.setText(tweetMapper.toEntity(tweetDTO).getText());
-			return tweetRepository.save(existingTweet);
-		}).map(updateTweet -> new ResponseEntity<>(tweetMapper.toDTO(updateTweet), HttpStatus.OK))
-				.defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-	}
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "update Tweet"),
+            @ApiResponse(responseCode = "404", description = "tweet not found")})
+    @PutMapping("/tweets/{id}")
+    public Mono<ResponseEntity<TweetDTO>> updateTweet(@PathVariable(value = "id") String tweetId,
+                                                      @Valid @RequestBody TweetDTO tweetDTO) {
+        return tweetRepository.findById(tweetId).flatMap(existingTweet -> {
+            existingTweet.setText(tweetMapper.toEntity(tweetDTO).getText());
+            return tweetRepository.save(existingTweet);
+        }).map(updateTweet -> new ResponseEntity<>(tweetMapper.toDTO(updateTweet), HttpStatus.OK))
+                .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "delete Tweet"),
-			@ApiResponse(responseCode = "404", description = "tweet not found") })
-	@DeleteMapping("/tweets/{id}")
-	public Mono<ResponseEntity<Void>> deleteTweet(@PathVariable(value = "id") String tweetId) {
-		return tweetRepository.findById(tweetId)
-				.flatMap(existingTweet -> tweetRepository.delete(existingTweet)
-						.then(Mono.just(new ResponseEntity<Void>(HttpStatus.OK))))
-				.defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-	}
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "delete Tweet"),
+            @ApiResponse(responseCode = "404", description = "tweet not found")})
+    @DeleteMapping("/tweets/{id}")
+    public Mono<ResponseEntity<Void>> deleteTweet(@PathVariable(value = "id") String tweetId) {
+        return tweetRepository.findById(tweetId)
+                .flatMap(existingTweet -> tweetRepository.delete(existingTweet)
+                        .then(Mono.just(new ResponseEntity<Void>(HttpStatus.OK))))
+                .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 
-	@Operation(description = "Tweets are Sent to the client as Server Sent Events", responses = {
-			@ApiResponse(responseCode = "200", description = "stream All Tweets") })
-	@GetMapping(value = "/stream/tweets", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-	public Flux<TweetDTO> streamAllTweets() {
-		return tweetMapper.toDTO(tweetRepository.findAll());
-	}
+    @Operation(description = "Tweets are Sent to the client as Server Sent Events", responses = {
+            @ApiResponse(responseCode = "200", description = "stream All Tweets")})
+    @GetMapping(value = "/stream/tweets", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<TweetDTO> streamAllTweets() {
+        return tweetMapper.toDTO(tweetRepository.findAll());
+    }
 
 }

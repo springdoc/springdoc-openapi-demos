@@ -33,10 +33,10 @@ public class PetRepository extends HashMapRepository<Pet, Long> {
         return super.save(pet);
     }
 
-	public List<Pet> findPetsByStatus(List<Pet.StatusEnum> statusList) {
+    public List<Pet> findPetsByStatus(List<Pet.StatusEnum> statusList) {
         return entities.values().stream()
                 .filter(entity -> entity.getStatus() != null)
-				.filter(entity -> statusList.contains(entity.getStatus()))
+                .filter(entity -> statusList.contains(entity.getStatus()))
                 .collect(Collectors.toList());
     }
 

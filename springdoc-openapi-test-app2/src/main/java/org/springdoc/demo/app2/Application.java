@@ -13,36 +13,36 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "org.springdoc.demo.app2" })
+@ComponentScan(basePackages = {"org.springdoc.demo.app2"})
 public class Application {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class);
+    }
 
-	@Bean
-	public GroupedOpenApi userOpenApi() {
-		String[] paths = {"/user/**"};
-		String[] packagedToMatch = {"org.springdoc.demo.app2"};
-		return GroupedOpenApi.builder().setGroup("users").pathsToMatch(paths).packagesToScan(packagedToMatch)
-				.build();
-	}
+    @Bean
+    public GroupedOpenApi userOpenApi() {
+        String[] paths = {"/user/**"};
+        String[] packagedToMatch = {"org.springdoc.demo.app2"};
+        return GroupedOpenApi.builder().setGroup("users").pathsToMatch(paths).packagesToScan(packagedToMatch)
+                .build();
+    }
 
-	@Bean
-	public GroupedOpenApi storeOpenApi() {
-		String[] paths = {"/store/**"};
-		return GroupedOpenApi.builder().setGroup("stores").pathsToMatch(paths)
-				.build();
-	}
+    @Bean
+    public GroupedOpenApi storeOpenApi() {
+        String[] paths = {"/store/**"};
+        return GroupedOpenApi.builder().setGroup("stores").pathsToMatch(paths)
+                .build();
+    }
 
-	@Bean
-	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
-		return new OpenAPI()
-				.components(new Components().addSecuritySchemes("basicScheme",
-						new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("basic")))
-				.info(new Info().title("Petstore API").version(appVersion).description(
-						"This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.")
-						.termsOfService("http://swagger.io/terms/")
-						.license(new License().name("Apache 2.0").url("http://springdoc.org")));
-	}
+    @Bean
+    public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
+        return new OpenAPI()
+                .components(new Components().addSecuritySchemes("basicScheme",
+                        new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("basic")))
+                .info(new Info().title("Petstore API").version(appVersion).description(
+                        "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.")
+                        .termsOfService("http://swagger.io/terms/")
+                        .license(new License().name("Apache 2.0").url("http://springdoc.org")));
+    }
 }

@@ -17,6 +17,10 @@ import org.springframework.context.annotation.ComponentScan;
 //@OpenAPIDefinition(info = @Info(title = "the title", version = "v1", description = "My API", license = @License(name = "Apache 2.0", url = "http://foo.bar"), contact = @Contact(url = "http://gigantic-server.com", name = "Fred", email = "Fred@gigagantic-server.com")))
 public class Application {
 
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class);
+    }
+
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI().components(new Components().addSecuritySchemes("basicScheme", new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("basic"))).info(new Info().title("Custom API").version("100")).addTagsItem(new Tag().name("mytag"));
@@ -29,10 +33,6 @@ public class Application {
                         new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("basic")))
                 .info(new Info().title("SpringShop API").version(appVersion)
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")));
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class);
     }
 
 }

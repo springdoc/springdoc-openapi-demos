@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
 @SpringBootTest
-public class SwaggerUnitTest  {
+public class SwaggerUnitTest {
 
     @Autowired
     protected MockMvc mockMvc;
@@ -29,5 +29,5 @@ public class SwaggerUnitTest  {
         String contentAsString = mvcResult.getResponse().getContentAsString();
         assertTrue(contentAsString.contains("Swagger UI"));
     }
-    
+
 }

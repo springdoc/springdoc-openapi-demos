@@ -8,12 +8,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class CustomOpenAPIConfig {
-  @Bean
-  public OpenAPI customOpenAPI() {
-    return new OpenAPI()
-        .info(new Info()
-            .title("Custom API")
-            .version("100"))
-        .addTagsItem(new Tag().name("mytag"));
-  }
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title("Custom API")
+                        .version("100"))
+                .addTagsItem(new Tag().name("mytag"));
+    }
 }

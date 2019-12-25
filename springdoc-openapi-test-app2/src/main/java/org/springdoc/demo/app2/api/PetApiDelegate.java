@@ -1,10 +1,5 @@
 package org.springdoc.demo.app2.api;
 
-import java.util.List;
-import java.util.Optional;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import org.springdoc.demo.app2.model.ModelApiResponse;
 import org.springdoc.demo.app2.model.Pet;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +10,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,15 +29,15 @@ public interface PetApiDelegate {
     /**
      * @see PetApi#addPet
      */
-	default void addPet(Pet pet) {
+    default void addPet(Pet pet) {
 
     }
 
     /**
      * @see PetApi#deletePet
      */
-    default ResponseEntity<Void> deletePet( Long  petId,
-         String  apiKey) {
+    default ResponseEntity<Void> deletePet(Long petId,
+                                           String apiKey) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -49,15 +45,15 @@ public interface PetApiDelegate {
     /**
      * @see PetApi#findPetsByStatus
      */
-    default ResponseEntity<List<Pet>> findPetsByStatus( List<String>  status) {
+    default ResponseEntity<List<Pet>> findPetsByStatus(List<String> status) {
         extract();
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
 
-	default void extract() {
-		getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+    default void extract() {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     ApiUtil.setExampleResponse(request, "application/json", "{  \"photoUrls\" : [ \"photoUrls\", \"photoUrls\" ],  \"name\" : \"doggie\",  \"id\" : 0,  \"category\" : {    \"name\" : \"name\",    \"id\" : 6  },  \"tags\" : [ {    \"name\" : \"name\",    \"id\" : 1  }, {    \"name\" : \"name\",    \"id\" : 1  } ],  \"status\" : \"available\"}");
                     break;
@@ -68,12 +64,12 @@ public interface PetApiDelegate {
                 }
             }
         });
-	}
+    }
 
     /**
      * @see PetApi#findPetsByTags
      */
-    default ResponseEntity<List<Pet>> findPetsByTags( List<String>  tags) {
+    default ResponseEntity<List<Pet>> findPetsByTags(List<String> tags) {
         extract();
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
@@ -82,7 +78,7 @@ public interface PetApiDelegate {
     /**
      * @see PetApi#getPetById
      */
-    default ResponseEntity<Pet> getPetById( Long  petId) {
+    default ResponseEntity<Pet> getPetById(Long petId) {
         extract();
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
@@ -91,7 +87,7 @@ public interface PetApiDelegate {
     /**
      * @see PetApi#updatePet
      */
-    default ResponseEntity<Void> updatePet( Pet  pet) {
+    default ResponseEntity<Void> updatePet(Pet pet) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -99,9 +95,9 @@ public interface PetApiDelegate {
     /**
      * @see PetApi#updatePetWithForm
      */
-    default ResponseEntity<Void> updatePetWithForm( Long  petId,
-         String  name,
-         String  status) {
+    default ResponseEntity<Void> updatePetWithForm(Long petId,
+                                                   String name,
+                                                   String status) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -109,11 +105,11 @@ public interface PetApiDelegate {
     /**
      * @see PetApi#uploadFile
      */
-    default ResponseEntity<ModelApiResponse> uploadFile( Long  petId,
-         String  additionalMetadata,
-			@Valid MultipartFile file) {
+    default ResponseEntity<ModelApiResponse> uploadFile(Long petId,
+                                                        String additionalMetadata,
+                                                        @Valid MultipartFile file) {
         getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+            for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     ApiUtil.setExampleResponse(request, "application/json", "{  \"code\" : 0,  \"type\" : \"type\",  \"message\" : \"message\"}");
                     break;

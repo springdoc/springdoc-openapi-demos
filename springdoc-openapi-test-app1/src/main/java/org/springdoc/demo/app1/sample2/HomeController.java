@@ -9,16 +9,16 @@ import static org.springframework.util.AntPathMatcher.DEFAULT_PATH_SEPARATOR;
 import static org.springframework.web.servlet.view.UrlBasedViewResolver.REDIRECT_URL_PREFIX;
 
 /**
- * Home redirection to swagger api documentation 
+ * Home redirection to swagger api documentation
  */
 @Controller
 public class HomeController {
 
-	@Value(SWAGGER_UI_PATH)
-	private String swaggerUiPath;
+    @Value(SWAGGER_UI_PATH)
+    private String swaggerUiPath;
 
-	@GetMapping(DEFAULT_PATH_SEPARATOR)
-	public String index() {
-		return REDIRECT_URL_PREFIX + swaggerUiPath;
-	}
+    @GetMapping(DEFAULT_PATH_SEPARATOR)
+    public String index() {
+        return REDIRECT_URL_PREFIX + swaggerUiPath;
+    }
 }
