@@ -288,8 +288,10 @@ ResponseEntity<String> testme() {
 ```java
 @Bean
  public OpenAPI customOpenAPI() {
-   return new OpenAPI().components(new Components().addSecuritySchemes("bearer-key",
-     new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")));
+   return new OpenAPI()
+          .components(new Components()
+          .addSecuritySchemes("bearer-key", 
+          new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")));
 }
 ```
 
@@ -366,7 +368,7 @@ public OpenAPI customOpenAPI() {
     return new OpenAPI().components(new Components()
     .addSecuritySchemes("basicScheme", new SecurityScheme()
     .type(SecurityScheme.Type.HTTP).scheme("basic"))).info(new Info().title("Custom API")
-     .version("100")).addTagsItem(new Tag().name("mytag"));
+    .version("100")).addTagsItem(new Tag().name("mytag"));
 }
 ```
    
@@ -374,7 +376,7 @@ public OpenAPI customOpenAPI() {
 - Generating automatically server url may be useful, if the documentation is not present.
 - If the server annotations are present, they will be used instead.
 
-###How can I expose the api-docs endpoints without using the `swagger-ui`?
+### How can I expose the api-docs endpoints without using the `swagger-ui`?
 - You should use the `springdoc-openapi-core` dependency only:
 
 ```xml
