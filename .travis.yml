@@ -16,6 +16,6 @@ script:
 
 deploy:
   provider: script
-  script: mvn clean deploy -DskipTests sonar:sonar  -Dsonar.projectKey=springdoc_springdoc-openapi-demos --settings settings.xml
+  script: mvn deploy -DskipTests sonar:sonar  -Dsonar.projectKey=springdoc_springdoc-openapi-demos --settings settings.xml
   on:
     branch: master
