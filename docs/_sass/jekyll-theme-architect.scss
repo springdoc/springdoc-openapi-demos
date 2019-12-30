@@ -83,16 +83,6 @@ aside#sidebar {
   background: transparent url(../images/sidebar-bg.jpg) 0 0 no-repeat;
 }
 
-aside#sidebar2 {
-  float: right;
-  width: 200px;
-  min-height: 504px;
-  padding-left: 20px;
-  font-size: 12px;
-  line-height: 1.3;
-  background: transparent url(../images/sidebar-bg.jpg) 0 0 no-repeat;
-}
-
 aside#sidebar p.repo-owner,
 aside#sidebar p.repo-owner a {
   font-weight: bold;
@@ -117,10 +107,8 @@ a.button small {
   font-size: 11px;
 }
 header a.button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: transparent url(../images/github-button.png) 0 0 no-repeat;
+  display: block;
+  font-size: 11px;
 }
 aside a.button {
   display: block;
