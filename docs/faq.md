@@ -2,6 +2,8 @@
 layout: default
 ---
 # Welcome to FAQ
+* TOC
+{:toc}
 
 ### How can I define multiple OpenAPI definitions in one Spring Boot project?
 You can define your own groups of API based on the combination of: API paths and packages to scan. Each group should have a unique `groupName`.
