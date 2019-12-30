@@ -1,7 +1,11 @@
 ---
 layout: default
 ---
-# Welcome to FAQ
+
+<title>
+  Welcome to FAQ
+</title>
+
 * TOC
 {:toc}
 
