@@ -107,6 +107,13 @@ a.button small {
   font-size: 11px;
 }
 header a.button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent url(../images/github-button.png) 0 0 no-repeat;
+}
+
+header a.button-faq {
     position: relative;
     display: inline-block;
     width: auto;
@@ -123,6 +130,8 @@ header a.button {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
+
+
 aside a.button {
   display: block;
   width: 138px;
