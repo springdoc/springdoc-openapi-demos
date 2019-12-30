@@ -1,11 +1,9 @@
 ---
 layout: default
-title: Welcome To FAQ
 ---
 
-<title>
-  {{ page.title }}
-</title>
+
+<h1> Welcome to FAQ </h1> 
 
 * TOC
 {:toc}
