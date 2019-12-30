@@ -107,8 +107,10 @@ a.button small {
   font-size: 11px;
 }
 header a.button {
-  position: absolute;
-  top: 0;
+  width: 134px;
+  height: 58px;
+  padding-top: 22px;
+  padding-left: 68px;
   right: 0;
   background: transparent url(../images/github-button.png) 0 0 no-repeat;
 }
