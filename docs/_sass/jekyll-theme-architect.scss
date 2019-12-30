@@ -107,12 +107,6 @@ a.button small {
   font-size: 11px;
 }
 header a.button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: transparent url(../images/github-button.png) 0 0 no-repeat;
-}
-aside a.button {
     position: relative;
     display: inline-block;
     width: auto;
@@ -128,6 +122,14 @@ aside a.button {
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+}
+aside a.button {
+  display: block;
+  width: 138px;
+  padding-left: 64px;
+  margin-bottom: 20px;
+  font-size: 21px;
+  background: transparent url(../images/download-button.png) 0 0 no-repeat;
 }
 
 code, pre {
