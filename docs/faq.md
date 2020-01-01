@@ -160,33 +160,8 @@ springdoc.swagger-ui.enabled=false
 - Yes
 
 ###  How can I map `Pageable` (spring-date-commons) object to correct URL-Parameter in Swagger UI?
-If you use Pageable in a GET HTTP method, you will have to declare the explicit mapping of Pageable fields as Query Params and add the @Parameter(hidden = true) Pageable pageable on your pageable parameter.
-You can also, declare Pageable object as follow:
 
-```java
-@Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-@Parameters({
-        @Parameter(in = ParameterIn.QUERY
-                , description = "Page you want to retrieve (0..N)"
-                , name = "page"
-                , content = @Content(schema = @Schema(type = "integer", defaultValue = "0"))),
-        @Parameter(in = ParameterIn.QUERY
-                , description = "Number of records per page."
-                , name = "size"
-                , content = @Content(schema = @Schema(type = "integer", defaultValue = "20"))),
-        @Parameter(in = ParameterIn.QUERY
-                , description = "Sorting criteria in the format: property(,asc|desc). "
-                + "Default sort order is ascending. " + "Multiple sort criteria are supported."
-                , name = "sort"
-                , content = @Content(array = @ArraySchema(schema = @Schema(type = "string"))))
-})
-public @interface PageableAsQueryParam {
-
-}
-```
-
-In the other cases (POST for example), projects that uses `spring-data` should add this dependency together with the `springdoc-openapi-ui` dependency:
+The projects that uses `spring-data` should add this dependency together with the `springdoc-openapi-ui` dependency:
 ```xml
 <dependency>
     <groupId>org.springdoc</groupId>
@@ -194,6 +169,10 @@ In the other cases (POST for example), projects that uses `spring-data` should a
     <version>latest.version</version>
 </dependency>
 ```
+
+If you use Pageable in a GET HTTP method, you will have to declare the explicit mapping of Pageable fields as Query Params and add the @Parameter(hidden = true) Pageable pageable on your pageable parameter.
+You should also, declare the annotation `@PageableAsQueryParam` provided by springdoc on the method level, or declare your own if need to define your own description, defaultvalue, ...
+
 
 ### How can I generate enums in the generated description?
 - You could add a property `allowableValues`, to `@Parameter`. For example:
