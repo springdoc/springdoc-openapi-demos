@@ -171,6 +171,11 @@ This dependency helps ignoring @AuthenticationPrincipal in case its used on REST
    </dependency>
 ```
 
+##  Spring Data REST support
+There no automatic generation planned to spring-data-rest annotations.
+You need to use OAS3 annotations on your spring-data-rest parameters.
+You can also contribute to add the support for the different annotations (@RepositoryRestResource, @QueryDSL, ...)
+
 ## **Introduction to springdoc-openapi-maven-plugin**
 
 The aim of springdoc-openapi-maven-plugin is to generate json and yaml OpenAPI description  during build time. 
