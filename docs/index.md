@@ -25,7 +25,7 @@ This is a community-based project, not maintained by the Spring Framework Contri
 
 # **Getting Started**
 
-## Library for springdoc-openapi integration with spring-boot and swagger-ui 
+### Library for springdoc-openapi integration with spring-boot and swagger-ui 
 *   Automatically deploys swagger-ui to a spring-boot 2 application
 *   Documentation will be available in HTML format, using the official [swagger-ui jars](https://github.com/swagger-api/swagger-ui.git).
 *   The Swagger UI page should then be available at http://server:port/context-path/swagger-ui.html and the OpenAPI description will be available at the following url for json format: http://server:port/context-path/v3/api-docs
@@ -171,7 +171,7 @@ You need to use OAS3 annotations on your spring-data-rest parameters.
 You can also contribute to add the support for the different annotations (@RepositoryRestResource, @QueryDSL, ...)
 
 
-## Springdoc applications demos
+# **Springdoc applications demos**
 
 ### [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
 ### [Demo Spring Boot 2 webflux with OpenAPI 3](https://springdoc-openapi-test-app3-terrific-rabbit.eu-de.mybluemix.net/swagger-ui.html).
@@ -179,7 +179,7 @@ You can also contribute to add the support for the different annotations (@Repos
 
 ![Branching](https://springdoc.github.io/springdoc-openapi-demos/images/pets.png)
 
-### Source code of the Demo Applications
+## Source code of the Demo Applications
 *   [https://github.com/springdoc/springdoc-openapi-demos.git](https://github.com/springdoc/springdoc-openapi-demos.git)
 ## Introduction to springdoc-openapi-maven-plugin
 
