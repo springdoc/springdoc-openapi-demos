@@ -14,7 +14,7 @@ Package for swagger 3 annotations is `io.swagger.v3.oas.annotations`.
   - `@ApiModelProperty` -> `@Schema` 
   
 
-+ This step is only if you have **multiple** `Docket` beans replace them with `GroupedOpenApi` beans.
++ This step is optional: Only if you have **multiple** `Docket` beans replace them with `GroupedOpenApi` beans.
 
   Before:
   ```java
