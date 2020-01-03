@@ -49,15 +49,6 @@ This is a community-based project, not maintained by the Spring Framework Contri
 springdoc.swagger-ui.path=/swagger-ui.html
 ```
 
-## [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
-## [Demo Spring Boot 2 webflux with OpenAPI 3](https://springdoc-openapi-test-app3-terrific-rabbit.eu-de.mybluemix.net/swagger-ui.html).
-## [Demo Spring Boot 1 webmvc with OpenAPI 3](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
-
-![Branching](https://springdoc.github.io/springdoc-openapi-demos/images/pets.png)
-
-## Source code of the Demo Applications
-*   [https://github.com/springdoc/springdoc-openapi-demos.git](https://github.com/springdoc/springdoc-openapi-demos.git)
-
 ## Integration of the libray in a spring-boot 2 project without the swagger-ui:
 *   Documentation will be available at the following url for json format: http://server:port/context-path/v3/api-docs
     * server: The server name or IP
@@ -179,7 +170,19 @@ There no automatic generation planned to spring-data-rest annotations.
 You need to use OAS3 annotations on your spring-data-rest parameters.
 You can also contribute to add the support for the different annotations (@RepositoryRestResource, @QueryDSL, ...)
 
-## **Introduction to springdoc-openapi-maven-plugin**
+
+## Springdoc applications demos
+
+### [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
+### [Demo Spring Boot 2 webflux with OpenAPI 3](https://springdoc-openapi-test-app3-terrific-rabbit.eu-de.mybluemix.net/swagger-ui.html).
+### [Demo Spring Boot 1 webmvc with OpenAPI 3](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
+
+![Branching](https://springdoc.github.io/springdoc-openapi-demos/images/pets.png)
+
+### Source code of the Demo Applications
+*   [https://github.com/springdoc/springdoc-openapi-demos.git](https://github.com/springdoc/springdoc-openapi-demos.git)
+
+## Introduction to springdoc-openapi-maven-plugin
 
 The aim of springdoc-openapi-maven-plugin is to generate json and yaml OpenAPI description  during build time. 
 The plugin works during integration-tests phase, and generate the OpenAPI description. 
@@ -228,7 +231,7 @@ In order to use this functionality, you need to add the plugin declaration on th
 <plugin>
 ```
 			
-## **Custom settings of the springdoc-openapi-maven-plugin**
+## Custom settings of the springdoc-openapi-maven-plugin
 
 It possible to customise the following plugin properties:
 *   apiDocsUrl: The local url of your (json or yaml). 
