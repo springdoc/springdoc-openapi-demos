@@ -8,7 +8,8 @@
       <artifactId>springdoc-openapi-ui</artifactId>
       <version>@springdoc.version@</version>
    </dependency>
-mvn 
+```
+ 
 + Replace swagger 2 annotations with swagger 3 annotations (it is already included with `springdoc-openapi-ui` dependency).
 Package for swagger 3 annotations is `io.swagger.v3.oas.annotations`.
 
