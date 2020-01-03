@@ -25,7 +25,7 @@ This is a community-based project, not maintained by the Spring Framework Contri
 
 # **Getting Started**
 
-### Library for springdoc-openapi integration with spring-boot and swagger-ui 
+##Library for springdoc-openapi integration with spring-boot and swagger-ui 
 *   Automatically deploys swagger-ui to a spring-boot 2 application
 *   Documentation will be available in HTML format, using the official [swagger-ui jars](https://github.com/swagger-api/swagger-ui.git).
 *   The Swagger UI page should then be available at http://server:port/context-path/swagger-ui.html and the OpenAPI description will be available at the following url for json format: http://server:port/context-path/v3/api-docs
@@ -80,6 +80,8 @@ springdoc.api-docs.path=/api-docs
 	  <version>0.1.0</version>
    </dependency>
 ```
+
+# Additonnal settings
 
 ## Adding API Information and Security documentation
   The library uses spring-boot application auto-configured packages to scan for the following annotations in spring beans: OpenAPIDefinition and Info.
@@ -170,17 +172,6 @@ There no automatic generation planned to spring-data-rest annotations.
 You need to use OAS3 annotations on your spring-data-rest parameters.
 You can also contribute to add the support for the different annotations (@RepositoryRestResource, @QueryDSL, ...)
 
-
-# **Springdoc applications demos**
-
-### [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
-### [Demo Spring Boot 2 webflux with OpenAPI 3](https://springdoc-openapi-test-app3-terrific-rabbit.eu-de.mybluemix.net/swagger-ui.html).
-### [Demo Spring Boot 1 webmvc with OpenAPI 3](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
-
-![Branching](https://springdoc.github.io/springdoc-openapi-demos/images/pets.png)
-
-## Source code of the Demo Applications
-*   [https://github.com/springdoc/springdoc-openapi-demos.git](https://github.com/springdoc/springdoc-openapi-demos.git)
 ## Introduction to springdoc-openapi-maven-plugin
 
 The aim of springdoc-openapi-maven-plugin is to generate json and yaml OpenAPI description  during build time. 
@@ -261,6 +252,17 @@ It possible to customise the following plugin properties:
 </plugin>
 ```
 
+# **Springdoc applications demos**
+
+## [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
+## [Demo Spring Boot 2 webflux with OpenAPI 3](https://springdoc-openapi-test-app3-terrific-rabbit.eu-de.mybluemix.net/swagger-ui.html).
+## [Demo Spring Boot 1 webmvc with OpenAPI 3](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
+
+![Branching](https://springdoc.github.io/springdoc-openapi-demos/images/pets.png)
+
+## Source code of the Demo Applications
+*   [https://github.com/springdoc/springdoc-openapi-demos.git](https://github.com/springdoc/springdoc-openapi-demos.git)
+
 ## Dependencies repository
 
 The springdoc-openapi libraries are hosted on maven central repository. 
@@ -272,7 +274,7 @@ Releases:
 Snapshots:
 * [https://oss.sonatype.org/content/repositories/snapshots/org/springdoc/](https://oss.sonatype.org/content/repositories/snapshots/org/springdoc/).
 
-## spring-weblfux with Functional Endpoints, will be available in the future release
+# **spring-weblfux with Functional Endpoints, will be available in the future release**
 
 
 
