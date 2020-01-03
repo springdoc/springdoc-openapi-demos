@@ -271,7 +271,7 @@ Releases:
 Snapshots:
 * [https://oss.sonatype.org/content/repositories/snapshots/org/springdoc/](https://oss.sonatype.org/content/repositories/snapshots/org/springdoc/).
 
-# **Spring-weblfux with Functional Endpoints, will be available in the future release**
+## **Spring-weblfux with Functional Endpoints, will be available in the future release**
 
 
 
