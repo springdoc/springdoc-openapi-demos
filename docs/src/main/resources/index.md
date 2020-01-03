@@ -3,9 +3,6 @@ layout: default
 ---
 ![Octocat](https://springdoc.github.io/springdoc-openapi-demos/images/springdoc-openapi.png)
 
-* TOC
-{:toc}
-
 # **Introduction**
 
 springdoc-openapi java library helps automating the generation of API documentation using spring boot projects.
@@ -81,7 +78,7 @@ springdoc.api-docs.path=/api-docs
    </dependency>
 ```
 
-# Additonnal settings
+# **Additonnal settings**
 
 ## Adding API Information and Security documentation
   The library uses spring-boot application auto-configured packages to scan for the following annotations in spring beans: OpenAPIDefinition and Info.
@@ -252,7 +249,7 @@ It possible to customise the following plugin properties:
 </plugin>
 ```
 
-# **Springdoc applications demos**
+# **springdoc applications demos**
 
 ## [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
 ## [Demo Spring Boot 2 webflux with OpenAPI 3](https://springdoc-openapi-test-app3-terrific-rabbit.eu-de.mybluemix.net/swagger-ui.html).
@@ -274,7 +271,7 @@ Releases:
 Snapshots:
 * [https://oss.sonatype.org/content/repositories/snapshots/org/springdoc/](https://oss.sonatype.org/content/repositories/snapshots/org/springdoc/).
 
-# **spring-weblfux with Functional Endpoints, will be available in the future release**
+# **Spring-weblfux with Functional Endpoints, will be available in the future release**
 
 
 
