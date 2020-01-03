@@ -1,4 +1,4 @@
-# Migrating from SpringFox Swagger2
+#Migrating from SpringFox Swagger-2
 
 + Remove springfox and swagger 2 dependencies. Add `springdoc-openapi-ui` dependency instead.
 + Replace swagger 2 annotations with swagger 3 annotations (it is already included with `springdoc-openapi-ui` dependency).
@@ -77,3 +77,6 @@ Package for swagger 3 annotations is `io.swagger.v3.oas.annotations`.
                   .url("https://springshop.wiki.github.org/docs"));
       }
   ```
+  
+ + If the swagger-ui is served behind a proxy:
+   * [https://springdoc.github.io/springdoc-openapi-demos/faq.html#how-can-i-deploy-the-doploy-springdoc-openapi-ui-behind-a-reverse-proxy](https://springdoc.github.io/springdoc-openapi-demos/faq.html#how-can-i-deploy-the-doploy-springdoc-openapi-ui-behind-a-reverse-proxy).
