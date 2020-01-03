@@ -3,6 +3,9 @@ layout: default
 ---
 ![Octocat](https://springdoc.github.io/springdoc-openapi-demos/images/springdoc-openapi.png)
 
+* TOC
+{:toc}
+
 # **Introduction**
 
 springdoc-openapi java library helps automating the generation of API documentation using spring boot projects.
