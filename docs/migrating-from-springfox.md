@@ -1,4 +1,4 @@
-# Migrating from SpringFox Swagger 2
+# Migrating from SpringFox Swagger2
 
 + Remove springfox and swagger 2 dependencies. Add `springdoc-openapi-ui` dependency instead.
 + Replace swagger 2 annotations with swagger 3 annotations (it is already included with `springdoc-openapi-ui` dependency).
