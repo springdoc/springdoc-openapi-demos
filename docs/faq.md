@@ -60,6 +60,11 @@ public GroupedOpenApi groupOpenApi() {
 For more details about the usage, you can have a look at the following sample Test:
 - https://github.com/springdoc/springdoc-openapi/tree/master/springdoc-openapi-webmvc-core/src/test/java/test/org/springdoc/api/app68
 
+### How can I configure Swagger UI?
+- The support of the swagger official properties is available on `springdoc-openapi`.  See [Official documentation](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/).
+
+- You can use the same swagger properties in the documentation as Spring Boot properties.
+**NOTE**: All these properties should be declared with the following prefix: `springdoc.swagger-ui`
 
 ### How can I filter the resources documented in the output specification by the provided group?
 - You can use the standard `swagger-ui` property filter.
@@ -67,8 +72,16 @@ For more details about the usage, you can have a look at the following sample Te
 springdoc.swagger-ui.filter=group-a
 ```
 
-### How can I add  Reusable Enums ?
-- You should add `@Schema(enumAsRef = true)` on your enum.
+### How can I disable/enable Swagger UI generation based on env variable?
+- This property helps you disable only the ui.
+```properties
+springdoc.swagger-ui.enabled=false
+```
+### How can I control the default expansion setting for the operations and tags, in the Swagger Ui ,
+- You can set this property in your application.yml like so for example:
+```properties
+springdoc.swagger-ui.doc-expansion= none
+```
 
 ### How can I change the layout of the `swagger-ui`?
 - For layout options, you can use swagger-ui configuration options. For example:
@@ -90,6 +103,9 @@ springdoc.swagger-ui.tagsSorter=alpha
 ```properties
 springdoc.swagger-ui.supportedSubmitMethods="get", "put", "post", "delete", "options", "head", "patch", "trace"
 ```
+
+### How can I add  Reusable Enums ?
+- You should add `@Schema(enumAsRef = true)` on your enum.
 
 ### How can I explicitly set which paths to filter?
 - You can set list of paths to include using the following property:
@@ -123,20 +139,6 @@ springdoc.packagesToScan=package1, package2
 
 ### Is there a gradle plugin available?
 - There is no `springdoc-gradle-plugin` planned for short term.
-
-
-### How can I configure Swagger UI?
-- The support of the swagger official properties is available on `springdoc-openapi`.  See [Official documentation](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/).
-
-- You can use the same swagger properties in the documentation as Spring Boot properties.
-**NOTE**: All these properties should be declared with the following prefix: `springdoc.swagger-ui`
-
-
-### How can I disable/enable Swagger UI generation based on env variable?
-- This property helps you disable only the ui.
-```properties
-springdoc.swagger-ui.enabled=false
-```
 
 ### How can I hide a parameter from the documentation ?
 - You can use `@Parameter(hidden = true)`
@@ -219,11 +221,7 @@ ForwardedHeaderFilter forwardedHeaderFilter() {
    return new ForwardedHeaderFilter();
 } 
 ```
-### How can I control the default expansion setting for the operations and tags, in the Swagger Ui ,
-- You can set this property in your application.yml like so for example:
-```properties
-springdoc.swagger-ui.doc-expansion= none
-```
+
 ###  Is `@JsonView` annotations in Spring MVC APIs supported?
 - Yes
 

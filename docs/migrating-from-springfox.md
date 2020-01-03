@@ -1,4 +1,4 @@
-#Migrating from SpringFox Swagger-2
+# Migrating from SpringFox Swagger-2
 
 + Remove springfox and swagger 2 dependencies. Add `springdoc-openapi-ui` dependency instead.
 + Replace swagger 2 annotations with swagger 3 annotations (it is already included with `springdoc-openapi-ui` dependency).
@@ -80,3 +80,10 @@ Package for swagger 3 annotations is `io.swagger.v3.oas.annotations`.
   
  + If the swagger-ui is served behind a proxy:
    * [https://springdoc.github.io/springdoc-openapi-demos/faq.html#how-can-i-deploy-the-doploy-springdoc-openapi-ui-behind-a-reverse-proxy](https://springdoc.github.io/springdoc-openapi-demos/faq.html#how-can-i-deploy-the-doploy-springdoc-openapi-ui-behind-a-reverse-proxy).
+
+ + To customise the Swagger UI
+   * [https://springdoc.github.io/springdoc-openapi-demos/faq.html#how-can-i-configure-swagger-ui](https://springdoc.github.io/springdoc-openapi-demos/faq.html#how-can-i-configure-swagger-ui).
+
+ + To hide an operation or a controller from documentation
+   * [https://springdoc.github.io/springdoc-openapi-demos/faq.html#how-can-i-hide-an-operation-or-a-controller-from-documentation-](https://springdoc.github.io/springdoc-openapi-demos/faq.html#how-can-i-hide-an-operation-or-a-controller-from-documentation-).
+
