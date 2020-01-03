@@ -181,7 +181,6 @@ You can also contribute to add the support for the different annotations (@Repos
 
 ### Source code of the Demo Applications
 *   [https://github.com/springdoc/springdoc-openapi-demos.git](https://github.com/springdoc/springdoc-openapi-demos.git)
-
 ## Introduction to springdoc-openapi-maven-plugin
 
 The aim of springdoc-openapi-maven-plugin is to generate json and yaml OpenAPI description  during build time. 
