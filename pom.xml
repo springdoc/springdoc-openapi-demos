@@ -72,7 +72,7 @@
         <resource.delimiter>@</resource.delimiter>
         <m2e.apt.activation>jdt_apt</m2e.apt.activation>
         <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
-        <springdoc.version>1.2.23</springdoc.version>
+        <springdoc.version>1.2.24git </springdoc.version>
     </properties>
 
     <dependencyManagement>
