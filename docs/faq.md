@@ -72,33 +72,6 @@ For more details about the usage, you can have a look at the following sample Te
 springdoc.swagger-ui.filter=group-a
 ```
 
-### How can I customize the OpenAPI Bean, while using group?
-If you need the defintions to appear globally (withing every group), no matter if the group fulfills the conditions specified on the GroupedOpenApi , you can use OpenAPI Bean.
-```java
-@Bean
-public OpenAPI customOpenAPI() {
-	return new OpenAPI().path("/foo",
-	new PathItem().get(new Operation().operationId("foo").responses(new ApiResponses()
-	.addApiResponse("default",new ApiResponse()description("")
-	content(new Content().addMediaType("fatz", new MediaType()))))));
-}
-```
-
-If you need the defintions to appear withing a specific group, and respect the conditions specified on the GroupedOpenApi, you can add OpenApiCustomiser to your GroupedOpenApi definition.
-
-```java
-GroupedOpenApi.builder().setGroup("users").pathsToMatch(paths).packagesToScan(packagedToMatch).addOpenApiCustomiser(customerGlobalHeaderOpenApiCustomiser())
-                .build()
-
-@Bean
-public OpenApiCustomiser customerGlobalHeaderOpenApiCustomiser() {
-	return openApi -> openApi.path("/foo",
-	new PathItem().get(new Operation().operationId("foo").responses(new ApiResponses()
-	.addApiResponse("default",new ApiResponse().description("")
-	.content(new Content().addMediaType("fatz", new MediaType()))))));
-}
-```
-
 ### How can I disable/enable Swagger UI generation based on env variable?
 - This property helps you disable only the ui.
 ```properties
@@ -465,7 +438,8 @@ server.servlet.context-path= /foo
 
 ### Can I customize OpenAPI object programmatically?
 
-- You can Define your own OpenAPI Bean:
+- You can Define your own OpenAPI Bean: If you need the defintions to appear globally (withing every group), no matter if the group fulfills the conditions specified on the GroupedOpenApi , you can use OpenAPI Bean.
+
 ```java
 @Bean
 public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
@@ -476,6 +450,21 @@ public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
             .license(new License().name("Apache 2.0").url("http://springdoc.org")));
 }
 ```
+- If you need the defintions to appear withing a specific group, and respect the conditions specified on the GroupedOpenApi, you can add OpenApiCustomiser to your GroupedOpenApi definition.
+
+```java
+GroupedOpenApi.builder().setGroup("users").pathsToMatch(paths).packagesToScan(packagedToMatch).addOpenApiCustomiser(customerGlobalHeaderOpenApiCustomiser())
+                .build()
+
+@Bean
+public OpenApiCustomiser customerGlobalHeaderOpenApiCustomiser() {
+	return openApi -> openApi.path("/foo",
+	new PathItem().get(new Operation().operationId("foo").responses(new ApiResponses()
+	.addApiResponse("default",new ApiResponse().description("")
+	.content(new Content().addMediaType("fatz", new MediaType()))))));
+}
+```
+
 
 ### Where can I find the source code of the demo applications?
 - The source code of the application is available at the following github repository:
