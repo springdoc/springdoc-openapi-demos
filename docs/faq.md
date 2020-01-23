@@ -72,6 +72,33 @@ For more details about the usage, you can have a look at the following sample Te
 springdoc.swagger-ui.filter=group-a
 ```
 
+### How can I customize the OpenAPI Bean, while using group?
+If you need the defintions to appear globally (withing every group), no matter if the group fulfills the conditions specified on the GroupedOpenApi , you can use OpenAPI Bean.
+```java
+@Bean
+public OpenAPI customOpenAPI() {
+	return new OpenAPI().path("/foo",
+	new PathItem().get(new Operation().operationId("foo").responses(new ApiResponses()
+	.addApiResponse("default",new ApiResponse()description("")
+	content(new Content().addMediaType("fatz", new MediaType()))))));
+}
+```
+
+If you need the defintions to appear withing a specific group, and respect the conditions specified on the GroupedOpenApi, you can add OpenApiCustomiser to your GroupedOpenApi definition.
+
+```java
+GroupedOpenApi.builder().setGroup("users").pathsToMatch(paths).packagesToScan(packagedToMatch).addOpenApiCustomiser(customerGlobalHeaderOpenApiCustomiser())
+                .build()
+
+@Bean
+public OpenApiCustomiser customerGlobalHeaderOpenApiCustomiser() {
+	return openApi -> openApi.path("/foo",
+	new PathItem().get(new Operation().operationId("foo").responses(new ApiResponses()
+	.addApiResponse("default",new ApiResponse().description("")
+	.content(new Content().addMediaType("fatz", new MediaType()))))));
+}
+```
+
 ### How can I disable/enable Swagger UI generation based on env variable?
 - This property helps you disable only the ui.
 ```properties
@@ -327,6 +354,7 @@ springdoc.swagger-ui.path=/you-path/swagger-ui.html
 
 ### How can I set a global header?
 - You may have global parameters with Standard OpenAPI description.
+- If you need the defintions to appear globally (withing every group), no matter if the group fulfills the conditions specified on the GroupedOpenApi , you can use OpenAPI Bean.
 - You can define common parameters under parameters in the global components section and reference them elsewhere via `$ref`. You can also define global header parameters.
 - For this, you can override to OpenAPI Bean, and set the global headers or parameters definition on the components level.
 ```java
