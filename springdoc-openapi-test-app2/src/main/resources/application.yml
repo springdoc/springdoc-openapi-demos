@@ -27,4 +27,5 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
     display-request-duration: true
+    groups-order: DESC
   version: '@springdoc.version@'
