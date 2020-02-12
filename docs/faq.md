@@ -490,4 +490,21 @@ public OpenApiCustomiser customerGlobalHeaderOpenApiCustomiser() {
 ### How are overloaded methods with the same endpoints, but with different parameters
 - `springdoc` renders these methods as a single endpoint. It detects the overloaded endpoints, and generates parameters.schema.oneOf.
 
+### What is a proper way to set up Swagger UI to use provided spec.yml?
+- With this property, all the springdoc-openapi auto configuration beans are disabled:
+```properties
+springdoc.api-docs.enabled=false
+```
+- Then enable the minimal beans configuration, by adding this Bean:
+```java
+@Bean
+SpringDocConfiguration springDocConfiguration(){
+	return new SpringDocConfiguration();
+}
+```
+- Then configure, the path of your custom UI yaml file.
+```properties
+springdoc.swagger-ui.url=/api-docs.yaml
+```
+
 [back](./)
