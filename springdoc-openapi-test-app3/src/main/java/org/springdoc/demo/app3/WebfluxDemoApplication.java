@@ -59,7 +59,7 @@ public class WebfluxDemoApplication {
 	public GroupedOpenApi userOpenApi() {
 		String[] paths = { "/stream/**" };
 		String[] packagedToMatch = { "org.springdoc.demo.app3" };
-		return GroupedOpenApi.builder().setGroup("stream").pathsToMatch(paths).packagesToScan(packagedToMatch)
+		return GroupedOpenApi.builder().setGroup("x-stream").pathsToMatch(paths).packagesToScan(packagedToMatch)
 				.build();
 	}
 
