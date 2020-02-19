@@ -6,7 +6,7 @@
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-ui</artifactId>
-      <version>1.2.31</version>
+      <version>1.2.32</version>
    </dependency>
 ```
  
