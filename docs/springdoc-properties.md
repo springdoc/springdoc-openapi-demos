@@ -1,13 +1,13 @@
 # Configuration of springdoc-openapi
 
-### How to configure springdoc-openapi
+## How to configure springdoc-openapi?
 
 springdoc-openapi relies on standard [spring configuration properties](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config)  (yml or properties) using the standard files locations.
 
-##### springdoc-openapi-core
+### springdoc-openapi-core
 
 Parameter name | Default Value | Description
---- | --- | -----
+--- | --- | -------
 <a name="springdoc.api-docs.path"></a>`springdoc.api-docs.path` | `/v3/api-docs` | `String`, For custom path of the OpenAPI documentation in Json format.
 <a name="springdoc.api-docs.enabled"></a>`springdoc.api-docs.enabled` | `true` | `Boolean`. To disable the springdoc-openapi endpoint (/v3/api-docs by default).
 <a name="springdoc.packages-to-scan"></a>`springdoc.packages-to-scan` | `*`| `List of Strings`.The list of packages to scan (comma separated)
@@ -29,14 +29,14 @@ Parameter name | Default Value | Description
 <a name="springdoc.group-configs[0].packages-to-exclude"></a>`springdoc.group-configs[0].packages-to-exclude` | | `List of Strings`.The list of packages to exclude for a group(comma separated)
 <a name="springdoc.webjars.prefix"></a>`springdoc.webjars.prefix` | `/webjars` |`String`, To change the webjars prefix that is visible the url of swagger-ui for spring-webflux.
 
-##### SWAGGER-UI
+### SWAGGER-UI
 - The support of the swagger official properties is available on `springdoc-openapi`.  See [Official documentation](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/).
 
 - You can use the same swagger properties in the documentation as Spring Boot properties.
 **NOTE**: All these properties should be declared with the following prefix: `springdoc.swagger-ui`
 
 Parameter name | Default Value | Description
---- | --- | -----
+--- | --- | -------
 <a name="springdoc.swagger-ui.path"></a>`springdoc.swagger-ui.path` | `/swagger-ui.html` |`String`, For custom path of the swagger-ui HTML documentation.
 <a name="springdoc.swagger-ui.configUrl"></a>`springdoc.swagger-ui.configUrl` | `/v3/api-docs/swagger-config` |  `String`. URL to fetch external configuration document from.
 <a name="springdoc.swagger-ui.layout"></a>`springdoc.swagger-ui.layout` | `BaseLayout`  | `String`. The name of a component available via the plugin system to use as the top-level layout for Swagger UI.
@@ -59,15 +59,14 @@ Parameter name | Default Value | Description
 <a name="springdoc.swagger-ui.supportedSubmitMethods"></a>`springdoc.swagger-ui.supportedSubmitMethods` |  | `Array=["get", "put", "post", "delete", "options", "head", "patch", "trace"]`. List of HTTP methods that have the "Try it out" feature enabled. An empty array disables "Try it out" for all operations. This does not filter the operations from the display.
 <a name="springdoc.swagger-ui.swaggerUrls[0].url"></a>`springdoc.swagger-ui.swaggerUrls[0].url` |  | `URL`. The url of the swagger group, used by Topbar plugin.  URLs must be unique among all items in this array, since they're used as identifiers.
 <a name="springdoc.swagger-ui.swaggerUrls[0].name"></a>`springdoc.swagger-ui.swaggerUrls[0].name` |  | `String`. The name of the swagger group, used by Topbar plugin.  Names must be unique among all items in this array, since they're used as identifiers.
-<a name="springdoc.swagger-ui.oauth.clientId"></a>`springdoc.swagger-ui.oauth.clientId` |  | `String`. OAuth clientId.
-<a name="springdoc.swagger-ui.oauth.clientSecret"></a>`springdoc.swagger-ui.oauth.clientSecret` |  | `String`. OAuth client Secret.
-<a name="springdoc.swagger-ui.oauth.realm"></a>`springdoc.swagger-ui.oauth.realm` |  | `String`. OAuth realm.
-<a name="springdoc.swagger-ui.oauth.appName"></a>`springdoc.swagger-ui.oauth.appName` |  | `String`. OAuth application Name.
-<a name="springdoc.swagger-ui.oauth.scopeSeparator"></a>`springdoc.swagger-ui.oauth.scopeSeparator` |  | `String`. OAuth scope separator.
-<a name="springdoc.swagger-ui.oauth.additionalQueryStringParams"></a>`springdoc.swagger-ui.oauth.additionalQueryStringParams` |  | `String`. Additional queryString parameters for OAuth requests.
-<a name="springdoc.swagger-ui.oauth.useBasicAuthenticationWithAccessCodeGrant"></a>`springdoc.swagger-ui.oauth.useBasicAuthenticationWithAccessCodeGrant` | `false` | `Boolean`. To use basic authentication with access code grant URL.
-<a name="springdoc.swagger-ui.oauth.usePkceWithAuthorizationCodeGrant"></a>`springdoc.swagger-ui.oauth.usePkceWithAuthorizationCodeGrant` | `false` | `Boolean`.To use Pkce with authorization code grant.
-
+<a name="springdoc.swagger-ui.oauth.clientId"></a>`springdoc.swagger-ui.oauth.clientId` |  | `String`. Default clientId. MUST be a string.
+<a name="springdoc.swagger-ui.oauth.clientSecret"></a>`springdoc.swagger-ui.oauth.clientSecret` |  | `String`.  Default clientSecret. Never use this parameter in your production environment. It exposes cruicial security information. This feature is intended for dev/test environments only.
+<a name="springdoc.swagger-ui.oauth.realm"></a>`springdoc.swagger-ui.oauth.realm` |  | `String`. realm query parameter (for oauth1) added to authorizationUrl and tokenUrl.
+<a name="springdoc.swagger-ui.oauth.appName"></a>`springdoc.swagger-ui.oauth.appName` |  | `String`. OAuth application name, displayed in authorization popup.
+<a name="springdoc.swagger-ui.oauth.scopeSeparator"></a>`springdoc.swagger-ui.oauth.scopeSeparator` |  | `String`. OAuth scope separator for passing scopes, encoded before calling, default value is a space (encoded value %20).
+<a name="springdoc.swagger-ui.oauth.additionalQueryStringParams"></a>`springdoc.swagger-ui.oauth.additionalQueryStringParams` |  | `String`. Additional query parameters added to authorizationUrl and tokenUrl.
+<a name="springdoc.swagger-ui.oauth.useBasicAuthenticationWithAccessCodeGrant"></a>`springdoc.swagger-ui.oauth.useBasicAuthenticationWithAccessCodeGrant` | `false` | `Boolean`. Only activated for the accessCode flow. During the authorization_code request to the tokenUrl, pass the Client Password using the HTTP Basic Authentication scheme (Authorization header with Basic base64encode(client_id + client_secret)).
+<a name="springdoc.swagger-ui.oauth.usePkceWithAuthorizationCodeGrant"></a>`springdoc.swagger-ui.oauth.usePkceWithAuthorizationCodeGrant` | `false` | `Boolean`.Only applies to authorizatonCode flows. Proof Key for Code Exchange brings enhanced security for OAuth public clients.
 
 
 ``````
