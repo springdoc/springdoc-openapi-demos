@@ -4,7 +4,7 @@
 
 springdoc-openapi relies on standard [spring configuration properties](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config)  (yml or properties) using the standard files locations.
 
-### springdoc-openapi-core
+### springdoc-openapi-core properties
 
 Parameter name | Default Value | Description
 --- | --- | -------
@@ -29,7 +29,7 @@ Parameter name | Default Value | Description
 <a name="springdoc.group-configs[0].packages-to-exclude"></a>`springdoc.group-configs[0].packages-to-exclude` | | `List of Strings`.The list of packages to exclude for a group(comma separated)
 <a name="springdoc.webjars.prefix"></a>`springdoc.webjars.prefix` | `/webjars` |`String`, To change the webjars prefix that is visible the url of swagger-ui for spring-webflux.
 
-### SWAGGER-UI
+### swagger-ui properties
 - The support of the swagger official properties is available on `springdoc-openapi`.  See [Official documentation](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/).
 
 - You can use the same swagger properties in the documentation as Spring Boot properties.
