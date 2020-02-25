@@ -69,5 +69,4 @@ Parameter name | Default Value | Description
 <a name="springdoc.swagger-ui.oauth.usePkceWithAuthorizationCodeGrant"></a>`springdoc.swagger-ui.oauth.usePkceWithAuthorizationCodeGrant` | `false` | `Boolean`.Only applies to authorizatonCode flows. Proof Key for Code Exchange brings enhanced security for OAuth public clients.
 
 
-``````
-ack](./)
+[back](./)
