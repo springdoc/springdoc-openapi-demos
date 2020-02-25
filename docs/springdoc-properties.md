@@ -7,7 +7,7 @@ springdoc-openapi relies on standard [spring configuration properties](https://d
 ### springdoc-openapi-core properties
 
 Parameter name | Default Value | Description
---- | --- | -------
+--- | --- | :-------
 <a name="springdoc.api-docs.path"></a>`springdoc.api-docs.path` | `/v3/api-docs` | `String`, For custom path of the OpenAPI documentation in Json format.
 <a name="springdoc.api-docs.enabled"></a>`springdoc.api-docs.enabled` | `true` | `Boolean`. To disable the springdoc-openapi endpoint (/v3/api-docs by default).
 <a name="springdoc.packages-to-scan"></a>`springdoc.packages-to-scan` | `*`| `List of Strings`.The list of packages to scan (comma separated)
@@ -36,7 +36,7 @@ Parameter name | Default Value | Description
 **NOTE**: All these properties should be declared with the following prefix: `springdoc.swagger-ui`
 
 Parameter name | Default Value | Description
---------- | --- | ------------------------------------
+--------- | --- | :------------------------------------
 <a name="springdoc.swagger-ui.path"></a>`springdoc.swagger-ui.path` | `/swagger-ui.html` |`String`, For custom path of the swagger-ui HTML documentation.
 <a name="springdoc.swagger-ui.configUrl"></a>`springdoc.swagger-ui.configUrl` | `/v3/api-docs/swagger-config` |  `String`. URL to fetch external configuration document from.
 <a name="springdoc.swagger-ui.layout"></a>`springdoc.swagger-ui.layout` | `BaseLayout`  | `String`. The name of a component available via the plugin system to use as the top-level layout for Swagger UI.
