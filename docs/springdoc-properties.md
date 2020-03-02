@@ -36,9 +36,9 @@ Parameter name | Default Value | Description
 <a name="springdoc.webjars.prefix"></a>`springdoc.webjars.prefix` | `/webjars` |`String`, To change the webjars prefix that is visible the url of swagger-ui for spring-webflux.
 
 ### swagger-ui properties
-- The support of the swagger official properties is available on `springdoc-openapi`.  See [Official documentation](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/).
+- The support of the swagger-ui properties is available on `springdoc-openapi`.  See [Official documentation](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/).
 
-- You can use the same swagger properties in the documentation as Spring Boot properties.
+- You can use the same swagger-ui properties in the documentation as Spring Boot properties.
 **NOTE**: All these properties should be declared with the following prefix: `springdoc.swagger-ui`
 
 Parameter name | Default Value | Description
