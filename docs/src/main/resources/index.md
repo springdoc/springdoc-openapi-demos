@@ -164,10 +164,16 @@ This dependency helps ignoring @AuthenticationPrincipal in case its used on REST
    </dependency>
 ```
 
-##  Spring Data REST support
-There no automatic generation planned to spring-data-rest annotations.
-You need to use OAS3 annotations on your spring-data-rest parameters.
-You can also contribute to add the support for the different annotations (@RepositoryRestResource, @QueryDSL, ...)
+## Kotlin support
+For a project that uses kotlin, you should add the following dependency, together with the springdoc-openapi-ui dependency:
+This dependency improves the support of kotlin types:
+```xml
+   <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-kotlin</artifactId>
+      <version>@springdoc.version@</version>
+   </dependency>
+```
 
 ## Introduction to springdoc-openapi-maven-plugin
 
@@ -217,37 +223,32 @@ In order to use this functionality, you need to add the plugin declaration on th
  </executions>
 <plugin>
 ```
-			
-## Custom settings of the springdoc-openapi-maven-plugin
 
-It possible to customise the following plugin properties:
-*   apiDocsUrl: The local url of your (json or yaml). 
-    * The default value is: http://localhost:8080/v3/api-docs
-*  outputDir: The output directory, where to generate the OpenAPI description.
-    * The default value is: ${project.build.directory}
-*   outputFileName: The file name that contains the OpenAPI description.  
-    * The default value is: openapi.json
+For more custom settings of the springdoc-openapi-maven-plugin, you can consult the plugin documentation:
+- https://github.com/springdoc/springdoc-openapi-maven-plugin
 
-```xml
-<plugin>
- <groupId>org.springdoc</groupId>
- <artifactId>springdoc-openapi-maven-plugin</artifactId>
- <version>0.2</version>
- <executions>
-  <execution>
-   <id>integration-test</id>
-   <goals>
-    <goal>generate</goal>
-   </goals>
-  </execution>
- </executions>
- <configuration>
-  <apiDocsUrl>http://localhost:8080/v3/api-docs</apiDocsUrl>
-  <outputFileName>openapi.json</outputFileName>
-  <outputDir>/home/springdoc/maven-output</outputDir>
- </configuration>
-</plugin>
+## Introduction to springdoc-openapi-gradle-plugin
+
+This plugin allows you to generate an OpenAPI 3 specification for a Spring Boot application from a Gradle build. 
+
+```groovy
+plugins {
+      id("org.springframework.boot") version "2.2.4.RELEASE"
+      id "com.github.johnrengelman.processes" version "0.5.0"
+      id("org.springdoc.openapi-gradle-plugin") version "1.0.0"
+}
 ```
+
+When you add this plugin and its runtime dependency plugins to your build file, the plugin creates the following tasks:
+- forkedSpringBootRun
+- generateOpenApiDocs
+
+```properties
+gradle clean generateOpenApiDocs
+```
+
+For more custom configuration of springdoc-openapi-gradle-plugin ,you can consult the plugin documentation:
+- https://github.com/springdoc/springdoc-openapi-gradle-plugin
 
 # **springdoc applications demos**
 
@@ -270,6 +271,12 @@ Releases:
 
 Snapshots:
 * [https://oss.sonatype.org/content/repositories/snapshots/org/springdoc/](https://oss.sonatype.org/content/repositories/snapshots/org/springdoc/).
+
+##  Spring Data REST support
+There no automatic generation planned to spring-data-rest annotations.
+You need to use OAS3 annotations on your spring-data-rest parameters.
+You can also contribute to add the support for the different annotations (@RepositoryRestResource, @QueryDSL, ...)
+
 
 ## **Spring-weblfux with Functional Endpoints, will be available in the future release**
 
