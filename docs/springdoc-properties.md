@@ -1,6 +1,14 @@
-# Configuration of springdoc-openapi
+---
+layout: default
+---
+[back](./)
 
-## How to configure springdoc-openapi?
+<h1> Configuration of springdoc-openapi </h1> 
+
+* TOC
+{:toc}
+
+<h2> How to configure springdoc-openapi? </h2>
 
 springdoc-openapi relies on standard [spring configuration properties](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config)  (yml or properties) using the standard files locations.
 
