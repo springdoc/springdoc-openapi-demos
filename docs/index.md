@@ -103,7 +103,7 @@ springdoc.swagger-ui.enabled=false
 ```
 ## Swagger-ui configuration
 The library supports the swagger-ui official properties:
-- https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/
+- [https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/)
 
 You need to declare swagger-ui properties as spring-boot properties.
 All these properties should be declared with the following prefix: **springdoc.swagger-ui**
@@ -123,7 +123,6 @@ For the list of paths to include, use the following property:
 springdoc.pathsToMatch=/v1, /api/balance/**
 ```
 
-packages or paths 
 ## Spring-weblfux support with Annotated Controllers
 *   Documentation can be available in yaml format as well, on the following path : /v3/api-docs.yml
 *   Add the library to the list of your project dependencies (No additional configuration is needed)
@@ -225,7 +224,7 @@ In order to use this functionality, you need to add the plugin declaration on th
 ```
 
 For more custom settings of the springdoc-openapi-maven-plugin, you can consult the plugin documentation:
-- https://github.com/springdoc/springdoc-openapi-maven-plugin
+- [https://github.com/springdoc/springdoc-openapi-maven-plugin](https://github.com/springdoc/springdoc-openapi-maven-plugin)
 
 ## Introduction to springdoc-openapi-gradle-plugin
 
@@ -248,7 +247,7 @@ gradle clean generateOpenApiDocs
 ```
 
 For more custom configuration of springdoc-openapi-gradle-plugin ,you can consult the plugin documentation:
-- https://github.com/springdoc/springdoc-openapi-gradle-plugin
+- [https://github.com/springdoc/springdoc-openapi-gradle-plugin](https://github.com/springdoc/springdoc-openapi-gradle-plugin)
 
 # **springdoc applications demos**
 
