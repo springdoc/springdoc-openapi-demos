@@ -1,8 +1,6 @@
 ---
 layout: default
 ---
-[back](./)
-
 <h1> Configuration of springdoc-openapi </h1> 
 
 * TOC
