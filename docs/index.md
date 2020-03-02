@@ -183,7 +183,7 @@ The plugin works in conjunction with spring-boot-maven plugin.
 You can test it during the integration tests phase using the maven command:
 
 ```properties
-mvn=verify -Dspring.application.admin.enabled=true
+mvn verify -Dspring.application.admin.enabled=true
 ```
 
 In order to use this functionality, you need to add the plugin declaration on the plugins section of your pom.xml:
