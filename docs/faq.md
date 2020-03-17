@@ -501,6 +501,10 @@ springdoc.api-docs.enabled=false
 SpringDocConfiguration springDocConfiguration(){
 	return new SpringDocConfiguration();
 }
+@Bean
+public SpringDocConfigProperties springDocConfigProperties() {
+	return new SpringDocConfigProperties();
+}
 ```
 - Then configure, the path of your custom UI yaml file.
 ```properties
