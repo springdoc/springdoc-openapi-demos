@@ -13,7 +13,7 @@ This documentation can be completed by comments using swagger-api annotations.
 
 This library supports:
 *  OpenAPI 3
-*  Spring-boot (v1 and v2)
+*  Spring-boot (v2)
 *  JSR-303, specifically for @NotNull, @Min, @Max, and @Size.
 *  Swagger-ui
 *  Oauth 2
@@ -253,7 +253,7 @@ For more custom configuration of springdoc-openapi-gradle-plugin ,you can consul
 
 ## [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
 ## [Demo Spring Boot 2 webflux with OpenAPI 3](https://springdoc-openapi-test-app3-terrific-rabbit.eu-de.mybluemix.net/swagger-ui.html).
-## [Demo Spring Boot 1 webmvc with OpenAPI 3](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
+## [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
 
 ![Branching](https://springdoc.github.io/springdoc-openapi-demos/images/pets.png)
 
