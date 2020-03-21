@@ -73,7 +73,7 @@ springdoc.swagger-ui.oauth.realm |  | `String`. realm query parameter (for oauth
 springdoc.swagger-ui.oauth.appName |  | `String`. OAuth application name, displayed in authorization popup.
 springdoc.swagger-ui.oauth.scopeSeparator |  | `String`. OAuth scope separator for passing scopes, encoded before calling, default value is a space (encoded value %20).
 springdoc.swagger-ui.oauth.additionalQueryStringParams |  | `String`. Additional query parameters added to authorizationUrl and tokenUrl.
-springdoc.swagger-ui.oauth.useBasicAuthenticationWithAccessCodeGrant | `false` | `Boolean`. Only activated for the accessCode flow. During the authorization_code request to the tokenUrl, pass the Client Password using the HTTP Basic Authentication scheme (Authorization header with Basic base64encode(client_id + client_secret)).
+springdoc.swagger-ui.oauth.<br/>useBasicAuthenticationWithAccessCodeGrant | `false` | `Boolean`. Only activated for the accessCode flow. During the authorization_code request to the tokenUrl, pass the Client Password using the HTTP Basic Authentication scheme (Authorization header with Basic base64encode(client_id + client_secret)).
 springdoc.swagger-ui.oauth.usePkceWithAuthorizationCodeGrant | `false` | `Boolean`.Only applies to authorizatonCode flows. Proof Key for Code Exchange brings enhanced security for OAuth public clients.
 
 
