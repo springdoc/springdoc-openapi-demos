@@ -34,6 +34,8 @@ Parameter name | Default Value | Description
 <a name="springdoc.group-configs[0].paths-to-exclude"></a>`springdoc.group-configs[0].paths-to-exclude` | ``| `List of Strings`.The list of paths to exclude for a group(comma separated)
 <a name="springdoc.group-configs[0].packages-to-exclude"></a>`springdoc.group-configs[0].packages-to-exclude` | | `List of Strings`.The list of packages to exclude for a group(comma separated)
 <a name="springdoc.webjars.prefix"></a>`springdoc.webjars.prefix` | `/webjars` |`String`, To change the webjars prefix that is visible the url of swagger-ui for spring-webflux.
+<a name="springdoc.api-docs.resolve-schema-properties"></a>`springdoc.api-docs.resolve-schema-properties` | `false` | `Boolean`. To enable  property resolver on @Schema (name, title and description).
+<a name="springdoc.remove-broken-reference-definitions"></a>`springdoc.remove-broken-reference-definitions` | `true` | `Boolean`. To disable removal of broken reference defintions.
 
 ### swagger-ui properties
 - The support of the swagger-ui properties is available on `springdoc-openapi`.  See [Official documentation](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/).
