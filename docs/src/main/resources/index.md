@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-![Octocat](https://springdoc.github.io/springdoc-openapi-demos/images/springdoc-openapi.png)
+![Octocat](https://springdoc.github.io/springdoc-openapi-demos/assets/images/springdoc-openapi.png)
 
 # **Introduction**
 
