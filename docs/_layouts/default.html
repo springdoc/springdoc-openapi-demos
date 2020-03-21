@@ -22,6 +22,27 @@
           <h1 id="project_title">{{ site.title | default: site.github.repository_name }}</h1>
           <h2 id="project_tagline">{{ site.description | default: site.github.project_tagline }}</h2>
 
+            <aside id="sidebar">
+                {% if site.show_downloads %}
+                <a class="button"
+                   href="https://springdoc.github.io/springdoc-openapi-demos/faq.html">
+                    F.A.Q
+                </a>
+                <a class="button"
+                   href="https://springdoc.github.io/springdoc-openapi-demos/springdoc-properties.html">
+                    Configuration
+                </a>
+                {% endif %}
+
+                {% if site.github.is_project_page %}
+                <p class="repo-owner"><a
+                        href="https://github.com/springdoc/springdoc-openapi">springdoc-openapi</a>
+                    is
+                    maintained by <a href="{{ site.github.owner_url }}">{{
+                        site.github.owner_name }}</a>.</p>
+                {% endif %}
+            </aside>
+
           {% if site.show_downloads %}
             <section id="downloads">
                 <a class="zip_download_link"
