@@ -12,30 +12,30 @@ springdoc-openapi relies on standard [spring configuration properties](https://d
 
 ### springdoc-openapi-core properties
 
-Parameter name | Default Value | Description
---- | --- | :-------
-<a name="springdoc.api-docs.path"></a>`springdoc.api-docs.path` | `/v3/api-docs` | `String`, For custom path of the OpenAPI documentation in Json format.
-<a name="springdoc.api-docs.enabled"></a>`springdoc.api-docs.enabled` | `true` | `Boolean`. To disable the springdoc-openapi endpoint (/v3/api-docs by default).
-<a name="springdoc.packages-to-scan"></a>`springdoc.packages-to-scan` | `*`| `List of Strings`.The list of packages to scan (comma separated)
-<a name="springdoc.paths-to-match"></a>`springdoc.paths-to-match` | `/*`| `List of Strings`.The list of paths to match (comma separated)
-<a name="springdoc.paths-to-exclude"></a>`springdoc.paths-to-exclude` | | `List of Strings`.The list of paths to exclude (comma separated)
-<a name="springdoc.packages-to-exclude"></a>`springdoc.packages-to-exclude` | | `List of Strings`.The list of packages to exclude (comma separated)
-<a name="springdoc.default-consumes-media-type"></a>`springdoc.default-consumes-media-type` | `application/json` | `String`. The default consumes media type.
-<a name="springdoc.default-produces-media-type"></a>`springdoc.default-produces-media-type` | `*/*` | `String`.The default produces media type.
-<a name="springdoc.cache.disabled"></a>`springdoc.cache.disabled` | `false` | `Boolean`. To disable the springdoc-openapi cache of the the calculated OpenAPI. 
-<a name="springdoc.show-actuator"></a>`springdoc.show-actuator` | `false` |  `Boolean`. To display the actuator endpoints.
-<a name="springdoc.auto-tag-classes"></a>`springdoc.auto-tag-classes` | `true` | `Boolean`. To disable the springdoc-openapi automatic tags.
-<a name="springdoc.model-and-view-allowed"></a>`springdoc.model-and-view-allowed` | `false` | `Boolean`. To allow RestControllers with ModelAndView return to appear in the OpenAPI descritpion.
-<a name="springdoc.override-with-generic-response"></a>`springdoc.override-with-generic-response` | `true` | `Boolean`. When true, automatically adds @ControllerAdvice responses to all the generated responses.
-<a name="springdoc.api-docs.groups.enabled"></a>`springdoc.api-docs.groups.enabled` | `true` | `Boolean`. To disable the springdoc-openapi groups.
-<a name="springdoc.group-configs[0].group"></a>`springdoc.group-configs[0].group` | | `String`.The group name
-<a name="springdoc.group-configs[0].packages-to-scan"></a>`springdoc.group-configs[0].packages-to-scan` | `*`| `List of Strings`.The list of packages to scan for a group (comma separated)
-<a name="springdoc.group-configs[0].paths-to-match"></a>`springdoc.group-configs[0].paths-to-match` | `/*`| `List of Strings`.The list of paths to match for a group(comma separated)
-<a name="springdoc.group-configs[0].paths-to-exclude"></a>`springdoc.group-configs[0].paths-to-exclude` | ``| `List of Strings`.The list of paths to exclude for a group(comma separated)
-<a name="springdoc.group-configs[0].packages-to-exclude"></a>`springdoc.group-configs[0].packages-to-exclude` | | `List of Strings`.The list of packages to exclude for a group(comma separated)
-<a name="springdoc.webjars.prefix"></a>`springdoc.webjars.prefix` | `/webjars` |`String`, To change the webjars prefix that is visible the url of swagger-ui for spring-webflux.
-<a name="springdoc.api-docs.resolve-schema-properties"></a>`springdoc.api-docs.resolve-schema-properties` | `false` | `Boolean`. To enable  property resolver on @Schema (name, title and description).
-<a name="springdoc.remove-broken-reference-definitions"></a>`springdoc.remove-broken-reference-definitions` | `true` | `Boolean`. To disable removal of broken reference defintions.
+| Parameter name |  Default Value    | Description |
+|:---------------|:------------------|:------------|
+`springdoc.api-docs.path` | `/v3/api-docs` | `String`, For custom path of the OpenAPI documentation in Json format.
+`springdoc.api-docs.enabled` | `true` | `Boolean`. To disable the springdoc-openapi endpoint (/v3/api-docs by default).
+`springdoc.packages-to-scan` | `*`| `List of Strings`.The list of packages to scan (comma separated)
+`springdoc.paths-to-match` | `/*`| `List of Strings`.The list of paths to match (comma separated)
+`springdoc.paths-to-exclude` | | `List of Strings`.The list of paths to exclude (comma separated)
+`springdoc.packages-to-exclude` | | `List of Strings`.The list of packages to exclude (comma separated)
+`springdoc.default-consumes-media-type` | `application/json` | `String`. The default consumes media type.
+`springdoc.default-produces-media-type` | `*/*` | `String`.The default produces media type.
+`springdoc.cache.disabled` | `false` | `Boolean`. To disable the springdoc-openapi cache of the the calculated OpenAPI. 
+`springdoc.show-actuator` | `false` |  `Boolean`. To display the actuator endpoints.
+`springdoc.auto-tag-classes` | `true` | `Boolean`. To disable the springdoc-openapi automatic tags.
+`springdoc.model-and-view-allowed` | `false` | `Boolean`. To allow RestControllers with ModelAndView return to appear in the OpenAPI descritpion.
+`springdoc.override-with-generic-response` | `true` | `Boolean`. When true, automatically adds @ControllerAdvice responses to all the generated responses.
+`springdoc.api-docs.groups.enabled` | `true` | `Boolean`. To disable the springdoc-openapi groups.
+`springdoc.group-configs[0].group` | | `String`.The group name
+`springdoc.group-configs[0].packages-to-scan` | `*`| `List of Strings`.The list of packages to scan for a group (comma separated)
+`springdoc.group-configs[0].paths-to-match` | `/*`| `List of Strings`.The list of paths to match for a group(comma separated)
+`springdoc.group-configs[0].paths-to-exclude` | ``| `List of Strings`.The list of paths to exclude for a group(comma separated)
+`springdoc.group-configs[0].packages-to-exclude` | | `List of Strings`.The list of packages to exclude for a group(comma separated)
+`springdoc.webjars.prefix` | `/webjars` |`String`, To change the webjars prefix that is visible the url of swagger-ui for spring-webflux.
+`springdoc.api-docs.resolve-schema-properties` | `false` | `Boolean`. To enable  property resolver on @Schema (name, title and description).
+`springdoc.remove-broken-reference-definitions` | `true` | `Boolean`. To disable removal of broken reference defintions.
 
 ### swagger-ui properties
 - The support of the swagger-ui properties is available on `springdoc-openapi`.  See [Official documentation](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/).
