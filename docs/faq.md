@@ -1,8 +1,6 @@
 ---
 layout: default
 ---
-[back](./)
-
 <h1> Welcome to FAQ </h1> 
 
 * TOC
