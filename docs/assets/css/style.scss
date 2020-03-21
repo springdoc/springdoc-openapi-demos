@@ -17,3 +17,26 @@
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
 }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table {
+  border: 1px solid #373737;
+  margin-bottom: 20px;
+  text-align: left;
+ }
+
+th {
+  font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 10px;
+  background: #373737;
+  color: #fff;
+ }
+
+td {
+  padding: 10px;
+  border: 1px solid #373737;
+ }
