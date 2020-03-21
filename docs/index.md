@@ -182,7 +182,7 @@ The plugin works in conjunction with spring-boot-maven plugin.
 
 You can test it during the integration tests phase using the maven command:
 
-```shell script
+```protobuf
 mvn verify -Dspring.application.admin.enabled=true
 ```
 
@@ -242,7 +242,7 @@ When you add this plugin and its runtime dependency plugins to your build file, 
 - forkedSpringBootRun
 - generateOpenApiDocs
 
-```shell script
+```slim
 gradle clean generateOpenApiDocs
 ```
 
