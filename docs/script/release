@@ -13,8 +13,8 @@ bundle update
 
 # Build a new gem archive.
 
-rm -rf jekyll-theme-architect-*.gem
-gem build -q jekyll-theme-architect.gemspec
+rm -rf jekyll-theme-cayman-*.gem
+gem build -q jekyll-theme-cayman.gemspec
 
 # Make sure we're on the master branch.
 
@@ -25,7 +25,7 @@ gem build -q jekyll-theme-architect.gemspec
 
 # Figure out what version we're releasing.
 
-tag=v`ls jekyll-theme-architect-*.gem | sed 's/^jekyll-theme-architect-\(.*\)\.gem$/\1/'`
+tag=v`ls jekyll-theme-cayman-*.gem | sed 's/^jekyll-theme-cayman-\(.*\)\.gem$/\1/'`
 
 # Make sure we haven't released this version before.
 
@@ -38,5 +38,5 @@ git fetch -t origin
 
 # Tag it and bag it.
 
-gem push jekyll-theme-architect-*.gem && git tag "$tag" &&
+gem push jekyll-theme-cayman-*.gem && git tag "$tag" &&
   git push origin master && git push origin "$tag"
