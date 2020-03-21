@@ -182,7 +182,7 @@ The plugin works in conjunction with spring-boot-maven plugin.
 
 You can test it during the integration tests phase using the maven command:
 
-```
+```shell
 mvn verify -Dspring.application.admin.enabled=true
 ```
 
