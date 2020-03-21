@@ -8,7 +8,7 @@
 ## [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
 
 
-![Branching](https://springdoc.github.io/springdoc-openapi-demos/images/pets.png)
+![Branching](https://springdoc.github.io/springdoc-openapi-demos/assets/images/pets.png)
 
 
 
