@@ -13,7 +13,7 @@ This documentation can be completed by comments using swagger-api annotations.
 
 This library supports:
 *  OpenAPI 3
-*  Spring-boot (v2)
+*  Spring-boot (v1 and v2)
 *  JSR-303, specifically for @NotNull, @Min, @Max, and @Size.
 *  Swagger-ui
 *  Oauth 2
@@ -23,7 +23,7 @@ This is a community-based project, not maintained by the Spring Framework Contri
 # **Getting Started**
 
 ##Library for springdoc-openapi integration with spring-boot and swagger-ui 
-*   Automatically deploys swagger-ui to a spring-boot 2 application
+*   Automatically deploys swagger-ui to a spring-boot application
 *   Documentation will be available in HTML format, using the official [swagger-ui jars](https://github.com/swagger-api/swagger-ui.git).
 *   The Swagger UI page should then be available at http://server:port/context-path/swagger-ui.html and the OpenAPI description will be available at the following url for json format: http://server:port/context-path/v3/api-docs
     * server: The server name or IP
@@ -36,7 +36,7 @@ This is a community-based project, not maintained by the Spring Framework Contri
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-ui</artifactId>
-      <version>1.2.34</version>
+      <version>1.3.0</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
@@ -46,7 +46,7 @@ This is a community-based project, not maintained by the Spring Framework Contri
 springdoc.swagger-ui.path=/swagger-ui.html
 ```
 
-## Integration of the libray in a spring-boot 2 project without the swagger-ui:
+## Integration of the libray in a spring-boot project without the swagger-ui:
 *   Documentation will be available at the following url for json format: http://server:port/context-path/v3/api-docs
     * server: The server name or IP
     * port: The server port
@@ -58,7 +58,7 @@ springdoc.swagger-ui.path=/swagger-ui.html
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-webmvc-core</artifactId>
-      <version>1.2.34</version>
+      <version>1.3.0</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the OpenAPI documentation in Json format, add a custom springdoc property, in your spring-boot configuration file:
@@ -131,7 +131,7 @@ springdoc.pathsToMatch=/v1, /api/balance/**
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-webflux-ui</artifactId>
-      <version>1.2.34</version>
+      <version>1.3.0</version>
    </dependency>
 ```
 *   This step is optional: For custom path of the swagger documentation in HTML format, add a custom springdoc property, in your spring-boot configuration file:
@@ -148,7 +148,7 @@ The projects that use Pageable type should add this dependency together with the
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-data-rest</artifactId>
-      <version>1.2.34</version>
+      <version>1.3.0</version>
    </dependency>
 ```
 
@@ -159,7 +159,7 @@ This dependency helps ignoring @AuthenticationPrincipal in case its used on REST
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-security</artifactId>
-      <version>1.2.34</version>
+      <version>1.3.0</version>
    </dependency>
 ```
 
@@ -170,7 +170,7 @@ This dependency improves the support of kotlin types:
    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-kotlin</artifactId>
-      <version>1.2.34</version>
+      <version>1.3.0</version>
    </dependency>
 ```
 
@@ -253,7 +253,7 @@ For more custom configuration of springdoc-openapi-gradle-plugin ,you can consul
 
 ## [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
 ## [Demo Spring Boot 2 webflux with OpenAPI 3](https://springdoc-openapi-test-app3-terrific-rabbit.eu-de.mybluemix.net/swagger-ui.html).
-## [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
+## [Demo Spring Boot 1 webmvc with OpenAPI 3](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
 
 ![Branching](https://springdoc.github.io/springdoc-openapi-demos/images/pets.png)
 
