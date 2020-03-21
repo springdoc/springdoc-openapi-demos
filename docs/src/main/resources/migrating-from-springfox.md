@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Migrating from SpringFox
 
 + Remove springfox and swagger 2 dependencies. Add `springdoc-openapi-ui` dependency instead.
