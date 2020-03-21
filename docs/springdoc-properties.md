@@ -12,6 +12,15 @@ springdoc-openapi relies on standard [spring configuration properties](https://d
 
 ### springdoc-openapi-core properties
 
+###### Header 6
+
+| head1        | head two          | three |
+|:-------------|:------------------|:------|
+| ok           | good swedish fish | nice  |
+| out of stock | good and plenty   | nice  |
+| ok           | good `oreos`      | hmm   |
+| ok           | good `zoute` drop | yumm  |
+
 Parameter name | Default Value | Description
 --- | --- | :-------
 <a name="springdoc.api-docs.path"></a>`springdoc.api-docs.path` | `/v3/api-docs` | `String`, For custom path of the OpenAPI documentation in Json format.
