@@ -379,10 +379,14 @@ public OpenAPI customOpenAPI() {
 }
 ```
 ###  Can i use spring property with swagger annotations?
-- The support of spring property resolver is possible on all @Info properties
-- The support of spring property for description field in swagger-annotations is available on @Operation level
-- Its also possible to declare security urls: (openIdConnectUrl - authorizationUrl - refreshUrl - tokenUrl) 
-
+- The support of spring property resolver for `@Info`: `title` - `description` - `version` - `termsOfService`
+- The support of spring property resolver for `@Info.license`: `name` - `url`
+- The support of spring property resolver for `@Info.contact`: `name` - `email` - `url`
+- The support of spring property resolver for `@Operation`: `description` - `summary`
+- The support of spring property resolver for `@Parameter`: `description` - `name`
+- The support of spring property resolver for `@ApiResponse`: `description`
+- Its also possible to declare security urls for `@OAuthFlow`: `openIdConnectUrl` - `authorizationUrl` - `refreshUrl` - `tokenUrl` 
+- The support of spring property resolver for `@Schema`: `name` - `title` - `description` , by setting `springdoc.api-docs.resolve-schema-properties` to `true` 
 ### How can i disable springdoc-openapi cache?
 - By default, the OpenAPI description is calculated once, and then cached.
 - Sometimes the same swagger-ui is served behind internal and external proxies. some users want the server url, to be computed on each http request.
