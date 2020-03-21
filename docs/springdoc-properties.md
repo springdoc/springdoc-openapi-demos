@@ -14,12 +14,12 @@ springdoc-openapi relies on standard [spring configuration properties](https://d
 
 ###### Header 6
 
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
+| Parameter name                               | Default Value  | Description                                  |
+|:---------------------------------------------|:---------------|:---------------------------------------------|
+| springdoc.api-docs.path                      | `/v3/api-docs` | `String`, For custom path of the OpenAPI documentation in Json format.  |
+| springdoc.model-and-view-allowed             | `false`        | `Boolean`. To allow RestControllers with ModelAndView return to appear in the OpenAPI descritpion.  |
+| springdoc.api-docs.resolve-schema-properties |  `false`       | `Boolean`. To enable  property resolver on @Schema (name, title and description).   |
+
 
 Parameter name | Default Value | Description
 --- | --- | :-------
