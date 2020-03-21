@@ -182,7 +182,7 @@ The plugin works in conjunction with spring-boot-maven plugin.
 
 You can test it during the integration tests phase using the maven command:
 
-```properties
+```shell script
 mvn verify -Dspring.application.admin.enabled=true
 ```
 
@@ -211,7 +211,7 @@ In order to use this functionality, you need to add the plugin declaration on th
 <plugin>
  <groupId>org.springdoc</groupId>
  <artifactId>springdoc-openapi-maven-plugin</artifactId>
- <version>0.2</version>
+ <version>0.3</version>
  <executions>
   <execution>
    <id>integration-test</id>
@@ -242,7 +242,7 @@ When you add this plugin and its runtime dependency plugins to your build file, 
 - forkedSpringBootRun
 - generateOpenApiDocs
 
-```properties
+```shell script
 gradle clean generateOpenApiDocs
 ```
 
