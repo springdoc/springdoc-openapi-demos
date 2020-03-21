@@ -1,4 +1,8 @@
 ---
 ---
 
-@import "jekyll-theme-slate";
+@import 'jekyll-theme-architect';
+
+header h1 {
+  width: 580px;
+}

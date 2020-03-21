@@ -1,5 +1,7 @@
-title: Slate theme
-description: Slate is a theme for GitHub Pages.
+theme: jekyll-theme-architect
+title: springdoc-openapi
+description: Library for OpenAPI 3 with spring-boot
+google_analytics: UA-143834491-1
+url: http://springdoc.org
 show_downloads: true
-google_analytics:
-theme: jekyll-theme-slate
+markdown: kramdown
