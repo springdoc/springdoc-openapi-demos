@@ -1,7 +1,0 @@
-title: springdoc-openapi
-description: Library for OpenAPI 3 with spring-boot
-google_analytics: UA-143834491-1
-theme: jekyll-theme-cayman
-url: http://springdoc.org
-show_downloads: true
-markdown: kramdown
