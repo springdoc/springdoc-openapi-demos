@@ -52,7 +52,6 @@
 		<module>springdoc-openapi-test-app2</module>
 		<module>springdoc-openapi-test-app3</module>
 		<module>spring-boot-springdoc</module>
-		<module>docs</module>
 	</modules>
 
 	<properties>
