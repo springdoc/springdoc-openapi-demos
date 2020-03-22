@@ -513,4 +513,10 @@ public SpringDocConfigProperties springDocConfigProperties() {
 springdoc.swagger-ui.url=/api-docs.yaml
 ```
 
+### Is there a way to send authorization header through the @Parameter tag?
+- The OpenAPI 3 specification does not allow explicitly adding Authorization header.
+ `Note: Header parameters named Accept, Content-Type and Authorization are not allowed. To describe these headers`
+- For more information, you can read:
+  - [https://swagger.io/docs/specification/describing-parameters/#header-parameters](https://swagger.io/docs/specification/describing-parameters/#header-parameters).
+
 [back](./)
