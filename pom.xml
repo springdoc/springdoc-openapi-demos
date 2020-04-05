@@ -74,8 +74,8 @@
 		<jacoco-maven-plugin.version>0.8.3</jacoco-maven-plugin.version>
 		<resource.delimiter>@</resource.delimiter>
 		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
-		<spring-boot.version>2.2.5.RELEASE</spring-boot.version>
-		<springdoc.version>1.3.0</springdoc.version>
+		<spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+		<springdoc.version>1.3.1</springdoc.version>
 	</properties>
 
 	<dependencyManagement>
