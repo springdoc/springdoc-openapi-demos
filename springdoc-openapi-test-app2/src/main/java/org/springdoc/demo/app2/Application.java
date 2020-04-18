@@ -55,6 +55,13 @@ public class Application {
 	}
 
 	@Bean
+	public GroupedOpenApi actuatorApi() {
+		return GroupedOpenApi.builder().setGroup("Actuator")
+				.pathsToMatch("/actuator/**")
+				.build();
+	}
+
+	@Bean
 	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
 		return new OpenAPI()
 				.components(new Components().addSecuritySchemes("basicScheme",

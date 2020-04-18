@@ -29,3 +29,4 @@ springdoc:
     display-request-duration: true
     groups-order: DESC
   version: '@springdoc.version@'
+  show-actuator: true
