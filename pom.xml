@@ -75,7 +75,7 @@
 		<resource.delimiter>@</resource.delimiter>
 		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
 		<spring-boot.version>2.2.6.RELEASE</spring-boot.version>
-		<springdoc.version>1.3.2</springdoc.version>
+		<springdoc.version>1.3.3</springdoc.version>
 	</properties>
 
 	<dependencyManagement>
@@ -252,4 +252,12 @@
 		</profile>
 	</profiles>
 
+	 <repositories>
+       <repository>
+         <id>snapshots-repo</id>
+         <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+         <releases><enabled>false</enabled></releases>
+         <snapshots><enabled>true</enabled></snapshots>
+       </repository>
+     </repositories>
 </project>
