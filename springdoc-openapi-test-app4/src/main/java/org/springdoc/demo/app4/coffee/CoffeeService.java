@@ -1,14 +1,14 @@
 package org.springdoc.demo.app4.coffee;
 
-import org.springframework.stereotype.Service;
+import java.time.Duration;
+import java.time.Instant;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.time.Duration;
-import java.time.Instant;
+import org.springframework.stereotype.Service;
 
 @Service
 public class CoffeeService {

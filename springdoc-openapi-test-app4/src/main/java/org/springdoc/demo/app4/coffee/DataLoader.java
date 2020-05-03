@@ -1,9 +1,10 @@
 package org.springdoc.demo.app4.coffee;
 
-import org.springframework.stereotype.Component;
+import javax.annotation.PostConstruct;
+
 import reactor.core.publisher.Flux;
 
-import javax.annotation.PostConstruct;
+import org.springframework.stereotype.Component;
 
 @Component
 public class DataLoader {
