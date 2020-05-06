@@ -30,3 +30,8 @@ springdoc:
     groups-order: DESC
   version: '@springdoc.version@'
   show-actuator: true
+  group-configs:
+  - group: stores
+    paths-to-match: /store/**
+  - group: users
+    packages-to-scan: org.springdoc.demo.app2

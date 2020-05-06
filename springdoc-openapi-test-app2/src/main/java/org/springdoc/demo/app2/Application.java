@@ -39,20 +39,6 @@ public class Application {
 		SpringApplication.run(Application.class);
 	}
 
-	@Bean
-	public GroupedOpenApi userOpenApi() {
-		String[] paths = { "/user/**" };
-		String[] packagedToMatch = { "org.springdoc.demo.app2" };
-		return GroupedOpenApi.builder().setGroup("users").pathsToMatch(paths).packagesToScan(packagedToMatch)
-				.build();
-	}
-
-	@Bean
-	public GroupedOpenApi storeOpenApi() {
-		String[] paths = { "/store/**" };
-		return GroupedOpenApi.builder().setGroup("stores").pathsToMatch(paths)
-				.build();
-	}
 
 	@Bean
 	public GroupedOpenApi actuatorApi() {
