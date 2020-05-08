@@ -1,33 +1,33 @@
 ---
 applications:
-  - name: springdoc-openapi-test-app1
+  - name: springdoc-openapi-spring-boot-1
     random-route: true
     memory: 400m
-    path: springdoc-openapi-test-app1-cf.jar
+    path: springdoc-openapi-spring-boot-1-cf.jar
     env:
       JAVA_OPTS: '-XX:MaxMetaspaceSize=80780K -Xss512k -Xmx200M -XX:ReservedCodeCacheSize=16M -XX:MaxDirectMemorySize=16M'
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 1.8.0_212 } }'
     buildpack: java_buildpack
-  - name: springdoc-openapi-test-app2
+  - name: springdoc-openapi-spring-boot-2-webmvc
     random-route: true
     memory: 400m
-    path: springdoc-openapi-test-app2-cf.jar
+    path: springdoc-openapi-spring-boot-2-webmvc-cf.jar
     env:
       JAVA_OPTS: '-XX:MaxMetaspaceSize=80780K -Xss512k -Xmx200M -XX:ReservedCodeCacheSize=16M -XX:MaxDirectMemorySize=16M'
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 1.8.0_212 } }'
     buildpack: java_buildpack
-  - name: springdoc-openapi-test-app3
+  - name: springdoc-openapi-spring-boot-2-webflux
     random-route: true
     memory: 400m
-    path: springdoc-openapi-test-app3-cf.jar
+    path: springdoc-openapi-spring-boot-2-webflux-cf.jar
     env:
       JAVA_OPTS: '-XX:MaxMetaspaceSize=80780K -Xss512k -Xmx200M -XX:ReservedCodeCacheSize=16M -XX:MaxDirectMemorySize=16M'
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 1.8.0_212 } }'
     buildpack: java_buildpack
-  - name: springdoc-openapi-test-app4
+  - name: springdoc-openapi-spring-boot-2-webflux-functional
     random-route: true
     memory: 400m
-    path: springdoc-openapi-test-app4-cf.jar
+    path: springdoc-openapi-spring-boot-2-webflux-functional-cf.jar
     env:
       JAVA_OPTS: '-XX:MaxMetaspaceSize=80780K -Xss512k -Xmx200M -XX:ReservedCodeCacheSize=16M -XX:MaxDirectMemorySize=16M'
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 1.8.0_212 } }'

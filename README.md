@@ -3,9 +3,9 @@
 
 # Spring-boot with OpenAPI Demo applications.
 
-## [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-test-app2-silly-numbat.eu-de.mybluemix.net/).
-## [Demo Spring Boot 2 webflux with OpenAPI 3](https://springdoc-openapi-test-app3-terrific-rabbit.eu-de.mybluemix.net/swagger-ui.html).
-## [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-test-app1-courteous-puku.eu-de.mybluemix.net/).
+## [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-spring-boot-2-webmvc-silly-numbat.eu-de.mybluemix.net/).
+## [Demo Spring Boot 2 webflux with OpenAPI 3](https://springdoc-openapi-spring-boot-2-webflux-terrific-rabbit.eu-de.mybluemix.net/swagger-ui.html).
+## [Demo Spring Boot 2 webmvc with OpenAPI 3](https://springdoc-openapi-spring-boot-1-courteous-puku.eu-de.mybluemix.net/).
 
 
 ![Branching](https://springdoc.github.io/springdoc-openapi-demos/assets/images/pets.png)

@@ -1,0 +1,10 @@
+org\springdoc\demo\resource\model\Foo.class
+org\springdoc\demo\resource\service\IFooService.class
+org\springdoc\demo\resource\web\controller\FooController.class
+org\springdoc\demo\resource\service\impl\FooServiceImpl.class
+org\springdoc\demo\resource\config\SecurityConfig.class
+org\springdoc\demo\resource\repository\IFooRepository.class
+org\springdoc\demo\resource\ResourceServerApp.class
+org\springdoc\demo\resource\web\controller\UserInfoController.class
+org\springdoc\demo\resource\web\dto\FooDTO.class
+org\springdoc\demo\resource\config\OpenApiConfig.class

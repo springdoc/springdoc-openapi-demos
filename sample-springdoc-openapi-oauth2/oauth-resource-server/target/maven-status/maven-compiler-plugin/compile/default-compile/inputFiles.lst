@@ -1,0 +1,10 @@
+C:\partage\workspaces\workspace-ddd\spring-doc-review\springdoc-openapi-demos\sample-springdoc-openapi-oauth2\oauth-resource-server\src\main\java\org\springdoc\demo\resource\repository\IFooRepository.java
+C:\partage\workspaces\workspace-ddd\spring-doc-review\springdoc-openapi-demos\sample-springdoc-openapi-oauth2\oauth-resource-server\src\main\java\org\springdoc\demo\resource\config\SecurityConfig.java
+C:\partage\workspaces\workspace-ddd\spring-doc-review\springdoc-openapi-demos\sample-springdoc-openapi-oauth2\oauth-resource-server\src\main\java\org\springdoc\demo\resource\ResourceServerApp.java
+C:\partage\workspaces\workspace-ddd\spring-doc-review\springdoc-openapi-demos\sample-springdoc-openapi-oauth2\oauth-resource-server\src\main\java\org\springdoc\demo\resource\web\dto\FooDTO.java
+C:\partage\workspaces\workspace-ddd\spring-doc-review\springdoc-openapi-demos\sample-springdoc-openapi-oauth2\oauth-resource-server\src\main\java\org\springdoc\demo\resource\web\controller\FooController.java
+C:\partage\workspaces\workspace-ddd\spring-doc-review\springdoc-openapi-demos\sample-springdoc-openapi-oauth2\oauth-resource-server\src\main\java\org\springdoc\demo\resource\service\impl\FooServiceImpl.java
+C:\partage\workspaces\workspace-ddd\spring-doc-review\springdoc-openapi-demos\sample-springdoc-openapi-oauth2\oauth-resource-server\src\main\java\org\springdoc\demo\resource\service\IFooService.java
+C:\partage\workspaces\workspace-ddd\spring-doc-review\springdoc-openapi-demos\sample-springdoc-openapi-oauth2\oauth-resource-server\src\main\java\org\springdoc\demo\resource\config\OpenApiConfig.java
+C:\partage\workspaces\workspace-ddd\spring-doc-review\springdoc-openapi-demos\sample-springdoc-openapi-oauth2\oauth-resource-server\src\main\java\org\springdoc\demo\resource\model\Foo.java
+C:\partage\workspaces\workspace-ddd\spring-doc-review\springdoc-openapi-demos\sample-springdoc-openapi-oauth2\oauth-resource-server\src\main\java\org\springdoc\demo\resource\web\controller\UserInfoController.java

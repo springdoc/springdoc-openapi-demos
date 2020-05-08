@@ -1,0 +1,21 @@
+server: 
+  port: 8081
+  servlet: 
+    context-path: /resource-server
+
+####### resource server configuration properties
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8083/auth/realms/springdoc
+          jwk-set-uri: http://localhost:8083/auth/realms/springdoc/protocol/openid-connect/certs
+springdoc:
+  swagger-ui:
+    oauth:
+      clientId: newClient
+      clientSecret: newClientSecret
+  oAuthFlow:
+    authorizationUrl: http://localhost:8083/auth/realms/springdoc/protocol/openid-connect/auth
+    tokenUrl: http://localhost:8083/auth/realms/springdoc/protocol/openid-connect/token

@@ -1,0 +1,4 @@
+org\springdoc\demo\resource\ImplicitFlowLiveTest.class
+org\springdoc\demo\resource\PasswordFlowLiveTest.class
+org\springdoc\demo\resource\AuthorizationCodeLiveTest.class
+org\springdoc\demo\resource\ContextIntegrationTest.class

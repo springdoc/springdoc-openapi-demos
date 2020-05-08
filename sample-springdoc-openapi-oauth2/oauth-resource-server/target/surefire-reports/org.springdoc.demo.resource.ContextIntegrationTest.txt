@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.springdoc.demo.resource.ContextIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.35 s - in org.springdoc.demo.resource.ContextIntegrationTest

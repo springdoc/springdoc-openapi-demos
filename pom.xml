@@ -46,11 +46,12 @@
 	</distributionManagement>
 
 	<modules>
-		<module>springdoc-openapi-test-app1</module>
-		<module>springdoc-openapi-test-app2</module>
-		<module>springdoc-openapi-test-app3</module>
-		<module>spring-boot-springdoc</module>
-		<module>springdoc-openapi-test-app4</module>
+		<module>springdoc-openapi-spring-boot-1</module>
+		<module>springdoc-openapi-spring-boot-2-webmvc</module>
+		<module>springdoc-openapi-spring-boot-2-webflux</module>
+		<module>springdoc-openapi-spring-boot-2-webflux-functional</module>
+		<module>sample-springdoc-openapi-book-service</module>
+		<module>sample-springdoc-openapi-oauth2</module>
 	</modules>
 
 	<properties>
