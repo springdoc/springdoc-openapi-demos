@@ -44,6 +44,7 @@ public class Application {
 	public GroupedOpenApi actuatorApi() {
 		return GroupedOpenApi.builder().setGroup("Actuator")
 				.pathsToMatch("/actuator/**")
+				.pathsToExclude("/actuator/health/*")
 				.build();
 	}
 

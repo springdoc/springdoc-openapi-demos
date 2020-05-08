@@ -12,6 +12,10 @@
 
 	<artifactId>sample-springdoc-openapi-oauth2</artifactId>
 
+	<properties>
+		<spring-boot.version>2.2.2.RELEASE</spring-boot.version>
+	</properties>
+
 	<modules>
 		<module>oauth-authorization-server</module>
 		<module>oauth-resource-server</module>
