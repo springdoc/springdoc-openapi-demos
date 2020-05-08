@@ -19,7 +19,7 @@ public class PasswordFlowLiveTest {
 	private final static String RESOURCE_SERVER = "http://localhost:8081/resource-server";
 	private final static String CLIENT_ID = "newClient";
 	private final static String CLIENT_SECRET = "newClientSecret";
-	private final static String USERNAME = "john@test.com";
+	private final static String USERNAME = "josh@test.com";
 	private final static String PASSWORD = "123";
 
 	@Test

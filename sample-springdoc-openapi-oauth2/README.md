@@ -7,10 +7,8 @@
    1. Client Id: newClient
    2. Client secret: newClientSecret
    3. Redirect Uri: http://localhost:8089/
-2. There are two OAuth Angular Front-end Apps:
-   1. `oauth-ui-authorization-code-angular` - A simple Angular App
-   2. `oauth-ui-authorization-code-angular-zuul` - An Angular App hosted as a Boot Application with embedded Zuul proxy
 3. `oauth-resource-server` is a Spring Boot based RESTFul API, acting as a backend Application
+   swagger-ui: http://localhost:8081/resource-server/swagger-ui.html
 4. There are two users registered in the Authorization Server:
-   1. john@test.com / 123
-   2. mike@other.com / pass
+   1. josh@test.com / 123
+   2. dave@test.com / pass

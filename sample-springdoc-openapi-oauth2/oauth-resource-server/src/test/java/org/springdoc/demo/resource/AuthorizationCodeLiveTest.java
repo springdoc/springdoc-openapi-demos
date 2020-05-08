@@ -24,7 +24,7 @@ public class AuthorizationCodeLiveTest {
 
     @Test
     public void givenUser_whenUseFooClient_thenOkForFooResourceOnly() {
-        final String accessToken = obtainAccessTokenWithAuthorizationCode("john@test.com", "123");
+        final String accessToken = obtainAccessTokenWithAuthorizationCode("josh@test.com", "123");
 
         final Response fooResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get(RESOURCE_SERVER + "/api/foos/1");
         assertEquals(200, fooResponse.getStatusCode());
