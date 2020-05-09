@@ -1,8 +1,0 @@
-org.springdoc.demo.resource
-org.springdoc.demo.resource.config
-org.springdoc.demo.resource.model
-org.springdoc.demo.resource.repository
-org.springdoc.demo.resource.service
-org.springdoc.demo.resource.service.impl
-org.springdoc.demo.resource.web.controller
-org.springdoc.demo.resource.web.dto

@@ -1,7 +1,0 @@
-org\springdoc\demo\auth\AuthorizationServerApp.class
-org\springdoc\demo\auth\config\EmbeddedKeycloakConfig.class
-org\springdoc\demo\auth\config\KeycloakServerProperties.class
-org\springdoc\demo\auth\config\EmbeddedKeycloakApplication.class
-org\springdoc\demo\auth\config\EmbeddedKeycloakConfig$1.class
-org\springdoc\demo\auth\config\KeycloakServerProperties$AdminUser.class
-META-INF\spring-configuration-metadata.json
