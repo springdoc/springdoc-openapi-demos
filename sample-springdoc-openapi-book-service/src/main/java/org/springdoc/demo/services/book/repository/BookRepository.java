@@ -16,14 +16,14 @@
  *
  */
 
-package com.baeldung.springdoc.repository;
+package org.springdoc.demo.services.book.repository;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import com.baeldung.springdoc.model.Book;
+import org.springdoc.demo.services.book.model.Book;
 
 import org.springframework.stereotype.Repository;
 

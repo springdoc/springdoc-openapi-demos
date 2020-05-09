@@ -16,16 +16,16 @@
  *
  */
 
-package com.baeldung.springdoc.controller;
+package org.springdoc.demo.services.book.controller;
 
 import java.util.Collection;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.baeldung.springdoc.exception.BookNotFoundException;
-import com.baeldung.springdoc.model.Book;
-import com.baeldung.springdoc.repository.BookRepository;
+import org.springdoc.demo.services.book.exception.BookNotFoundException;
+import org.springdoc.demo.services.book.model.Book;
+import org.springdoc.demo.services.book.repository.BookRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

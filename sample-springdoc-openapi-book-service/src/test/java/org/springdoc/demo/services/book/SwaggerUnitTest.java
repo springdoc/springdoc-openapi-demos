@@ -16,7 +16,7 @@
  *
  */
 
-package com.baeldung.springdoc;
+package org.springdoc.demo.services.book;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

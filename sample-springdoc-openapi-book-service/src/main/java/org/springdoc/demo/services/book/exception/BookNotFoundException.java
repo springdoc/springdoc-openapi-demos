@@ -16,7 +16,7 @@
  *
  */
 
-package com.baeldung.springdoc.exception;
+package org.springdoc.demo.services.book.exception;
 
 @SuppressWarnings("serial")
 public class BookNotFoundException extends RuntimeException {

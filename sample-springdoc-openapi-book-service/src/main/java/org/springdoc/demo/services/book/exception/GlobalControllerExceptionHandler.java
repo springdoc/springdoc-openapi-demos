@@ -16,7 +16,7 @@
  *
  */
 
-package com.baeldung.springdoc.exception;
+package org.springdoc.demo.services.book.exception;
 
 import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.http.HttpStatus;

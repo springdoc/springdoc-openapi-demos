@@ -16,7 +16,7 @@
  *
  */
 
-package com.baeldung.springdoc.model;
+package org.springdoc.demo.services.book.model;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

@@ -16,7 +16,7 @@
  *
  */
 
-package com.baeldung.springdoc.controller;
+package org.springdoc.demo.services.book.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
