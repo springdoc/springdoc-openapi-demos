@@ -8,10 +8,10 @@ import org.keycloak.services.resources.KeycloakApplication;
 import org.keycloak.util.JsonSerialization;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springdoc.demo.auth.config.KeycloakServerProperties.AdminUser;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-
-import org.springdoc.demo.auth.config.KeycloakServerProperties.AdminUser;
 
 public class EmbeddedKeycloakApplication extends KeycloakApplication {
 

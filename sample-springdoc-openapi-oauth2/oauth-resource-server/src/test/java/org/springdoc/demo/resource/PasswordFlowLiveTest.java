@@ -1,15 +1,14 @@
 package org.springdoc.demo.resource;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Test;
-
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 //Before running this live test make sure both authorization server and first resource server are running   
 

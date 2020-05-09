@@ -2,11 +2,11 @@ package org.springdoc.demo.resource.service.impl;
 
 import java.util.Optional;
 
-import org.springframework.stereotype.Service;
-
 import org.springdoc.demo.resource.model.Foo;
 import org.springdoc.demo.resource.repository.IFooRepository;
 import org.springdoc.demo.resource.service.IFooService;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class FooServiceImpl implements IFooService {
