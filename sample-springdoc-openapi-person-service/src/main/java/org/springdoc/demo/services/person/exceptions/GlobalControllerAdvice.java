@@ -10,6 +10,7 @@ import javax.validation.ConstraintViolationException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springdoc.demo.services.person.controller.PersonController;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,8 +26,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 
-@ControllerAdvice
-public class GlobalControllerAdvice {
+@ControllerAdvice(assignableTypes = PersonController.class)
+public class GlobalControllerAdvice
+{
 	/**
 	 * Note use base class if you wish to leverage its handling.
 	 * Some code will need changing.
@@ -114,16 +116,7 @@ public class GlobalControllerAdvice {
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	public ResponseEntity<ErrorMessage> handleHttpMessageNotReadable(HttpMessageNotReadableException ex) {
-		Throwable mostSpecificCause = ex.getMostSpecificCause();
-		ErrorMessage errorMessage;
-		if (mostSpecificCause != null) {
-			String exceptionName = mostSpecificCause.getClass().getName();
-			String message = mostSpecificCause.getMessage();
-			errorMessage = new ErrorMessage(exceptionName, message);
-		}
-		else {
-			errorMessage = new ErrorMessage(ex.getMessage());
-		}
+		ErrorMessage errorMessage = new ErrorMessage(ex.getMessage());
 		return new ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST);
 	}
 
