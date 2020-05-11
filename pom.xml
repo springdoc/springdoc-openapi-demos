@@ -55,6 +55,7 @@
 		<module>sample-springdoc-openapi-oauth2</module>
 		<module>sample-springdoc-openapi-microservices</module>
 		<module>sample-springdoc-openapi-person-service</module>
+		<module>sample-springdoc-openapi-hateoas-service</module>
 	</modules>
 
 	<properties>
@@ -124,6 +125,12 @@
 			<dependency>
 				<groupId>org.springdoc</groupId>
 				<artifactId>springdoc-openapi-security</artifactId>
+				<version>${springdoc.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springdoc</groupId>
+				<artifactId>springdoc-openapi-data-rest</artifactId>
 				<version>${springdoc.version}</version>
 			</dependency>
 
