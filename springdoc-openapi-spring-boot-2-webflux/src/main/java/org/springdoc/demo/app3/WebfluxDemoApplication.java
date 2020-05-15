@@ -48,6 +48,7 @@ public class WebfluxDemoApplication {
 						.license(new License().name("Apache 2.0").url("http://springdoc.org")));
 	}
 
+
 	@Bean
 	public GroupedOpenApi storeOpenApi() {
 		String[] paths = { "/tweets/**" };

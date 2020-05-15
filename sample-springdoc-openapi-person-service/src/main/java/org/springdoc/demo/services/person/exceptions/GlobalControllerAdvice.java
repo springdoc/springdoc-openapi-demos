@@ -27,8 +27,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 @ControllerAdvice(assignableTypes = PersonController.class)
-public class GlobalControllerAdvice
-{
+public class GlobalControllerAdvice {
 	/**
 	 * Note use base class if you wish to leverage its handling.
 	 * Some code will need changing.
