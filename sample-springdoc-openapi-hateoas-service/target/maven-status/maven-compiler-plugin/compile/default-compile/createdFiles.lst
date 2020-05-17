@@ -1,0 +1,5 @@
+org\springdoc\demo\services\hateoas\EmployeeController.class
+org\springdoc\demo\services\hateoas\SpringdocApplication.class
+org\springdoc\demo\services\hateoas\EmployeeRepository.class
+org\springdoc\demo\services\hateoas\Employee.class
+org\springdoc\demo\services\hateoas\DatabaseLoader.class

@@ -20,7 +20,7 @@
 	<developers>
 		<developer>
 			<name>Badr NASS</name>
-			<email>springdoc99@gmail.com</email>
+			<email>support@springdoc.org</email>
 			<organization>BADR</organization>
 			<organizationUrl>https://springdoc.org/</organizationUrl>
 		</developer>
@@ -78,9 +78,9 @@
 		<jacoco-maven-plugin.version>0.8.3</jacoco-maven-plugin.version>
 		<resource.delimiter>@</resource.delimiter>
 		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
-		<spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+		<spring-boot.version>2.3.0.RELEASE</spring-boot.version>
 		<springcloud.version>Hoxton.SR4</springcloud.version>
-		<springdoc.version>1.3.9</springdoc.version>
+		<springdoc.version>1.3.10-SNAPSHOT</springdoc.version>
 	</properties>
 
 	<dependencyManagement>
