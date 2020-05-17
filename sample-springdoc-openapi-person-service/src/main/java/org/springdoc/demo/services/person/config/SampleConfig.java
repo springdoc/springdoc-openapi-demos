@@ -21,7 +21,7 @@ public class SampleConfig {
 	@PostConstruct
 	public void initConfig() {
 		getConfig().replaceWithClass(MonetaryAmount.class,
-				org.springdoc.core.converters.MonetaryAmount.class);
+				org.springdoc.core.converters.models.MonetaryAmount.class);
 	}
 
 	@Bean

@@ -44,13 +44,7 @@
 
 		<dependency>
 			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-data-rest</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.atteo</groupId>
-					<artifactId>evo-inflector</artifactId>
-				</exclusion>
-			</exclusions>
+			<artifactId>springdoc-openapi-hateoas</artifactId>
 		</dependency>
 
 		<dependency>
