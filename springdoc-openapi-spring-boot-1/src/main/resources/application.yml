@@ -15,3 +15,5 @@ springdoc:
     path: /swagger-ui.html
     displayRequestDuration: true
     tagsSorter: alpha
+  cache:
+    disabled: true

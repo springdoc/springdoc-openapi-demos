@@ -56,8 +56,7 @@ public interface InventoryApi {
 			@Parameter(description = "Inventory item to do") @Valid @RequestBody InventoryItem body);
 
 	@Operation(description = "searches inventory", operationId = "searchInventory", summary = "By passing in the appropriate options, you can search for available inventory in the system ", tags = {
-			"developers", }, parameters = {
-			@Parameter(description = "pass an optional search string for looking up inventory", name = "searchString") })
+			"developers", })
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "search results matching criteria"),
 			@ApiResponse(responseCode = "400", description = "bad input parameter") })
 	@GetMapping(value = "/inventory", produces = { "application/json" })

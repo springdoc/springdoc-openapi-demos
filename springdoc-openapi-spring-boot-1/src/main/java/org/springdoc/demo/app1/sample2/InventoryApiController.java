@@ -57,10 +57,9 @@ public class InventoryApiController implements InventoryApi {
 		return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
 	}
 
-	public ResponseEntity<List<InventoryItem>> searchInventory(
-			@Parameter(description = "pass an optional search string for looking up inventory") @Valid @RequestParam(value = "searchString", required = false) String searchString,
-			@Min(0) @Parameter(description = "number of records to skip for pagination") @Valid @RequestParam(value = "skip", required = true) Integer skip,
-			@Min(0) @Max(50) @Parameter(description = "maximum number of records to return") @Valid @RequestParam(value = "limit", required = true) Integer limit) {
+	public ResponseEntity<List<InventoryItem>> searchInventory( String searchString,
+			@Min(0) @Valid @RequestParam(value = "skip", required = true) Integer skip,
+			@Min(0) @Max(50) @Valid @RequestParam(value = "limit", required = true) Integer limit) {
 		@SuppressWarnings("unused")
 		String accept = request.getHeader("Accept");
 		return new ResponseEntity<List<InventoryItem>>(HttpStatus.NOT_IMPLEMENTED);
