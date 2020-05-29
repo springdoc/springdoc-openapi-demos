@@ -42,7 +42,7 @@ public class Application {
 
 	@Bean
 	public GroupedOpenApi actuatorApi() {
-		return GroupedOpenApi.builder().setGroup("Actuator")
+		return GroupedOpenApi.builder().group("Actuator")
 				.pathsToMatch("/actuator/**")
 				.pathsToExclude("/actuator/health/*")
 				.build();

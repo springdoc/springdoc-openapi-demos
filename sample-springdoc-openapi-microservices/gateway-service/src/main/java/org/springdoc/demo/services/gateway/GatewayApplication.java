@@ -32,7 +32,7 @@ public class GatewayApplication {
 		definitions.stream().filter(routeDefinition -> routeDefinition.getId().matches(".*-service")).forEach(routeDefinition -> {
 			String name = routeDefinition.getId().replaceAll("-service", "");
 			swaggerUiConfigProperties.addGroup(name);
-			GroupedOpenApi.builder().pathsToMatch("/" + name + "/**").setGroup(name).build();
+			GroupedOpenApi.builder().pathsToMatch("/" + name + "/**").group(name).build();
 		});
 		return groups;
 	}

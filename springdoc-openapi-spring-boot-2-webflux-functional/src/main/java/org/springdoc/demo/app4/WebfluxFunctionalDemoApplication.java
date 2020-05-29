@@ -51,21 +51,21 @@ public class WebfluxFunctionalDemoApplication {
 	@Bean
 	public GroupedOpenApi employeesOpenApi() {
 		String[] paths = { "/employees/**" };
-		return GroupedOpenApi.builder().setGroup("employees").pathsToMatch(paths)
+		return GroupedOpenApi.builder().group("employees").pathsToMatch(paths)
 				.build();
 	}
 
 	@Bean
 	public GroupedOpenApi userOpenApi() {
 		String[] paths = { "/api/user/**" };
-		return GroupedOpenApi.builder().setGroup("users").pathsToMatch(paths)
+		return GroupedOpenApi.builder().group("users").pathsToMatch(paths)
 				.build();
 	}
 
 	@Bean
 	public GroupedOpenApi coffeeOpenApi() {
 		String[] paths = { "/coffees/**" };
-		return GroupedOpenApi.builder().setGroup("coffees").pathsToMatch(paths)
+		return GroupedOpenApi.builder().group("coffees").pathsToMatch(paths)
 				.build();
 	}
 
