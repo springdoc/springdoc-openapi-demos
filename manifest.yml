@@ -24,7 +24,7 @@ applications:
       JAVA_OPTS: '-XX:MaxMetaspaceSize=80780K -Xss512k -Xmx200M -XX:ReservedCodeCacheSize=16M -XX:MaxDirectMemorySize=16M'
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 1.8.0_212 } }'
     buildpack: java_buildpack
-  - name: springdoc-openapi-spring-boot-2-webflux-functional
+  - name: springdoc-openapi-spring-boot-2-webflux-func
     random-route: true
     memory: 400m
     path: springdoc-openapi-spring-boot-2-webflux-functional-cf.jar
