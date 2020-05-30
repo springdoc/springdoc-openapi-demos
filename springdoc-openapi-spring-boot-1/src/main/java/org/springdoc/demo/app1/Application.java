@@ -24,6 +24,7 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.tags.Tag;
+import org.springdoc.core.SpringDocUtils;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -32,15 +33,13 @@ import org.springframework.boot.autoconfigure.web.BasicErrorController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-import static org.springdoc.api.AbstractOpenApiResource.addHiddenRestControllers;
-
 @SpringBootApplication
 @ComponentScan(basePackages = { "org.springdoc.demo.app1.sample1", "org.springdoc.demo.app1.sample2" })
 //@OpenAPIDefinition(info = @Info(title = "the title", version = "v1", description = "My API", license = @License(name = "Apache 2.0", url = "http://foo.bar"), contact = @Contact(url = "http://gigantic-server.com", name = "Fred", email = "Fred@gigagantic-server.com")))
 public class Application {
 
 	static {
-		addHiddenRestControllers(BasicErrorController.class);
+		SpringDocUtils.getConfig().addHiddenRestControllers(BasicErrorController.class);
 	}
 
 	public static void main(String[] args) {
