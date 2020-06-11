@@ -1,21 +1,19 @@
+dist: trusty
 language: java
+install: true
+
 jdk:
-  - openjdk8
+  - oraclejdk8
+
+script:
+  - ./gradlew build
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+  - rm -f  $HOME/.gradle/caches/*/fileHashes/fileHashes.bin
+  - rm -f  $HOME/.gradle/caches/*/fileHashes/fileHashes.lock
 cache:
   directories:
-    - $HOME/.m2
-    - $HOME/.sonar/cache
-
-addons:
-  sonarcloud:
-    organization: "springdoc-openapi"
-    token:
-      secure: "SO4OxQR3viymT0hLIj3i2rDLXQis0ym1UZGddVdZrHiHUV5Asjuj/dylrxzHvtVllZdWrvWBZwWcFkOrYHU2QNZkpbBLNJndsj/rsPAAcD5QZqiasEtEOH7ZYH9zYlMjL7xDa+K4A34PLjxGgE64bes6nQdPbo1aNqGoL9CJastHU1j5PDdVxjyoE1YKcIoxdemhzfitjzi5DDPv4MkxrbN8ywxxlY4/awSasvadZhgR9BpXlybJKcUld+NQ/rzW+IsjFUcoDi3VrUlAhkrHDhksEo+eL+h6tbYihEEfYhrnsGWgTkNjDuzfKzGLBwp+1OTn/fWPZwZI2JJtL373o5mYe39f0S55b1ZImamsRjs5nK2Q0bkL+zKPFmW5CUUTHn0uN11FN9ZXIof/5yxADRULrG11+qrmXnNbI5dh1e/faTbey/jAHauatHSpFYxbpNknp/50tq/laN5qWbeidOskTvtvgpdDLcqkD3ZTMGNyEB31k/m+MyKQeL8d0GDnvS3CYbDoVDGZRpCDz1Nt0Dl2Ww7FszHds31TJ5li9P9Sy7iBqtGbVVyXgzTUVUmbjHKRRW7d9s8KzvvRuToN0GPqLDcYOj0Xw5wii17wFXvTTDFHwPfKw/VcmyAMklLQK1hMHfSP6s0LlDliCdy9XmmvIE+7OZsL66YoS2uyMxA="
-script:
-  - mvn clean package --settings settings.xml
-
-deploy:
-  provider: script
-  script: mvn  deploy -DskipTests sonar:sonar  -Dsonar.projectKey=springdoc_springdoc-openapi-demos --settings settings.xml
-  on:
-    branch: master
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/

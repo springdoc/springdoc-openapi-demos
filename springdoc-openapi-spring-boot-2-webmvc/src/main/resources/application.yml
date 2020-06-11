@@ -28,7 +28,6 @@ springdoc:
     path: /swagger-ui.html
     display-request-duration: true
     groups-order: DESC
-  version: '@springdoc.version@'
   show-actuator: true
   group-configs:
   - group: stores

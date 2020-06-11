@@ -7,7 +7,6 @@ server:
   http2:
     enabled: true
 springdoc:
-  version: '@springdoc.version@'
   api-docs:
     enabled: true
     path: /v3/api-docs
@@ -15,5 +14,6 @@ springdoc:
     path: /swagger-ui.html
     displayRequestDuration: true
     tagsSorter: alpha
+    display-query-params-without-oauth2: true
   cache:
     disabled: true

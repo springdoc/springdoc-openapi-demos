@@ -1,0 +1,28 @@
+ext {
+	keycloakVersion = '8.0.0'
+}
+
+configurations {
+	all {
+		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+	}
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.jboss.resteasy:resteasy-jaxb-provider:3.9.0.Final'
+    implementation 'org.jboss.resteasy:resteasy-jackson2-provider:3.9.0.Final'
+    implementation 'org.infinispan:infinispan-core:9.4.16.Final'
+    implementation "org.keycloak:keycloak-model-infinispan:${keycloakVersion}"
+    implementation "org.keycloak:keycloak-services:${keycloakVersion}"
+    implementation 'org.jboss.modules:jboss-modules:1.9.2.Final'
+    implementation "org.keycloak:keycloak-model-jpa:${keycloakVersion}"
+    implementation "org.keycloak:keycloak-js-adapter:${keycloakVersion}"
+    implementation "org.keycloak:keycloak-themes:${keycloakVersion}"
+    implementation "org.keycloak:keycloak-saml-core:${keycloakVersion}"
+    implementation "org.keycloak:keycloak-authz-policy-common:${keycloakVersion}"
+    implementation "org.keycloak:keycloak-wildfly-extensions:${keycloakVersion}"
+    implementation 'org.freemarker:freemarker:2.3.29'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+}

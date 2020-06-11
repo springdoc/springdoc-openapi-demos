@@ -10,6 +10,7 @@ import org.javamoney.moneta.Money;
 import org.zalando.jackson.datatype.money.MoneyModule;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,13 +26,12 @@ public class SampleConfig {
 	}
 
 	@Bean
-	public OpenAPI customOpenAPI(@Value("${application-description}") String appDesciption,
-			@Value("${application-version}") String appVersion) {
+	public OpenAPI customOpenAPI(BuildProperties buildProperties) {
 		return new OpenAPI()
 				.info(new Info()
 						.title("sample application API")
-						.version(appVersion)
-						.description(appDesciption)
+						.version(buildProperties.getVersion())
+						.description(buildProperties.getName())
 						.termsOfService("http://swagger.io/terms/")
 						.license(new License().name("Apache 2.0").url("http://springdoc.org")));
 	}
