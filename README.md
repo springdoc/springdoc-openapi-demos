@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/springdoc/springdoc-openapi-demos.svg?branch=master)](https://travis-ci.org/springdoc/springdoc-openapi-demos)
-[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=springdoc_springdoc-openapi-demos&metric=alert_status)](https://sonarcloud.io/dashboard?id=springdoc_springdoc-openapi-demos)
 
 # Spring-boot with OpenAPI Demo applications.
 
