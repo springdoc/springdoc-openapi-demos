@@ -31,7 +31,7 @@ repositories {
 	mavenCentral()
 }
 
-jar {
+bootJar {
 	archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
 }
 
