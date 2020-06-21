@@ -31,6 +31,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Profile;
 
 @SpringBootApplication
 @ComponentScan(basePackages = { "org.springdoc.demo.app2" })
@@ -42,6 +43,7 @@ public class Application {
 
 
 	@Bean
+	@Profile("!prod")
 	public GroupedOpenApi actuatorApi() {
 		return GroupedOpenApi.builder().group("Actuator")
 				.pathsToMatch("/actuator/**")

@@ -4,9 +4,15 @@ plugins {
 	id 'java'
 }
 
+ext {
+	springBootVersion = '2.2.2.RELEASE'
+	springDocVersion = '1.4.2-SNAPSHOT'
+}
+
 allprojects {
 	group = 'org.springdoc'
-	version = '3.1.3-SNAPSHOT'
+	version = springDocVersion
+	sourceCompatibility = '1.8'
 }
 
 repositories {
@@ -14,10 +20,6 @@ repositories {
 	mavenCentral()
 }
 
-ext {
-	springBootVersion = '2.2.2.RELEASE'
-	springDocVersion = '1.4.1'
-}
 
 subprojects {
 
