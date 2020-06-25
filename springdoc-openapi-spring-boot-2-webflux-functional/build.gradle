@@ -5,7 +5,7 @@ plugins {
 }
 
 ext {
-	springDocVersion = '1.4.2-SNAPSHOT'
+	springDocVersion = '1.4.2'
 }
 
 group = 'org.springdoc'
@@ -21,19 +21,11 @@ repositories {
 	mavenCentral()
 }
 
-ext {
-	springDocVersion = '1.4.2-SNAPSHOT'
-}
 
 apply plugin: 'java-library'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'maven-publish'
-
-repositories {
-	mavenLocal()
-	mavenCentral()
-}
 
 bootJar {
 	archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"

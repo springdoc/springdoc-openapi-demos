@@ -7,17 +7,12 @@ plugins {
 ext {
 	springBootVersion = '2.3.0.RELEASE'
 	springCloudVersion = 'Hoxton.SR4'
-	springDocVersion = '1.4.2-SNAPSHOT'
+	springDocVersion = '1.4.2'
 }
 
 allprojects {
 	group = 'org.springdoc'
 	version = springDocVersion
-}
-
-repositories {
-	mavenLocal()
-	mavenCentral()
 }
 
 
@@ -69,11 +64,6 @@ subprojects {
 	}
 
 	sourceCompatibility = '1.8'
-
-	java {
-		withSourcesJar()
-		withJavadocJar()
-	}
 
 	publishing {
 		publications {

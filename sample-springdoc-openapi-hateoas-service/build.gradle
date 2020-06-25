@@ -5,7 +5,7 @@ plugins {
 }
 
 ext {
-	springDocVersion = '1.4.2-SNAPSHOT'
+	springDocVersion = '1.4.2'
 }
 
 group = 'org.springdoc'
@@ -24,11 +24,6 @@ apply plugin: 'maven-publish'
 
 springBoot {
 	buildInfo()
-}
-
-repositories {
-	mavenLocal()
-	mavenCentral()
 }
 
 bootJar {

@@ -6,7 +6,7 @@ plugins {
 
 ext {
 	springBootVersion = '2.2.2.RELEASE'
-	springDocVersion = '1.4.2-SNAPSHOT'
+	springDocVersion = '1.4.2'
 }
 
 allprojects {
@@ -15,15 +15,7 @@ allprojects {
 	sourceCompatibility = '1.8'
 }
 
-repositories {
-	mavenLocal()
-	mavenCentral()
-}
-
-
 subprojects {
-
-	apply plugin: 'java'
 	apply plugin: 'java-library'
 	apply plugin: 'maven-publish'
 	apply plugin: 'io.spring.dependency-management'
@@ -70,11 +62,6 @@ subprojects {
 	}
 
 	sourceCompatibility = '1.8'
-
-	java {
-		withSourcesJar()
-		withJavadocJar()
-	}
 
 	publishing {
 		publications {

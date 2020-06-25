@@ -5,7 +5,7 @@ plugins {
 }
 
 ext {
-	springDocVersion = '1.4.2-SNAPSHOT'
+	springDocVersion = '1.4.2'
 }
 
 group = 'org.springdoc'
@@ -26,10 +26,6 @@ springBoot {
 	buildInfo()
 }
 
-repositories {
-	mavenLocal()
-	mavenCentral()
-}
 
 bootJar {
 	archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
