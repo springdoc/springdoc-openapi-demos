@@ -4,7 +4,7 @@ plugins {
 
 allprojects {
 	group = 'org.springdoc'
-	version = '1.4.2-SNAPSHOT'
+	version = '1.4.2'
 }
 
 
