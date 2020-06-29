@@ -17,57 +17,105 @@
  */
 
 package org.springdoc.demo.app2.model;
-
-import java.util.Date;
-import java.util.Objects;
-
-import javax.validation.Valid;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import io.swagger.v3.oas.annotations.media.Schema;
+
+import javax.validation.Valid;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Date;
+import java.util.Objects;
 
 /**
  * Order
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-30T09:49:26.034469-01:00[Atlantic/Azores]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-02T19:53:02.467132-01:00[Atlantic/Azores]")
+@JacksonXmlRootElement(localName = "order")
+@XmlRootElement(name = "order")
+@XmlAccessorType(XmlAccessType.FIELD)
 
 public class Order {
 
 	@JsonProperty("id")
+	@JacksonXmlProperty(localName = "id")
 
 	private Long id;
 
 
 	@JsonProperty("petId")
+	@JacksonXmlProperty(localName = "petId")
 
 	private Long petId;
 
 
 	@JsonProperty("quantity")
+	@JacksonXmlProperty(localName = "quantity")
 
 	private Integer quantity;
 
 
 	@JsonProperty("shipDate")
+	@JacksonXmlProperty(localName = "shipDate")
 
 	private Date shipDate;
 
+	/**
+	 * Order Status
+	 */
+	public enum StatusEnum {
+		PLACED("placed"),
+
+		APPROVED("approved"),
+
+		DELIVERED("delivered");
+
+		private String value;
+
+		StatusEnum(String value) {
+			this.value = value;
+		}
+
+		@Override
+		@JsonValue
+		public String toString() {
+			return String.valueOf(value);
+		}
+
+		@JsonCreator
+		public static StatusEnum fromValue(String value) {
+			for (StatusEnum b : StatusEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
+	}
+
+
 	@JsonProperty("status")
+	@JacksonXmlProperty(localName = "status")
 
 	private StatusEnum status;
 
+
 	@JsonProperty("complete")
+	@JacksonXmlProperty(localName = "complete")
 
 	private Boolean complete;
+
 
 	public Order id(Long id) {
 		this.id = id;
 		return this;
 	}
+
 
 	/**
 	 * Get id
@@ -85,10 +133,12 @@ public class Order {
 		this.id = id;
 	}
 
+
 	public Order petId(Long petId) {
 		this.petId = petId;
 		return this;
 	}
+
 
 	/**
 	 * Get petId
@@ -106,10 +156,12 @@ public class Order {
 		this.petId = petId;
 	}
 
+
 	public Order quantity(Integer quantity) {
 		this.quantity = quantity;
 		return this;
 	}
+
 
 	/**
 	 * Get quantity
@@ -127,10 +179,12 @@ public class Order {
 		this.quantity = quantity;
 	}
 
+
 	public Order shipDate(Date shipDate) {
 		this.shipDate = shipDate;
 		return this;
 	}
+
 
 	/**
 	 * Get shipDate
@@ -149,10 +203,12 @@ public class Order {
 		this.shipDate = shipDate;
 	}
 
+
 	public Order status(StatusEnum status) {
 		this.status = status;
 		return this;
 	}
+
 
 	/**
 	 * Order Status
@@ -170,10 +226,12 @@ public class Order {
 		this.status = status;
 	}
 
+
 	public Order complete(Boolean complete) {
 		this.complete = complete;
 		return this;
 	}
+
 
 	/**
 	 * Get complete
@@ -190,6 +248,7 @@ public class Order {
 	public void setComplete(Boolean complete) {
 		this.complete = complete;
 	}
+
 
 	@Override
 	public boolean equals(Object o) {
@@ -238,38 +297,4 @@ public class Order {
 		}
 		return o.toString().replace("\n", "\n    ");
 	}
-
-	/**
-	 * Order Status
-	 */
-	public enum StatusEnum {
-		PLACED("placed"),
-
-		APPROVED("approved"),
-
-		DELIVERED("delivered");
-
-		private String value;
-
-		StatusEnum(String value) {
-			this.value = value;
-		}
-
-		@JsonCreator
-		public static StatusEnum fromValue(String value) {
-			for (StatusEnum b : StatusEnum.values()) {
-				if (b.value.equals(value)) {
-					return b;
-				}
-			}
-			throw new IllegalArgumentException("Unexpected value '" + value + "'");
-		}
-
-		@Override
-		@JsonValue
-		public String toString() {
-			return String.valueOf(value);
-		}
-	}
 }
-

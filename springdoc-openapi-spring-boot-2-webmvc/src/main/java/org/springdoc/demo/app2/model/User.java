@@ -18,56 +18,71 @@
 
 package org.springdoc.demo.app2.model;
 
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import io.swagger.v3.oas.annotations.media.Schema;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Objects;
 
 /**
  * User
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-30T09:49:26.034469-01:00[Atlantic/Azores]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-02T19:53:02.467132-01:00[Atlantic/Azores]")
+@JacksonXmlRootElement(localName = "user")
+@XmlRootElement(name = "user")
+@XmlAccessorType(XmlAccessType.FIELD)
 
 public class User {
 
 	@JsonProperty("id")
+	@JacksonXmlProperty(localName = "id")
 
 	private Long id;
 
 
 	@JsonProperty("username")
+	@JacksonXmlProperty(localName = "username")
 
 	private String username;
 
 
 	@JsonProperty("firstName")
+	@JacksonXmlProperty(localName = "firstName")
 
 	private String firstName;
 
 
 	@JsonProperty("lastName")
+	@JacksonXmlProperty(localName = "lastName")
 
 	private String lastName;
 
 
 	@JsonProperty("email")
+	@JacksonXmlProperty(localName = "email")
 
 	private String email;
 
 
 	@JsonProperty("password")
+	@JacksonXmlProperty(localName = "password")
 
 	private String password;
 
 
 	@JsonProperty("phone")
+	@JacksonXmlProperty(localName = "phone")
 
 	private String phone;
 
 
 	@JsonProperty("userStatus")
+	@JacksonXmlProperty(localName = "userStatus")
 
 	private Integer userStatus;
 
@@ -308,4 +323,3 @@ public class User {
 		return o.toString().replace("\n", "\n    ");
 	}
 }
-

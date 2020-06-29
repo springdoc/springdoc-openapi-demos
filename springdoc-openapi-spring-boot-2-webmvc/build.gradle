@@ -40,6 +40,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	implementation "org.springdoc:springdoc-openapi-ui:${springDocVersion}"
+	implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-xml"
 	testImplementation "org.springframework.boot:spring-boot-starter-test"
 }
 

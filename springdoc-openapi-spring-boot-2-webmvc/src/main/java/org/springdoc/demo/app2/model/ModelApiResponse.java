@@ -20,29 +20,40 @@ package org.springdoc.demo.app2.model;
 
 import java.util.Objects;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * ModelApiResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-30T09:49:26.034469-01:00[Atlantic/Azores]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-02T19:53:02.467132-01:00[Atlantic/Azores]")
+@JacksonXmlRootElement(localName = "##default")
+@XmlRootElement(name = "##default")
+@XmlAccessorType(XmlAccessType.FIELD)
 
 public class ModelApiResponse {
 
 	@JsonProperty("code")
+	@JacksonXmlProperty(localName = "code")
 
 	private Integer code;
 
 
 	@JsonProperty("type")
+	@JacksonXmlProperty(localName = "type")
 
 	private String type;
 
 
 	@JsonProperty("message")
+	@JacksonXmlProperty(localName = "message")
 
 	private String message;
 
@@ -158,4 +169,3 @@ public class ModelApiResponse {
 		return o.toString().replace("\n", "\n    ");
 	}
 }
-
