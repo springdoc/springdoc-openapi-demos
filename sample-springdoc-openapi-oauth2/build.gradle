@@ -6,7 +6,7 @@ plugins {
 
 ext {
 	springBootVersion = '2.2.2.RELEASE'
-	springDocVersion = '1.4.2'
+	springDocVersion = '1.4.3'
 }
 
 allprojects {

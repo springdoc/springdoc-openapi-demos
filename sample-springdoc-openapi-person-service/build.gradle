@@ -6,7 +6,7 @@ plugins {
 
 
 ext {
-	springDocVersion = '1.4.2'
+	springDocVersion = '1.4.3'
 }
 
 group = 'org.springdoc'
