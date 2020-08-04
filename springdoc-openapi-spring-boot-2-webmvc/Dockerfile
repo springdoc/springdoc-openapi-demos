@@ -3,5 +3,6 @@ RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
 EXPOSE 8080
 COPY ${JAR_FILE} app.jar
+RUN ls -rtla
 RUN ls -rtla app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
