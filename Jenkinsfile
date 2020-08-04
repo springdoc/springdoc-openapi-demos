@@ -22,7 +22,7 @@ pipeline {
         stage('Build') {
           steps {
             sh './gradlew :springdoc-openapi-spring-boot-2-webmvc:build'
-            sh "sudo mkdir -p target"
+            sh "mkdir -p target"
             sh "sudo cp -R springdoc-openapi-spring-boot-2-webmvc/Dockerfile target/"
             sh "sudo cp -R springdoc-openapi-spring-boot-2-webmvc/build/libs* target/"
             archiveArtifacts artifacts: 'springdoc-openapi-spring-boot-2-webmvc/build/libs/*.jar',
