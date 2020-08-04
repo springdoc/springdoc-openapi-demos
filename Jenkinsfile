@@ -21,7 +21,8 @@ pipeline {
         }
         stage('Build') {
           steps {
-            sh 'gradle clean :springdoc-openapi-spring-boot-2-webmvc:build'
+            sh 'gradle :springdoc-openapi-spring-boot-2-webmvc:build'
+            sh 'ls -rtla springdoc-openapi-spring-boot-2-webmvc/build/libs/'
             archiveArtifacts artifacts: 'springdoc-openapi-spring-boot-2-webmvc/build/libs/*.jar',
             fingerprint: true
           }
