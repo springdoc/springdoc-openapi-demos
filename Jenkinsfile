@@ -1,9 +1,16 @@
+def packageArtifact(){
+    stage("Package artifact") {
+        sh "echo hi"
+    }
+}
+
 def pushToRegitry = {
   dockerImage.push()
 }
 pipeline {
 	agent any
 	stages {
+		packageArtifact()
 		stage('Clean') {
 			steps {
 				sh './gradlew --no-daemon clean'
