@@ -25,7 +25,6 @@ pipeline {
             sh "mkdir -p target"
             sh "cp -R springdoc-openapi-spring-boot-2-webmvc/Dockerfile target/"
             sh "cp -R springdoc-openapi-spring-boot-2-webmvc/build/libs* target/"
-            dockerImage = docker.build('bnasslahsen/springdoc-openapi-spring-boot-2-webmvc', 'target')
             archiveArtifacts artifacts: 'springdoc-openapi-spring-boot-2-webmvc/build/libs/*.jar',
             fingerprint: true
           }
