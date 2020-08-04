@@ -2,7 +2,7 @@
 
 def packageArtifact(String projectName) {
 	stage('Build') {
-		sh "./gradlew --no-daemon :"+springdoc-openapi-spring-boot-2-webmvc+":build"
+		sh "./gradlew --no-daemon :"+sprojectName+":build"
 	}
 	stage('Package Docker Image') {
 		sh "rm -rf target"
@@ -14,10 +14,11 @@ def packageArtifact(String projectName) {
 }
 
 node {
+	packageArtifact()
+
 	stage('Clean') {
 		sh './gradlew --no-daemon clean'
 	}
-	packageArtifact()
 	stage('Deploy Docker Image') {
 		docker.withRegistry('https://registry.hub.docker.com', 'docker-login') {
 			dockerImage.push 'latest'
