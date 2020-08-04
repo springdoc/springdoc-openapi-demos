@@ -1,3 +1,6 @@
+def pushToRegitry = {
+  dockerImage.push()
+}
 pipeline {
 	agent any
 	stages {
@@ -25,7 +28,7 @@ pipeline {
 		stage('Deploy Docker Image') {
 			steps {
 				script {
-					docker.withRegistry('https://registry.hub.docker.com', 'docker-login', dockerImage.push())
+					docker.withRegistry('https://registry.hub.docker.com', 'docker-login', pushToRegitry)
 				}
 			}
 		}
