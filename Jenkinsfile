@@ -35,8 +35,7 @@ pipeline {
     stage('build docker') {
       steps {
         script {
-          echo "$agentWorkspace/target"
-          dockerImage = docker.build('bnasslahsen/springdoc-openapi-spring-boot-2-webmvc', "$agentWorkspace/target")
+          dockerImage = docker.build('bnasslahsen/springdoc-openapi-spring-boot-2-webmvc', "--build-arg JAR_FILE=$agentWorkspace/target/*.jar")
         }
       }
     }
