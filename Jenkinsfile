@@ -1,7 +1,6 @@
 def agentWorkspace
 def pushToRegitry = {
   dockerImage.push()
-  dockerImage.push("${env.BUILD_NUMBER}")
 }
 pipeline {
   agent any
