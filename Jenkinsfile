@@ -21,6 +21,8 @@ pipeline {
         }
         stage('Build') {
           steps {
+            sh 'pwd'
+            sh 'echo ${WORKSPACE}'
             sh './gradlew :springdoc-openapi-spring-boot-2-webmvc:build'
             sh "mkdir -p target"
             sh "cp -R springdoc-openapi-spring-boot-2-webmvc/Dockerfile target/"
@@ -32,6 +34,7 @@ pipeline {
     stage('build docker') {
       steps {
         script {
+          sh 'echo ${WORKSPACE}'
           sh "pwd"
           sh "ls -rtla"
           sh "mkdir -p target"
