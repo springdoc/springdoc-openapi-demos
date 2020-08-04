@@ -16,7 +16,7 @@ pipeline {
       stages {
         stage('Test') {
           steps {
-            sh './gradlew clean'
+            sh './gradlew --no-daemon clean'
           }
         }
         stage('Build') {
@@ -24,7 +24,7 @@ pipeline {
             script {
             agentWorkspace = "${env.WORKSPACE}"
             }
-            sh './gradlew :springdoc-openapi-spring-boot-2-webmvc:build'
+            sh './gradlew --no-daemon :springdoc-openapi-spring-boot-2-webmvc:build'
             sh "mkdir -p target"
             sh "cp -R springdoc-openapi-spring-boot-2-webmvc/Dockerfile target/"
             sh "cp -R springdoc-openapi-spring-boot-2-webmvc/build/libs/*.jar target/"
