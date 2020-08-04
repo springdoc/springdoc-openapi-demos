@@ -22,9 +22,9 @@ pipeline {
         stage('Build') {
           steps {
             sh './gradlew :springdoc-openapi-spring-boot-2-webmvc:build'
-            sh "mkdir -p target"
-            sh "cp -R springdoc-openapi-spring-boot-2-webmvc/Dockerfile target/"
-            sh "cp -R springdoc-openapi-spring-boot-2-webmvc/build/libs* target/"
+            sh "sudo mkdir -p target"
+            sh "sudo cp -R springdoc-openapi-spring-boot-2-webmvc/Dockerfile target/"
+            sh "sudo cp -R springdoc-openapi-spring-boot-2-webmvc/build/libs* target/"
             archiveArtifacts artifacts: 'springdoc-openapi-spring-boot-2-webmvc/build/libs/*.jar',
             fingerprint: true
           }
@@ -34,9 +34,9 @@ pipeline {
     stage('build docker') {
       steps {
         script {
-          sh "mkdir -p target"
-          sh "cp -R springdoc-openapi-spring-boot-2-webmvc/Dockerfile target/"
-          sh "cp -R springdoc-openapi-spring-boot-2-webmvc/build/libs* target/"
+          sh "sudo mkdir -p target"
+          sh "sudo cp -R springdoc-openapi-spring-boot-2-webmvc/Dockerfile target/"
+          sh "sudo cp -R springdoc-openapi-spring-boot-2-webmvc/build/libs* target/"
           dockerImage = docker.build('bnasslahsen/springdoc-openapi-spring-boot-2-webmvc', 'target')
         }
       }
