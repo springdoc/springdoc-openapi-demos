@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Build') {
           steps { 
-            my_var = 'value1'
+            sh my_var = 'value1'
             sh './gradlew :springdoc-openapi-spring-boot-2-webmvc:build'
             sh "mkdir -p target"
             sh "cp -R springdoc-openapi-spring-boot-2-webmvc/Dockerfile target/"
