@@ -33,6 +33,7 @@ pipeline {
     stage('build docker') {
       steps {
         script {
+          echo "${agentWorkspace}" 
           dockerImage = docker.build('bnasslahsen/springdoc-openapi-spring-boot-2-webmvc', '${agentWorkspace}/target')
         }
       }
