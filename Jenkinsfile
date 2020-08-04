@@ -21,7 +21,9 @@ pipeline {
         }
         stage('Build') {
           steps { 
-            sh agentWorkspace = "${env.WORKSPACE}"
+            script {
+            agentWorkspace = "${env.WORKSPACE}"
+            }
             sh './gradlew :springdoc-openapi-spring-boot-2-webmvc:build'
             sh "mkdir -p target"
             sh "cp -R springdoc-openapi-spring-boot-2-webmvc/Dockerfile target/"
