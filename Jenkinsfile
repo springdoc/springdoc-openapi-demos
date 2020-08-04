@@ -14,7 +14,7 @@ def packageArtifact(String projectName) {
 }
 
 node {
-	packageArtifact()
+	packageArtifact('springdoc-openapi-spring-boot-2-webmvc')
 
 	stage('Clean') {
 		sh './gradlew --no-daemon clean'
