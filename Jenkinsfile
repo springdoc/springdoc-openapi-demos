@@ -1,4 +1,5 @@
 def dockerImage
+def agentWorkspace
 def pushToRegitry = {
   dockerImage.push()
   dockerImage.push("${env.BUILD_NUMBER}")
@@ -21,8 +22,7 @@ pipeline {
         }
         stage('Build') {
           steps {
-            sh 'pwd'
-            sh 'echo ${WORKSPACE}'
+            agentWorkspace = ${WORKSPACE}
             sh './gradlew :springdoc-openapi-spring-boot-2-webmvc:build'
             sh "mkdir -p target"
             sh "cp -R springdoc-openapi-spring-boot-2-webmvc/Dockerfile target/"
@@ -34,12 +34,9 @@ pipeline {
     stage('build docker') {
       steps {
         script {
-          sh 'echo ${WORKSPACE}'
-          sh "pwd"
-          sh "ls -rtla"
           sh "mkdir -p target"
-          sh "cp -R springdoc-openapi-spring-boot-2-webmvc/Dockerfile target/"
-          sh "cp -R springdoc-openapi-spring-boot-2-webmvc/build/libs* target/"
+          sh "cp -R $agentWorkspace/springdoc-openapi-spring-boot-2-webmvc/Dockerfile target/"
+          sh "cp -R $agentWorkspace/springdoc-openapi-spring-boot-2-webmvc/build/libs* target/"
           dockerImage = docker.build('bnasslahsen/springdoc-openapi-spring-boot-2-webmvc', 'target')
         }
       }
