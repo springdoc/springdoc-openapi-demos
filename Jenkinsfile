@@ -10,7 +10,7 @@ pipeline {
       agent {
         docker {
           image 'gradle:6.5.1-jdk8'
-          args '-v /var/lib/jenkins/.m2:/root/.m2'
+          args '-v $HOME/.gradle:/root/.gradle'
         }
       }
       stages {
