@@ -2,7 +2,7 @@
 
 def packageArtifact(String projectName) {
 	stage('Build') {
-		sh "./gradlew --no-daemon :"+sprojectName+":build"
+		sh "./gradlew --no-daemon :"+projectName+":build"
 	}
 	stage('Package Docker Image') {
 		sh "rm -rf target"
