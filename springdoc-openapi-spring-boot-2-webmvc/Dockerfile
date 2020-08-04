@@ -1,7 +1,6 @@
 FROM openjdk:8-jdk-alpine
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
-EXPOSE 8080
-COPY ${JAR_FILE} app.jar
-RUN java -jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+COPY ${JAR_FILE} .
+RUN ls -rtla .
+ENTRYPOINT ["java","-jar","/springdoc-openapi-spring-boot-2-webmvc.jar"]
