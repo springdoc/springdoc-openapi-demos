@@ -7,6 +7,8 @@ def packageArtifact(String projectName) {
 	stage('Package Docker Image') {
 		sh "rm -rf target"
 		sh "mkdir -p target"
+		sh "pwd"
+		sh "ls -rtla target/*"
 		sh "cp -R " + projectName + "/Dockerfile target/"
 		sh "cp -R " + projectName + "/build/libs/*.jar target/"
 		sh "ls -rtla target/*"
