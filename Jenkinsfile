@@ -7,8 +7,6 @@ def packageArtifact(String projectName) {
 	stage('Package Docker Image') {
 		sh "rm -rf target"
 		sh "mkdir -p target"
-		sh "pwd"
-		sh "ls -rtla target/*"
 		sh "cp -R " + projectName + "/Dockerfile target/"
 		sh "cp -R " + projectName + "/build/libs/*.jar target/"
 		sh "ls -rtla target/*"
@@ -26,4 +24,9 @@ node {
 		sh "./gradlew clean --no-daemon"
 	}
 	packageArtifact('springdoc-openapi-spring-boot-2-webmvc')
+	post {
+		cleanup {
+			cleanWs()
+		}
+	}
 }
