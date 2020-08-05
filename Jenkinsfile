@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 
 def packageArtifact(String projectName) {
+
 	stage('Build') {
 		sh "./gradlew --no-daemon :" + projectName + ":build"
 	}
@@ -20,6 +21,9 @@ def packageArtifact(String projectName) {
 }
 
 node {
+	stage('checkout') {
+		checkout scm
+	}
 	stage('Clean') {
 		sh "./gradlew clean --no-daemon"
 	}
