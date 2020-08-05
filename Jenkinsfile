@@ -2,14 +2,14 @@
 
 def packageArtifact(String projectName) {
 	stage('Build') {
-		sh "./gradlew --no-daemon :"+projectName+":build"
+		sh "./gradlew --no-daemon :" + projectName + ":build"
 	}
 	stage('Package Docker Image') {
 		sh "rm -rf target"
 		sh "mkdir -p target"
-		sh "cp -R springdoc-openapi-spring-boot-2-webmvc/Dockerfile target/"
-		sh "cp -R springdoc-openapi-spring-boot-2-webmvc/build/libs/*.jar target/"
-		dockerImage = docker.build('springdocdemos/springdoc-openapi-spring-boot-2-webmvc', "--build-arg JAR_FILE=target/*.jar target")
+		sh "cp -R " + projectName + "/Dockerfile target/"
+		sh "cp -R " + projectName + "/build/libs/*.jar target/"
+		dockerImage = docker.build("springdocdemos/" + projectName, "--build-arg JAR_FILE=target/*.jar target")
 	}
 }
 
