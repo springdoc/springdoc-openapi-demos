@@ -21,7 +21,7 @@ def packageArtifact(String projectName) {
 }
 
 node {
-	stage('checkout') {
+	stage('Checkout') {
 		checkout scm
 	}
 	stage('Clean') {
