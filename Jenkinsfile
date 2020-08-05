@@ -10,7 +10,6 @@ def packageArtifact(String projectName) {
 		sh "mkdir -p target"
 		sh "cp -R " + projectName + "/Dockerfile target/"
 		sh "cp -R " + projectName + "/build/libs/*.jar target/"
-		sh "ls -rtla target/*"
 		dockerImage = docker.build("springdocdemos/" + projectName, 'target')
 	}
 	stage('Deploy Docker Image') {
@@ -31,4 +30,5 @@ node {
 		sh "./gradlew clean --no-daemon"
 	}
 	packageArtifact('springdoc-openapi-spring-boot-2-webmvc')
+	packageArtifact('springdoc-openapi-spring-boot-2-webflux')
 }
