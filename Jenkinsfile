@@ -11,7 +11,7 @@ def packageArtifact(String projectName) {
 		sh "cp -R " + projectName + "/Dockerfile target/"
 		sh "cp -R " + projectName + "/build/libs/*.jar target/"
 		sh "ls -rtla target/*"
-		dockerImage = docker.build("springdocdemos/" + projectName, "--build-arg JAR_FILE=target/*.jar target")
+		dockerImage = docker.build("springdocdemos/" + projectName, 'target')
 	}
 	stage('Deploy Docker Image') {
 		docker.withRegistry('https://registry.hub.docker.com', 'docker-login') {
