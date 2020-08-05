@@ -21,16 +21,14 @@ def packageArtifact(String projectName) {
 }
 
 node {
-	stage('Checkout') {
+	stage('checkout') {
+		deleteDir()
+	}
+	stage('checkout') {
 		checkout scm
 	}
 	stage('Clean') {
 		sh "./gradlew clean --no-daemon"
 	}
 	packageArtifact('springdoc-openapi-spring-boot-2-webmvc')
-	post {
-		cleanup {
-			cleanWs()
-		}
-	}
 }
