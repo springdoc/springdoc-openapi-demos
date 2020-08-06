@@ -29,6 +29,7 @@ apply plugin: 'maven-publish'
 
 bootJar {
 	archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
+	layered()
 }
 
 configurations {

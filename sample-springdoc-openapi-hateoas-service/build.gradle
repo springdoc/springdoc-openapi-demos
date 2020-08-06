@@ -28,6 +28,7 @@ springBoot {
 
 bootJar {
 	archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
+	layered()
 }
 
 configurations {
