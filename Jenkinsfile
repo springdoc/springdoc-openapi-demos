@@ -31,4 +31,7 @@ node {
 	}
 	packageArtifact('springdoc-openapi-spring-boot-2-webmvc')
 	packageArtifact('springdoc-openapi-spring-boot-2-webflux')
+	packageArtifact('springdoc-openapi-spring-boot-2-webflux-functional')
+	packageArtifact('springdoc-openapi-spring-boot-1')
+	packageArtifact('sample-springdoc-openapi-hateoas-service')
 }
