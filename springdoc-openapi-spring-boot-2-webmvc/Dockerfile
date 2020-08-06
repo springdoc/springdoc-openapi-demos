@@ -8,6 +8,5 @@ FROM adoptopenjdk:11-jre-hotspot
 WORKDIR application
 COPY --from=builder application/dependencies/ ./
 COPY --from=builder application/snapshot-dependencies/ ./
-COPY --from=builder application/resources/ ./
 COPY --from=builder application/application/ ./
 ENTRYPOINT ["java", "-noverify", "-Dspring.main.lazy-initialization=true", "-XX:TieredStopAtLevel=1","-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap" , "-XX:MaxRAMFraction=1" , "-XX:+UseSerialGC", "-XshowSettings:vm" , "-Xss512k", "org.springframework.boot.loader.JarLauncher"]
