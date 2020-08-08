@@ -2,14 +2,11 @@
 
 def packageArtifact(String projectName) {
 
-	stage('Build') {
-		sh "./gradlew --no-daemon :" + projectName + ":build"
-	}
 	stage('Package Docker Image') {
 		sh "rm -rf target"
 		sh "mkdir -p target"
 		sh "cp -R " + projectName + "/Dockerfile target/"
-		sh "cp -R " + projectName + "/build/libs/*.jar target/"
+		sh "cp -R " + projectName + "/target/*.jar target/"
 		dockerImage = docker.build("springdocdemos/" + projectName, 'target')
 	}
 	stage('Deploy Docker Image') {
@@ -27,7 +24,10 @@ node {
 		checkout scm
 	}
 	stage('Clean') {
-		sh "./gradlew clean --no-daemon"
+		sh "./mvn clean"
+	}
+	stage('Package') {
+		sh "./mvn package"
 	}
 	packageArtifact('springdoc-openapi-spring-boot-2-webmvc')
 	packageArtifact('springdoc-openapi-spring-boot-2-webflux')
