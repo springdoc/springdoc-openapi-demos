@@ -24,10 +24,14 @@ node {
 		checkout scm
 	}
 	stage('Clean') {
-		sh "mvn clean"
+		withMaven(maven: 'maven') {
+			sh "mvn clean"
+		}
 	}
 	stage('Package') {
-		sh "mvn package"
+		withMaven(maven: 'maven') {
+			sh "mvn package"
+		}
 	}
 	packageArtifact('springdoc-openapi-spring-boot-2-webmvc')
 	packageArtifact('springdoc-openapi-spring-boot-2-webflux')
