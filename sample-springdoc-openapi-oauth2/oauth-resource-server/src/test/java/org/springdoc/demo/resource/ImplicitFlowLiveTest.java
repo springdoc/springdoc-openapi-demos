@@ -5,13 +5,11 @@ import java.util.Map;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 //Before running this live test make sure both authorization server and first resource server are running   
 
@@ -30,8 +28,8 @@ public class ImplicitFlowLiveTest {
 
 		final Response fooResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken)
 				.get(RESOURCE_SERVER + "/api/foos/1");
-		assertEquals(200, fooResponse.getStatusCode());
-		assertNotNull(fooResponse.jsonPath().get("name"));
+		Assertions.assertEquals(200, fooResponse.getStatusCode());
+		Assertions.assertNotNull(fooResponse.jsonPath().get("name"));
 	}
 
 	private String obtainAccessToken(String clientId, String username, String password) {
@@ -61,7 +59,7 @@ public class ImplicitFlowLiveTest {
 
 		final String location = response.getHeader(HttpHeaders.LOCATION);
 
-		assertEquals(HttpStatus.FOUND.value(), response.getStatusCode());
+		Assertions.assertEquals(HttpStatus.FOUND.value(), response.getStatusCode());
 		final String accessToken = location.split("#|=|&")[4];
 		return accessToken;
 

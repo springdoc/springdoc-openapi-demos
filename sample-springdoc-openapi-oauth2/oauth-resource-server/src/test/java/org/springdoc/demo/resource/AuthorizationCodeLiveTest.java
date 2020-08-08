@@ -5,13 +5,11 @@ import java.util.Map;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 //Before running this live test make sure both authorization server and resource server are running   
 
@@ -27,8 +25,8 @@ public class AuthorizationCodeLiveTest {
         final String accessToken = obtainAccessTokenWithAuthorizationCode("josh@test.com", "123");
 
         final Response fooResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get(RESOURCE_SERVER + "/api/foos/1");
-        assertEquals(200, fooResponse.getStatusCode());
-        assertNotNull(fooResponse.jsonPath().get("name"));
+        Assertions.assertEquals(200, fooResponse.getStatusCode());
+        Assertions.assertNotNull(fooResponse.jsonPath().get("name"));
 
     }
 
@@ -59,7 +57,7 @@ public class AuthorizationCodeLiveTest {
 
 		final String location = response.getHeader(HttpHeaders.LOCATION);
 
-		assertEquals(HttpStatus.FOUND.value(), response.getStatusCode());
+		Assertions.assertEquals(HttpStatus.FOUND.value(), response.getStatusCode());
 		final String code = location.split("#|=|&")[3];
 		
 		//get access token

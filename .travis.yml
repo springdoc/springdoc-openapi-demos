@@ -1,19 +1,16 @@
-dist: trusty
 language: java
-install: true
-
 jdk:
-  - oraclejdk8
-
-script:
-  - ./gradlew build
-
-before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-  - rm -f  $HOME/.gradle/caches/*/fileHashes/fileHashes.bin
-  - rm -f  $HOME/.gradle/caches/*/fileHashes/fileHashes.lock
+  - openjdk8
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+    - $HOME/.m2
+    - $HOME/.sonar/cache
+
+script:
+  - mvn clean package --settings settings.xml
+
+deploy:
+  provider: script
+  script: mvn  deploy --settings settings.xml
+  on:
+    branch: master
