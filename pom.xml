@@ -87,6 +87,7 @@
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
+		<jib-maven-plugin.version>2.5.0</jib-maven-plugin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -155,33 +156,39 @@
 	</dependencies>
 
 	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-					<version>${spring-boot.version}</version>
-					<configuration>
-						<finalName>${project.artifactId}</finalName>
-						<layers>
-							<enabled>true</enabled>
-						</layers>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>build-info</goal>
-								<goal>repackage</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>build-info</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>${jib-maven-plugin.version}</version>
+				<configuration>
+					<from>
+						<image>adoptopenjdk:11-jre-hotspot</image>
+					</from>
+					<to>
+						<image>
+							registry.hub.docker.com/springdocdemos/${project.artifactId}
+						</image>
+					</to>
+					<container>
+						<jvmFlags>
+							<jvmFlag>-XshowSettings:vm</jvmFlag>
+							<jvmFlag>-Dspring.main.lazy-initialization=true</jvmFlag>
+						</jvmFlags>
+					</container>
+				</configuration>
 			</plugin>
 		</plugins>
 		<resources>
