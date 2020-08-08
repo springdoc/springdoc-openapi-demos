@@ -6,7 +6,7 @@ def packageArtifact(String projectName) {
 		sh "rm -rf target"
 		sh "mkdir -p target"
 		sh "cp -R " + projectName + "/Dockerfile target/"
-		sh "cp -R " + projectName + "/target/*.jar target/"
+		sh "cp -R " + projectName + "/target/"+projectName+".jar target/"
 		dockerImage = docker.build("springdocdemos/" + projectName, 'target')
 	}
 	stage('Deploy Docker Image') {
