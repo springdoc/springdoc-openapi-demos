@@ -4,8 +4,10 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8061/eureka/
-      
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    registerWithEureka: false
+    fetchRegistry: false
+
 logging:
   pattern: 
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
