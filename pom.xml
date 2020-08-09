@@ -175,7 +175,7 @@
 				<version>${jib-maven-plugin.version}</version>
 				<configuration>
 					<from>
-						<image>adoptopenjdk:11-jre-hotspot</image>
+						<image>openjdk:8-jre-slim</image>
 					</from>
 					<to>
 						<image>
@@ -185,7 +185,10 @@
 					<container>
 						<jvmFlags>
 							<jvmFlag>-XshowSettings:vm</jvmFlag>
+							<jvmFlag>-noverify</jvmFlag>
 							<jvmFlag>-Dspring.main.lazy-initialization=true</jvmFlag>
+							<jvmFlag>-XX:TieredStopAtLevel=1</jvmFlag>
+							<jvmFlag>-XX:+UseSerialGC</jvmFlag>
 						</jvmFlags>
 					</container>
 				</configuration>
