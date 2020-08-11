@@ -1,5 +1,5 @@
 server:
-  port: 8761
+  port: 8092
 spring:
   application:
     name: employee-service
