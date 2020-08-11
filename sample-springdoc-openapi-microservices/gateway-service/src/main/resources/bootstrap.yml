@@ -1,3 +1,5 @@
+server:
+  port: 8060
 spring:
   application:
     name: gateway-service
