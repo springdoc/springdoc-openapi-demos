@@ -3,7 +3,9 @@ services:
   config-service:
     image: springdocdemos/config-service:latest
     environment:
-      - eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery-service:8761/eureka
+        -DCONFIG_SERVER=http://config-service:8088
     ports:
       - 8088:8088
   discovery-service:
@@ -11,19 +13,28 @@ services:
     ports:
       - 8761:8761
     environment:
-      - spring.cloud.config.uri=http://config-service:8088
-      - eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery-service:8761/eureka
+        -DCONFIG_SERVER=http://config-service:8088
   employee-service:
     image: springdocdemos/employee-service:latest
     ports:
       - 8092:8092
     environment:
-      - eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka
-      - spring.cloud.config.uri=http://config-service:8088
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery-service:8761/eureka
+        -DCONFIG_SERVER=http://config-service:8088
+    depends_on:
+      - discovery-service
+      - config-service
   gateway-service:
     image: springdocdemos/gateway-service:latest
     ports:
         - 8060:8060
     environment:
-      - spring.cloud.config.uri=http://config-service:8088
-      - eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery-service:8761/eureka
+        -DCONFIG_SERVER=http://config-service:8088
+    depends_on:
+      - discovery-service
+      - config-service
