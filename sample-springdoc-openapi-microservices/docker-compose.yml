@@ -12,8 +12,7 @@ services:
       - 8761:8761
     environment:
       - spring.cloud.config.uri=http://config-service:8088
-      - eureka.instance.hostname=discovery-service
-      - WAIT_HOSTS=config-service:8088
+      - eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka
   employee-service:
     image: springdocdemos/employee-service:latest
     ports:
@@ -21,7 +20,6 @@ services:
     environment:
       - eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka
       - spring.cloud.config.uri=http://config-service:8088
-      - WAIT_HOSTS=discovery-service:8761
   gateway-service:
     image: springdocdemos/gateway-service:latest
     ports:
@@ -29,4 +27,3 @@ services:
     environment:
       - spring.cloud.config.uri=http://config-service:8088
       - eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka
-      - WAIT_HOSTS=discovery-service:8761
