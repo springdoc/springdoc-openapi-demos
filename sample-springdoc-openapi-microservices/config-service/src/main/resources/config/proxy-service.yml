@@ -4,9 +4,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-    registerWithEureka: false
-    fetchRegistry: false
+      defaultZone: http://localhost:8761/eureka
 
 logging:
   pattern: 
