@@ -3,8 +3,4 @@ spring:
     name: gateway-service
   cloud:
     config:
-      uri: ${CONFIG_URI:http://localhost:8888
-
-#springdoc:
-#  api-docs:
-#    path:
+      uri: http://localhost:8088

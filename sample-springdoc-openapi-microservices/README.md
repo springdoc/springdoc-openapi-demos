@@ -3,5 +3,5 @@
 ### Relevant information:
 
 * Swagger-ui : http://localhost:8060/swagger-ui.html
-* Eureka: http://localhost:8061/
+* Eureka: http://localhost:8761/
 
