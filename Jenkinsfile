@@ -14,7 +14,7 @@ node {
 	}
 	stage('Package') {
 		withMaven(maven: 'maven') {
-			sh "mvn compile jib:build"
+			sh "mvn package jib:build"
 		}
 	}
 }
