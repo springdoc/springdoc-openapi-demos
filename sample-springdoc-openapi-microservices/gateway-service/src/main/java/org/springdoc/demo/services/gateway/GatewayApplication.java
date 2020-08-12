@@ -12,6 +12,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionLocator;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -22,6 +23,7 @@ public class GatewayApplication {
 	}
 
 	@Bean
+	@Lazy(false)
 	public List<GroupedOpenApi> apis(SwaggerUiConfigParameters swaggerUiConfigParameters, RouteDefinitionLocator locator) {
 		List<GroupedOpenApi> groups = new ArrayList<>();
 		List<RouteDefinition> definitions = locator.getRouteDefinitions().collectList().block();
