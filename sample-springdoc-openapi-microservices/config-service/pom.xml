@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.springdoc</groupId>
 		<artifactId>sample-springdoc-openapi-microservices</artifactId>
-		<version>3.1.4-SNAPSHOT</version>
+		<version>3.1.4</version>
 	</parent>
 
 	<dependencies>
