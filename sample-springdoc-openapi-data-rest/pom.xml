@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>springdoc-openapi-demos</artifactId>
 		<groupId>org.springdoc</groupId>
-		<version>3.1.4</version>
+		<version>3.1.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>sample-springdoc-openapi-data-rest</artifactId>
 
