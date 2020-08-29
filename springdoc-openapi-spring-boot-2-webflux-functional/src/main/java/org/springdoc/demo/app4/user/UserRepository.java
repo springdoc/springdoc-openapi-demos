@@ -15,8 +15,8 @@ public interface UserRepository {
     @Operation(description = "get all the users")
     public Flux<User> getAllUsers();
 
-	@Operation(description = "get all the users by firstname")
-	public Flux<User> getAllUsers(String firstname);
+    @Operation(description = "get all the users by firstname")
+    public Flux<User> getAllUsers(String firstname);
 
     public Mono<Void> saveUser(Mono<User> user);
 
