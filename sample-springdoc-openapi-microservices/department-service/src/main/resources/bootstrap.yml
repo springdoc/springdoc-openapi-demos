@@ -4,3 +4,5 @@ spring:
   cloud:
     config:
       uri: ${CONFIG_SERVER:http://localhost:8088}
+springdoc:
+  version: '@springdoc.version@'

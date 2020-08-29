@@ -20,3 +20,5 @@ spring:
         content:
           enabled: true
           paths: /webjars/swagger-ui/**.*
+springdoc:
+  version: '@springdoc.version@'

@@ -21,6 +21,7 @@ spring:
           enabled: true
           paths: /webjars/swagger-ui/**.*
 springdoc:
+  version: '@springdoc.version@'
   api-docs:
     groups:
       enabled: true
@@ -28,6 +29,7 @@ springdoc:
     path: /swagger-ui.html
     display-request-duration: true
     groups-order: DESC
+    operationsSorter: method
   show-actuator: true
   group-configs:
   - group: stores

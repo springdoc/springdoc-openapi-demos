@@ -12,6 +12,7 @@ spring:
           issuer-uri: http://localhost:8083/auth/realms/springdoc
           jwk-set-uri: http://localhost:8083/auth/realms/springdoc/protocol/openid-connect/certs
 springdoc:
+  version: '@springdoc.version@'
   swagger-ui:
     oauth:
       clientId: newClient
