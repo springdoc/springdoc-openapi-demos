@@ -79,7 +79,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<spring-boot.version>2.3.2.RELEASE</spring-boot.version>
 		<springcloud.version>Hoxton.SR4</springcloud.version>
-		<springdoc.version>1.4.6-SNAPSHOT</springdoc.version>
+		<springdoc.version>1.4.6</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
