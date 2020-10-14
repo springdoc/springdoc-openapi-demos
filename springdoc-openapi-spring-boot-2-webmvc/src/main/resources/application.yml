@@ -30,6 +30,7 @@ springdoc:
     display-request-duration: true
     groups-order: DESC
     operationsSorter: method
+    disable-swagger-default-url: true
   show-actuator: true
   group-configs:
   - group: stores
