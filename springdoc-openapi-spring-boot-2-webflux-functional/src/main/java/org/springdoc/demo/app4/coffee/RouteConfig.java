@@ -1,7 +1,5 @@
 package org.springdoc.demo.app4.coffee;
 
-import org.springdoc.core.annotations.RouterOperation;
-import org.springdoc.core.annotations.RouterOperations;
 import reactor.core.publisher.Mono;
 
 import org.springframework.context.annotation.Bean;
@@ -11,8 +9,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
-import static org.springframework.web.reactive.function.server.RouterFunctions.route;
+import static org.springdoc.webflux.core.fn.SpringdocRouteBuilder.route;
 
 @Configuration
 public class RouteConfig {
@@ -23,13 +20,10 @@ public class RouteConfig {
 	}
 
 	@Bean
-	@RouterOperations({ @RouterOperation(path = "/coffees", beanClass = CoffeeService.class, beanMethod = "getAllCoffees"),
-			@RouterOperation(path = "/coffees/{id}", beanClass = CoffeeService.class, beanMethod = "getCoffeeById"),
-			@RouterOperation(path = "/coffees/{id}/orders", beanClass = CoffeeService.class, beanMethod = "getOrdersForCoffeeById") })
 	RouterFunction<ServerResponse> routerFunction() {
-		return route(GET("/coffees"), this::all)
-				.andRoute(GET("/coffees/{id}"), this::byId)
-				.andRoute(GET("/coffees/{id}/orders"), this::orders);
+		return route().GET("/coffees", this::all,  ops -> ops.beanClass(CoffeeService.class).beanMethod("getAllCoffees")).build()
+				.and(route().GET("/coffees/{id}", this::byId, ops -> ops.beanClass(CoffeeService.class).beanMethod("getCoffeeById")).build())
+				.and(route().GET("/coffees/{id}/orders", this::orders, ops -> ops.beanClass(CoffeeService.class).beanMethod("getOrdersForCoffeeById")).build());
 	}
 
 	private Mono<ServerResponse> all(ServerRequest req) {
