@@ -109,7 +109,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<spring-boot.version>2.4.0-SNAPSHOT</spring-boot.version>
-		<springcloud.version>Hoxton.SR4</springcloud.version>
 		<springdoc.version>1.4.9-SNAPSHOT</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
@@ -122,14 +121,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- spring cloud -->
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${springcloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>

@@ -8,7 +8,7 @@
    2. Client secret: newClientSecret
    3. Redirect Uri: http://localhost:8089/
 3. `oauth-resource-server` is a Spring Boot based RESTFul API, acting as a backend Application
-   swagger-ui: http://localhost:8081/resource-server/swagger-ui.html
+   swagger-ui: 
 4. There are two users registered in the Authorization Server:
    1. josh@test.com / 123
    2. dave@test.com / pass
