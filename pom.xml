@@ -116,7 +116,8 @@
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
 		<jib-maven-plugin.version>2.5.0</jib-maven-plugin.version>
-		<spring-boot-maven-plugin.version>2.3.4.RELEASE</spring-boot-maven-plugin.version>
+		<spring-boot-maven-plugin.version>2.3.5.RELEASE</spring-boot-maven-plugin.version>
+		<springdoc-openapi-maven-plugin.version>1.0</springdoc-openapi-maven-plugin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -177,6 +178,15 @@
 	</dependencies>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springdoc</groupId>
+					<artifactId>springdoc-openapi-maven-plugin</artifactId>
+					<version>${springdoc-openapi-maven-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
