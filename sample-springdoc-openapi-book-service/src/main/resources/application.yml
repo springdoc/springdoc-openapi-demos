@@ -1,0 +1,2 @@
+springdoc:
+  version: '@springdoc.version@'
