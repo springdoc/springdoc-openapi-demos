@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springdoc</groupId>
 	<artifactId>springdoc-openapi-demos</artifactId>
-	<version>3.1.5-SNAPSHOT</version>
+	<version>3.1.5</version>
 	<packaging>pom</packaging>
 	<name>Spring-openapi demos</name>
 	<description>Spring-openapi demos</description>
@@ -31,7 +31,7 @@
 		<developerConnection>
 			scm:git:git@github.com:springdoc/springdoc-openapi-demos.git
 		</developerConnection>
-		<tag>HEAD</tag>
+		<tag>v3.1.5</tag>
 	</scm>
 	<distributionManagement>
 		<snapshotRepository>

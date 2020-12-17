@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.springdoc</groupId>
 		<artifactId>sample-springdoc-openapi-microservices</artifactId>
-		<version>3.1.5-SNAPSHOT</version>
+		<version>3.1.5</version>
 	</parent>
 	<artifactId>gateway-service</artifactId>
 
