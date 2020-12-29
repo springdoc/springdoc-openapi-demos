@@ -9,7 +9,7 @@
 ## [Demo Spring Boot 2 and Spring Hateoas with OpenAPI 3](http://158.101.164.60:8085/swagger-ui.html).
 
 
-![Branching](https://springdoc.org/assets/images/springdoc-openapi.png)
+![Branching](https://springdoc.org/images/pets.png)
 
 
 # **Thank you for the support**
