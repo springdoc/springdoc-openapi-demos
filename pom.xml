@@ -108,15 +108,15 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<spring-boot.version>2.4.0</spring-boot.version>
-		<springdoc.version>1.5.3-SNAPSHOT</springdoc.version>
+		<spring-boot.version>2.4.2</spring-boot.version>
+		<springdoc.version>1.5.3</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
 		<jib-maven-plugin.version>2.5.0</jib-maven-plugin.version>
-		<spring-boot-maven-plugin.version>2.3.4.RELEASE</spring-boot-maven-plugin.version>
+		<spring-boot-maven-plugin.version>2.4.2</spring-boot-maven-plugin.version>
 		<springdoc-openapi-maven-plugin.version>1.0</springdoc-openapi-maven-plugin.version>
 	</properties>
 
