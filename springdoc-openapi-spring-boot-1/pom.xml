@@ -8,7 +8,7 @@
 	<artifactId>springdoc-openapi-spring-boot-1</artifactId>
 	<properties>
 		<spring-boot.version>1.5.22.RELEASE</spring-boot.version>
-		<jackson.version>2.10.1</jackson.version>
+		<jackson.version>2.12.1</jackson.version>
 	</properties>
 	<dependencies>
 		<dependency>
