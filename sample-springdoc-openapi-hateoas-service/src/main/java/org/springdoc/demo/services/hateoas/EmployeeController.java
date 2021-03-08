@@ -28,6 +28,7 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,7 +59,7 @@ class EmployeeController {
 	 * Look up all employees, and transform them into a REST collection resource. Then return them through Spring Web's
 	 * {@link ResponseEntity} fluent API.
 	 */
-	@GetMapping("/employees")
+	@GetMapping(path = "/employees",  produces = MediaType.APPLICATION_JSON_VALUE)
 	ResponseEntity<CollectionModel<EntityModel<Employee>>> findAll() {
 
 		List<EntityModel<Employee>> employees = StreamSupport.stream(repository.findAll().spliterator(), false)
@@ -72,7 +73,7 @@ class EmployeeController {
 						linkTo(methodOn(EmployeeController.class).findAll()).withSelfRel()));
 	}
 
-	@PostMapping("/employees")
+	@PostMapping(path = "/employees", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	ResponseEntity<EntityModel<Employee>> newEmployee(@RequestBody Employee employee) {
 
@@ -97,7 +98,7 @@ class EmployeeController {
 	 *
 	 * @param id
 	 */
-	@GetMapping("/employees/{id}")
+	@GetMapping(path = "/employees/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	ResponseEntity<EntityModel<Employee>> findOne(@PathVariable long id) {
 
 		return repository.findById(id) //
@@ -115,7 +116,7 @@ class EmployeeController {
 	 * @param id
 	 * @return
 	 */
-	@PutMapping("/employees/{id}")
+	@PutMapping(path = "/employees/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	ResponseEntity<Void> updateEmployee(@RequestBody Employee employee, @PathVariable long id) throws URISyntaxException {
 
