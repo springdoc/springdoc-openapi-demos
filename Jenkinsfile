@@ -17,7 +17,4 @@ node {
 			sh "mvn package jib:build"
 		}
 	}
-	stage ("Deploy") {		
-              build 'springdoc-openapi-demos-deploy'
-        }
 }
