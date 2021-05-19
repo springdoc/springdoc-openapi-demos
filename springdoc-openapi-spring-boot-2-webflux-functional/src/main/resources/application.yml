@@ -7,18 +7,7 @@ server:
     min-response-size: 1024
   http2:
     enabled: true
-spring:
-  resources:
-    cache:
-      period: 31536000
-      cachecontrol:
-        max-age: 31536000
-    chain:
-      html-application-cache: true
-      enabled: true
-      strategy:
-        content:
-          enabled: true
-          paths: /webjars/swagger-ui/**.*
 springdoc:
   version: '@springdoc.version@'
+  swagger-ui:
+    use-root-path: true

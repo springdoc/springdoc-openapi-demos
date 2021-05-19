@@ -1,36 +1,22 @@
 server:
-  servlet:
-    context-path: /
   compression:
     enabled: true
     mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
     min-response-size: 1024
   http2:
     enabled: true
-spring:
-  resources:
-    cache:
-      period: 31536000
-      cachecontrol:
-        max-age: 31536000
-    chain:
-      html-application-cache: true
-      enabled: true
-      strategy:
-        content:
-          enabled: true
-          paths: /webjars/swagger-ui/**.*
+
 springdoc:
   version: '@springdoc.version@'
   api-docs:
     groups:
       enabled: true
   swagger-ui:
-    path: /swagger-ui.html
     display-request-duration: true
     groups-order: DESC
     operationsSorter: method
     disable-swagger-default-url: true
+    use-root-path: true
   show-actuator: true
   group-configs:
   - group: stores

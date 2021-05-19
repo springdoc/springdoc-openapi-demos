@@ -19,6 +19,7 @@
 package org.springdoc.demo.app1.sample1;
 
 import org.hibernate.validator.constraints.SafeHtml.Tag;
+import org.springdoc.api.annotations.ParameterObject;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +33,7 @@ public class HelloController {
 	@GetMapping(value = "/hello/{numTelco}")
 	@ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
 	@Tag(name = "tea")
-	public String index(@PathVariable("numTelco") String numTel, String adresse) {
+	public String index(@PathVariable("numTelco") String numTel, @ParameterObject PersonDTO personDTO) {
 		return "Greetings from Spring Boot!";
 	}
 

@@ -18,6 +18,7 @@
 
 package org.springdoc.demo.app3;
 
+import io.r2dbc.spi.ConnectionFactory;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -29,10 +30,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.r2dbc.connection.init.ConnectionFactoryInitializer;
+import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator;
 
 @SpringBootApplication
-@EnableReactiveMongoRepositories
 public class WebfluxDemoApplication {
 
 	public static void main(String[] args) {
@@ -61,6 +63,16 @@ public class WebfluxDemoApplication {
 		String[] packagedToMatch = { "org.springdoc.demo.app3" };
 		return GroupedOpenApi.builder().group("x-stream").pathsToMatch(paths).packagesToScan(packagedToMatch)
 				.build();
+	}
+
+	@Bean
+	ConnectionFactoryInitializer initializer(ConnectionFactory connectionFactory) {
+
+		ConnectionFactoryInitializer initializer = new ConnectionFactoryInitializer();
+		initializer.setConnectionFactory(connectionFactory);
+		initializer.setDatabasePopulator(new ResourceDatabasePopulator(new ClassPathResource("schema.sql")));
+
+		return initializer;
 	}
 
 }

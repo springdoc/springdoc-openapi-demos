@@ -18,20 +18,18 @@
 
 package org.springdoc.demo.app3.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 
 /**
  * Created by rajeevkumarsingh on 08/09/17.
  */
-@Document(collection = "tweets")
 public class Tweet {
 	@Id
 	private String id;
@@ -41,14 +39,10 @@ public class Tweet {
 	private String text;
 
 	@NotNull
-	private Date createdAt = new Date();
+	private java.time.LocalDate createdAt = LocalDate.now();
 
 	public Tweet() {
 
-	}
-
-	public Tweet(String text) {
-		this.text = text;
 	}
 
 	public String getId() {
@@ -67,11 +61,11 @@ public class Tweet {
 		this.text = text;
 	}
 
-	public Date getCreatedAt() {
+	public LocalDate getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(LocalDate createdAt) {
 		this.createdAt = createdAt;
 	}
 }
