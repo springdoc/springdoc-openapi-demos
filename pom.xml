@@ -237,7 +237,7 @@
 					<execution>
 						<goals>
 							<goal>build-info</goal>
-							<goal>build-image</goal>
+							<goal>repackage</goal>
 						</goals>
 					</execution>
 				</executions>

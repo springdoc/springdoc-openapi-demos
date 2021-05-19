@@ -11,14 +11,14 @@
 To create an `executable jar`, simply run:
 
 ```sh
- mvn clean package spring-boot:repackage
+ mvn clean package
 ```
 
 ### Option 2: Building a non-native OCI Images
 To create a non-native OCI docker image, simply run:
 
 ```sh
-mvn clean package
+mvn clean spring-boot:build-image
 ```
 
 ### Option 3: Building native image with GraalVM
@@ -26,7 +26,7 @@ To create a `native image`, the project rely on spring-native project and buildp
 Run the following command
 
 ```sh
-mvn -Pnative-image clean package
+mvn -Pnative-image clean spring-boot:build-image
 ```
 
 ## Running the native application
