@@ -209,6 +209,10 @@
 							<name>
 								registry.hub.docker.com/springdocdemos/${project.artifactId}
 							</name>
+							<env>
+								<BPE_DELIM_JAVA_TOOL_OPTIONS xml:space="preserve"> </BPE_DELIM_JAVA_TOOL_OPTIONS>
+								<BPE_PREPEND_JAVA_TOOL_OPTIONS>-XX:ReservedCodeCacheSize=2496k -Djava.compiler=none -XX:MaxMetaspaceSize=60M -XX:MaxDirectMemorySize=2M -Xms1M -Xmx40m -Xss256k</BPE_PREPEND_JAVA_TOOL_OPTIONS>
+							</env>
 							<publish>true</publish>
 							<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 						</image>
