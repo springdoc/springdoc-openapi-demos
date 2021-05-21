@@ -52,6 +52,11 @@ public class PetRepository extends HashMapRepository<Pet, Long> {
 		return super.save(pet);
 	}
 
+	@Override
+	public void deleteAllById(Iterable<? extends Long> iterable) {
+
+	}
+
 	public List<Pet> findPetsByStatus(List<Pet.StatusEnum> statusList) {
 		return entities.values().stream()
 				.filter(entity -> entity.getStatus() != null)
