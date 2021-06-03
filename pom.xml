@@ -131,7 +131,7 @@
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
-		<jib-maven-plugin.version>2.5.0</jib-maven-plugin.version>
+		<jib-maven-plugin.version>3.0.0</jib-maven-plugin.version>
 		<spring-boot-maven-plugin.version>2.4.2</spring-boot-maven-plugin.version>
 		<springdoc-openapi-maven-plugin.version>1.0</springdoc-openapi-maven-plugin.version>
 		<spring-native.version>0.9.2</spring-native.version>
