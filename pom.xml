@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springdoc</groupId>
 	<artifactId>springdoc-openapi-demos</artifactId>
@@ -133,12 +131,9 @@
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
-		<jib-maven-plugin.version>2.5.0</jib-maven-plugin.version>
-		<spring-boot-maven-plugin.version>2.4.5</spring-boot-maven-plugin.version>
+		<jib-maven-plugin.version>3.0.0</jib-maven-plugin.version>
 		<springdoc-openapi-maven-plugin.version>1.0</springdoc-openapi-maven-plugin.version>
 		<spring-native.version>0.9.2</spring-native.version>
-		<builder>paketobuildpacks/builder:tiny</builder>
-		<native.build.args>--enable-https --enable-http</native.build.args>
 	</properties>
 
 	<dependencyManagement>
@@ -202,30 +197,6 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-					<configuration>
-						<image>
-							<name>
-								registry.hub.docker.com/springdocdemos/${project.artifactId}
-							</name>
-							<env>
-								<BPE_DELIM_JAVA_TOOL_OPTIONS xml:space="preserve"> </BPE_DELIM_JAVA_TOOL_OPTIONS>
-								<BPE_PREPEND_JAVA_TOOL_OPTIONS>-XX:ReservedCodeCacheSize=2496k -Djava.compiler=none -XX:MaxMetaspaceSize=60M -XX:MaxDirectMemorySize=2M -Xms1M -Xmx40m -Xss256k</BPE_PREPEND_JAVA_TOOL_OPTIONS>
-							</env>
-							<publish>true</publish>
-							<pullPolicy>IF_NOT_PRESENT</pullPolicy>
-						</image>
-						<docker>
-							<publishRegistry>
-								<url>https://registry.hub.docker.com/</url>
-								<username>${publishRegistry.username}</username>
-								<password>${publishRegistry.password}</password>
-							</publishRegistry>
-						</docker>
-					</configuration>
-				</plugin>
-				<plugin>
 					<groupId>org.springdoc</groupId>
 					<artifactId>springdoc-openapi-maven-plugin</artifactId>
 					<version>${springdoc-openapi-maven-plugin.version}</version>
@@ -236,7 +207,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>${spring-boot-maven-plugin.version}</version>
+				<version>${spring-boot.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -245,6 +216,47 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>${jib-maven-plugin.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.google.cloud.tools</groupId>
+						<artifactId>jib-native-image-extension-maven</artifactId>
+						<version>0.1.0</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<pluginExtensions>
+						<pluginExtension>
+							<implementation>com.google.cloud.tools.jib.maven.extension.nativeimage.JibNativeImageExtension</implementation>
+						</pluginExtension>
+					</pluginExtensions>
+					<from>
+						<image>debian:9-slim</image>
+						<platforms>
+							<platform>
+								<architecture>amd64</architecture>
+								<os>linux</os>
+							</platform>
+							<platform>
+								<architecture>arm64</architecture>
+								<os>linux</os>
+							</platform>
+							<platform>
+								<architecture>386</architecture>
+								<os>linux</os>
+							</platform>
+						</platforms>
+					</from>
+					<to>
+						<image>
+							registry.hub.docker.com/springdocdemos/${project.artifactId}
+						</image>
+					</to>
+				</configuration>
 			</plugin>
 		</plugins>
 		<resources>
@@ -340,14 +352,7 @@
 							<groupId>org.springframework.boot</groupId>
 							<artifactId>spring-boot-maven-plugin</artifactId>
 							<configuration>
-								<image>
-									<env>
-										<BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
-										<BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
-											${native.build.args}
-										</BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
-									</env>
-								</image>
+								<classifier>exec</classifier>
 							</configuration>
 						</plugin>
 						<plugin>
@@ -373,6 +378,23 @@
 				</pluginManagement>
 
 				<plugins>
+					<plugin>
+						<groupId>org.graalvm.nativeimage</groupId>
+						<artifactId>native-image-maven-plugin</artifactId>
+						<version>21.1.0</version>
+						<configuration>
+							<mainClass>org.springdoc.demo.app3.WebfluxDemoApplication</mainClass>
+							<buildArgs>-H:+ReportExceptionStackTraces --enable-https --enable-http --initialize-at-build-time=sun.instrument.InstrumentationImpl --initialize-at-build-time=com.oracle.truffle.api.Truffle</buildArgs>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>native-image</goal>
+								</goals>
+								<phase>package</phase>
+							</execution>
+						</executions>
+					</plugin>
 					<plugin>
 						<groupId>org.springframework.experimental</groupId>
 						<artifactId>spring-aot-maven-plugin</artifactId>

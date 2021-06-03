@@ -14,10 +14,7 @@ node {
 	}
 	stage('Package') {
 		withMaven(maven: 'maven') {
-			sh "mvn spring-boot:build-image"
+			sh "mvn package jib:build"
 		}
-	}
-	stage("Deploy") {        
-		build 'springdoc-openapi-demos-deploy'   
 	}
 }
