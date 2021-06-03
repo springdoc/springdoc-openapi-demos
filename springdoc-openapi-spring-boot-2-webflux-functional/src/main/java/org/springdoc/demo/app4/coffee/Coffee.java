@@ -3,9 +3,7 @@ package org.springdoc.demo.app4.coffee;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
 public class Coffee {
     @Id
     private String id;
