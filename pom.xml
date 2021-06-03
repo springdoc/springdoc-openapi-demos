@@ -227,6 +227,20 @@
 				<configuration>
 					<from>
 						<image>openjdk:8-jre-slim</image>
+						<platforms>
+							<platform>
+								<architecture>amd64</architecture>
+								<os>linux</os>
+							</platform>
+							<platform>
+								<architecture>arm64</architecture>
+								<os>linux</os>
+							</platform>
+							<platform>
+								<architecture>386</architecture>
+								<os>linux</os>
+							</platform>
+						</platforms>
 					</from>
 					<to>
 						<image>
