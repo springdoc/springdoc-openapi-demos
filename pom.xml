@@ -131,9 +131,12 @@
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
-		<jib-maven-plugin.version>3.0.0</jib-maven-plugin.version>
+		<jib-maven-plugin.version>2.5.0</jib-maven-plugin.version>
+		<spring-boot-maven-plugin.version>2.4.2</spring-boot-maven-plugin.version>
 		<springdoc-openapi-maven-plugin.version>1.0</springdoc-openapi-maven-plugin.version>
 		<spring-native.version>0.9.2</spring-native.version>
+		<builder>paketobuildpacks/builder:tiny</builder>
+		<native.build.args>--enable-https --enable-http</native.build.args>
 	</properties>
 
 	<dependencyManagement>
@@ -207,7 +210,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>${spring-boot.version}</version>
+				<version>${spring-boot-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -221,41 +224,24 @@
 				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>jib-maven-plugin</artifactId>
 				<version>${jib-maven-plugin.version}</version>
-				<dependencies>
-					<dependency>
-						<groupId>com.google.cloud.tools</groupId>
-						<artifactId>jib-native-image-extension-maven</artifactId>
-						<version>0.1.0</version>
-					</dependency>
-				</dependencies>
 				<configuration>
-					<pluginExtensions>
-						<pluginExtension>
-							<implementation>com.google.cloud.tools.jib.maven.extension.nativeimage.JibNativeImageExtension</implementation>
-						</pluginExtension>
-					</pluginExtensions>
 					<from>
-						<image>debian:9-slim</image>
-						<platforms>
-							<platform>
-								<architecture>amd64</architecture>
-								<os>linux</os>
-							</platform>
-							<platform>
-								<architecture>arm64</architecture>
-								<os>linux</os>
-							</platform>
-							<platform>
-								<architecture>386</architecture>
-								<os>linux</os>
-							</platform>
-						</platforms>
+						<image>openjdk:8-jre-slim</image>
 					</from>
 					<to>
 						<image>
 							registry.hub.docker.com/springdocdemos/${project.artifactId}
 						</image>
 					</to>
+					<container>
+						<jvmFlags>
+							<jvmFlag>-XshowSettings:vm</jvmFlag>
+							<jvmFlag>-noverify</jvmFlag>
+							<jvmFlag>-Dspring.main.lazy-initialization=true</jvmFlag>
+							<jvmFlag>-XX:TieredStopAtLevel=1</jvmFlag>
+							<jvmFlag>-XX:+UseSerialGC</jvmFlag>
+						</jvmFlags>
+					</container>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -273,7 +259,6 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
 						<version>${maven-source-plugin.version}</version>
 						<executions>
@@ -286,7 +271,6 @@
 						</executions>
 					</plugin>
 					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
 						<version>${maven-javadoc-plugin.version}</version>
 						<executions>
@@ -336,73 +320,6 @@
 				</plugins>
 			</build>
 		</profile>
-
-		<profile>
-			<id>native-image</id>
-			<dependencies>
-				<dependency>
-					<groupId>org.springframework.experimental</groupId>
-					<artifactId>spring-native</artifactId>
-				</dependency>
-			</dependencies>
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.springframework.boot</groupId>
-							<artifactId>spring-boot-maven-plugin</artifactId>
-							<configuration>
-								<classifier>exec</classifier>
-							</configuration>
-						</plugin>
-						<plugin>
-							<groupId>org.springframework.experimental</groupId>
-							<artifactId>spring-aot-maven-plugin</artifactId>
-							<version>${spring-native.version}</version>
-							<executions>
-								<execution>
-									<id>test-generate</id>
-									<goals>
-										<goal>test-generate</goal>
-									</goals>
-								</execution>
-								<execution>
-									<id>generate</id>
-									<goals>
-										<goal>generate</goal>
-									</goals>
-								</execution>
-							</executions>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-
-				<plugins>
-					<plugin>
-						<groupId>org.graalvm.nativeimage</groupId>
-						<artifactId>native-image-maven-plugin</artifactId>
-						<version>21.1.0</version>
-						<configuration>
-							<mainClass>org.springdoc.demo.app3.WebfluxDemoApplication</mainClass>
-							<buildArgs>-H:+ReportExceptionStackTraces --enable-https --enable-http --initialize-at-build-time=sun.instrument.InstrumentationImpl --initialize-at-build-time=com.oracle.truffle.api.Truffle</buildArgs>
-						</configuration>
-						<executions>
-							<execution>
-								<goals>
-									<goal>native-image</goal>
-								</goals>
-								<phase>package</phase>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.springframework.experimental</groupId>
-						<artifactId>spring-aot-maven-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
 	</profiles>
 
 </project>
