@@ -10,7 +10,11 @@ import javax.validation.constraints.Size;
 
 import org.springdoc.demo.services.person.model.Person;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class PersonController {
@@ -38,19 +42,6 @@ public class PersonController {
 		person.setId(1);
 		hardCoded.add(person);
 		return hardCoded;
-	}
 
-	@GetMapping(path = "/persons", headers = {"lastName"})
-	public List<Person> findByLastNameByHeader(@RequestHeader("lastName") @NotBlank @Size(max = 10) String lastName) {
-		List<Person> hardCoded = new ArrayList<>();
-		Person person = new Person();
-		person.setAge(20);
-		person.setEmail1("abc1@abc.com");
-		person.setEmail2("abc@abc.com");
-		person.setFirstName("Somefirstname");
-		person.setLastName(lastName);
-		person.setId(1);
-		hardCoded.add(person);
-		return hardCoded;
 	}
 }
