@@ -1,7 +1,0 @@
-#
-#Tue May 18 23:43:56 CEST 2021
-org.springdoc.demo.app3.repository.TweetRepository=org.springframework.stereotype.Component,org.springframework.data.repository.Repository
-org.springdoc.demo.app3.controller.TweetMapper=org.springframework.stereotype.Component
-org.springdoc.demo.app3.controller.ExceptionTranslator=org.springframework.stereotype.Component
-org.springdoc.demo.app3.WebfluxDemoApplication=org.springframework.stereotype.Component
-org.springdoc.demo.app3.controller.TweetController=org.springframework.stereotype.Component
