@@ -45,10 +45,10 @@ public class Application {
 	@Profile("!prod")
 	public GroupedOpenApi actuatorApi(OpenApiCustomiser actuatorOpenApiCustomiser, OperationCustomizer actuatorCustomizer) {
 		return GroupedOpenApi.builder().group("Actuator")
-				.pathsToMatch("/actuator/**")
+				.pathsToMatch("/**")
 				.addOpenApiCustomiser(actuatorOpenApiCustomiser)
 				.addOperationCustomizer(actuatorCustomizer)
-				.pathsToExclude("/actuator/health/*")
+				.pathsToExclude("/health/*")
 				.build();
 	}
 

@@ -8,8 +8,10 @@ server:
 management:
   endpoints:
     web:
+      base-path: /
       exposure:
         include: '*'
+
 springdoc:
   version: '@springdoc.version@'
   api-docs:
@@ -20,7 +22,6 @@ springdoc:
     groups-order: DESC
     operationsSorter: method
     disable-swagger-default-url: true
-    use-root-path: true
   show-actuator: true
   group-configs:
   - group: stores
