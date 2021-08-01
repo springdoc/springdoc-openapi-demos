@@ -24,6 +24,8 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springdoc.core.GroupedOpenApi;
+import org.springdoc.core.customizers.OpenApiCustomiser;
+import org.springdoc.core.customizers.OperationCustomizer;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -41,9 +43,11 @@ public class Application {
 
 	@Bean
 	@Profile("!prod")
-	public GroupedOpenApi actuatorApi() {
+	public GroupedOpenApi actuatorApi(OpenApiCustomiser actuatorOpenApiCustomiser, OperationCustomizer actuatorCustomizer) {
 		return GroupedOpenApi.builder().group("Actuator")
 				.pathsToMatch("/actuator/**")
+				.addOpenApiCustomiser(actuatorOpenApiCustomiser)
+				.addOperationCustomizer(actuatorCustomizer)
 				.pathsToExclude("/actuator/health/*")
 				.build();
 	}

@@ -5,7 +5,11 @@ server:
     min-response-size: 1024
   http2:
     enabled: true
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 springdoc:
   version: '@springdoc.version@'
   api-docs:
