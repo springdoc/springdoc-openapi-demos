@@ -26,5 +26,3 @@ springdoc:
   group-configs:
   - group: stores
     paths-to-match: /store/**
-  - group: users
-    packages-to-scan: org.springdoc.demo.app2

@@ -22,6 +22,7 @@ import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springdoc.core.GroupedOpenApi;
 import org.springdoc.core.customizers.OpenApiCustomiser;
@@ -49,6 +50,17 @@ public class Application {
 				.addOpenApiCustomiser(actuatorOpenApiCustomiser)
 				.addOperationCustomizer(actuatorCustomizer)
 				.pathsToExclude("/health/*")
+				.build();
+	}
+
+	@Bean
+	public GroupedOpenApi usersGroup() {
+		return GroupedOpenApi.builder().group("users")
+				.addOperationCustomizer((operation, handlerMethod) -> {
+					operation.addSecurityItem(new SecurityRequirement().addList("basicScheme"));
+					return operation;
+				})
+				.packagesToScan("org.springdoc.demo.app2")
 				.build();
 	}
 
