@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/springdoc/springdoc-openapi-demos.svg?branch=master)](https://travis-ci.org/springdoc/springdoc-openapi-demos)
 
+
 # Spring-boot with OpenAPI Demo applications.
 
 ## [Demo Spring Boot 2 Web MVC with OpenAPI 3](http://158.101.164.60:8081/).
