@@ -9,10 +9,6 @@
 	</parent>
 	<artifactId>springdoc-openapi-spring-boot-2-webflux</artifactId>
 
-	<properties>
-		<java.version>11</java.version>
-	</properties>
-
 	<dependencies>
 		<!-- springdoc ui -->
 		<dependency>
