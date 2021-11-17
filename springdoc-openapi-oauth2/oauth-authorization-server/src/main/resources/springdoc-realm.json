@@ -566,6 +566,7 @@
         "http://localhost:8082/new-client/login/oauth2/code/custom",
         "http://localhost:8089/",
         "http://localhost:8081/resource-server/swagger-ui/oauth2-redirect.html",
+        "http://localhost:8082/resource-server/webjars/swagger-ui/oauth2-redirect.html",
         "http://localhost:8089/auth/redirect/"
       ],
       "webOrigins": [

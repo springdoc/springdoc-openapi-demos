@@ -11,7 +11,8 @@
 
 	<modules>
 		<module>oauth-authorization-server</module>
-		<module>oauth-resource-server</module>
+		<module>oauth-resource-server-webflux</module>
+		<module>oauth-resource-server-webmvc</module>
 	</modules>
 
 	<dependencies>

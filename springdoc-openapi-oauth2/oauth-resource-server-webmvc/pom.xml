@@ -5,7 +5,7 @@
 		<artifactId>springdoc-openapi-oauth2</artifactId>
 		<version>3.1.6-SNAPSHOT</version>
 	</parent>
-    <artifactId>oauth-resource-server</artifactId>
+    <artifactId>oauth-resource-server-webmvc</artifactId>
 	<dependencies>
         <!-- web -->
         <dependency>
