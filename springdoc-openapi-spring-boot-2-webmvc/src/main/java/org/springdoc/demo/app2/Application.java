@@ -45,7 +45,8 @@ public class Application {
 	@Bean
 	@Profile("!prod")
 	public GroupedOpenApi actuatorApi(OpenApiCustomiser actuatorOpenApiCustomiser, OperationCustomizer actuatorCustomizer) {
-		return GroupedOpenApi.builder().group("Actuator")
+		return GroupedOpenApi.builder()
+				.group("Actuator")
 				.pathsToMatch("/**")
 				.addOpenApiCustomiser(actuatorOpenApiCustomiser)
 				.addOperationCustomizer(actuatorCustomizer)

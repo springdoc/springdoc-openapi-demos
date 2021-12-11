@@ -7,9 +7,6 @@ management:
 
 springdoc:
   version: '@springdoc.version@'
-  api-docs:
-    groups:
-      enabled: true
   swagger-ui:
     display-request-duration: true
     groups-order: DESC
