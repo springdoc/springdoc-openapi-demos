@@ -11,8 +11,7 @@
 	<artifactId>springdoc-openapi-microservices</artifactId>
 
 	<properties>
-		<spring-boot.version>2.3.5.RELEASE</spring-boot.version>
-		<springcloud.version>Hoxton.SR8</springcloud.version>
+		<spring-cloud.version>2021.0.0</spring-cloud.version>
 	</properties>
 
 	<modules>
@@ -26,11 +25,10 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- spring cloud -->
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${springcloud.version}</version>
+				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
