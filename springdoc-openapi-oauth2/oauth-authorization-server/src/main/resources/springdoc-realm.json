@@ -567,6 +567,8 @@
         "http://localhost:8089/",
         "http://localhost:8081/resource-server/swagger-ui/oauth2-redirect.html",
         "http://localhost:8082/resource-server/webjars/swagger-ui/oauth2-redirect.html",
+        "http://158.101.191.70:8095/resource-server/swagger-ui/oauth2-redirect.html",
+        "http://158.101.191.70:8096/resource-server/webjars/swagger-ui/oauth2-redirect.html",
         "http://localhost:8089/auth/redirect/"
       ],
       "webOrigins": [
