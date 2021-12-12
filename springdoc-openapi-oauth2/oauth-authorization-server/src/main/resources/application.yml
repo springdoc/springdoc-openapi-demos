@@ -26,4 +26,4 @@ keycloak:
       keycloak-path: "/auth"
     migration:
       importProvider: singleFile
-      importLocation: "classpath:springdoc-realm.json"
+      importLocation: "file:springdoc-realm.json"

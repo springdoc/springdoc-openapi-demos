@@ -11,6 +11,7 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<jib.from.image>openjdk:11-jre-slim</jib.from.image>
 	</properties>
 
 	<modules>
