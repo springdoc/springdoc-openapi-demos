@@ -9,12 +9,14 @@
    3. Redirect Uris: 
       - http://localhost:8081/resource-server/swagger-ui/oauth2-redirect.html
       - http://localhost:8082/resource-server/webjars/swagger-ui/oauth2-redirect.html
-3. `oauth-resource-server-webmvc` is a Spring Boot WebMVC based RESTFul API, acting as a backend Application
+
+3. There are two users registered in the Authorization Server:
+    1. josh@test.com / 123
+    2. dave@test.com / pass
+   
+4. `oauth-resource-server-webmvc` is a Spring Boot WebMVC based RESTFul API, acting as a backend Application
    swagger-ui:  http://localhost:8081/resource-server/swagger-ui.html
-OR
- `oauth-resource-server-webflux` is a Spring Boot WebFlux based RESTFul API, acting as a backend Application
+
+5. `oauth-resource-server-webflux` is a Spring Boot WebFlux based RESTFul API, acting as a backend Application
    swagger-ui:  http://localhost:8082/resource-server/swagger-ui.html
 
-6. There are two users registered in the Authorization Server:
-   1. josh@test.com / 123
-   2. dave@test.com / pass

@@ -13,9 +13,7 @@ springdoc:
     path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
-    displayRequestDuration: true
     tagsSorter: alpha
-    display-query-params-without-oauth2: true
     use-root-path: true
   cache:
     disabled: true
