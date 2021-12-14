@@ -1,7 +1,7 @@
 management:
   endpoints:
     web:
-      base-path: /actuator
+      base-path: /rest/actuator
       exposure:
         include: '*'
 
