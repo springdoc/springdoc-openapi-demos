@@ -38,4 +38,4 @@ docker run --rm -p 8080:8080 springdoc-openapi-spring-boot-2-webflux:3.1.6-SNAPS
 ```
 
 
-
+-DspringAot=true -agentlib:native-image-agent=config-output-dir=/Users/bnasslah/Documents/workspace/springdoc-openapi-demos/springdoc-openapi-spring-boot-2-webflux/src/main/resources/META-INF/native-image

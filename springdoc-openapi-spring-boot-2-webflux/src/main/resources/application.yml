@@ -9,6 +9,5 @@ server:
     enabled: true
 springdoc:
   version: '@springdoc.version@'
-  use-root-path: true
   swagger-ui:
     use-root-path: true
