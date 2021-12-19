@@ -260,7 +260,8 @@
 								<jvmFlags>
 									<jvmFlag>-XshowSettings:vm</jvmFlag>
 									<jvmFlag>-noverify</jvmFlag>
-									<jvmFlag>-Dspring.main.lazy-initialization=true</jvmFlag>
+									<jvmFlag>-Dspring.main.lazy-initialization=true
+									</jvmFlag>
 									<jvmFlag>-XX:TieredStopAtLevel=1</jvmFlag>
 									<jvmFlag>-XX:+UseSerialGC</jvmFlag>
 								</jvmFlags>
@@ -370,7 +371,12 @@
 								<builder>paketobuildpacks/builder:tiny</builder>
 								<env>
 									<BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
-									<BP_NATIVE_IMAGE_BUILD_ARGUMENTS>-H:+ReportExceptionStackTraces --enable-https --enable-http --initialize-at-build-time=sun.instrument.InstrumentationImpl --initialize-at-run-time=io.netty.handler.ssl.BouncyCastleAlpnSslUtils</BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
+									<BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
+										-H:+ReportExceptionStackTraces --enable-https
+										--enable-http
+										--initialize-at-build-time=sun.instrument.InstrumentationImpl
+										--initialize-at-run-time=io.netty.handler.ssl.BouncyCastleAlpnSslUtils
+									</BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
 									<publish>true</publish>
 									<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 								</env>
@@ -402,6 +408,90 @@
 								</goals>
 							</execution>
 						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>native</id>
+			<properties>
+				<java.version>11</java.version>
+				<repackage.classifier>exec</repackage.classifier>
+				<native-buildtools.version>0.9.8</native-buildtools.version>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.springdoc</groupId>
+					<artifactId>springdoc-openapi-native</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.junit.platform</groupId>
+					<artifactId>junit-platform-launcher</artifactId>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.graalvm.buildtools</groupId>
+						<artifactId>native-maven-plugin</artifactId>
+						<version>${native-buildtools.version}</version>
+						<extensions>true</extensions>
+						<configuration>
+							<buildArgs>
+								<buildArg>--enable-https</buildArg>
+								<buildArg>--enable-http</buildArg>
+								<buildArg>
+									--initialize-at-build-time=sun.instrument.InstrumentationImpl
+								</buildArg>
+								<buildArg>
+									--initialize-at-run-time=io.netty.handler.ssl.BouncyCastleAlpnSslUtils
+								</buildArg>
+							</buildArgs>
+						</configuration>
+						<executions>
+							<execution>
+								<id>test-native</id>
+								<phase>test</phase>
+								<goals>
+									<goal>test</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>build-native</id>
+								<phase>package</phase>
+								<goals>
+									<goal>build</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.springframework.experimental</groupId>
+						<artifactId>spring-aot-maven-plugin</artifactId>
+						<version>${spring-native.version}</version>
+						<executions>
+							<execution>
+								<id>test-generate</id>
+								<goals>
+									<goal>test-generate</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>generate</id>
+								<goals>
+									<goal>generate</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- Avoid a clash between Spring Boot repackaging and native-maven-plugin -->
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<configuration>
+							<classifier>exec</classifier>
+						</configuration>
 					</plugin>
 				</plugins>
 			</build>
