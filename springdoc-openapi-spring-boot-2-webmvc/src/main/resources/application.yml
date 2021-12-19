@@ -17,3 +17,5 @@ springdoc:
   group-configs:
   - group: stores
     paths-to-match: /store/**
+server:
+  port: 8081
