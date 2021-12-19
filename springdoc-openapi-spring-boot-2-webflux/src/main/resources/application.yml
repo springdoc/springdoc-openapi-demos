@@ -7,7 +7,7 @@ server:
     min-response-size: 1024
   http2:
     enabled: true
+  port: 8082
 springdoc:
   version: '@springdoc.version@'
-  swagger-ui:
-    use-root-path: true
+  use-root-path: true
