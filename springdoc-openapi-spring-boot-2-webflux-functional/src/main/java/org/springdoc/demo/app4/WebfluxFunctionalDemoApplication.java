@@ -18,11 +18,7 @@
 
 package org.springdoc.demo.app4;
 
-import io.swagger.v3.oas.models.Components;
-import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.info.License;
-import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springdoc.core.GroupedOpenApi;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -38,33 +34,29 @@ public class WebfluxFunctionalDemoApplication {
 	}
 
 	@Bean
-	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
-		return new OpenAPI()
-				.components(new Components().addSecuritySchemes("basicScheme",
-						new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("basic")))
-				.info(new Info().title("Coffee/employee/user API").version(appVersion)
-						.license(new License().name("Apache 2.0").url("http://springdoc.org")));
-	}
-
-
-	@Bean
-	public GroupedOpenApi employeesOpenApi() {
+	public GroupedOpenApi employeesOpenApi(@Value("${springdoc.version}") String appVersion) {
 		String[] paths = { "/employees/**" };
-		return GroupedOpenApi.builder().group("employees").pathsToMatch(paths)
+		return GroupedOpenApi.builder().group("employees")
+				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Employees API").version(appVersion)))
+				.pathsToMatch(paths)
 				.build();
 	}
 
 	@Bean
-	public GroupedOpenApi userOpenApi() {
+	public GroupedOpenApi userOpenApi(@Value("${springdoc.version}") String appVersion) {
 		String[] paths = { "/api/user/**" };
-		return GroupedOpenApi.builder().group("users").pathsToMatch(paths)
+		return GroupedOpenApi.builder().group("users")
+				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Users API").version(appVersion)))
+				.pathsToMatch(paths)
 				.build();
 	}
 
 	@Bean
-	public GroupedOpenApi coffeeOpenApi() {
+	public GroupedOpenApi coffeeOpenApi(@Value("${springdoc.version}") String appVersion) {
 		String[] paths = { "/coffees/**" };
-		return GroupedOpenApi.builder().group("coffees").pathsToMatch(paths)
+		return GroupedOpenApi.builder().group("coffees")
+				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Coffees API").version(appVersion)))
+				.pathsToMatch(paths)
 				.build();
 	}
 

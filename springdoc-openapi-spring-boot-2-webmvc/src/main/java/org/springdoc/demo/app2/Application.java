@@ -18,12 +18,8 @@
 
 package org.springdoc.demo.app2;
 
-import io.swagger.v3.oas.models.Components;
-import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
-import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springdoc.core.GroupedOpenApi;
 import org.springdoc.core.customizers.OpenApiCustomiser;
 import org.springdoc.core.customizers.OperationCustomizer;
@@ -44,38 +40,31 @@ public class Application {
 		SpringApplication.run(Application.class);
 	}
 
-
 	@Bean
 	@Profile("!prod")
-	public GroupedOpenApi actuatorApi(OpenApiCustomiser actuatorOpenApiCustomiser, OperationCustomizer actuatorCustomizer, WebEndpointProperties endpointProperties) {
+	public GroupedOpenApi actuatorApi(OpenApiCustomiser actuatorOpenApiCustomiser,
+			OperationCustomizer actuatorCustomizer,
+			WebEndpointProperties endpointProperties,
+			@Value("${springdoc.version}") String appVersion) {
 		return GroupedOpenApi.builder()
 				.group("Actuator")
 				.pathsToMatch(endpointProperties.getBasePath()+ ALL_PATTERN)
 				.addOpenApiCustomiser(actuatorOpenApiCustomiser)
+				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Actuator API").version(appVersion)))
 				.addOperationCustomizer(actuatorCustomizer)
 				.pathsToExclude("/health/*")
 				.build();
 	}
 
 	@Bean
-	public GroupedOpenApi usersGroup() {
+	public GroupedOpenApi usersGroup(@Value("${springdoc.version}") String appVersion) {
 		return GroupedOpenApi.builder().group("users")
 				.addOperationCustomizer((operation, handlerMethod) -> {
 					operation.addSecurityItem(new SecurityRequirement().addList("basicScheme"));
 					return operation;
 				})
+				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Users API").version(appVersion)))
 				.packagesToScan("org.springdoc.demo.app2")
 				.build();
-	}
-
-	@Bean
-	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
-		return new OpenAPI()
-				.components(new Components().addSecuritySchemes("basicScheme",
-						new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("basic")))
-				.info(new Info().title("Petstore API").version(appVersion).description(
-						"This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.")
-						.termsOfService("http://swagger.io/terms/")
-						.license(new License().name("Apache 2.0").url("http://springdoc.org")));
 	}
 }

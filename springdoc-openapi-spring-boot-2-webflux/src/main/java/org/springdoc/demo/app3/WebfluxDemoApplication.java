@@ -18,11 +18,7 @@
 
 package org.springdoc.demo.app3;
 
-import io.swagger.v3.oas.models.Components;
-import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.info.License;
-import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springdoc.core.GroupedOpenApi;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -38,26 +34,22 @@ public class WebfluxDemoApplication {
 	}
 
 	@Bean
-	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
-		return new OpenAPI()
-				.components(new Components().addSecuritySchemes("basicScheme",
-						new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("basic")))
-				.info(new Info().title("Tweet API").version(appVersion)
-						.license(new License().name("Apache 2.0").url("http://springdoc.org")));
-	}
-
-	@Bean
-	public GroupedOpenApi storeOpenApi() {
+	public GroupedOpenApi tweetsOpenApi(@Value("${springdoc.version}") String appVersion) {
 		String[] paths = { "/tweets/**" };
-		return GroupedOpenApi.builder().group("tweets").pathsToMatch(paths)
+		return GroupedOpenApi.builder().
+				group("tweets")
+				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Tweets API").version(appVersion)))
+				.pathsToMatch(paths)
 				.build();
 	}
 
 	@Bean
-	public GroupedOpenApi userOpenApi() {
+	public GroupedOpenApi streamOpenApi(@Value("${springdoc.version}") String appVersion) {
 		String[] paths = { "/stream/**" };
 		String[] packagedToMatch = { "org.springdoc.demo.app3" };
-		return GroupedOpenApi.builder().group("x-stream").pathsToMatch(paths).packagesToScan(packagedToMatch)
+		return GroupedOpenApi.builder().group("x-stream")
+				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Stream API").version(appVersion)))
+				.pathsToMatch(paths).packagesToScan(packagedToMatch)
 				.build();
 	}
 
