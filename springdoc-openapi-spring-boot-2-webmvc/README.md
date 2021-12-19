@@ -34,6 +34,5 @@ mvn -Pnative-image clean spring-boot:build-image
 To run the demo using docker, invoke the following:
 
 ```sh
-docker pull springdocdemos/springdoc-openapi-spring-boot-2-webmvc:latest
-docker run --rm -p 8080:8080 springdocdemos/springdoc-openapi-spring-boot-2-webmvc:latest
+docker run --rm -p 8080:8081 springdoc-openapi-spring-boot-2-webmvc:3.1.6-SNAPSHOT
 ```

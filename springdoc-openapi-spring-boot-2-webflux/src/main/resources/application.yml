@@ -10,4 +10,5 @@ server:
   port: 8082
 springdoc:
   version: '@springdoc.version@'
-  use-root-path: true
+  swagger-ui:
+    use-root-path: true

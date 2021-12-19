@@ -2,13 +2,9 @@ package org.springdoc.demo.services.department;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
-import io.swagger.v3.oas.models.Components;
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.License;
 import org.springdoc.demo.services.department.model.Department;
 import org.springdoc.demo.services.department.repository.DepartmentRepository;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -19,7 +15,7 @@ import org.springframework.context.annotation.Bean;
 @EnableDiscoveryClient
 @EnableFeignClients
 @OpenAPIDefinition(info =
-	@Info(title = "Department API", version = "1.0", description = "Documentation Department API v1.0")
+	@Info(title = "Department API", version = "${springdoc.version}", description = "Documentation Department API v1.0")
 )
 public class DepartmentApplication {
 
@@ -35,13 +31,5 @@ public class DepartmentApplication {
 		repository.add(new Department(2L, "Development"));
 		repository.add(new Department(2L, "Operations"));		
 		return repository;
-	}
-
-	@Bean
-	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
-		return new OpenAPI()
-				.components(new Components())
-				.info(new io.swagger.v3.oas.models.info.Info().title("Department API").version(appVersion)
-						.license(new License().name("Apache 2.0").url("http://springdoc.org")));
 	}
 }

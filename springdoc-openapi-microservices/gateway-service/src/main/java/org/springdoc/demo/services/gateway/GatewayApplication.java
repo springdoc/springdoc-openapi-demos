@@ -3,13 +3,9 @@ package org.springdoc.demo.services.gateway;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.swagger.v3.oas.models.Components;
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.License;
 import org.springdoc.core.GroupedOpenApi;
 import org.springdoc.core.SwaggerUiConfigParameters;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -40,13 +36,5 @@ public class GatewayApplication {
 			GroupedOpenApi.builder().pathsToMatch("/" + name + "/**").group(name).build();
 		});
 		return groups;
-	}
-
-	@Bean
-	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
-		return new OpenAPI()
-				.components(new Components())
-				.info(new io.swagger.v3.oas.models.info.Info().title("Gateway API").version(appVersion)
-						.license(new License().name("Apache 2.0").url("http://springdoc.org")));
 	}
 }
