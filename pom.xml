@@ -117,6 +117,7 @@
 		<module>springdoc-openapi-person-service</module>
 		<module>springdoc-openapi-hateoas-service</module>
 		<module>springdoc-openapi-data-rest</module>
+		<module>springdoc-openapi-spring-cloud-function</module>
 	</modules>
 
 	<properties>
@@ -138,6 +139,7 @@
 		<springdoc-openapi-maven-plugin.version>1.3</springdoc-openapi-maven-plugin.version>
 		<spring-native.version>0.11.1</spring-native.version>
 		<jib.from.image>openjdk:8-jre-slim</jib.from.image>
+		<spring-cloud.version>2021.0.0</spring-cloud.version>
 	</properties>
 
 	<dependencyManagement>
@@ -149,41 +151,20 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 			<!-- OpenAPI 3 -->
 			<dependency>
 				<groupId>org.springdoc</groupId>
-				<artifactId>springdoc-openapi-ui</artifactId>
+				<artifactId>springdoc-openapi</artifactId>
 				<version>${springdoc.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springdoc</groupId>
-				<artifactId>springdoc-openapi-webflux-ui</artifactId>
-				<version>${springdoc.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springdoc</groupId>
-				<artifactId>springdoc-openapi-webmvc-core</artifactId>
-				<version>${springdoc.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springdoc</groupId>
-				<artifactId>springdoc-openapi-security</artifactId>
-				<version>${springdoc.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springdoc</groupId>
-				<artifactId>springdoc-openapi-data-rest</artifactId>
-				<version>${springdoc.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springdoc</groupId>
-				<artifactId>springdoc-openapi-hateoas</artifactId>
-				<version>${springdoc.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springdoc</groupId>
-				<artifactId>springdoc-openapi-native</artifactId>
-				<version>${springdoc.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
