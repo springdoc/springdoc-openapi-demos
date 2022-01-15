@@ -9,12 +9,12 @@ node {
 	}
 	stage('Clean') {
 		withMaven(maven: 'maven') {
-			sh "mvn clean"
+			sh "mvn clean -T100"
 		}
 	}
 	stage('Package') {
 		withMaven(maven: 'maven') {
-			sh "mvn -Pjib package jib:build"
+			sh "mvn -Pjib package jib:build -T100"
 		}
 	}
 	stage("Deploy") {
