@@ -1,6 +1,9 @@
 #!/usr/bin/env groovy
 
 node {
+    tools {
+        jdk 'java-17'
+    }
 	stage('checkout') {
 		deleteDir()
 	}
@@ -8,12 +11,12 @@ node {
 		checkout scm
 	}
 	stage('Clean') {
-		withMaven(maven: 'maven') {
+		withMaven(maven: 'maven-3.8.4') {
 			sh "mvn clean -T100"
 		}
 	}
 	stage('Package') {
-		withMaven(maven: 'maven') {
+		withMaven(maven: 'maven-3.8.4') {
 			sh "mvn -Pjib package jib:build -T100"
 		}
 	}
