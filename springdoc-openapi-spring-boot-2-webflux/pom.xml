@@ -13,7 +13,7 @@
 		<!-- springdoc ui -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-webflux-ui</artifactId>
+			<artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
 		</dependency>
 		<!-- webflux -->
 		<dependency>

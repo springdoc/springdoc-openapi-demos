@@ -7,3 +7,9 @@ If you have a general question about the theme, how to implement it, or how to c
 1. [Contact GitHub Support](https://github.com/contact?form%5Bsubject%5D=GitHub%20Pages%20theme%20pages-themes/architect), or
 
 2. Ask your question of the Jekyll community on [talk.jekyllrb.com](https://talk.jekyllrb.com/)
+
+Notes:
+- https://hub.docker.com/repository/docker/springdocdemos/spring-cloud-function-webmvc/tags?page=1&ordering=last_updated
+- https://github.com/springdoc/springdoc-openapi-demos/wiki/springdoc-openapi-2.x-migration-guide
+- https://springdoc.org/v2/demos.html
+- https://s01.oss.sonatype.org/content/repositories/snapshots/org/springdoc/

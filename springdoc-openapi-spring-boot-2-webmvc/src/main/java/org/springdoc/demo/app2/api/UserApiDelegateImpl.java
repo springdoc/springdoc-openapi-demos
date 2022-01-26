@@ -23,8 +23,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
+import jakarta.annotation.PostConstruct;
 import org.springdoc.demo.app2.model.User;
 import org.springdoc.demo.app2.repository.UserRepository;
 

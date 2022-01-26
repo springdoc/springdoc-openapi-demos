@@ -18,10 +18,9 @@
 
 package org.springdoc.demo.app1.sample2;
 
-import javax.xml.bind.annotation.XmlTransient;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-07-08T09:37:36.546Z[GMT]")
-@javax.xml.bind.annotation.XmlRootElement
+import jakarta.xml.bind.annotation.XmlTransient;
+
 public class ApiResponseMessage {
 	public static final int ERROR = 1;
 

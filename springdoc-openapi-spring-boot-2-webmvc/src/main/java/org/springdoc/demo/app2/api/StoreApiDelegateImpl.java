@@ -21,8 +21,7 @@ package org.springdoc.demo.app2.api;
 import java.util.Date;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
-
+import jakarta.annotation.PostConstruct;
 import org.springdoc.demo.app2.model.Order;
 import org.springdoc.demo.app2.repository.OrderRepository;
 import org.springdoc.demo.app2.repository.PetRepository;

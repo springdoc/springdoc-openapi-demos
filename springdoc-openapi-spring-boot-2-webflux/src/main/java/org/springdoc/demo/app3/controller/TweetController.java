@@ -18,11 +18,10 @@
 
 package org.springdoc.demo.app3.controller;
 
-import javax.validation.Valid;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import org.springdoc.demo.app3.dto.TweetDTO;
 import org.springdoc.demo.app3.model.Tweet;
 import org.springdoc.demo.app3.repository.TweetRepository;

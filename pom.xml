@@ -127,9 +127,9 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<spring-boot.version>2.6.2</spring-boot.version>
+		<spring-boot.version>3.0.0-M1</spring-boot.version>
 		<spring-boot-maven-plugin.version>${spring-boot.version}</spring-boot-maven-plugin.version>
-		<springdoc.version>1.6.5</springdoc.version>
+		<springdoc.version>2.0.0-SNAPSHOT</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
@@ -140,6 +140,7 @@
 		<spring-native.version>0.11.1</spring-native.version>
 		<jib.from.image>openjdk:8-jre-slim</jib.from.image>
 		<spring-cloud.version>2021.0.0</spring-cloud.version>
+		<spring-cloud-function.version>4.0.0-SNAPSHOT</spring-cloud-function.version>
 	</properties>
 
 	<dependencyManagement>
@@ -148,13 +149,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
 				<version>${spring-boot.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

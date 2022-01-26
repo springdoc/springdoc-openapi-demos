@@ -1,15 +1,15 @@
 package org.springdoc.demo.services.person.config;
 
-import javax.annotation.PostConstruct;
 import javax.money.MonetaryAmount;
 
+import jakarta.annotation.PostConstruct;
 import org.javamoney.moneta.Money;
 import org.zalando.jackson.datatype.money.MoneyModule;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static org.springdoc.core.SpringDocUtils.getConfig;
+import static org.springdoc.core.utils.SpringDocUtils.getConfig;
 
 @Configuration
 public class SampleConfig {

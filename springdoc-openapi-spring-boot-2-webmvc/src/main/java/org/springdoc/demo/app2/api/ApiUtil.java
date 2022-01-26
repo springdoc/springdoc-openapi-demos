@@ -20,7 +20,7 @@ package org.springdoc.demo.app2.api;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.context.request.NativeWebRequest;

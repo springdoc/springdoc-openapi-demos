@@ -20,9 +20,8 @@ package org.springdoc.demo.services.book.controller;
 
 import java.util.Collection;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springdoc.demo.services.book.exception.BookNotFoundException;
 import org.springdoc.demo.services.book.model.Book;
 import org.springdoc.demo.services.book.repository.BookRepository;

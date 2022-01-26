@@ -26,9 +26,8 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
-import javax.annotation.PostConstruct;
-import javax.validation.constraints.NotNull;
-
+import jakarta.annotation.PostConstruct;
+import jakarta.validation.constraints.NotNull;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springdoc.demo.app2.model.Category;
 import org.springdoc.demo.app2.model.ModelApiResponse;

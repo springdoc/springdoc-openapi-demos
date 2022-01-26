@@ -19,7 +19,7 @@
 package org.springdoc.demo.app1.sample1;
 
 import org.hibernate.validator.constraints.SafeHtml.Tag;
-import org.springdoc.api.annotations.ParameterObject;
+import org.springdoc.core.annotations.ParameterObject;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
