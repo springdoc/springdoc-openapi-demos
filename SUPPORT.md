@@ -13,3 +13,4 @@ Notes:
 - https://github.com/springdoc/springdoc-openapi-demos/wiki/springdoc-openapi-2.x-migration-guide
 - https://springdoc.org/v2/demos.html
 - https://s01.oss.sonatype.org/content/repositories/snapshots/org/springdoc/
+- docker run --rm -p 8080:8081 springdocdemos/springdoc-openapi-spring-boot-2-webmvc:3.1.7-SNAPSHOT
