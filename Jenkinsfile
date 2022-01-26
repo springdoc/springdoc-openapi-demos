@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 
+tools {
+	jdk 'java-17'
+}
 node {
-    tools {
-        jdk 'java-17'
-    }
 	stage('checkout') {
 		deleteDir()
 	}
