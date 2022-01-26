@@ -107,21 +107,20 @@
 	</pluginRepositories>
 
 	<modules>
-		<module>springdoc-openapi-spring-boot-1</module>
-		<module>springdoc-openapi-spring-boot-2-webmvc</module>
-		<module>springdoc-openapi-spring-boot-2-webflux</module>
-		<module>springdoc-openapi-spring-boot-2-webflux-functional</module>
-		<module>springdoc-openapi-book-service</module>
-		<module>springdoc-openapi-oauth2</module>
-		<module>springdoc-openapi-microservices</module>
-		<module>springdoc-openapi-person-service</module>
-		<module>springdoc-openapi-hateoas-service</module>
-		<module>springdoc-openapi-data-rest</module>
-		<module>springdoc-openapi-spring-cloud-function</module>
+		<module>demo-book-service</module>
+		<module>demo-microservices</module>
+		<module>demo-spring-boot-3-webflux-functional</module>
+		<module>demo-spring-boot-3-webflux</module>
+		<module>demo-spring-boot-3-webmvc</module>
+		<module>demo-oauth2</module>
+		<module>demo-person-service</module>
+		<module>demo-spring-hateoas</module>
+		<module>demo-spring-data-rest</module>
+		<module>demo-spring-cloud-function</module>
 	</modules>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 		<resource.delimiter>@</resource.delimiter>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
@@ -234,9 +233,7 @@
 							<container>
 								<jvmFlags>
 									<jvmFlag>-XshowSettings:vm</jvmFlag>
-									<jvmFlag>-noverify</jvmFlag>
-									<jvmFlag>-Dspring.main.lazy-initialization=true
-									</jvmFlag>
+									<jvmFlag>-Dspring.main.lazy-initialization=true</jvmFlag>
 									<jvmFlag>-XX:TieredStopAtLevel=1</jvmFlag>
 									<jvmFlag>-XX:+UseSerialGC</jvmFlag>
 								</jvmFlags>
@@ -278,6 +275,9 @@
 					<plugin>
 						<artifactId>maven-javadoc-plugin</artifactId>
 						<version>${maven-javadoc-plugin.version}</version>
+						<configuration>
+							<doclint>all,-missing</doclint>
+						</configuration>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>
@@ -327,15 +327,6 @@
 		</profile>
 		<profile>
 			<id>native-image</id>
-			<dependencies>
-				<dependency>
-					<groupId>org.springdoc</groupId>
-					<artifactId>springdoc-openapi-native</artifactId>
-				</dependency>
-			</dependencies>
-			<properties>
-				<java.version>17</java.version>
-			</properties>
 			<build>
 				<plugins>
 					<plugin>
@@ -390,7 +381,6 @@
 		<profile>
 			<id>native</id>
 			<properties>
-				<java.version>11</java.version>
 				<repackage.classifier>exec</repackage.classifier>
 				<native-buildtools.version>0.9.8</native-buildtools.version>
 			</properties>
