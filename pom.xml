@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springdoc</groupId>
 	<artifactId>springdoc-openapi-demos</artifactId>
-	<version>3.1.6-SNAPSHOT</version>
+	<version>3.1.7-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Spring-openapi demos</name>
 	<description>Spring-openapi demos</description>
@@ -234,7 +234,7 @@
 							</from>
 							<to>
 								<image>
-									registry.hub.docker.com/springdocdemos/${project.artifactId}
+									registry.hub.docker.com/springdocdemos/${project.artifactId}:${project.version}
 								</image>
 							</to>
 							<container>

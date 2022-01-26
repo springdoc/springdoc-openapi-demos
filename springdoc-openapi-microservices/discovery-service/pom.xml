@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.springdoc</groupId>
 		<artifactId>springdoc-openapi-microservices</artifactId>
-		<version>3.1.6-SNAPSHOT</version>
+		<version>3.1.7-SNAPSHOT</version>
 	</parent>
 	<artifactId>discovery-service</artifactId>
 
