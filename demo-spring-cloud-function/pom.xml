@@ -12,17 +12,6 @@
 	<artifactId>demo-spring-cloud-function</artifactId>
 	<packaging>pom</packaging>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-function-parent</artifactId>
-				<version>${spring-cloud-function.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	<modules>
 		<module>spring-cloud-function-webmvc</module>
 		<module>spring-cloud-function-webflux</module>
