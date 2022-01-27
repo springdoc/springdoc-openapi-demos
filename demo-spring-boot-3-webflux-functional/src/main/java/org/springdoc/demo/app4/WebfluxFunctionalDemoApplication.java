@@ -37,7 +37,7 @@ public class WebfluxFunctionalDemoApplication {
 	public GroupedOpenApi employeesOpenApi(@Value("${springdoc.version}") String appVersion) {
 		String[] paths = { "/employees/**" };
 		return GroupedOpenApi.builder().group("employees")
-				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Employees API").version(appVersion)))
+				.addOpenApiCustomizer(openApi -> openApi.info(new Info().title("Employees API").version(appVersion)))
 				.pathsToMatch(paths)
 				.build();
 	}
@@ -46,7 +46,7 @@ public class WebfluxFunctionalDemoApplication {
 	public GroupedOpenApi userOpenApi(@Value("${springdoc.version}") String appVersion) {
 		String[] paths = { "/api/user/**" };
 		return GroupedOpenApi.builder().group("users")
-				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Users API").version(appVersion)))
+				.addOpenApiCustomizer(openApi -> openApi.info(new Info().title("Users API").version(appVersion)))
 				.pathsToMatch(paths)
 				.build();
 	}
@@ -55,7 +55,7 @@ public class WebfluxFunctionalDemoApplication {
 	public GroupedOpenApi coffeeOpenApi(@Value("${springdoc.version}") String appVersion) {
 		String[] paths = { "/coffees/**" };
 		return GroupedOpenApi.builder().group("coffees")
-				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Coffees API").version(appVersion)))
+				.addOpenApiCustomizer(openApi -> openApi.info(new Info().title("Coffees API").version(appVersion)))
 				.pathsToMatch(paths)
 				.build();
 	}

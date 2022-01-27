@@ -38,7 +38,7 @@ public class WebfluxDemoApplication {
 		String[] paths = { "/tweets/**" };
 		return GroupedOpenApi.builder().
 				group("tweets")
-				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Tweets API").version(appVersion)))
+				.addOpenApiCustomizer(openApi -> openApi.info(new Info().title("Tweets API").version(appVersion)))
 				.pathsToMatch(paths)
 				.build();
 	}
@@ -48,7 +48,7 @@ public class WebfluxDemoApplication {
 		String[] paths = { "/stream/**" };
 		String[] packagedToMatch = { "org.springdoc.demo.app3" };
 		return GroupedOpenApi.builder().group("x-stream")
-				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Stream API").version(appVersion)))
+				.addOpenApiCustomizer(openApi -> openApi.info(new Info().title("Stream API").version(appVersion)))
 				.pathsToMatch(paths).packagesToScan(packagedToMatch)
 				.build();
 	}

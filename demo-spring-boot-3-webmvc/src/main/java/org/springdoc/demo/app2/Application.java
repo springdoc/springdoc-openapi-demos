@@ -50,8 +50,8 @@ public class Application {
 		return GroupedOpenApi.builder()
 				.group("Actuator")
 				.pathsToMatch(endpointProperties.getBasePath() + ALL_PATTERN)
-				.addOpenApiCustomiser(actuatorOpenApiCustomiser)
-				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Actuator API").version(appVersion)))
+				.addOpenApiCustomizer(actuatorOpenApiCustomiser)
+				.addOpenApiCustomizer(openApi -> openApi.info(new Info().title("Actuator API").version(appVersion)))
 				.addOperationCustomizer(actuatorCustomizer)
 				.pathsToExclude("/health/*")
 				.build();
@@ -64,7 +64,7 @@ public class Application {
 					operation.addSecurityItem(new SecurityRequirement().addList("basicScheme"));
 					return operation;
 				})
-				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Users API").version(appVersion)))
+				.addOpenApiCustomizer(openApi -> openApi.info(new Info().title("Users API").version(appVersion)))
 				.packagesToScan("org.springdoc.demo.app2")
 				.build();
 	}
