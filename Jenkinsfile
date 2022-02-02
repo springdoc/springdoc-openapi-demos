@@ -14,7 +14,7 @@ node {
 	}
 	stage('Package') {
 		withMaven(maven: 'maven') {
-			sh "mvn -Pjib verify package jib:build -T100"
+			sh "mvn -Pjib verify package jib:build"
 		}
 	}
 	stage("Deploy") {
