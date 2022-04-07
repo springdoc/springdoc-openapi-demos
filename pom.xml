@@ -137,7 +137,7 @@
 		<nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
 		<jib-maven-plugin.version>3.2.0</jib-maven-plugin.version>
 		<springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
-		<spring-native.version>0.11.3</spring-native.version>
+		<spring-native.version>0.11.4</spring-native.version>
 		<jib.from.image>openjdk:17-slim</jib.from.image>
 		<spring-cloud.version>2022.0.0-SNAPSHOT</spring-cloud.version>
 		<spring-cloud-netflix.version>4.0.0-SNAPSHOT</spring-cloud-netflix.version>
