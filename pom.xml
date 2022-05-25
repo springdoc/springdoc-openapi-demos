@@ -1,3 +1,25 @@
+<!--
+  ~ /*
+  ~  *
+  ~  *  *
+  ~  *  *  * Copyright 2019-2022 the original author or authors.
+  ~  *  *  *
+  ~  *  *  * Licensed under the Apache License, Version 2.0 (the "License");
+  ~  *  *  * you may not use this file except in compliance with the License.
+  ~  *  *  * You may obtain a copy of the License at
+  ~  *  *  *
+  ~  *  *  *      https://www.apache.org/licenses/LICENSE-2.0
+  ~  *  *  *
+  ~  *  *  * Unless required by applicable law or agreed to in writing, software
+  ~  *  *  * distributed under the License is distributed on an "AS IS" BASIS,
+  ~  *  *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  *  *  * See the License for the specific language governing permissions and
+  ~  *  *  * limitations under the License.
+  ~  *  *
+  ~  *
+  ~  */
+  -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -137,7 +159,7 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<spring-boot.version>2.7.0</spring-boot.version>
+		<spring-boot.version>2.6.7</spring-boot.version>
 		<spring-boot-maven-plugin.version>${spring-boot.version}</spring-boot-maven-plugin.version>
 		<springdoc.version>1.6.9-SNAPSHOT</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
@@ -149,7 +171,7 @@
 		<springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
 		<spring-native.version>0.11.5</spring-native.version>
 		<jib.from.image>openjdk:8-jre-slim</jib.from.image>
-		<spring-cloud.version>2021.0.0</spring-cloud.version>
+		<spring-cloud.version>2021.0.2</spring-cloud.version>
 	</properties>
 
 	<dependencyManagement>
