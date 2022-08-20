@@ -8,12 +8,12 @@ node {
 		checkout scm
 	}
 	stage('Clean') {
-		withMaven(maven: 'maven') {
+		withMaven(jdk: 'java-8', maven: 'maven') {
 			sh "mvn clean -T100"
 		}
 	}
 	stage('Package') {
-		withMaven(maven: 'maven') {
+		withMaven(jdk: 'java-8', maven: 'maven') {
 			sh "mvn -Pjib verify package jib:build"
 		}
 	}
