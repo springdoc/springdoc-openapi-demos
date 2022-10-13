@@ -161,11 +161,11 @@ public interface PetApi {
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = ModelApiResponse.class))) })
 	@PostMapping(value = "/pet/{petId}/uploadImage", produces = { "application/json" }, consumes = {
-			"application/octet-stream" })
+			"multipart/form-data" })
 	default ResponseEntity<ModelApiResponse> uploadFile(
 			@Parameter(description = "ID of pet to update", required = true) @PathVariable("petId") Long petId,
 			@Parameter(description = "Additional Metadata") @RequestParam(value = "additionalMetadata", required = false) String additionalMetadata,
-			@io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/octet-stream", schema = @Schema(type = "string", format = "binary"))) @Valid @RequestPart("file") MultipartFile file) {
+			@Parameter(content = @Content(mediaType = "multipart/form-data", schema = @Schema(type = "string", format = "binary"))) @Valid @RequestPart("file") MultipartFile file) {
 		return getDelegate().uploadFile(petId, additionalMetadata, file);
 	}
 
