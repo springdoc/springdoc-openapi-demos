@@ -13,7 +13,7 @@
 	<licenses>
 		<license>
 			<name>The Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
 		</license>
 	</licenses>
 
@@ -88,6 +88,14 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>netflix-candidates</id>
+			<name>Netflix Candidates</name>
+			<url>https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
 
 	<pluginRepositories>
@@ -126,10 +134,10 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<spring-boot.version>3.0.0-M4</spring-boot.version>
+		<spring-boot.version>3.0.0-M5</spring-boot.version>
 		<spring-boot-maven-plugin.version>${spring-boot.version}
 		</spring-boot-maven-plugin.version>
-		<springdoc.version>2.0.0-M6</springdoc.version>
+		<springdoc.version>2.0.0-M7-SNAPSHOT</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
@@ -139,8 +147,8 @@
 		<springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
 		<spring-native.version>0.12.1</spring-native.version>
 		<jib.from.image>openjdk:17-slim</jib.from.image>
-		<spring-cloud.version>2022.0.0-SNAPSHOT</spring-cloud.version>
-		<spring-cloud-netflix.version>4.0.0-SNAPSHOT</spring-cloud-netflix.version>
+		<spring-cloud.version>2022.0.0-M5</spring-cloud.version>
+		<spring-cloud-netflix.version>4.0.0-M1</spring-cloud-netflix.version>
 	</properties>
 
 	<dependencyManagement>
