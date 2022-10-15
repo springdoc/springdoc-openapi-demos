@@ -7,6 +7,7 @@ server:
     min-response-size: 1024
   http2:
     enabled: true
+  port: 8084
 springdoc:
   version: '@springdoc.version@'
   enable-native-support: true
