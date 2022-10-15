@@ -54,7 +54,7 @@ public class UserApiDelegateImpl implements UserApiDelegate {
 	}
 
 	@PostConstruct
-	private void initUsers() {
+	public void initUsers() {
 		userRepository.save(createUser(1, "user1", "first name 1", "last name 1",
 				"email1@test.com", 1));
 		userRepository.save(createUser(2, "user2", "first name 2", "last name 2",

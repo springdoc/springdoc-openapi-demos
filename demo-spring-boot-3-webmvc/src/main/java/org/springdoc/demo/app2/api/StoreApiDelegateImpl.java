@@ -58,7 +58,7 @@ public class StoreApiDelegateImpl implements StoreApiDelegate {
 	}
 
 	@PostConstruct
-	void initOrders() {
+	public void initOrders() {
 		orderRepository.save(createOrder(1, 1, Order.StatusEnum.PLACED));
 		orderRepository.save(createOrder(2, 1, Order.StatusEnum.DELIVERED));
 		orderRepository.save(createOrder(3, 2, Order.StatusEnum.PLACED));

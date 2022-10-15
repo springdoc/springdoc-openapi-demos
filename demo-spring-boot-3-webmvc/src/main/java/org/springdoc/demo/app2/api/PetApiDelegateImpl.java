@@ -72,7 +72,7 @@ public class PetApiDelegateImpl implements PetApiDelegate {
 	}
 
 	@PostConstruct
-	private void initPets() {
+	public void initPets() {
 		Category dogs = new Category().id(1L).name("Dogs");
 		Category cats = new Category().id(2L).name("Cats");
 		Category rabbits = new Category().id(3L).name("Rabbits");

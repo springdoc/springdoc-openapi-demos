@@ -22,11 +22,10 @@ mvn clean spring-boot:build-image
 ```
 
 ### Option 3: Building native image with GraalVM
-To create a `native image`, the project rely on spring-native project and buildpacks.
-Run the following command
+To create a `native image`, Run the following command
 
 ```sh
-mvn -Pnative-image clean spring-boot:build-image
+mvn -Pnative clean package
 ```
 
 ## Running the native application
