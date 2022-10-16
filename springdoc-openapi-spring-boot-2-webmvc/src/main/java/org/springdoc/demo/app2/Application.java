@@ -52,7 +52,8 @@ public class Application {
 				.addOpenApiCustomiser(actuatorOpenApiCustomiser)
 				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Actuator API").version(appVersion)))
 				.addOperationCustomizer(actuatorCustomizer)
-				.pathsToExclude("/health/*")
+				.pathsToExclude("/rest/actuator/health/**")
+				.pathsToExclude("/rest/actuator/health/*")
 				.build();
 	}
 
