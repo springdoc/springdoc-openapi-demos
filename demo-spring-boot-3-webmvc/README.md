@@ -25,7 +25,7 @@ mvn clean spring-boot:build-image
 To create a `native image`, Run the following command
 
 ```sh
-mvn -Pnative clean package
+mvn -Pnative clean native:compile 
 ```
 
 ## Running the native application
