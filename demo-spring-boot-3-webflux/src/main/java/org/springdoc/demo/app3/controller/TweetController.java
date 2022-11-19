@@ -79,9 +79,9 @@ public class TweetController {
 	public Mono<ResponseEntity<TweetDTO>> updateTweet(@PathVariable(value = "id") String tweetId,
 			@Valid @RequestBody TweetDTO tweetDTO) {
 		return tweetRepository.findById(tweetId).flatMap(existingTweet -> {
-			existingTweet.setText(tweetMapper.toEntity(tweetDTO).getText());
-			return tweetRepository.save(existingTweet);
-		}).map(updateTweet -> new ResponseEntity<>(tweetMapper.toDTO(updateTweet), HttpStatus.OK))
+					existingTweet.setText(tweetMapper.toEntity(tweetDTO).getText());
+					return tweetRepository.save(existingTweet);
+				}).map(updateTweet -> new ResponseEntity<>(tweetMapper.toDTO(updateTweet), HttpStatus.OK))
 				.defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 

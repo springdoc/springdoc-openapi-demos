@@ -13,9 +13,9 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class ResourceServerApp {
 
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(ResourceServerApp.class, args);
-    }
+	public static void main(String[] args) throws Exception {
+		SpringApplication.run(ResourceServerApp.class, args);
+	}
 
 	@Bean
 	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {

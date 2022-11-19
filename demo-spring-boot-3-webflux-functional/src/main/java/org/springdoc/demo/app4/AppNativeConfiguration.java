@@ -19,7 +19,7 @@ import org.springframework.context.annotation.ImportRuntimeHints;
 @ImportRuntimeHints(AppNativeRuntimeHints.class)
 public class AppNativeConfiguration {
 
-	static Class[] applicationClasses={org.springdoc.demo.app4.user.User[].class,
+	static Class[] applicationClasses = { org.springdoc.demo.app4.user.User[].class,
 			org.springdoc.demo.app4.employee.Employee[].class,
 			org.springdoc.demo.app4.coffee.Coffee[].class,
 			org.springdoc.demo.app4.coffee.CoffeeOrder[].class,
@@ -34,8 +34,8 @@ public class AppNativeConfiguration {
 			Arrays.stream(applicationClasses).forEach(applicationClass ->
 					hints.reflection().registerType(applicationClass,
 							(hint) -> hint.withMembers(MemberCategory.DECLARED_FIELDS,
-							MemberCategory.INVOKE_DECLARED_CONSTRUCTORS,
-							MemberCategory.INVOKE_DECLARED_METHODS)));
+									MemberCategory.INVOKE_DECLARED_CONSTRUCTORS,
+									MemberCategory.INVOKE_DECLARED_METHODS)));
 		}
 	}
 

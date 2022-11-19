@@ -76,51 +76,15 @@ public class Pet {
 	@Valid
 	private List<Tag> tags = null;
 
-	/**
-	 * pet status in the store
-	 */
-	public enum StatusEnum {
-		AVAILABLE("available"),
-
-		PENDING("pending"),
-
-		SOLD("sold");
-
-		private String value;
-
-		StatusEnum(String value) {
-			this.value = value;
-		}
-
-		@Override
-		@JsonValue
-		public String toString() {
-			return String.valueOf(value);
-		}
-
-		@JsonCreator
-		public static StatusEnum fromValue(String value) {
-			for (StatusEnum b : StatusEnum.values()) {
-				if (b.value.equals(value)) {
-					return b;
-				}
-			}
-			throw new IllegalArgumentException("Unexpected value '" + value + "'");
-		}
-	}
-
-
 	@JsonProperty("status")
 	@JacksonXmlProperty(localName = "status")
 
 	private StatusEnum status;
 
-
 	public Pet id(Long id) {
 		this.id = id;
 		return this;
 	}
-
 
 	/**
 	 * Get id
@@ -138,12 +102,10 @@ public class Pet {
 		this.id = id;
 	}
 
-
 	public Pet name(String name) {
 		this.name = name;
 		return this;
 	}
-
 
 	/**
 	 * Get name
@@ -162,12 +124,10 @@ public class Pet {
 		this.name = name;
 	}
 
-
 	public Pet category(Category category) {
 		this.category = category;
 		return this;
 	}
-
 
 	/**
 	 * Get category
@@ -186,18 +146,15 @@ public class Pet {
 		this.category = category;
 	}
 
-
 	public Pet photoUrls(List<String> photoUrls) {
 		this.photoUrls = photoUrls;
 		return this;
 	}
 
-
 	public Pet addPhotoUrlsItem(String photoUrlsItem) {
 		this.photoUrls.add(photoUrlsItem);
 		return this;
 	}
-
 
 	/**
 	 * Get photoUrls
@@ -216,12 +173,10 @@ public class Pet {
 		this.photoUrls = photoUrls;
 	}
 
-
 	public Pet tags(List<Tag> tags) {
 		this.tags = tags;
 		return this;
 	}
-
 
 	public Pet addTagsItem(Tag tagsItem) {
 		if (this.tags == null) {
@@ -230,7 +185,6 @@ public class Pet {
 		this.tags.add(tagsItem);
 		return this;
 	}
-
 
 	/**
 	 * Get tags
@@ -249,12 +203,10 @@ public class Pet {
 		this.tags = tags;
 	}
 
-
 	public Pet status(StatusEnum status) {
 		this.status = status;
 		return this;
 	}
-
 
 	/**
 	 * pet status in the store
@@ -271,7 +223,6 @@ public class Pet {
 	public void setStatus(StatusEnum status) {
 		this.status = status;
 	}
-
 
 	@Override
 	public boolean equals(Object o) {
@@ -319,5 +270,38 @@ public class Pet {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
+	}
+
+	/**
+	 * pet status in the store
+	 */
+	public enum StatusEnum {
+		AVAILABLE("available"),
+
+		PENDING("pending"),
+
+		SOLD("sold");
+
+		private String value;
+
+		StatusEnum(String value) {
+			this.value = value;
+		}
+
+		@JsonCreator
+		public static StatusEnum fromValue(String value) {
+			for (StatusEnum b : StatusEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
+
+		@Override
+		@JsonValue
+		public String toString() {
+			return String.valueOf(value);
+		}
 	}
 }

@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserInfoController {
 
-    @GetMapping("/user/info")
+	@GetMapping("/user/info")
 	@SecurityRequirement(name = "security_auth")
-    public Map<String, Object> getUserInfo(@AuthenticationPrincipal Jwt principal) {
-        return Collections.singletonMap("user_name", principal.getClaimAsString("sub"));
-    }
+	public Map<String, Object> getUserInfo(@AuthenticationPrincipal Jwt principal) {
+		return Collections.singletonMap("user_name", principal.getClaimAsString("sub"));
+	}
 }

@@ -51,6 +51,6 @@ public class SampleApplication {
 
 	@Bean
 	public Supplier<Flux<String>> words() {
-		return () -> Flux.fromArray(new String[] {"foo", "bar"});
+		return () -> Flux.fromArray(new String[] { "foo", "bar" });
 	}
 }

@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns="http://maven.apache.org/POM/4.0.0"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springdoc</groupId>
@@ -98,7 +98,9 @@
 		<repository>
 			<id>netflix-candidates</id>
 			<name>Netflix Candidates</name>
-			<url>https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates</url>
+			<url>
+				https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates
+			</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -148,7 +150,8 @@
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
 		<jib-maven-plugin.version>3.2.0</jib-maven-plugin.version>
-		<springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
+		<springdoc-openapi-maven-plugin.version>1.4
+		</springdoc-openapi-maven-plugin.version>
 		<jib.from.image>openjdk:17-slim</jib.from.image>
 		<spring-cloud.version>2022.0.0-M5</spring-cloud.version>
 		<spring-cloud-netflix.version>4.0.0-M1</spring-cloud-netflix.version>

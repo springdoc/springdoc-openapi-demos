@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrganizationController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrganizationController.class);
-	
+
 	private OrganizationRepository repository;
+
 	private DepartmentClient departmentClient;
+
 	private EmployeeClient employeeClient;
 
 	public OrganizationController(OrganizationRepository repository, DepartmentClient departmentClient, EmployeeClient employeeClient) {
@@ -35,13 +37,13 @@ public class OrganizationController {
 		LOGGER.info("Organization add: {}", organization);
 		return repository.add(organization);
 	}
-	
+
 	@GetMapping
 	public List<Organization> findAll() {
 		LOGGER.info("Organization find");
 		return repository.findAll();
 	}
-	
+
 	@GetMapping("/{id}")
 	public Organization findById(@PathVariable("id") Long id) {
 		LOGGER.info("Organization find: id={}", id);
@@ -55,7 +57,7 @@ public class OrganizationController {
 		organization.setDepartments(departmentClient.findByOrganization(organization.getId()));
 		return organization;
 	}
-	
+
 	@GetMapping("/{id}/with-departments-and-employees")
 	public Organization findByIdWithDepartmentsAndEmployees(@PathVariable("id") Long id) {
 		LOGGER.info("Organization find: id={}", id);
@@ -63,7 +65,7 @@ public class OrganizationController {
 		organization.setDepartments(departmentClient.findByOrganizationWithEmployees(organization.getId()));
 		return organization;
 	}
-	
+
 	@GetMapping("/{id}/with-employees")
 	public Organization findByIdWithEmployees(@PathVariable("id") Long id) {
 		LOGGER.info("Organization find: id={}", id);
@@ -71,5 +73,5 @@ public class OrganizationController {
 		organization.setEmployees(employeeClient.findByOrganization(organization.getId()));
 		return organization;
 	}
-	
+
 }

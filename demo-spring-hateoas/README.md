@@ -3,11 +3,13 @@
 ## Building application
 
 ### Pre-requisites
+
 - JDK 8+
 - maven 3
 - docker CLI
 
 ### Option 1: Building Executable JAR
+
 To create an `executable jar`, simply run:
 
 ```sh
@@ -15,6 +17,7 @@ To create an `executable jar`, simply run:
 ```
 
 ### Option 2: Building a non-native OCI Images
+
 To create a non-native OCI docker image, simply run:
 
 ```sh

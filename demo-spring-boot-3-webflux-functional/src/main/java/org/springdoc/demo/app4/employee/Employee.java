@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class Employee {
 
 	private String id;
+
 	private String name;
 
 	// standard getters and setters

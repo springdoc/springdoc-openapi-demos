@@ -1,4 +1,4 @@
-server: 
+server:
   port: 8082
 
 ####### resource server configuration properties

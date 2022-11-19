@@ -59,17 +59,17 @@ class EmployeeController {
 	 * Look up all employees, and transform them into a REST collection resource. Then return them through Spring Web's
 	 * {@link ResponseEntity} fluent API.
 	 */
-	@GetMapping(path = "/employees",  produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/employees", produces = MediaType.APPLICATION_JSON_VALUE)
 	ResponseEntity<CollectionModel<EntityModel<Employee>>> findAll() {
 
 		List<EntityModel<Employee>> employees = StreamSupport.stream(repository.findAll().spliterator(), false)
-				.map(employee ->  EntityModel.of(employee, //
+				.map(employee -> EntityModel.of(employee, //
 						linkTo(methodOn(EmployeeController.class).findOne(employee.getId())).withSelfRel(), //
 						linkTo(methodOn(EmployeeController.class).findAll()).withRel("employees"))) //
 				.collect(Collectors.toList());
 
 		return ResponseEntity.ok( //
-				 CollectionModel.of(employees, //
+				CollectionModel.of(employees, //
 						linkTo(methodOn(EmployeeController.class).findAll()).withSelfRel()));
 	}
 
@@ -80,7 +80,7 @@ class EmployeeController {
 		try {
 			Employee savedEmployee = repository.save(employee);
 
-			EntityModel<Employee> employeeResource =  EntityModel.of(savedEmployee, //
+			EntityModel<Employee> employeeResource = EntityModel.of(savedEmployee, //
 					linkTo(methodOn(EmployeeController.class).findOne(savedEmployee.getId())).withSelfRel());
 
 			return ResponseEntity //
@@ -102,7 +102,7 @@ class EmployeeController {
 	ResponseEntity<EntityModel<Employee>> findOne(@PathVariable long id) {
 
 		return repository.findById(id) //
-				.map(employee ->  EntityModel.of(employee, //
+				.map(employee -> EntityModel.of(employee, //
 						linkTo(methodOn(EmployeeController.class).findOne(employee.getId())).withSelfRel(), //
 						linkTo(methodOn(EmployeeController.class).findAll()).withRel("employees"))) //
 				.map(ResponseEntity::ok) //
