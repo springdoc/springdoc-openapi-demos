@@ -11,8 +11,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${OAUTH2_SERVER:http://localhost:8083}/auth/realms/springdoc
-          jwk-set-uri: ${OAUTH2_SERVER:http://localhost:8083}/auth/realms/springdoc/protocol/openid-connect/certs
+          issuer-uri: ${OAUTH2_SERVER:http://127.0.0.1:8083}
 springdoc:
   version: '@springdoc.version@'
   swagger-ui:
@@ -20,5 +19,5 @@ springdoc:
       clientId: newClient
       clientSecret: newClientSecret
   oAuthFlow:
-    authorizationUrl: ${OAUTH2_SERVER:http://localhost:8083}/auth/realms/springdoc/protocol/openid-connect/auth
-    tokenUrl: ${OAUTH2_SERVER:http://localhost:8083}/auth/realms/springdoc/protocol/openid-connect/token
+    authorizationUrl: ${OAUTH2_SERVER:http://127.0.0.1:8083}/oauth2/authorize
+    tokenUrl: ${OAUTH2_SERVER:http://127.0.0.1:8083}/oauth2/token

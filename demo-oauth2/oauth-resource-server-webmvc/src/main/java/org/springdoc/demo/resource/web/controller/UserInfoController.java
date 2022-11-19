@@ -16,6 +16,6 @@ public class UserInfoController {
     @GetMapping("/user/info")
 	@SecurityRequirement(name = "security_auth")
     public Map<String, Object> getUserInfo(@AuthenticationPrincipal Jwt principal) {
-        return Collections.singletonMap("user_name", principal.getClaimAsString("preferred_username"));
+        return Collections.singletonMap("user_name", principal.getClaimAsString("sub"));
     }
 }

@@ -2,14 +2,11 @@ package org.springdoc.demo.auth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration;
 
-@SpringBootApplication(exclude = LiquibaseAutoConfiguration.class)
+@SpringBootApplication
 public class AuthorizationServerApp {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         SpringApplication.run(AuthorizationServerApp.class, args);
     }
-
-
 }

@@ -8,31 +8,27 @@
 		<version>3.1.7-SNAPSHOT</version>
 	</parent>
 	<artifactId>oauth-authorization-server</artifactId>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.github.thomasdarimont.embedded-spring-boot-keycloak-server</groupId>
-				<artifactId>embedded-keycloak-server-spring-boot-parent</artifactId>
-				<version>5.0.2</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<dependencies>
 		<dependency>
-			<groupId>com.github.thomasdarimont.embedded-spring-boot-keycloak-server</groupId>
-			<artifactId>embedded-keycloak-server-spring-boot-starter</artifactId>
-			<version>5.0.2</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-authorization-server</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 		</dependency>
 	</dependencies>
-
-	<repositories>
-		<repository>
-			<id>jitpack.io</id>
-			<url>https://jitpack.io</url>
-		</repository>
-	</repositories>
 </project>

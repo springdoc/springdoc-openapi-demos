@@ -15,9 +15,9 @@ public class SecurityConfig {
 		http
 				.authorizeExchange().pathMatchers("/v3/api-docs/**", "/swagger-ui/**", "/webjars/**", "/swagger-ui.html").permitAll()
 				.pathMatchers(HttpMethod.GET, "/user/info", "/api/foos/**")
-				.hasAuthority("SCOPE_read")
+				.hasAuthority("SCOPE_springdoc.read")
 				.pathMatchers(HttpMethod.POST, "/api/foos")
-				.hasAuthority("SCOPE_write")
+				.hasAuthority("SCOPE_springdoc.write")
 				.anyExchange().authenticated().and().oauth2ResourceServer().jwt();
 
 
