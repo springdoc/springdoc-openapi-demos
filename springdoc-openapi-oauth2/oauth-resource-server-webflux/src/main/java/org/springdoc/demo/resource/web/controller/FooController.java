@@ -26,51 +26,51 @@ import org.springframework.web.server.ResponseStatusException;
 @SecurityRequirement(name = "security_auth")
 public class FooController {
 
-    private IFooService fooService;
+	private IFooService fooService;
 
-    public FooController(IFooService fooService) {
-        this.fooService = fooService;
-    }
+	public FooController(IFooService fooService) {
+		this.fooService = fooService;
+	}
 
-    @GetMapping(value = "/{id}")
-    public FooDTO findOne(@PathVariable Long id) {
-        Foo entity = fooService.findById(id)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        return convertToDto(entity);
-    }
+	@GetMapping(value = "/{id}")
+	public FooDTO findOne(@PathVariable Long id) {
+		Foo entity = fooService.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		return convertToDto(entity);
+	}
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
-    public void create(@RequestBody FooDTO newFoo) {
-        Foo entity = convertToEntity(newFoo);
-        this.fooService.save(entity);
-    }
+	@ResponseStatus(HttpStatus.CREATED)
+	@PostMapping
+	public void create(@RequestBody FooDTO newFoo) {
+		Foo entity = convertToEntity(newFoo);
+		this.fooService.save(entity);
+	}
 
-    @GetMapping
-    public Collection<FooDTO> findAll() {
-        Iterable<Foo> foos = this.fooService.findAll();
-        List<FooDTO> fooDtos = new ArrayList<>();
-        foos.forEach(p -> fooDtos.add(convertToDto(p)));
-        return fooDtos;
-    }
+	@GetMapping
+	public Collection<FooDTO> findAll() {
+		Iterable<Foo> foos = this.fooService.findAll();
+		List<FooDTO> fooDtos = new ArrayList<>();
+		foos.forEach(p -> fooDtos.add(convertToDto(p)));
+		return fooDtos;
+	}
 
-    @PutMapping("/{id}")
-    public FooDTO updateFoo(@PathVariable("id") Long id, @RequestBody FooDTO updatedFoo) {
-        Foo fooEntity = convertToEntity(updatedFoo);
-        return this.convertToDto(this.fooService.save(fooEntity));
-    }
+	@PutMapping("/{id}")
+	public FooDTO updateFoo(@PathVariable("id") Long id, @RequestBody FooDTO updatedFoo) {
+		Foo fooEntity = convertToEntity(updatedFoo);
+		return this.convertToDto(this.fooService.save(fooEntity));
+	}
 
-    protected FooDTO convertToDto(Foo entity) {
-        FooDTO dto = new FooDTO(entity.getId(), entity.getName());
+	protected FooDTO convertToDto(Foo entity) {
+		FooDTO dto = new FooDTO(entity.getId(), entity.getName());
 
-        return dto;
-    }
+		return dto;
+	}
 
-    protected Foo convertToEntity(FooDTO dto) {
-        Foo foo = new Foo(dto.getName());
-        if (!StringUtils.isEmpty(dto.getId())) {
-            foo.setId(dto.getId());
-        }
-        return foo;
-    }
+	protected Foo convertToEntity(FooDTO dto) {
+		Foo foo = new Foo(dto.getName());
+		if (!StringUtils.isEmpty(dto.getId())) {
+			foo.setId(dto.getId());
+		}
+		return foo;
+	}
 }

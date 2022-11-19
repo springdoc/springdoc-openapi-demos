@@ -7,9 +7,8 @@ import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfigurati
 @SpringBootApplication(exclude = LiquibaseAutoConfiguration.class)
 public class AuthorizationServerApp {
 
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(AuthorizationServerApp.class, args);
-    }
-
+	public static void main(String[] args) throws Exception {
+		SpringApplication.run(AuthorizationServerApp.class, args);
+	}
 
 }

@@ -21,7 +21,7 @@ public class RouteConfig {
 
 	@Bean
 	RouterFunction<ServerResponse> routerFunction() {
-		return route().GET("/coffees", this::all,  ops -> ops.beanClass(CoffeeService.class).beanMethod("getAllCoffees")).build()
+		return route().GET("/coffees", this::all, ops -> ops.beanClass(CoffeeService.class).beanMethod("getAllCoffees")).build()
 				.and(route().GET("/coffees/{id}", this::byId, ops -> ops.beanClass(CoffeeService.class).beanMethod("getCoffeeById")).build())
 				.and(route().GET("/coffees/{id}/orders", this::orders, ops -> ops.beanClass(CoffeeService.class).beanMethod("getOrdersForCoffeeById")).build());
 	}

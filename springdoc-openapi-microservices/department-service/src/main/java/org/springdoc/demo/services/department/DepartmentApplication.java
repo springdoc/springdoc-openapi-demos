@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
 @EnableDiscoveryClient
 @EnableFeignClients
 @OpenAPIDefinition(info =
-	@Info(title = "Department API", version = "${springdoc.version}", description = "Documentation Department API v1.0")
+@Info(title = "Department API", version = "${springdoc.version}", description = "Documentation Department API v1.0")
 )
 public class DepartmentApplication {
 
@@ -29,7 +29,7 @@ public class DepartmentApplication {
 		repository.add(new Department(1L, "Development"));
 		repository.add(new Department(1L, "Operations"));
 		repository.add(new Department(2L, "Development"));
-		repository.add(new Department(2L, "Operations"));		
+		repository.add(new Department(2L, "Operations"));
 		return repository;
 	}
 }

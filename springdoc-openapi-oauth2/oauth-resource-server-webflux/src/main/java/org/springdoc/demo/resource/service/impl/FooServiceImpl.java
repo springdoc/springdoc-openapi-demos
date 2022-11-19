@@ -11,24 +11,24 @@ import org.springframework.stereotype.Service;
 @Service
 public class FooServiceImpl implements IFooService {
 
-    private IFooRepository fooRepository;
+	private IFooRepository fooRepository;
 
-    public FooServiceImpl(IFooRepository fooRepository) {
-        this.fooRepository = fooRepository;
-    }
+	public FooServiceImpl(IFooRepository fooRepository) {
+		this.fooRepository = fooRepository;
+	}
 
-    @Override
-    public Optional<Foo> findById(Long id) {
-        return fooRepository.findById(id);
-    }
+	@Override
+	public Optional<Foo> findById(Long id) {
+		return fooRepository.findById(id);
+	}
 
-    @Override
-    public Foo save(Foo foo) {
-        return fooRepository.save(foo);
-    }
+	@Override
+	public Foo save(Foo foo) {
+		return fooRepository.save(foo);
+	}
 
-    @Override
-    public Iterable<Foo> findAll() {
-        return fooRepository.findAll();
-    }
+	@Override
+	public Iterable<Foo> findAll() {
+		return fooRepository.findAll();
+	}
 }

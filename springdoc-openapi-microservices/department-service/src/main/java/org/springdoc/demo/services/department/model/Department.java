@@ -6,12 +6,15 @@ import java.util.List;
 public class Department {
 
 	private Long id;
+
 	private Long organizationId;
+
 	private String name;
+
 	private List<Employee> employees = new ArrayList<>();
 
 	public Department() {
-		
+
 	}
 
 	public Department(Long organizationId, String name) {

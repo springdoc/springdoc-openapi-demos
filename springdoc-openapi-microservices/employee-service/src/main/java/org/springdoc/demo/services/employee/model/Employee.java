@@ -3,16 +3,21 @@ package org.springdoc.demo.services.employee.model;
 public class Employee {
 
 	private Long id;
+
 	private Long organizationId;
+
 	private Long departmentId;
+
 	private String name;
+
 	private int age;
+
 	private String position;
 
 	public Employee() {
 
 	}
-	
+
 	public Employee(Long organizationId, Long departmentId, String name, int age, String position) {
 		this.organizationId = organizationId;
 		this.departmentId = departmentId;

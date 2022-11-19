@@ -15,7 +15,7 @@ springdoc:
     use-root-path: true
   show-actuator: true
   group-configs:
-  - group: stores
-    paths-to-match: /store/**
+    - group: stores
+      paths-to-match: /store/**
 server:
   port: 8080

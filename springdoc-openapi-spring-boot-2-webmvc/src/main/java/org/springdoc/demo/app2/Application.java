@@ -48,7 +48,7 @@ public class Application {
 			@Value("${springdoc.version}") String appVersion) {
 		return GroupedOpenApi.builder()
 				.group("Actuator")
-				.pathsToMatch(endpointProperties.getBasePath()+ ALL_PATTERN)
+				.pathsToMatch(endpointProperties.getBasePath() + ALL_PATTERN)
 				.addOpenApiCustomiser(actuatorOpenApiCustomiser)
 				.addOpenApiCustomiser(openApi -> openApi.info(new Info().title("Actuator API").version(appVersion)))
 				.addOperationCustomizer(actuatorCustomizer)

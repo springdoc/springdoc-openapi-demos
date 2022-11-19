@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
 @EnableDiscoveryClient
 @EnableFeignClients
 @OpenAPIDefinition(info =
-	@Info(title = "Organization API", version = "${springdoc.version}", description = "Documentation Organization API v1.0")
+@Info(title = "Organization API", version = "${springdoc.version}", description = "Documentation Organization API v1.0")
 )
 public class OrganizationApplication {
 
@@ -27,7 +27,7 @@ public class OrganizationApplication {
 	OrganizationRepository repository() {
 		OrganizationRepository repository = new OrganizationRepository();
 		repository.add(new Organization("Microsoft", "Redmond, Washington, USA"));
-		repository.add(new Organization("Oracle", "Redwood City, California, USA"));	
+		repository.add(new Organization("Oracle", "Redwood City, California, USA"));
 		return repository;
 	}
 }

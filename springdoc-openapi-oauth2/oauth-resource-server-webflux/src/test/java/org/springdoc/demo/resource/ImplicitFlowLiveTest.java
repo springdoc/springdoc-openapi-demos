@@ -15,12 +15,17 @@ import org.springframework.http.HttpStatus;
 
 public class ImplicitFlowLiveTest {
 	private final static String AUTH_SERVER = "http://localhost:8083/auth/realms/springdoc/protocol/openid-connect";
+
 	private final static String RESOURCE_SERVER = "http://localhost:8081/resource-server";
+
 	private final static String REDIRECT_URL = "http://localhost:8081/resource-server/swagger-ui/oauth2-redirect.html";
+
 	private final static String CLIENT_ID = "newClient";
+
 	private final static String USERNAME = "josh@test.com";
+
 	private final static String PASSWORD = "123";
-	
+
 
 	@Test
 	public void givenUser_whenUseFooClient_thenOkForFooResourceOnly() {
@@ -45,9 +50,9 @@ public class ImplicitFlowLiveTest {
 		// user login
 		Response response = RestAssured.given().formParams(loginParams).get(authorizeUrl);
 		String cookieValue = response.getCookie("AUTH_SESSION_ID");
-	
+
 		String authUrlWithCode = response.htmlPath().getString("'**'.find{node -> node.name()=='form'}*.@action");
-		
+
 		// get access token
 		Map<String, String> tokenParams = new HashMap<String, String>();
 		tokenParams.put("username", username);

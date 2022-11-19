@@ -51,8 +51,8 @@ public class EmployeeFunctionalConfig {
 
 	RouterFunction<ServerResponse> composedRoutes() {
 		return route().GET("/employees-composed", findAllEmployeesFunction(), getOpenAPI("findAllEmployees")).build()
-						.and(route().GET("/employees-composed/{id}", findEmployeeByIdFunction(), findEmployeeByIdOpenAPI()).build())
-						.and(route().POST("/employees-composed/update", updateEmployeeFunction(), getOpenAPI("updateEmployee")).build());
+				.and(route().GET("/employees-composed/{id}", findEmployeeByIdFunction(), findEmployeeByIdOpenAPI()).build())
+				.and(route().POST("/employees-composed/update", updateEmployeeFunction(), getOpenAPI("updateEmployee")).build());
 	}
 
 	private HandlerFunction<ServerResponse> findAllEmployeesFunction() {

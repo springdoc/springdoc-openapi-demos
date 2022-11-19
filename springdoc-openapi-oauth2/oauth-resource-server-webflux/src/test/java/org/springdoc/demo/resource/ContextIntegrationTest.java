@@ -10,9 +10,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest(classes = { ResourceServerApp.class })
 public class ContextIntegrationTest {
 
-    @Test
-    public void whenLoadApplication_thenSuccess() {
+	@Test
+	public void whenLoadApplication_thenSuccess() {
 
-    }
+	}
 
 }

@@ -14,11 +14,11 @@ public class Person {
 
 	private long id;
 
-	@Size(min = 2, max=50)
+	@Size(min = 2, max = 50)
 	@NotBlank
 	private String firstName;
 
-	@Size(min = 2, max=50)
+	@Size(min = 2, max = 50)
 	@NotBlank
 	private String lastName;
 

@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns="http://maven.apache.org/POM/4.0.0"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springdoc</groupId>
@@ -138,7 +138,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<spring-boot.version>2.7.5</spring-boot.version>
-		<spring-boot-maven-plugin.version>${spring-boot.version}</spring-boot-maven-plugin.version>
+		<spring-boot-maven-plugin.version>${spring-boot.version}
+		</spring-boot-maven-plugin.version>
 		<springdoc.version>1.6.13-SNAPSHOT</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
@@ -146,7 +147,8 @@
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
 		<jib-maven-plugin.version>3.1.4</jib-maven-plugin.version>
-		<springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
+		<springdoc-openapi-maven-plugin.version>1.4
+		</springdoc-openapi-maven-plugin.version>
 		<spring-native.version>0.12.1</spring-native.version>
 		<jib.from.image>openjdk:8-jre-slim</jib.from.image>
 		<spring-cloud.version>2021.0.2</spring-cloud.version>

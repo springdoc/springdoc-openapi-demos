@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns="http://maven.apache.org/POM/4.0.0"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -12,7 +12,8 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>com.github.thomasdarimont.embedded-spring-boot-keycloak-server</groupId>
+				<groupId>com.github.thomasdarimont.embedded-spring-boot-keycloak-server
+				</groupId>
 				<artifactId>embedded-keycloak-server-spring-boot-parent</artifactId>
 				<version>5.0.2</version>
 				<type>pom</type>
@@ -23,7 +24,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.github.thomasdarimont.embedded-spring-boot-keycloak-server</groupId>
+			<groupId>com.github.thomasdarimont.embedded-spring-boot-keycloak-server
+			</groupId>
 			<artifactId>embedded-keycloak-server-spring-boot-starter</artifactId>
 			<version>5.0.2</version>
 		</dependency>
