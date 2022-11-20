@@ -140,7 +140,7 @@
 		<spring-boot.version>2.7.5</spring-boot.version>
 		<spring-boot-maven-plugin.version>${spring-boot.version}
 		</spring-boot-maven-plugin.version>
-		<springdoc.version>1.6.13-SNAPSHOT</springdoc.version>
+		<springdoc.version>1.6.13</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
