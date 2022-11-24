@@ -50,9 +50,6 @@
 			<plugin>
 				<groupId>org.springdoc</groupId>
 				<artifactId>springdoc-openapi-maven-plugin</artifactId>
-				<configuration>
-					<apiDocsUrl>http://localhost:8082/v3/api-docs.yaml</apiDocsUrl>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
