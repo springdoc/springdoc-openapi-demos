@@ -154,7 +154,7 @@
 		</springdoc-openapi-maven-plugin.version>
 		<jib.from.image>openjdk:17-slim</jib.from.image>
 		<spring-cloud.version>2022.0.0-RC2</spring-cloud.version>
-		<spring-cloud-netflix.version>4.0.0-RC2</spring-cloud-netflix.version>
+		<spring-cloud-netflix.version>4.0.0-RC1</spring-cloud-netflix.version>
 	</properties>
 
 	<dependencyManagement>
