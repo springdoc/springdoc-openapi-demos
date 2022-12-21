@@ -44,7 +44,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration(proxyBeanMethods = false)
 public class SecurityConfig {
-	private static final List<String> ALLOWED_HEADERS = List.of( "x-requested-with");
+	private static final List<String> ALLOWED_HEADERS = List.of("Access-Control-Allow-Origin", "x-requested-with");
 	private static final List<String> ALLOWED_METHODS = List.of("POST");
 	private static final List<String> ALLOWED_ALL = List.of("http://127.0.0.1:8081", "http://127.0.0.1:8082", "http://158.101.191.70:8095","http://158.101.191.70:8096");
 
