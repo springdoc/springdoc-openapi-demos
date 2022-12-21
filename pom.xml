@@ -153,12 +153,18 @@
 		<springdoc-openapi-maven-plugin.version>1.4
 		</springdoc-openapi-maven-plugin.version>
 		<jib.from.image>openjdk:17-slim</jib.from.image>
-		<spring-cloud.version>2022.0.0-RC3</spring-cloud.version>
-		<spring-cloud-netflix.version>4.0.0-RC3</spring-cloud-netflix.version>
+		<spring-cloud.version>2022.0.0</spring-cloud.version>
+		<spring-cloud-netflix.version>4.0.0</spring-cloud-netflix.version>
+		<spring-security-oauth2-authorization-server.version>1.0.0</spring-security-oauth2-authorization-server.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-oauth2-authorization-server</artifactId>
+				<version>${spring-security-oauth2-authorization-server.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-netflix-dependencies</artifactId>

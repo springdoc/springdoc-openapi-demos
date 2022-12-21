@@ -22,6 +22,7 @@ public class DefaultSecurityConfig {
 				.authorizeHttpRequests(authorize ->
 						authorize.anyRequest().authenticated()
 				)
+				.cors(withDefaults())
 				.formLogin(withDefaults());
 		return http.build();
 	}

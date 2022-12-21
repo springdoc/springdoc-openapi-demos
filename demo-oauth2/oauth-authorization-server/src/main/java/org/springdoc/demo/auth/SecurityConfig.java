@@ -1,5 +1,6 @@
 package org.springdoc.demo.auth;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.nimbusds.jose.jwk.JWKSet;
@@ -35,10 +36,28 @@ import org.springframework.security.oauth2.server.authorization.settings.Authori
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 
 @Configuration(proxyBeanMethods = false)
 public class SecurityConfig {
+	private static final List<String> ALLOWED_HEADERS = List.of( "x-requested-with");
+	private static final List<String> ALLOWED_METHODS = List.of("POST");
+	private static final List<String> ALLOWED_ALL = List.of("http://127.0.0.1:8081", "http://127.0.0.1:8082", "http://158.101.191.70:8095","http://158.101.191.70:8096");
+
+	@Bean
+	CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(ALLOWED_ALL);
+		configuration.setAllowedMethods(ALLOWED_METHODS);
+		configuration.setAllowedHeaders(ALLOWED_HEADERS);
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
+	}
 
 	@Bean
 	@Order(Ordered.HIGHEST_PRECEDENCE)
@@ -46,8 +65,8 @@ public class SecurityConfig {
 		OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
 		http.getConfigurer(OAuth2AuthorizationServerConfigurer.class)
 				.oidc(Customizer.withDefaults());
-		http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
-				.and()
+		http
+				.cors(withDefaults())
 				.exceptionHandling(exceptions ->
 						exceptions.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
 				)
