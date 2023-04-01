@@ -17,6 +17,5 @@ springdoc:
   group-configs:
     - group: stores
       paths-to-match: /store/**
-  enable-native-support: true
 server:
   port: 8081
