@@ -140,7 +140,7 @@
 		<spring-boot.version>2.7.9</spring-boot.version>
 		<spring-boot-maven-plugin.version>${spring-boot.version}
 		</spring-boot-maven-plugin.version>
-		<springdoc.version>1.6.16-SNAPSHOT</springdoc.version>
+		<springdoc.version>1.7.0</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
@@ -149,7 +149,6 @@
 		<jib-maven-plugin.version>3.1.4</jib-maven-plugin.version>
 		<springdoc-openapi-maven-plugin.version>1.4
 		</springdoc-openapi-maven-plugin.version>
-		<spring-native.version>0.12.1</spring-native.version>
 		<jib.from.image>openjdk:8-jre-slim</jib.from.image>
 		<spring-cloud.version>2021.0.2</spring-cloud.version>
 	</properties>
@@ -358,153 +357,6 @@
 							<useReleaseProfile>false</useReleaseProfile>
 							<releaseProfiles>gpg</releaseProfiles>
 							<goals>deploy</goals>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>native-image</id>
-			<dependencies>
-				<dependency>
-					<groupId>org.springdoc</groupId>
-					<artifactId>springdoc-openapi-native</artifactId>
-				</dependency>
-			</dependencies>
-			<properties>
-				<java.version>11</java.version>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.springframework.boot</groupId>
-						<artifactId>spring-boot-maven-plugin</artifactId>
-						<configuration>
-							<image>
-								<builder>paketobuildpacks/builder:tiny</builder>
-								<env>
-									<BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
-									<BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
-										-H:+ReportExceptionStackTraces --enable-https
-										--enable-http
-										--initialize-at-build-time=sun.instrument.InstrumentationImpl
-										--initialize-at-run-time=io.netty.handler.ssl.BouncyCastleAlpnSslUtils
-									</BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
-									<publish>true</publish>
-									<pullPolicy>IF_NOT_PRESENT</pullPolicy>
-								</env>
-							</image>
-							<docker>
-								<publishRegistry>
-									<url>https://registry.hub.docker.com/</url>
-									<username>${publishRegistry.username}</username>
-									<password>${publishRegistry.password}</password>
-								</publishRegistry>
-							</docker>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.springframework.experimental</groupId>
-						<artifactId>spring-aot-maven-plugin</artifactId>
-						<version>${spring-native.version}</version>
-						<executions>
-							<execution>
-								<id>test-generate</id>
-								<goals>
-									<goal>test-generate</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>generate</id>
-								<goals>
-									<goal>generate</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>native</id>
-			<properties>
-				<java.version>11</java.version>
-				<repackage.classifier>exec</repackage.classifier>
-				<native-buildtools.version>0.9.13</native-buildtools.version>
-			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>org.springdoc</groupId>
-					<artifactId>springdoc-openapi-native</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.junit.platform</groupId>
-					<artifactId>junit-platform-launcher</artifactId>
-					<scope>test</scope>
-				</dependency>
-			</dependencies>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.graalvm.buildtools</groupId>
-						<artifactId>native-maven-plugin</artifactId>
-						<version>${native-buildtools.version}</version>
-						<extensions>true</extensions>
-						<configuration>
-							<buildArgs>
-								<buildArg>--enable-https</buildArg>
-								<buildArg>--enable-http</buildArg>
-								<buildArg>
-									--initialize-at-build-time=sun.instrument.InstrumentationImpl
-								</buildArg>
-								<buildArg>
-									--initialize-at-run-time=io.netty.handler.ssl.BouncyCastleAlpnSslUtils
-								</buildArg>
-							</buildArgs>
-						</configuration>
-						<executions>
-							<execution>
-								<id>test-native</id>
-								<phase>test</phase>
-								<goals>
-									<goal>test</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>build-native</id>
-								<phase>package</phase>
-								<goals>
-									<goal>build</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.springframework.experimental</groupId>
-						<artifactId>spring-aot-maven-plugin</artifactId>
-						<version>${spring-native.version}</version>
-						<executions>
-							<execution>
-								<id>test-generate</id>
-								<goals>
-									<goal>test-generate</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>generate</id>
-								<goals>
-									<goal>generate</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<!-- Avoid a clash between Spring Boot repackaging and native-maven-plugin -->
-					<plugin>
-						<groupId>org.springframework.boot</groupId>
-						<artifactId>spring-boot-maven-plugin</artifactId>
-						<version>${spring-boot-maven-plugin.version}</version>
-						<configuration>
-							<classifier>exec</classifier>
 						</configuration>
 					</plugin>
 				</plugins>
