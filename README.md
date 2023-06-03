@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/springdoc/springdoc-openapi-demos.svg?branch=master)](https://travis-ci.org/springdoc/springdoc-openapi-demos)
+[![Build Status](https://ci-cd.springdoc.org:8443/buildStatus/icon?job=springdoc-demos%2F2.x)](https://ci-cd.springdoc.org:8443/job/springdoc-demos/job/2.x/)
 
 # Spring-boot with OpenAPI Demo applications.
 
