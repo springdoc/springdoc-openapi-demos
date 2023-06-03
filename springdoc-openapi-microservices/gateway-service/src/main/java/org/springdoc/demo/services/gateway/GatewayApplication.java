@@ -12,6 +12,7 @@ import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionLocator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.web.server.adapter.ForwardedHeaderTransformer;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -34,5 +35,10 @@ public class GatewayApplication {
 			GroupedOpenApi.builder().pathsToMatch("/" + name + "/**").group(name).build();
 		});
 		return groups;
+	}
+
+	@Bean
+	ForwardedHeaderTransformer forwardedHeaderTransformer() {
+		return new ForwardedHeaderTransformer();
 	}
 }
