@@ -1,4 +1,5 @@
 server:
+  use-forward-headers: true
   contextPath: /
   compression:
     enabled: true

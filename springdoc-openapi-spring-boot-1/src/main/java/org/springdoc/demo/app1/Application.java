@@ -29,6 +29,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.BasicErrorController;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.filter.ForwardedHeaderFilter;
 
 @SpringBootApplication
 public class Application {
@@ -47,6 +48,11 @@ public class Application {
 				.components(new Components())
 				.info(new Info().title("Store API").version(appVersion)
 						.license(new License().name("Apache 2.0").url("http://springdoc.org")));
+	}
+
+	@Bean
+	ForwardedHeaderFilter forwardedHeaderFilter() {
+		return new ForwardedHeaderFilter();
 	}
 
 }

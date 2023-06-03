@@ -1,5 +1,6 @@
 server:
   port: 8092
+  forward-headers-strategy=: framework
 eureka:
   client:
     serviceUrl:
