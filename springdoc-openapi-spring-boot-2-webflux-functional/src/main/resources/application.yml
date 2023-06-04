@@ -1,5 +1,5 @@
 server:
-  forward-headers-strategy=: framework
+  forward-headers-strategy: framework
   servlet:
     context-path: /
   compression:

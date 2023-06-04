@@ -1,6 +1,6 @@
 server:
   port: 8082
-  forward-headers-strategy=: framework
+  forward-headers-strategy: framework
 ####### resource server configuration properties
 spring:
   webflux:

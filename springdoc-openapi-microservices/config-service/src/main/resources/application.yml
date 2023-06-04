@@ -1,6 +1,6 @@
 server:
   port: 8088
-  forward-headers-strategy=: framework
+  forward-headers-strategy: framework
 spring:
   profiles:
     active: native
