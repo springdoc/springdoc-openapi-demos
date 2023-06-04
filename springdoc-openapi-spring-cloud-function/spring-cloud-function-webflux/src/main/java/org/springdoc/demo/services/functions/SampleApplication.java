@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.server.adapter.ForwardedHeaderTransformer;
 
 @SpringBootApplication()
 public class SampleApplication {
@@ -53,10 +52,5 @@ public class SampleApplication {
 	@Bean
 	public Supplier<Flux<String>> words() {
 		return () -> Flux.fromArray(new String[] { "foo", "bar" });
-	}
-
-	@Bean
-	ForwardedHeaderTransformer forwardedHeaderTransformer() {
-		return new ForwardedHeaderTransformer();
 	}
 }
