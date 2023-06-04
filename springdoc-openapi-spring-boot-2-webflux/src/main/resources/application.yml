@@ -1,6 +1,4 @@
 server:
-  servlet:
-    context-path: /
   compression:
     enabled: true
     mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
@@ -8,6 +6,7 @@ server:
   http2:
     enabled: true
   port: 8080
+  forward-headers-strategy: framework
 springdoc:
   version: '@springdoc.version@'
   swagger-ui:
