@@ -19,6 +19,9 @@ logging:
 spring:
   cloud:
     gateway:
+      httpclient:
+        ssl:
+          useInsecureTrustManager: true
       discovery:
         locator:
           enabled: true
