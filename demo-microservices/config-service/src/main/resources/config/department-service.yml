@@ -1,5 +1,6 @@
 server:
   port: 8090
+  forward-headers-strategy: framework
 eureka:
   client:
     serviceUrl:
@@ -10,3 +11,7 @@ eureka:
 logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+springdoc:
+  cache:
+    disabled: true
