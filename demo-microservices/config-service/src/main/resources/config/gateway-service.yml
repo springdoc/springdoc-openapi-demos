@@ -48,7 +48,7 @@ spring:
             - ContextPathRewritePath=/demo-microservices/organization/(?<path>.*), /$\{path}
             - RewritePath=/organization/(?<path>.*), /$\{path}
         - id: openapi-proxy
-          uri: https://demos1.springdoc.org
+          uri: https://demos.springdoc.org
           predicates:
             - Path=/demo-microservices/v3/api-docs/**
           filters:
