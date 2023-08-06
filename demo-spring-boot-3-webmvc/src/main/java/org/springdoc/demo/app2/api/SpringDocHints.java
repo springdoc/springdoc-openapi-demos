@@ -47,15 +47,12 @@ public class SpringDocHints implements RuntimeHintsRegistrar {
 				));
 		hints.reflection().registerType(org.springdoc.core.converters.models.Pageable.class,
 				hint -> hint.withMembers(
-						MemberCategory.INVOKE_PUBLIC_METHODS,
 						MemberCategory.DECLARED_FIELDS,
 						MemberCategory.INVOKE_DECLARED_CONSTRUCTORS,
 						MemberCategory.INVOKE_DECLARED_METHODS
 				));
 		hints.reflection().registerType(org.springdoc.core.extractor.DelegatingMethodParameter.class,
 				hint -> hint.withMembers(
-						MemberCategory.INVOKE_PUBLIC_METHODS,
-						MemberCategory.PUBLIC_FIELDS,
 						MemberCategory.DECLARED_FIELDS,
 						MemberCategory.INVOKE_DECLARED_CONSTRUCTORS,
 						MemberCategory.INVOKE_DECLARED_METHODS
