@@ -44,6 +44,7 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springdoc.demo.app2.model.ModelApiResponse;
 import org.springdoc.demo.app2.model.Pet;
 
@@ -174,7 +175,7 @@ public interface PetApi {
 			@ApiResponse(responseCode = "200", description = "successful operation", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Pet.class))))
 	})
 	@GetMapping(value = "/pet", produces = { "application/xml", "application/json" })
-	default ResponseEntity<List<Pet>> getAllPets(@NotNull Pageable pageable) {
+	default ResponseEntity<List<Pet>> getAllPets(@NotNull @ParameterObject Pageable pageable) {
 		return getDelegate().getAllPets(pageable);
 	}
 
