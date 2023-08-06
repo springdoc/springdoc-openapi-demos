@@ -17,6 +17,8 @@ springdoc:
   group-configs:
     - group: stores
       paths-to-match: /store/**
+  cache:
+    disabled: true
 server:
   port: 8081
   forward-headers-strategy: framework
