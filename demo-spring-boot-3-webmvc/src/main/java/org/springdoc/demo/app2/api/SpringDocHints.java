@@ -36,14 +36,25 @@ public class SpringDocHints implements RuntimeHintsRegistrar {
 
 	@Override
 	public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
-
-		hints.reflection().registerType(org.springframework.core.MethodParameter.class,
+		hints.reflection().registerType(org.springdoc.core.annotations.ParameterObject.class,
 				hint -> hint.withMembers(
 						MemberCategory.DECLARED_FIELDS,
 						MemberCategory.INVOKE_DECLARED_CONSTRUCTORS,
 						MemberCategory.INVOKE_DECLARED_METHODS
 				));
-		
+		hints.reflection().registerType(org.springdoc.core.converters.models.Pageable.class,
+				hint -> hint.withMembers(
+						MemberCategory.DECLARED_FIELDS,
+						MemberCategory.INVOKE_DECLARED_CONSTRUCTORS,
+						MemberCategory.INVOKE_DECLARED_METHODS
+				));
+		hints.reflection().registerType(org.springdoc.core.extractor.DelegatingMethodParameter.class,
+				hint -> hint.withMembers(
+						MemberCategory.DECLARED_FIELDS,
+						MemberCategory.INVOKE_DECLARED_CONSTRUCTORS,
+						MemberCategory.INVOKE_DECLARED_METHODS
+				));
+
 	}
 
 }
