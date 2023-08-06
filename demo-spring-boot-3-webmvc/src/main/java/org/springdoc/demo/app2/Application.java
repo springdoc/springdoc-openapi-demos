@@ -29,12 +29,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointProperties;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ImportRuntimeHints;
 import org.springframework.context.annotation.Profile;
 
 import static org.springdoc.core.utils.Constants.ALL_PATTERN;
 
 
 @SpringBootApplication
+@ImportRuntimeHints(org.springdoc.demo.app2.api.SpringDocHints.class)
 public class Application {
 
 	public static void main(String[] args) {
