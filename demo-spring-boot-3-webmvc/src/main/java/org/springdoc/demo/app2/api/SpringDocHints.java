@@ -39,7 +39,7 @@ public class SpringDocHints implements RuntimeHintsRegistrar {
 	@Override
 	public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
 		hints.reflection().registerField(FieldUtils.getDeclaredField(MethodParameter.class, "containingClass", true));
-		hints.reflection().registerField(FieldUtils.getDeclaredField(MethodParameter.class, "parameterType", true));
+		//hints.reflection().registerField(FieldUtils.getDeclaredField(MethodParameter.class, "parameterType", true));
 	}
 	
 }
