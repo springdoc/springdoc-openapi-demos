@@ -24,9 +24,12 @@
 
 package org.springdoc.demo.app2.api;
 
+import org.apache.commons.lang3.reflect.FieldUtils;
+
 import org.springframework.aot.hint.MemberCategory;
 import org.springframework.aot.hint.RuntimeHints;
 import org.springframework.aot.hint.RuntimeHintsRegistrar;
+import org.springframework.core.MethodParameter;
 
 /**
  * The type Spring doc hints.
@@ -55,6 +58,13 @@ public class SpringDocHints implements RuntimeHintsRegistrar {
 						MemberCategory.INVOKE_DECLARED_METHODS
 				));
 
+		hints.reflection().registerType(org.springframework.core.MethodParameter.class,
+				hint -> hint.withMembers(
+						MemberCategory.DECLARED_FIELDS,
+						MemberCategory.INVOKE_DECLARED_CONSTRUCTORS,
+						MemberCategory.INVOKE_DECLARED_METHODS
+				));
+		
 	}
 
 }
