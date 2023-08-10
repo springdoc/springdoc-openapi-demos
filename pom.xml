@@ -67,7 +67,7 @@
 		<repository>
 			<id>spring-release</id>
 			<name>Spring release</name>
-			<url>https://repo.spring.io/release</url>
+			<url>https://repo.spring.io/ui/native/release</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -94,7 +94,7 @@
 		<pluginRepository>
 			<id>spring-release</id>
 			<name>Spring release</name>
-			<url>https://repo.spring.io/release</url>
+			<url>https://repo.spring.io/ui/native/release</url>
 		</pluginRepository>
 		<pluginRepository>
 			<id>spring-milestone</id>
@@ -140,7 +140,9 @@
 		<spring-boot.version>2.7.14</spring-boot.version>
 		<spring-boot-maven-plugin.version>${spring-boot.version}
 		</spring-boot-maven-plugin.version>
-		<springdoc.version>1.8.0</springdoc.version>
+		<!-- Next version doesn't exist	-->
+<!--		<springdoc.version>1.8.0</springdoc.version>-->
+		<springdoc.version>1.7.0</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
