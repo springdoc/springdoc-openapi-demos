@@ -7,3 +7,5 @@ springdoc:
   version: '@springdoc.version@'
   swagger-ui:
     use-root-path: true
+  api-docs:
+    version: openapi_3_1

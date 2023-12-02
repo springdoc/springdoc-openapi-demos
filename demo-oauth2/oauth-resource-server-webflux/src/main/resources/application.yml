@@ -14,6 +14,8 @@ spring:
           issuer-uri: ${OAUTH2_SERVER:http://127.0.0.1:8083}
 springdoc:
   version: '@springdoc.version@'
+  api-docs:
+    version: openapi_3_1
   swagger-ui:
     oauth:
       clientId: newClient
