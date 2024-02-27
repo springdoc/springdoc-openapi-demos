@@ -31,7 +31,8 @@ public class GatewayApplication {
 		}
 		definitions.stream().filter(routeDefinition -> routeDefinition.getId().matches(".*-service")).forEach(routeDefinition -> {
 			String name = routeDefinition.getId().replaceAll("-service", "");
-			GroupedOpenApi.builder().pathsToMatch("/" + name + "/**").group(name).build();
+			GroupedOpenApi api = GroupedOpenApi.builder().pathsToMatch("/" + name + "/**").group(name).build();
+			groups.add(api);
 		});
 		return groups;
 	}
