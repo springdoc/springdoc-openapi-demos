@@ -37,12 +37,12 @@
 	</scm>
 	<distributionManagement>
 		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+			<id>nexus-snapshots</id>
+			<url>https://nexus.springdoc.org/repository/maven-snapshots/</url>
 		</snapshotRepository>
 		<repository>
-			<id>ossrh</id>
-			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<id>nexus-releases</id>
+			<url>https://nexus.springdoc.org/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
 
@@ -137,11 +137,9 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<spring-boot.version>2.7.14</spring-boot.version>
+		<spring-boot.version>2.7.18</spring-boot.version>
 		<spring-boot-maven-plugin.version>${spring-boot.version}
 		</spring-boot-maven-plugin.version>
-		<!-- Next version doesn't exist	-->
-<!--		<springdoc.version>1.8.0</springdoc.version>-->
 		<springdoc.version>1.7.0</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
