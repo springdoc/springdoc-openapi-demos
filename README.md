@@ -1,5 +1,6 @@
 [![Build Status](https://ci-cd.springdoc.org:8443/buildStatus/icon?job=springdoc-demos%2Fmaster)](https://ci-cd.springdoc.org:8443/job/springdoc-demos/job/master/)
 
+
 # Spring-boot with OpenAPI Demo applications.
 
 ## [Demo Spring Boot 2 Web MVC with OpenAPI 3](http://158.101.191.70:8081/).
