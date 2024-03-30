@@ -1,0 +1,9 @@
+server:
+  forward-headers-strategy: framework
+
+springdoc:
+  api-docs:
+    version: openapi_3_1
+  version: '@springdoc.version@'
+  swagger-ui:
+    use-root-path: true

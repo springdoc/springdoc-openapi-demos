@@ -1,0 +1,74 @@
+server:
+  port: 8060
+  forward-headers-strategy: framework
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: TRACE
+
+spring:
+  cloud:
+    gateway:
+      httpclient:
+        ssl:
+          useInsecureTrustManager: true
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: employee-service
+          uri: lb://employee-service
+          predicates:
+            - Path=/employee/**, /demo-microservices/employee/**
+          filters:
+            - ContextPathRewritePath=/demo-microservices/employee/(?<path>.*), /$\{path}
+            - RewritePath=/employee/(?<path>.*), /$\{path}
+        - id: department-service
+          uri: lb://department-service
+          predicates:
+            - Path=/department/**, /demo-microservices/department/**
+          filters:
+            - ContextPathRewritePath=/demo-microservices/department/(?<path>.*), /$\{path}
+            - RewritePath=/department/(?<path>.*), /$\{path}
+        - id: organization-service
+          uri: lb://organization-service
+          predicates:
+            - Path=/organization/**, /demo-microservices/organization/**
+          filters:
+            - ContextPathRewritePath=/demo-microservices/organization/(?<path>.*), /$\{path}
+            - RewritePath=/organization/(?<path>.*), /$\{path}
+        - id: openapi-proxy
+          uri: https://demos.springdoc.org
+          predicates:
+            - Path=/demo-microservices/v3/api-docs/**
+          filters:
+            - RewritePath=/demo-microservices/v3/api-docs/(?<path>.*), /demo-microservices/$\{path}/v3/api-docs
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: employee
+        url: /v3/api-docs/employee
+      - name: department
+        url: /v3/api-docs/department
+      - name: organization
+        url: /v3/api-docs/organization
+  cache:
+    disabled: true
