@@ -15,14 +15,14 @@
 ## [Demo Spring Boot 3 and Spring Cloud Gateway](https://demos.springdoc.org/demo-microservices/swagger-ui.html).
 
 
-![Branching](https://springdoc.org/images/pets.png)
+![Branching](https://springdoc.org/img/pets.png)
 
 # **Thank you for the support**
 
 * Thanks a lot [JetBrains](https://www.jetbrains.com/?from=springdoc-openapi) for
   supporting springdoc-openapi project.
 
-![JenBrains logo](https://springdoc.org/images/jetbrains.svg)
+![JenBrains logo](https://springdoc.org/img/jetbrains.svg)
 
 
 
