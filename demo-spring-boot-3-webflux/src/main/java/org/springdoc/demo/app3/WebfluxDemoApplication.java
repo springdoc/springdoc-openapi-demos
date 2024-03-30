@@ -53,10 +53,5 @@ public class WebfluxDemoApplication {
 				.pathsToMatch(paths).packagesToScan(packagedToMatch)
 				.build();
 	}
-
-	@Bean
-	ForwardedHeaderFilter forwardedHeaderFilter() {
-		return new ForwardedHeaderFilter();
-	}
-
+	
 }
