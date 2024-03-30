@@ -4,23 +4,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springdoc</groupId>
 	<artifactId>springdoc-openapi-demos</artifactId>
-	<version>3.1.7-SNAPSHOT</version>
+	<version>3.1.6-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Spring-openapi demos</name>
 	<description>Spring-openapi demos</description>
 	<url>https://springdoc.org/</url>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-
 	<licenses>
 		<license>
 			<name>The Apache License, Version 2.0</name>
-			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 		</license>
 	</licenses>
 
@@ -95,16 +88,6 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		<repository>
-			<id>netflix-candidates</id>
-			<name>Netflix Candidates</name>
-			<url>
-				https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates
-			</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
 	</repositories>
 
 	<pluginRepositories>
@@ -121,54 +104,61 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</pluginRepository>
+		<pluginRepository>
+			<id>snapshots-repo</id>
+			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
 	</pluginRepositories>
 
 	<modules>
-		<module>demo-book-service</module>
-		<module>demo-microservices</module>
-		<module>demo-spring-boot-3-webflux-functional</module>
-		<module>demo-spring-boot-3-webflux</module>
-		<module>demo-spring-boot-3-webmvc</module>
-		<module>demo-oauth2</module>
-		<module>demo-person-service</module>
-		<module>demo-spring-hateoas</module>
-		<module>demo-spring-data-rest</module>
-		<module>demo-spring-cloud-function</module>
+		<module>springdoc-openapi-spring-boot-1</module>
+		<module>springdoc-openapi-spring-boot-2-webmvc</module>
+		<module>springdoc-openapi-spring-boot-2-webflux</module>
+		<module>springdoc-openapi-spring-boot-2-webflux-functional</module>
+		<module>springdoc-openapi-book-service</module>
+		<module>springdoc-openapi-oauth2</module>
+		<module>springdoc-openapi-microservices</module>
+		<module>springdoc-openapi-person-service</module>
+		<module>springdoc-openapi-hateoas-service</module>
+		<module>springdoc-openapi-data-rest</module>
+		<module>springdoc-openapi-spring-cloud-function</module>
 	</modules>
 
 	<properties>
-		<java.version>17</java.version>
+		<java.version>1.8</java.version>
 		<resource.delimiter>@</resource.delimiter>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<springdoc.version>2.4.0</springdoc.version>
+		<spring-boot.version>2.7.18</spring-boot.version>
+		<spring-boot-maven-plugin.version>${spring-boot.version}
+		</spring-boot-maven-plugin.version>
+		<springdoc.version>1.8.0</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
-		<jib-maven-plugin.version>3.2.0</jib-maven-plugin.version>
+		<jib-maven-plugin.version>3.1.4</jib-maven-plugin.version>
 		<springdoc-openapi-maven-plugin.version>1.4
 		</springdoc-openapi-maven-plugin.version>
-		<jib.from.image>openjdk:17-slim</jib.from.image>
-		<spring-cloud.version>2023.0.0-SNAPSHOT</spring-cloud.version>
-		<spring-cloud-netflix.version>4.0.3</spring-cloud-netflix.version>
-		<spring-security-oauth2-authorization-server.version>1.0.0</spring-security-oauth2-authorization-server.version>
+		<jib.from.image>openjdk:8-jre-slim</jib.from.image>
+		<spring-cloud.version>2021.0.2</spring-cloud.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>spring-security-oauth2-authorization-server</artifactId>
-				<version>${spring-security-oauth2-authorization-server.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-netflix-dependencies</artifactId>
-				<version>${spring-cloud-netflix.version}</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -215,14 +205,6 @@
 					</classesDirectory>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.graalvm.buildtools</groupId>
-				<artifactId>native-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
 		</plugins>
 	</build>
 
@@ -239,6 +221,39 @@
 							<groupId>org.springdoc</groupId>
 							<artifactId>springdoc-openapi-maven-plugin</artifactId>
 							<version>${springdoc-openapi-maven-plugin.version}</version>
+							<executions>
+								<execution>
+									<id>integration-test</id>
+									<goals>
+										<goal>generate</goal>
+									</goals>
+								</execution>
+							</executions>
+							<configuration>
+								<apiDocsUrl>http://localhost:8080/v3/api-docs.yaml
+								</apiDocsUrl>
+								<outputFileName>openapi.yaml</outputFileName>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-maven-plugin</artifactId>
+							<version>${spring-boot-maven-plugin.version}</version>
+							<configuration>
+								<jvmArguments>-Dspring.application.admin.enabled=true
+									-Dspringdoc.writer-with-default-pretty-printer=true
+								</jvmArguments>
+							</configuration>
+							<executions>
+								<execution>
+									<goals>
+										<goal>start</goal>
+										<goal>build-info</goal>
+										<goal>stop</goal>
+										<goal>repackage</goal>
+									</goals>
+								</execution>
+							</executions>
 						</plugin>
 					</plugins>
 				</pluginManagement>
@@ -263,12 +278,13 @@
 							</from>
 							<to>
 								<image>
-									registry.hub.docker.com/springdocdemos/${project.artifactId}:${project.version}
+									registry.hub.docker.com/springdocdemos/${project.artifactId}
 								</image>
 							</to>
 							<container>
 								<jvmFlags>
 									<jvmFlag>-XshowSettings:vm</jvmFlag>
+									<jvmFlag>-noverify</jvmFlag>
 									<jvmFlag>-Dspring.main.lazy-initialization=true
 									</jvmFlag>
 									<jvmFlag>-XX:TieredStopAtLevel=1</jvmFlag>
@@ -299,9 +315,6 @@
 					<plugin>
 						<artifactId>maven-javadoc-plugin</artifactId>
 						<version>${maven-javadoc-plugin.version}</version>
-						<configuration>
-							<doclint>all,-missing</doclint>
-						</configuration>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>

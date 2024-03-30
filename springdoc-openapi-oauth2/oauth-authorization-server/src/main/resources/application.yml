@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    username: sa
+    url: jdbc:h2:./data/keycloak;DB_CLOSE_ON_EXIT=FALSE
+    hikari:
+      maximum-pool-size: 25
+      minimum-idle: 1
+
+server:
+  forward-headers-strategy: native
+  port: 8083
+
+logging:
+  level:
+    org.jgroups: INFO
+    org.infinispan: INFO
+    org.keycloak: INFO
+    org.keycloak.services.managers.DefaultBruteForceProtector: DEBUG
+    org.keycloak.services.scheduled.ClusterAwareScheduledTaskRunner: DEBUG
+    org.keycloak.services.managers.UserSessionManager: DEBUG
+    org.keycloak.timer.basic: DEBUG
+
+keycloak:
+  custom:
+    server:
+      keycloak-path: "/auth"
+    migration:
+      importProvider: singleFile
+      importLocation: "file:springdoc-realm.json"

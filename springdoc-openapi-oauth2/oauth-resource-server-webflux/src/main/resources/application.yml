@@ -1,0 +1,23 @@
+server:
+  port: 8082
+####### resource server configuration properties
+spring:
+  webflux:
+    base-path: /resource-server
+  jpa:
+    defer-datasource-initialization: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${OAUTH2_SERVER:http://localhost:8083}/auth/realms/springdoc
+          jwk-set-uri: ${OAUTH2_SERVER:http://localhost:8083}/auth/realms/springdoc/protocol/openid-connect/certs
+springdoc:
+  version: '@springdoc.version@'
+  swagger-ui:
+    oauth:
+      clientId: newClient
+      clientSecret: newClientSecret
+  oAuthFlow:
+    authorizationUrl: ${OAUTH2_SERVER:http://localhost:8083}/auth/realms/springdoc/protocol/openid-connect/auth
+    tokenUrl: ${OAUTH2_SERVER:http://localhost:8083}/auth/realms/springdoc/protocol/openid-connect/token

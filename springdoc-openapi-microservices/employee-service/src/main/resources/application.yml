@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: employee-service
+  config:
+    import: "optional:configserver:${CONFIG_SERVER:http://localhost:8088}"
+springdoc:
+  version: '@springdoc.version@'
