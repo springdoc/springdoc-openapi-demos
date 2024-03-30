@@ -43,14 +43,14 @@ public class Application {
 
 	@Bean
 	@Profile("!prod")
-	public GroupedOpenApi actuatorApi(OpenApiCustomizer actuatorOpenApiCustomiser,
+	public GroupedOpenApi actuatorApi(OpenApiCustomizer actuatorOpenApiCustomizer,
 			OperationCustomizer actuatorCustomizer,
 			WebEndpointProperties endpointProperties,
 			@Value("${springdoc.version}") String appVersion) {
 		return GroupedOpenApi.builder()
 				.group("Actuator")
 				.pathsToMatch(endpointProperties.getBasePath() + ALL_PATTERN)
-				.addOpenApiCustomizer(actuatorOpenApiCustomiser)
+				.addOpenApiCustomizer(actuatorOpenApiCustomizer)
 				.addOpenApiCustomizer(openApi -> openApi.info(new Info().title("Actuator API").version(appVersion)))
 				.addOperationCustomizer(actuatorCustomizer)
 				.pathsToExclude("/health/*")
