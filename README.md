@@ -10,7 +10,7 @@
 
 ## [Demo Spring Boot 3 and Spring Cloud Function Web MVC](https://demos.springdoc.org/spring-cloud-function-webmvc).
 
-## [Demo Spring Boot 3 and Spring Cloud Function WebFlux](http://158.101.191.70:8085/swagger-ui.html).
+## [Demo Spring Boot 3 and Spring Cloud Function WebFlux](https://demos.springdoc.org/spring-cloud-function-webflux/swagger-ui.html).
 
 ## [Demo Spring Boot 3 and Spring Cloud Gateway](https://demos.springdoc.org/demo-microservices/swagger-ui.html).
 
