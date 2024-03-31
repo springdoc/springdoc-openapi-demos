@@ -15,3 +15,6 @@ logging:
 springdoc:
   cache:
     disabled: true
+  version: '@springdoc.version@'
+  api-docs:
+    version: openapi_3_1

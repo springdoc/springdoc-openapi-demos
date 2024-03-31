@@ -62,13 +62,10 @@ spring:
 
 
 springdoc:
-  swagger-ui:
-    urls:
-      - name: employee
-        url: /v3/api-docs/employee
-      - name: department
-        url: /v3/api-docs/department
-      - name: organization
-        url: /v3/api-docs/organization
   cache:
     disabled: true
+  version: '@springdoc.version@'
+  swagger-ui:
+    use-root-path: true
+  api-docs:
+    version: openapi_3_1
