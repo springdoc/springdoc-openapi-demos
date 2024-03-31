@@ -1,4 +1,6 @@
-[![Build Status](https://ci-cd.springdoc.org:8443/buildStatus/icon?job=springdoc-demos%2Fmaster)](https://ci-cd.springdoc.org:8443/job/springdoc-demos/job/master/)
+[![Build Status](https://ci-cd.springdoc.org:8443/buildStatus/icon?job=springdoc-demos%2F2.x)](https://ci-cd.springdoc.org:8443/job/springdoc-demos/job/2.x/)
+
+
 
 # Spring-boot with OpenAPI Demo applications.
 
