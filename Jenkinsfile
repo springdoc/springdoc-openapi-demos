@@ -3,8 +3,6 @@
 node {
 	stage('checkout') {
 		deleteDir()
-	}
-	stage('checkout') {
 		checkout scm
 	}
 	stage('Clean') {
@@ -19,5 +17,6 @@ node {
 	}
 	stage("Deploy") {
 		build 'springdoc-openapi-demos-deploy'
+		deleteDir()
 	}
 }
