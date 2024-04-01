@@ -11,9 +11,11 @@ import org.springdoc.core.AbstractSwaggerUiConfigProperties.SwaggerUrl;
 import org.springdoc.core.GroupedOpenApi;
 import org.springdoc.core.SwaggerUiConfigParameters;
 import org.springdoc.core.SwaggerUiConfigProperties;
+import org.springdoc.webflux.ui.SwaggerIndexTransformer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.gateway.route.RouteDefinition;
@@ -35,7 +37,7 @@ public class GatewayApplication {
 	@Lazy(false)
 	public List<GroupedOpenApi> apis(RouteDefinitionLocator locator, SwaggerUiConfigParameters swaggerUiConfigParameters) {
 		List<GroupedOpenApi> groups = new ArrayList<>();
-		//Set<SwaggerUrl> urls = new HashSet<>();
+		Set<SwaggerUrl> urls = new HashSet<>();
 		List<RouteDefinition> definitions = locator.getRouteDefinitions().collectList().block();
 		for (RouteDefinition definition : definitions) {
 			System.out.println("id: " + definition.getId() + "  " + definition.getUri().toString());
@@ -43,11 +45,11 @@ public class GatewayApplication {
 		definitions.stream().filter(routeDefinition -> routeDefinition.getId().matches(".*-service")).forEach(routeDefinition -> {
 			String name = routeDefinition.getId().replaceAll("-service", "");
 			GroupedOpenApi groupedOpenApi =GroupedOpenApi.builder().pathsToMatch("/" + name + "/**").group(name).build();
-			groups.add(groupedOpenApi);
+		//	groups.add(groupedOpenApi);
 			SwaggerUrl swaggerUrl = new SwaggerUrl(name, DEFAULT_API_DOCS_URL+"/" + name, null);
-		//	urls.add(swaggerUrl);
+			urls.add(swaggerUrl);
 		});
-	//	swaggerUiConfigParameters.setUrls(urls);
+		swaggerUiConfigParameters.setUrls(urls);
 		return groups;
 	}
 }
