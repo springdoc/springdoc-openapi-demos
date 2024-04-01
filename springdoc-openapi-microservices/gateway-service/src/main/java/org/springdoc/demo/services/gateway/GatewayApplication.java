@@ -1,21 +1,13 @@
 package org.springdoc.demo.services.gateway;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.annotation.PostConstruct;
-
 import org.springdoc.core.AbstractSwaggerUiConfigProperties.SwaggerUrl;
-import org.springdoc.core.GroupedOpenApi;
 import org.springdoc.core.SwaggerUiConfigParameters;
-import org.springdoc.core.SwaggerUiConfigProperties;
-import org.springdoc.webflux.ui.SwaggerIndexTransformer;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.gateway.route.RouteDefinition;
@@ -35,8 +27,7 @@ public class GatewayApplication {
 
 	@Bean
 	@Lazy(false)
-	public List<GroupedOpenApi> apis(RouteDefinitionLocator locator, SwaggerUiConfigParameters swaggerUiConfigParameters) {
-		List<GroupedOpenApi> groups = new ArrayList<>();
+	public Set<SwaggerUrl> apis(RouteDefinitionLocator locator, SwaggerUiConfigParameters swaggerUiConfigParameters) {
 		Set<SwaggerUrl> urls = new HashSet<>();
 		List<RouteDefinition> definitions = locator.getRouteDefinitions().collectList().block();
 		for (RouteDefinition definition : definitions) {
@@ -44,12 +35,10 @@ public class GatewayApplication {
 		}
 		definitions.stream().filter(routeDefinition -> routeDefinition.getId().matches(".*-service")).forEach(routeDefinition -> {
 			String name = routeDefinition.getId().replaceAll("-service", "");
-			GroupedOpenApi groupedOpenApi =GroupedOpenApi.builder().pathsToMatch("/" + name + "/**").group(name).build();
-		//	groups.add(groupedOpenApi);
 			SwaggerUrl swaggerUrl = new SwaggerUrl(name, DEFAULT_API_DOCS_URL+"/" + name, null);
 			urls.add(swaggerUrl);
 		});
 		swaggerUiConfigParameters.setUrls(urls);
-		return groups;
+		return urls;
 	}
 }
