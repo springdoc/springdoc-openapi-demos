@@ -35,7 +35,7 @@ public class GatewayApplication {
 	@Lazy(false)
 	public List<GroupedOpenApi> apis(RouteDefinitionLocator locator, SwaggerUiConfigParameters swaggerUiConfigParameters) {
 		List<GroupedOpenApi> groups = new ArrayList<>();
-		Set<SwaggerUrl> urls = new HashSet<>();
+		//Set<SwaggerUrl> urls = new HashSet<>();
 		List<RouteDefinition> definitions = locator.getRouteDefinitions().collectList().block();
 		for (RouteDefinition definition : definitions) {
 			System.out.println("id: " + definition.getId() + "  " + definition.getUri().toString());
@@ -45,9 +45,9 @@ public class GatewayApplication {
 			GroupedOpenApi groupedOpenApi =GroupedOpenApi.builder().pathsToMatch("/" + name + "/**").group(name).build();
 			groups.add(groupedOpenApi);
 			SwaggerUrl swaggerUrl = new SwaggerUrl(name, DEFAULT_API_DOCS_URL+"/" + name, null);
-			urls.add(swaggerUrl);
+		//	urls.add(swaggerUrl);
 		});
-		swaggerUiConfigParameters.setUrls(urls);
+	//	swaggerUiConfigParameters.setUrls(urls);
 		return groups;
 	}
 }
