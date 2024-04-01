@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.annotation.PostConstruct;
 
 import org.springdoc.core.AbstractSwaggerUiConfigProperties.SwaggerUrl;
+import org.springdoc.core.SwaggerUiConfigParameters;
 import org.springdoc.core.SwaggerUiConfigProperties;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +27,7 @@ public class GatewayApplication {
 		SpringApplication.run(GatewayApplication.class, args);
 	}
 
-	@Autowired
-	private RouteDefinitionLocator locator;
-	
-	@Autowired
-	private SwaggerUiConfigProperties swaggerUiConfigProperties;
-	
-	@PostConstruct
-	public void init() {
+	public GatewayApplication(RouteDefinitionLocator locator, SwaggerUiConfigParameters swaggerUiConfigParameters) {
 		List<RouteDefinition> definitions = locator.getRouteDefinitions().collectList().block();
 		Set<SwaggerUrl> urls = new HashSet<>();
 		definitions.stream().filter(routeDefinition -> routeDefinition.getId().matches(".*-service")).forEach(routeDefinition -> {
@@ -41,6 +35,6 @@ public class GatewayApplication {
 			SwaggerUrl swaggerUrl = new SwaggerUrl(name, DEFAULT_API_DOCS_URL+"/" + name, null);
 			urls.add(swaggerUrl);
 		});
-		swaggerUiConfigProperties.setUrls(urls);
+		swaggerUiConfigParameters.setUrls(urls);
 	}
 }
