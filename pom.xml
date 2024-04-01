@@ -221,39 +221,6 @@
 							<groupId>org.springdoc</groupId>
 							<artifactId>springdoc-openapi-maven-plugin</artifactId>
 							<version>${springdoc-openapi-maven-plugin.version}</version>
-							<executions>
-								<execution>
-									<id>integration-test</id>
-									<goals>
-										<goal>generate</goal>
-									</goals>
-								</execution>
-							</executions>
-							<configuration>
-								<apiDocsUrl>http://localhost:8080/v3/api-docs.yaml
-								</apiDocsUrl>
-								<outputFileName>openapi.yaml</outputFileName>
-							</configuration>
-						</plugin>
-						<plugin>
-							<groupId>org.springframework.boot</groupId>
-							<artifactId>spring-boot-maven-plugin</artifactId>
-							<version>${spring-boot-maven-plugin.version}</version>
-							<configuration>
-								<jvmArguments>-Dspring.application.admin.enabled=true
-									-Dspringdoc.writer-with-default-pretty-printer=true
-								</jvmArguments>
-							</configuration>
-							<executions>
-								<execution>
-									<goals>
-										<goal>start</goal>
-										<goal>build-info</goal>
-										<goal>stop</goal>
-										<goal>repackage</goal>
-									</goals>
-								</execution>
-							</executions>
 						</plugin>
 					</plugins>
 				</pluginManagement>
