@@ -4,11 +4,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import jakarta.annotation.PostConstruct;
 import org.springdoc.core.properties.AbstractSwaggerUiConfigProperties.SwaggerUrl;
-import org.springdoc.core.properties.SwaggerUiConfigProperties;
+import org.springdoc.core.properties.SwaggerUiConfigParameters;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -21,18 +19,12 @@ import static org.springdoc.core.utils.Constants.DEFAULT_API_DOCS_URL;
 @EnableDiscoveryClient
 public class GatewayApplication {
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(GatewayApplication.class, args);
 	}
 
-	@Autowired
-	private RouteDefinitionLocator locator;
-	
-	@Autowired
-	private SwaggerUiConfigProperties swaggerUiConfigProperties;
-	
-	@PostConstruct
-	public void init() {
+	public GatewayApplication(RouteDefinitionLocator locator, SwaggerUiConfigParameters swaggerUiConfigParameters) {
 		List<RouteDefinition> definitions = locator.getRouteDefinitions().collectList().block();
 		Set<SwaggerUrl> urls = new HashSet<>();
 		definitions.stream().filter(routeDefinition -> routeDefinition.getId().matches(".*-service")).forEach(routeDefinition -> {
@@ -40,6 +32,7 @@ public class GatewayApplication {
 			SwaggerUrl swaggerUrl = new SwaggerUrl(name, DEFAULT_API_DOCS_URL+"/" + name, null);
 			urls.add(swaggerUrl);
 		});
-		swaggerUiConfigProperties.setUrls(urls);
+		swaggerUiConfigParameters.setUrls(urls);
 	}
+	
 }
