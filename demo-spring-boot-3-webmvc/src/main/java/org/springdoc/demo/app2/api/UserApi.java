@@ -88,6 +88,7 @@ public interface UserApi {
 
 	@Operation(summary = "Delete user", description = "This can only be done by the logged in user.", tags = { "user" })
 	@ApiResponses(value = {
+			@ApiResponse(responseCode = "204", description = "User deleted"),
 			@ApiResponse(responseCode = "400", description = "Invalid username supplied"),
 			@ApiResponse(responseCode = "404", description = "User not found")
 	})

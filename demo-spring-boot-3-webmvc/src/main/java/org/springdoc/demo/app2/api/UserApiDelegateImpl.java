@@ -101,7 +101,7 @@ public class UserApiDelegateImpl implements UserApiDelegate {
 		User user = userRepository.findById(username)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		userRepository.delete(user);
-		return ResponseEntity.ok().build();
+		return ResponseEntity.noContent().build();
 	}
 
 	@Override
