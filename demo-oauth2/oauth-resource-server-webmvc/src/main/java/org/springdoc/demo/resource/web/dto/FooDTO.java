@@ -1,7 +1,9 @@
 package org.springdoc.demo.resource.web.dto;
 
+import java.util.UUID;
+
 public class FooDTO {
-	private long id;
+	private UUID id;
 
 	private String name;
 
@@ -9,20 +11,18 @@ public class FooDTO {
 		super();
 	}
 
-	public FooDTO(final long id, final String name) {
+	public FooDTO(final UUID id, final String name) {
 		super();
 
 		this.id = id;
 		this.name = name;
 	}
 
-	//
-
-	public long getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(final long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
