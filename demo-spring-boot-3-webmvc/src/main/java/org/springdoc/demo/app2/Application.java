@@ -66,6 +66,7 @@ public class Application {
 				})
 				.addOpenApiCustomizer(openApi -> openApi.info(new Info().title("Users API").version(appVersion)))
 				.packagesToScan("org.springdoc.demo.app2")
+				.pathsToMatch("/user/**")
 				.build();
 	}
 }
