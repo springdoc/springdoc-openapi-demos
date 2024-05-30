@@ -26,7 +26,6 @@ import org.springdoc.demo.services.book.exception.BookNotFoundException;
 import org.springdoc.demo.services.book.model.Book;
 import org.springdoc.demo.services.book.repository.BookRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,8 +43,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/book")
 public class BookController {
 
-	@Autowired
-	private BookRepository repository;
+	private final BookRepository repository;
+
+	public BookController(BookRepository repository) {
+		this.repository = repository;
+	}
 
 	@GetMapping("/{id}")
 	public Book findById(@PathVariable long id) {
