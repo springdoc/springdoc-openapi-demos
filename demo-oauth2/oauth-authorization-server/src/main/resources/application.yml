@@ -9,7 +9,6 @@ spring:
 server:
   forward-headers-strategy: native
   port: 8083
-
 logging:
   level:
     root: INFO
@@ -17,3 +16,5 @@ logging:
     org.springframework.security: INFO
     org.springframework.security.oauth2: INFO
     org.springframework.boot.autoconfigure: INFO
+springdoc:
+  show-oauth2-endpoints: true

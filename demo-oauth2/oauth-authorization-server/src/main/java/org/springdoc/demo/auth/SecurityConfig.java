@@ -71,6 +71,7 @@ public class SecurityConfig {
 						exceptions.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
 				)
 				.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
+		
 		return http.build();
 	}
 

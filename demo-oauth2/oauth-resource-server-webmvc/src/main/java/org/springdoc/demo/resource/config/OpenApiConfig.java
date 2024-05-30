@@ -26,8 +26,8 @@ import io.swagger.v3.oas.annotations.security.OAuthFlows;
 import io.swagger.v3.oas.annotations.security.OAuthScope;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 
-@OpenAPIDefinition(info = @Info(title = "My App",
-		description = "Some long and useful description", version = "v1"))
+@OpenAPIDefinition(info = @Info(title = "Foo API",
+		description = "Foo description", version = "v1"))
 @SecurityScheme(name = "security_auth", type = SecuritySchemeType.OAUTH2,
 		flows = @OAuthFlows(authorizationCode = @OAuthFlow(
 				authorizationUrl = "${springdoc.oAuthFlow.authorizationUrl}"

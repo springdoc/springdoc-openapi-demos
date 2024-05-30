@@ -19,8 +19,9 @@ public class DefaultSecurityConfig {
 	@Bean
 	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 		http
-				.authorizeHttpRequests(authorize ->
-						authorize.anyRequest().authenticated()
+				.authorizeHttpRequests(authz ->
+						authz.requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+								.anyRequest().authenticated()
 				)
 				.cors(withDefaults())
 				.formLogin(withDefaults());

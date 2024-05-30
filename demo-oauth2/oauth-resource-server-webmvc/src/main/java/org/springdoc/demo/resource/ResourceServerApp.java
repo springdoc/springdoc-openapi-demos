@@ -16,12 +16,5 @@ public class ResourceServerApp {
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(ResourceServerApp.class, args);
 	}
-
-	@Bean
-	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
-		return new OpenAPI()
-				.components(new Components())
-				.info(new Info().title("Foo API").version(appVersion)
-						.license(new License().name("Apache 2.0").url("http://springdoc.org")));
-	}
+	
 }
