@@ -47,13 +47,13 @@ public class TweetMapper {
 
 	TweetDTO toDTO(Tweet tweet) {
 		TweetDTO teTweetDTO = new TweetDTO();
-		BeanUtils.copyProperties(teTweetDTO, tweet);
+		BeanUtils.copyProperties(tweet,teTweetDTO);
 		return teTweetDTO;
 	}
 
 	Tweet toEntity(TweetDTO tweetDTO) {
 		Tweet teTweet = new Tweet();
-		BeanUtils.copyProperties(new Tweet(), tweetDTO);
+		BeanUtils.copyProperties(tweetDTO, teTweet);
 		return teTweet;
 	}
 

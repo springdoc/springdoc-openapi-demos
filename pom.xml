@@ -107,22 +107,6 @@
 		</repository>
 	</repositories>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-release</id>
-			<name>Spring release</name>
-			<url>https://repo.spring.io/release</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>spring-milestone</id>
-			<name>Spring milestone</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-
 	<modules>
 		<module>demo-book-service</module>
 		<module>demo-microservices</module>
@@ -143,7 +127,7 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<springdoc.version>2.5.0</springdoc.version>
+		<springdoc.version>2.5.1-SNAPSHOT</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
@@ -153,9 +137,11 @@
 		<springdoc-openapi-maven-plugin.version>1.4
 		</springdoc-openapi-maven-plugin.version>
 		<jib.from.image>openjdk:17-slim</jib.from.image>
-		<spring-cloud.version>2023.0.0-SNAPSHOT</spring-cloud.version>
-		<spring-cloud-netflix.version>4.0.3</spring-cloud-netflix.version>
-		<spring-security-oauth2-authorization-server.version>1.0.0</spring-security-oauth2-authorization-server.version>
+		<spring-cloud.version>2023.0.2</spring-cloud.version>
+		<spring-cloud-netflix.version>4.1.2</spring-cloud-netflix.version>
+		<spring-security-oauth2-authorization-server.version>1.3.0
+		</spring-security-oauth2-authorization-server.version>
+		<flapdoodle.version>4.11.0</flapdoodle.version>
 	</properties>
 
 	<dependencyManagement>
@@ -164,6 +150,11 @@
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-oauth2-authorization-server</artifactId>
 				<version>${spring-security-oauth2-authorization-server.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.flapdoodle.embed</groupId>
+				<artifactId>de.flapdoodle.embed.mongo.spring30x</artifactId>
+				<version>${flapdoodle.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>

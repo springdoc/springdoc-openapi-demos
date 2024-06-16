@@ -26,7 +26,7 @@ import jakarta.validation.constraints.Size;
 
 
 /**
- * Created by rajeevkumarsingh on 08/09/17.
+ * Created by bnasslahsen on 08/09/17.
  */
 public class TweetDTO {
 	private String id;

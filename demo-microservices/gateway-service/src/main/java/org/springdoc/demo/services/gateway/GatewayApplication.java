@@ -1,17 +1,13 @@
 package org.springdoc.demo.services.gateway;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.springdoc.core.models.GroupedOpenApi;
 import org.springdoc.core.properties.AbstractSwaggerUiConfigProperties.SwaggerUrl;
 import org.springdoc.core.properties.SwaggerUiConfigParameters;
-import org.springdoc.webflux.ui.SwaggerIndexTransformer;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.gateway.route.RouteDefinition;

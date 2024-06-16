@@ -19,7 +19,7 @@
 package org.springdoc.demo.app3.payload;
 
 /**
- * Created by rajeevkumarsingh on 22/10/17.
+ * Created by bnasslahsen
  */
 public class ErrorResponse {
 	private String message;

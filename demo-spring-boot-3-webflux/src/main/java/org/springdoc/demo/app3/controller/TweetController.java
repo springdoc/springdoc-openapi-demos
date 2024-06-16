@@ -28,7 +28,6 @@ import org.springdoc.demo.app3.repository.TweetRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -41,16 +40,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by rajeevkumarsingh on 08/09/17.
+ * Created by bnasslahsen
  */
 @RestController
 public class TweetController {
 
-	@Autowired
-	private TweetRepository tweetRepository;
+	private final TweetRepository tweetRepository;
 
-	@Autowired
-	private TweetMapper tweetMapper;
+	private final TweetMapper tweetMapper;
+
+	public TweetController(TweetRepository tweetRepository, TweetMapper tweetMapper) {
+		this.tweetRepository = tweetRepository;
+		this.tweetMapper = tweetMapper;
+	}
 
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "get All Tweets") })
 	@GetMapping("/tweets")
@@ -62,7 +64,7 @@ public class TweetController {
 	@PostMapping("/tweets")
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "create Tweets") })
 	public Mono<TweetDTO> createTweets(@Valid @RequestBody TweetDTO tweetDTO) {
-		return tweetMapper.toDTO(tweetRepository.save(tweetMapper.toEntity(tweetDTO)));
+		return tweetRepository.save(tweetMapper.toEntity(tweetDTO)).map(tweetMapper::toDTO);
 	}
 
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "get Tweet By Id"),
@@ -79,9 +81,9 @@ public class TweetController {
 	public Mono<ResponseEntity<TweetDTO>> updateTweet(@PathVariable(value = "id") String tweetId,
 			@Valid @RequestBody TweetDTO tweetDTO) {
 		return tweetRepository.findById(tweetId).flatMap(existingTweet -> {
-					existingTweet.setText(tweetMapper.toEntity(tweetDTO).getText());
-					return tweetRepository.save(existingTweet);
-				}).map(updateTweet -> new ResponseEntity<>(tweetMapper.toDTO(updateTweet), HttpStatus.OK))
+			existingTweet.setText(tweetMapper.toEntity(tweetDTO).getText());
+			return tweetRepository.save(existingTweet);
+		}).map(updateTweet -> new ResponseEntity<>(tweetMapper.toDTO(updateTweet), HttpStatus.OK))
 				.defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 

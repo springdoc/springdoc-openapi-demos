@@ -1,6 +1,6 @@
 CREATE TABLE TWEET
 (
-    id         SERIAL PRIMARY KEY,
+    id        VARCHAR(255),
     text       VARCHAR(255),
     CREATED_AT DATE
 );

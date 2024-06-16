@@ -1,12 +1,18 @@
 server:
-  compression:
-    enabled: true
-    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
-    min-response-size: 1024
-  http2:
-    enabled: true
   port: 8082
   forward-headers-strategy: framework
+spring:
+  # MongoDB
+  data:
+    mongodb:
+      host: localhost
+      database: dataSource
+de:
+  flapdoodle:
+    mongodb:
+      embedded:
+        version: 7.0.0
+
 springdoc:
   version: '@springdoc.version@'
   api-docs:
