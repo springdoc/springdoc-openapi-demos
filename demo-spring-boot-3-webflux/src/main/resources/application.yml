@@ -11,7 +11,7 @@ de:
   flapdoodle:
     mongodb:
       embedded:
-        version: 7.0.0
+        version: 7.0.11
 
 springdoc:
   version: '@springdoc.version@'
