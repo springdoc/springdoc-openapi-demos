@@ -1,4 +1,5 @@
 server:
+  forward-headers-strategy: framework
   port: 8082
 
 ####### resource server configuration properties
