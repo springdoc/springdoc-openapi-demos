@@ -35,8 +35,8 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ProblemDetail handleConnversion(RuntimeException e) {
 		ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
-		problemDetail.setTitle("Bookmark Not Found");
-		problemDetail.setProperty("errorCategory", "Generic");
+		problemDetail.setTitle("Bookmark is Not Found");
+		problemDetail.setProperty("errorCategory", "Generic Exception");
 		problemDetail.setProperty("timestamp", Instant.now());
 		return problemDetail;
 	}
@@ -46,7 +46,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
 	public ProblemDetail handleBookNotFound(RuntimeException e) {
 		ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
 		problemDetail.setTitle("Book Not Found");
-		problemDetail.setProperty("errorCategory", "Generic");
+		problemDetail.setProperty("errorCategory", "Generic Exception");
 		problemDetail.setProperty("timestamp", Instant.now());
 		return problemDetail;
 	}
