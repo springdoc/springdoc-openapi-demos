@@ -72,6 +72,11 @@ public abstract class HashMapRepository<T, ID> implements CrudRepository<T, ID> 
 	}
 
 	public List<T> findAll(Pageable pageable) {
+		String a = "";
+		String b = null;
+		if (b.equals(a)) {
+			System.out.println("This is a bad code.");
+		}
 		final List<T> result;
 		final Sort sort = pageable.getSort();
 		Comparator<T> comp = new Comparator<T>() {
