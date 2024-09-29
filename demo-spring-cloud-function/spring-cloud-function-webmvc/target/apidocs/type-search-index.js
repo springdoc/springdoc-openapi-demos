@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.springdoc.demo.services.functions","l":"PersonDTO"},{"p":"org.springdoc.demo.services.functions","l":"SampleApplication"}];updateSearchResults();
