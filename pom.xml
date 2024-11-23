@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.0-RC1</version>
+		<version>3.4.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -145,7 +145,7 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<springdoc.version>2.7.0-RC1</springdoc.version>
+		<springdoc.version>2.7.0-SNAPSHOT</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
@@ -157,7 +157,7 @@
 		<jib.from.image>openjdk:17-slim</jib.from.image>
 		<spring-cloud.version>2023.0.3</spring-cloud.version>
 		<spring-cloud-netflix.version>4.1.3</spring-cloud-netflix.version>
-		<spring-security-oauth2-authorization-server.version>1.4.0-M2
+		<spring-security-oauth2-authorization-server.version>1.4.0
 		</spring-security-oauth2-authorization-server.version>
 		<embed.mongo.version>4.14.0</embed.mongo.version>
 		<embed.mongo.spring30x.version>4.11.0</embed.mongo.spring30x.version>
