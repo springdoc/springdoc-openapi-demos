@@ -11,7 +11,5 @@ server:
   forward-headers-strategy: framework
 springdoc:
   version: '@springdoc.version@'
-  api-docs:
-    version: openapi_3_1
   swagger-ui:
     use-root-path: true
