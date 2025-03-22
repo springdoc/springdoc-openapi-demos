@@ -9,7 +9,7 @@
     2. Client secret: newClientSecret
     3. Redirect Uris:
         - http://127.0.0.1:8081/resource-server/swagger-ui/oauth2-redirect.html
-        - http://127.0.0.1:8082/resource-server/webjars/swagger-ui/oauth2-redirect.html
+        - http://127.0.0.1:8082/resource-server/swagger-ui/oauth2-redirect.html
 
 3. There is a test user registered in the Authorization Server:
 
