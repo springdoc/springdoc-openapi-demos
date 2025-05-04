@@ -159,7 +159,7 @@
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
 		<jib-maven-plugin.version>3.2.0</jib-maven-plugin.version>
-		<springdoc-openapi-maven-plugin.version>1.4
+		<springdoc-openapi-maven-plugin.version>1.5
 		</springdoc-openapi-maven-plugin.version>
 		<jib.from.image>openjdk:17-slim</jib.from.image>
 		<spring-cloud.version>2023.0.3</spring-cloud.version>
@@ -204,7 +204,7 @@
 			<!-- OpenAPI 3 -->
 			<dependency>
 				<groupId>org.springdoc</groupId>
-				<artifactId>springdoc-openapi</artifactId>
+				<artifactId>springdoc-openapi-bom</artifactId>
 				<version>${springdoc.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
