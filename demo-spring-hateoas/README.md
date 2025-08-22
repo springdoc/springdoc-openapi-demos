@@ -1,4 +1,4 @@
-# springdoc-openapi demo with spring-boot-2 hateoas
+# springdoc-openapi demo with spring-boot hateoas
 
 ## Building application
 

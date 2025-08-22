@@ -45,7 +45,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class SecurityConfig {
 	private static final List<String> ALLOWED_HEADERS = List.of("Access-Control-Allow-Origin", "x-requested-with");
 	private static final List<String> ALLOWED_METHODS = List.of("POST");
-	private static final List<String> ALLOWED_ALL = List.of("http://127.0.0.1:8081", "http://127.0.0.1:8082", "http://144.24.171.248:8095","http://144.24.171.248:8096", "https://demos.springdoc.org");
+	private static final List<String> ALLOWED_ALL = List.of("http://127.0.0.1:8081", "http://127.0.0.1:8082", "http://158.101.191.70:8095","http://158.101.191.70:8096", "https://demos1.springdoc.org");
 
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
@@ -94,10 +94,10 @@ public class SecurityConfig {
 				.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
 				.redirectUri("http://127.0.0.1:8081/resource-server/swagger-ui/oauth2-redirect.html")
 				.redirectUri("http://127.0.0.1:8082/resource-server/swagger-ui/oauth2-redirect.html")
-				.redirectUri("http://144.24.171.248:8095/resource-server/swagger-ui/oauth2-redirect.html")
-				.redirectUri("http://144.24.171.248:8096/resource-server/swagger-ui/oauth2-redirect.html")
-				.redirectUri("https://demos.springdoc.org/oauth-resource-server-webmvc/resource-server/swagger-ui/oauth2-redirect.html")
-				.redirectUri("https://demos.springdoc.org/oauth-resource-server-webflux/resource-server/swagger-ui/oauth2-redirect.html")
+				.redirectUri("http://158.101.191.70:8095/resource-server/swagger-ui/oauth2-redirect.html")
+				.redirectUri("http://158.101.191.70:8096/resource-server/swagger-ui/oauth2-redirect.html")
+				.redirectUri("https://demos1.springdoc.org/oauth-resource-server-webmvc/resource-server/swagger-ui/oauth2-redirect.html")
+				.redirectUri("https://demos1.springdoc.org/oauth-resource-server-webflux/resource-server/swagger-ui/oauth2-redirect.html")
 				.scope(OidcScopes.OPENID)
 				.scope(OidcScopes.PROFILE)
 				.scope("springdoc.read")

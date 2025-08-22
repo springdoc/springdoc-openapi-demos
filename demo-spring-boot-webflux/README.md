@@ -1,4 +1,4 @@
-# springdoc-openapi demo with spring-boot-2 web-flux
+# springdoc-openapi demo with spring-boot web-flux
 
 ## Building application
 
@@ -37,5 +37,5 @@ mvn -Pnative clean native:compile
 To run the demo using docker, invoke the following:
 
 ```sh
-docker run --rm -p 8080:8082 springdoc-openapi-spring-boot-2-webflux:3.1.6-SNAPSHOT
+docker run --rm -p 8080:8082 springdoc-openapi-spring-boot-webflux:3.1.6-SNAPSHOT
 ```

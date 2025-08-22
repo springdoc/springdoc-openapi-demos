@@ -3,17 +3,17 @@
 
 # Spring-boot with OpenAPI Demo applications.
 
-## [Demo Spring Boot 3 Web MVC with OpenAPI 3](https://demos.springdoc.org/demo-spring-boot-webmvc).
+## [Demo Spring Boot 4 Web MVC with OpenAPI 3](https://demos1.springdoc.org/demo-spring-boot-webmvc).
 
-## [Demo Spring Boot 3 WebFlux with OpenAPI 3](https://demos.springdoc.org/demo-spring-boot-webflux/swagger-ui.html).
+## [Demo Spring Boot 4 WebFlux with OpenAPI 3](https://demos1.springdoc.org/demo-spring-boot-webflux/swagger-ui.html).
 
-## [Demo Spring Boot 3 WebFlux with Functional endpoints OpenAPI 3](https://demos.springdoc.org/demo-spring-boot-webflux-functional/swagger-ui.html).
+## [Demo Spring Boot 4 WebFlux with Functional endpoints OpenAPI 3](https://demos1.springdoc.org/demo-spring-boot-webflux-functional/swagger-ui.html).
 
-## [Demo Spring Boot 3 and Spring Cloud Function Web MVC](https://demos.springdoc.org/spring-cloud-function-webmvc).
+## [Demo Spring Boot 4 and Spring Cloud Function Web MVC](https://demos1.springdoc.org/spring-cloud-function-webmvc).
 
-## [Demo Spring Boot 3 and Spring Cloud Function WebFlux](https://demos.springdoc.org/spring-cloud-function-webflux/swagger-ui.html).
+## [Demo Spring Boot 4 and Spring Cloud Function WebFlux](https://demos1.springdoc.org/spring-cloud-function-webflux/swagger-ui.html).
 
-## [Demo Spring Boot 3 and Spring Cloud Gateway](https://demos.springdoc.org/demo-microservices/swagger-ui.html).
+## [Demo Spring Boot 4 and Spring Cloud Gateway](https://demos1.springdoc.org/demo-microservices/swagger-ui.html).
 
 
 ![Branching](https://springdoc.org/img/pets.png)
