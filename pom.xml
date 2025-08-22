@@ -83,7 +83,7 @@
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<jib-maven-plugin.version>3.2.0</jib-maven-plugin.version>
-		<springdoc-openapi-maven-plugin.version>1.5clear</springdoc-openapi-maven-plugin.version>
+		<springdoc-openapi-maven-plugin.version>1.5</springdoc-openapi-maven-plugin.version>
 		<jib.from.image>openjdk:17-slim</jib.from.image>
 		<spring-cloud.version>2025.1.0-M1</spring-cloud.version>
 		<spring-security-oauth2-authorization-server.version>2.0.0-M1
