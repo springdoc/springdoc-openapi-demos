@@ -1,17 +1,11 @@
 server:
   port: 8082
   forward-headers-strategy: framework
+
 spring:
-  # MongoDB
   data:
     mongodb:
-      host: localhost
-      database: dataSource
-de:
-  flapdoodle:
-    mongodb:
-      embedded:
-        version: 7.0.11
+      uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/tweetsdb}
 
 springdoc:
   version: '@springdoc.version@'
