@@ -3,4 +3,3 @@ spring:
     name: department-service
   config:
     import: "optional:configserver:${CONFIG_SERVER:http://localhost:8088}"
-

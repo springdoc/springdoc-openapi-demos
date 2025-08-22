@@ -16,7 +16,7 @@ node {
 		}
 	}
 	stage("Deploy") {
-		build 'springdoc-openapi-demos-v2-deploy'
+		build 'springdoc-openapi-demos-deploy'
 		deleteDir()
 	}
 }

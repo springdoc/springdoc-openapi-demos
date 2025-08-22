@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springdoc</groupId>
 		<artifactId>demo-microservices</artifactId>
-		<version>3.1.7-SNAPSHOT</version>
+		<version>4.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>discovery-service</artifactId>
 

@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>springdoc-openapi-demos</artifactId>
 		<groupId>org.springdoc</groupId>
-		<version>3.1.7-SNAPSHOT</version>
+		<version>4.0.0-SNAPSHOT</version>
 	</parent>
 	<description>Demo project for Spring Boot with openapi 3 documentation</description>
 	<artifactId>demo-person-service</artifactId>

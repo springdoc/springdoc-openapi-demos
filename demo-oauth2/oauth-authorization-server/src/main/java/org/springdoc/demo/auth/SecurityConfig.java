@@ -12,13 +12,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
@@ -35,11 +35,10 @@ import org.springframework.security.oauth2.server.authorization.config.annotatio
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import static org.springframework.security.config.Customizer.withDefaults;
 
 
 @Configuration(proxyBeanMethods = false)
@@ -62,16 +61,25 @@ public class SecurityConfig {
 	@Bean
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http) throws Exception {
-		OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
-		http.getConfigurer(OAuth2AuthorizationServerConfigurer.class)
-				.oidc(Customizer.withDefaults());
+		var as = OAuth2AuthorizationServerConfigurer.authorizationServer();
+
 		http
-				.cors(withDefaults())
-				.exceptionHandling(exceptions ->
-						exceptions.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
-				)
-				.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
-		
+				// scope this chain to the Authorization Server endpoints
+				.securityMatcher(as.getEndpointsMatcher())
+				// replace applyDefaultSecurity(...) with the configurer
+				.with(as, cfg -> cfg.oidc(Customizer.withDefaults()))
+				// protect AS endpoints
+				.authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
+				// CORS (same as .cors(withDefaults()))
+				.cors(Customizer.withDefaults())
+				// send browsers to /login for HTML requests
+				.exceptionHandling(ex -> ex.defaultAuthenticationEntryPointFor(
+						new LoginUrlAuthenticationEntryPoint("/login"),
+						new MediaTypeRequestMatcher(MediaType.TEXT_HTML)
+				))
+				// JWT resource server for userinfo/introspection, etc.
+				.oauth2ResourceServer(rs -> rs.jwt(Customizer.withDefaults()));
+
 		return http.build();
 	}
 
