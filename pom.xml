@@ -60,9 +60,9 @@
 	<modules>
 		<module>demo-book-service</module>
 		<module>demo-microservices</module>
-		<module>demo-spring-boot-3-webflux-functional</module>
-		<module>demo-spring-boot-3-webflux</module>
-		<module>demo-spring-boot-3-webmvc</module>
+		<module>demo-spring-boot-webflux-functional</module>
+		<module>demo-spring-boot-webflux</module>
+		<module>demo-spring-boot-webmvc</module>
 		<module>demo-oauth2</module>
 		<module>demo-person-service</module>
 		<module>demo-spring-hateoas</module>
