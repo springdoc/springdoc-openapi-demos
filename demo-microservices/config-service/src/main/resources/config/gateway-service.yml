@@ -6,6 +6,8 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
 
 logging:
   pattern:
@@ -19,6 +21,7 @@ spring:
     gateway:
       server:
         webflux:
+          trusted-proxies: "192\\.168\\.0\\..*|10\\.8\\.0\\..*|127\\.0\\.0\\.1"
           httpclient:
             ssl:
               useInsecureTrustManager: true
