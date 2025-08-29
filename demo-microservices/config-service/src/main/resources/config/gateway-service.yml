@@ -21,6 +21,7 @@ spring:
     gateway:
       server:
         webflux:
+          trusted-proxies: "192\\.168\\.0\\..*|10\\.88\\.0\\..*|127\\.0\\.0\\.1|158\\.101\\.191\\.70"
           httpclient:
             ssl:
               useInsecureTrustManager: true
