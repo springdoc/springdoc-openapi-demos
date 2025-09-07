@@ -68,6 +68,8 @@
 		<module>demo-spring-hateoas</module>
 		<module>demo-spring-data-rest</module>
 		<module>demo-spring-cloud-function</module>
+		<module>demo-spring-boot-webflux-scalar</module>
+		<module>demo-spring-boot-webmvc-scalar</module>
 	</modules>
 
 	<properties>

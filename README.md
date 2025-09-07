@@ -7,6 +7,10 @@
 
 ## [Demo Spring Boot 4 WebFlux with OpenAPI 3](https://demos1.springdoc.org/demo-spring-boot-webflux/swagger-ui.html).
 
+## [Demo Spring Boot 4 Web MVC with OpenAPI 3 and Scalar](https://demos1.springdoc.org/demo-spring-boot-webmvc-scalar/scalar).
+
+## [Demo Spring Boot 4 WebFlux with OpenAPI 3 and Scalar](https://demos1.springdoc.org/demo-spring-boot-webflux-scalar/scalar).
+
 ## [Demo Spring Boot 4 WebFlux with Functional endpoints OpenAPI 3](https://demos1.springdoc.org/demo-spring-boot-webflux-functional/swagger-ui.html).
 
 ## [Demo Spring Boot 4 and Spring Cloud Function Web MVC](https://demos1.springdoc.org/spring-cloud-function-webmvc).
