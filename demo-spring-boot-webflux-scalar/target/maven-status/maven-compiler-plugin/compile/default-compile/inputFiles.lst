@@ -1,0 +1,9 @@
+/Users/Badr.NassLahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-webflux-scalar/src/main/java/org/springdoc/demo/app3/WebfluxDemoApplication.java
+/Users/Badr.NassLahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-webflux-scalar/src/main/java/org/springdoc/demo/app3/controller/ExceptionTranslator.java
+/Users/Badr.NassLahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-webflux-scalar/src/main/java/org/springdoc/demo/app3/controller/TweetController.java
+/Users/Badr.NassLahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-webflux-scalar/src/main/java/org/springdoc/demo/app3/controller/TweetMapper.java
+/Users/Badr.NassLahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-webflux-scalar/src/main/java/org/springdoc/demo/app3/dto/TweetDTO.java
+/Users/Badr.NassLahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-webflux-scalar/src/main/java/org/springdoc/demo/app3/exception/TweetNotFoundException.java
+/Users/Badr.NassLahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-webflux-scalar/src/main/java/org/springdoc/demo/app3/model/Tweet.java
+/Users/Badr.NassLahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-webflux-scalar/src/main/java/org/springdoc/demo/app3/payload/ErrorResponse.java
+/Users/Badr.NassLahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-webflux-scalar/src/main/java/org/springdoc/demo/app3/repository/TweetRepository.java
