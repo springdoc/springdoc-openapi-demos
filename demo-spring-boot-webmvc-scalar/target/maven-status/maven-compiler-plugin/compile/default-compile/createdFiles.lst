@@ -1,0 +1,6 @@
+org/springdoc/demo/services/book/exception/BookNotFoundException.class
+org/springdoc/demo/services/book/SpringdocApplication.class
+org/springdoc/demo/services/book/repository/BookRepository.class
+org/springdoc/demo/services/book/model/Book.class
+org/springdoc/demo/services/book/controller/BookController.class
+org/springdoc/demo/services/book/exception/GlobalControllerExceptionHandler.class

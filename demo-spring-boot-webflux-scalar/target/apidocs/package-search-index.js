@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"org.springdoc.demo.app3"},{"l":"org.springdoc.demo.app3.controller"},{"l":"org.springdoc.demo.app3.dto"},{"l":"org.springdoc.demo.app3.exception"},{"l":"org.springdoc.demo.app3.model"},{"l":"org.springdoc.demo.app3.payload"},{"l":"org.springdoc.demo.app3.repository"}];updateSearchResults();
