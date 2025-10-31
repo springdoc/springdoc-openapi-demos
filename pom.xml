@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.0-M2</version>
+		<version>4.0.0-RC1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -88,7 +88,7 @@
 		<springdoc-openapi-maven-plugin.version>1.5</springdoc-openapi-maven-plugin.version>
 		<jib.from.image>openjdk:17-slim</jib.from.image>
 		<spring-cloud.version>2025.1.0-M1</spring-cloud.version>
-		<spring-security-oauth2-authorization-server.version>2.0.0-M1
+		<spring-security-oauth2-authorization-server.version>2.0.0-M2
 		</spring-security-oauth2-authorization-server.version>
 		<embed.mongo.version>4.18.1</embed.mongo.version>
 		<embed.mongo.spring3x.version>4.18.0</embed.mongo.spring3x.version>
