@@ -1,6 +1,0 @@
-/Users/Badr.NassLahsen/Documents/workspace/4.x/springdoc-openapi-demos/demo-spring-boot-webmvc-scalar/src/main/java/org/springdoc/demo/services/book/SpringdocApplication.java
-/Users/Badr.NassLahsen/Documents/workspace/4.x/springdoc-openapi-demos/demo-spring-boot-webmvc-scalar/src/main/java/org/springdoc/demo/services/book/controller/BookController.java
-/Users/Badr.NassLahsen/Documents/workspace/4.x/springdoc-openapi-demos/demo-spring-boot-webmvc-scalar/src/main/java/org/springdoc/demo/services/book/exception/BookNotFoundException.java
-/Users/Badr.NassLahsen/Documents/workspace/4.x/springdoc-openapi-demos/demo-spring-boot-webmvc-scalar/src/main/java/org/springdoc/demo/services/book/exception/GlobalControllerExceptionHandler.java
-/Users/Badr.NassLahsen/Documents/workspace/4.x/springdoc-openapi-demos/demo-spring-boot-webmvc-scalar/src/main/java/org/springdoc/demo/services/book/model/Book.java
-/Users/Badr.NassLahsen/Documents/workspace/4.x/springdoc-openapi-demos/demo-spring-boot-webmvc-scalar/src/main/java/org/springdoc/demo/services/book/repository/BookRepository.java
