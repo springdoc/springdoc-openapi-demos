@@ -106,7 +106,7 @@
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<jib-maven-plugin.version>3.4.6</jib-maven-plugin.version>
 		<springdoc-openapi-maven-plugin.version>1.5</springdoc-openapi-maven-plugin.version>
-		<jib.from.image>eclipse-temurin:17-jre-alpine</jib.from.image>
+		<jib.from.image>eclipse-temurin:17-jre-ubi9-minimal</jib.from.image>
 		<spring-cloud.version>2025.1.0-M4</spring-cloud.version>
 		<spring-security-oauth2-authorization-server.version>2.0.0-M2
 		</spring-security-oauth2-authorization-server.version>
