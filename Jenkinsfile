@@ -1,5 +1,7 @@
 #!/usr/bin/env groovy
 
+// Workshop change: this file is only modified in workshop-conflict branch
+
 node {
 	stage('checkout') {
 		deleteDir()
