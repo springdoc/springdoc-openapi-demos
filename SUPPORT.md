@@ -1,4 +1,4 @@
-## Where to get help
+## Where to get help (MASTER BRANCH VERSION)
 
 If you think you've found a bug in The Architect Theme,
 please [check the existing issues](https://github.com/pages-themes/architect/issues), and
