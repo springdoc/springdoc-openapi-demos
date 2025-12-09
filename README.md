@@ -1,7 +1,7 @@
 [![Build Status](https://ci-cd.springdoc.org:8443/buildStatus/icon?job=springdoc-openapi-demos%2Fmaster)](https://ci-cd.springdoc.org:8443/view/springdoc-openapi-demos/job/springdoc-openapi-demos/job/master/)
 
 
-# Spring-boot with OpenAPI Demo applications.
+# Spring-boot with OpenAPI Demo applications.  (MASTER BRANCH VERSION)
 
 ## [Demo Spring Boot 3 Web MVC with OpenAPI 3](https://demos.springdoc.org/demo-spring-boot-3-webmvc).
 
