@@ -1,0 +1,3 @@
+org\springdoc\demo\nonboot\config\OpenApiConfiguration.class
+org\springdoc\demo\nonboot\web\HelloController.class
+org\springdoc\demo\nonboot\web\HelloController$Greeting.class
