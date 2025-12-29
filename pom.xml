@@ -84,10 +84,10 @@
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-		<jib-maven-plugin.version>3.2.0</jib-maven-plugin.version>
+		<jib-maven-plugin.version>3.4.6</jib-maven-plugin.version>
 		<springdoc-openapi-maven-plugin.version>1.5
 		</springdoc-openapi-maven-plugin.version>
-		<jib.from.image>openjdk:17-slim</jib.from.image>
+		<jib.from.image>eclipse-temurin:17-jre-ubi9-minimal</jib.from.image>
 		<spring-cloud.version>2025.0.0</spring-cloud.version>
 		<spring-security-oauth2-authorization-server.version>1.4.3
 		</spring-security-oauth2-authorization-server.version>
