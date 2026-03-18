@@ -21,9 +21,10 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: ${OAUTH2_ISSUER_URI:http://localhost:9000}
+          jwk-set-uri: ${OAUTH2_ISSUER_URI:http://localhost:9000}/oauth2/jwks
 
 server:
-  port: 8089
+  port: 8080
   forward-headers-strategy: framework
   tomcat:
     connection-timeout: 20000
