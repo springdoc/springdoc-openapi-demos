@@ -18,7 +18,6 @@ spring:
         instructions: "This server provides session catalog data for Spring I/O 2026"
 
 server:
-  port: 8089
   tomcat:
     connection-timeout: 20000
 
