@@ -16,8 +16,14 @@ spring:
         version: 0.0.1
         enabled: true
         instructions: "This server provides session catalog data for Spring I/O 2026"
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${OAUTH2_ISSUER_URI:http://localhost:9000}
 
 server:
+  port: 8089
   forward-headers-strategy: framework
   tomcat:
     connection-timeout: 20000

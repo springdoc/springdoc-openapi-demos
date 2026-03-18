@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: demo-spring-boot-mcp-authorization-server
+  security:
+    oauth2:
+      authorizationserver:
+        client:
+          mcp-demo-client:
+            token:
+              access-token-time-to-live: 1h
+            registration:
+              client-id: "mcp-demo-client"
+              client-secret: "{noop}mcp-demo-secret"
+              client-authentication-methods:
+                - "client_secret_basic"
+                - "client_secret_post"
+                - "none"
+              authorization-grant-types:
+                - "authorization_code"
+                - "client_credentials"
+              redirect-uris:
+                - "http://localhost:8089/authorize/oauth2/code/authserver"
+                - "https://demos1.springdoc.org/demo-spring-boot-mcp/authorize/oauth2/code/authserver"
+                - "http://localhost:6274/oauth/callback"
+                - "https://claude.ai/api/mcp/auth_callback"
+    user:
+      name: user
+      password: password
+
+server:
+  port: ${PORT:9000}
+  forward-headers-strategy: framework
+  servlet:
+    session:
+      cookie:
+        name: MCP_DEMO_AUTHORIZATION_SERVER_SESSIONID
+
+logging:
+  level:
+    org.springframework.security: TRACE

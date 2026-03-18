@@ -21,6 +21,8 @@
 
 ## [Demo Spring Boot 4 with Spring AI MCP Server and OpenAPI 3](demo-spring-boot-mcp).
 
+## [Demo Spring Boot 4 MCP Authorization Server](demo-spring-boot-mcp-authorization-server).
+
 
 ![Branching](https://springdoc.org/img/pets.png)
 
