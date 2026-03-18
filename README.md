@@ -19,6 +19,8 @@
 
 ## [Demo Spring Boot 4 and Spring Cloud Gateway](https://demos1.springdoc.org/demo-microservices/swagger-ui.html).
 
+## [Demo Spring Boot 4 with Spring AI MCP Server and OpenAPI 3](demo-spring-boot-mcp).
+
 
 ![Branching](https://springdoc.org/img/pets.png)
 

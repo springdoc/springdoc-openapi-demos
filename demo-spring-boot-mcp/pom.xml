@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.springdoc</groupId>
+		<artifactId>springdoc-openapi-demos</artifactId>
+		<version>4.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>demo-spring-boot-mcp</artifactId>
+	<name>demo-spring-boot-mcp</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.ai</groupId>
+			<artifactId>spring-ai-starter-mcp-server-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-mcp</artifactId>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>sse</id>
+			<properties>
+				<spring.profiles.active>sse</spring.profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>stdout</id>
+			<properties>
+				<spring.profiles.active>stdout</spring.profiles.active>
+			</properties>
+		</profile>
+	</profiles>
+</project>

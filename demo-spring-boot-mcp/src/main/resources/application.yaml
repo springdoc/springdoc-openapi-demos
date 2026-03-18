@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: demo-spring-boot-mcp
+  main:
+    web-application-type: servlet
+    banner-mode: log
+  ai:
+    mcp:
+      server:
+        stdio: false
+        type: sync
+        protocol: streamable
+        streamable-http:
+          mcp-endpoint: /mcp
+        name: conference-sessions-mcp
+        version: 0.0.1
+        enabled: true
+        instructions: "This server provides session catalog data for Spring I/O 2026"
+
+server:
+  port: 8089
+  tomcat:
+    connection-timeout: 20000
+
+logging:
+  level:
+    org.springdoc.demo.mcp: INFO

@@ -1,0 +1,13 @@
+spring:
+  ai:
+    mcp:
+      server:
+        stdio: true
+  main:
+    web-application-type: none
+    banner-mode: off
+
+logging:
+  level:
+    root: OFF
+    org.springdoc.demo.mcp: OFF

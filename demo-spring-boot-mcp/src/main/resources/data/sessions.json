@@ -1,0 +1,289 @@
+{
+  "conference": {
+    "name": "Spring I/O 2026",
+    "year": 2026,
+    "dates": [
+      "2026-04-13",
+      "2026-04-14",
+      "2026-04-15"
+    ],
+    "location": "Barcelona, Spain"
+  },
+  "sessions": [
+    {
+      "day": "2026-04-14",
+      "time": "09:00",
+      "duration": "50 min",
+      "title": "Bootiful Spring Boot 4",
+      "description": "There has never been a better time to be a JVM / Spring developer! Spring brings the worlds of security, batch processing, NoSQL and SQL data access, AI, enterprise application integration, web and microservices, gRPC, GraphQL, observability, AI, agentic systems, and so much more to your doorstep. In this talk we are going to look at some of the amazing opportunities that lay before the Spring Boot developer in 2026!",
+      "type": "Keynote",
+      "speakers": ["Josh Long"],
+      "session_code": "SIO2026-001",
+      "location": "Main Stage"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "11:00",
+      "duration": "50 min",
+      "title": "The Spring AI Ecosystem in 2026: From Foundations to Agents",
+      "description": "This session maps the entire Spring AI ecosystem, from foundation to frontier. We begin with Spring AI 2.0 - ChatClient, advisors, tool calling, structured outputs, memory, and vector stores. Next, Model Context Protocol (MCP) with the latest spec updates, MCP Annotations for declarative @McpTool development, and MCP Security. We then climb the agentic stack covering Claude Code SDK for Java, Spring AI Agent Harness, and the Judge framework for verifying agent goals. Finally, emerging protocols: ACP and A2A for agent collaboration.",
+      "type": "Talk",
+      "speakers": ["Mark Pollack", "Christian Tzolov", "Dariusz Jedrzejczyk"],
+      "session_code": "SIO2026-002",
+      "location": "Track 1"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "11:00",
+      "duration": "50 min",
+      "title": "Rate Limiting Done Right",
+      "description": "Rate limiting is a critical aspect of building resilient and secure applications. This talk covers rate limiting strategies, algorithms, and practical implementation patterns using Spring Boot. We will explore token bucket, sliding window, and fixed window approaches with real-world examples.",
+      "type": "Talk",
+      "speakers": ["Mario Slatinac", "Matej Nedic"],
+      "session_code": "SIO2026-003",
+      "location": "Track 2"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "11:00",
+      "duration": "50 min",
+      "title": "Get The Most Out of Virtual Threads in Java 25",
+      "description": "A deep dive into the latest achievements of Virtual Threads in Java 25. We will explore performance characteristics, best practices for adoption, and common pitfalls to avoid when migrating from platform threads to virtual threads in Spring Boot applications.",
+      "type": "Talk",
+      "speakers": ["Christian Woerz"],
+      "session_code": "SIO2026-004",
+      "location": "Track 3"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "11:00",
+      "duration": "50 min",
+      "title": "The Persistence Heavyweight Championship: JPA vs. jOOQ",
+      "description": "JPA and jOOQ represent two fundamentally different approaches to data persistence in Java. This session puts them head-to-head, comparing their strengths, weaknesses, and ideal use cases through practical examples and benchmarks.",
+      "type": "Talk",
+      "speakers": ["Pasha Finkelshteyn", "Catherine Edelveis"],
+      "session_code": "SIO2026-005",
+      "location": "Track 4"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "12:00",
+      "duration": "50 min",
+      "title": "Domain-centric? Why Hexagonal- and Onion-Architecture are answers to the wrong question",
+      "description": "Hexagonal and Onion architecture are popular patterns, but are they solving the right problem? This talk challenges conventional wisdom and explores what domain-centric architecture really means, offering alternative perspectives grounded in practical Spring application development.",
+      "type": "Talk",
+      "speakers": ["Oliver Drotbohm"],
+      "session_code": "SIO2026-006",
+      "location": "Track 1"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "12:00",
+      "duration": "50 min",
+      "title": "Secure-by-Default Spring Apps: Zero Trust, OAuth2, and Runtime Policies",
+      "description": "Building secure Spring applications requires more than just adding Spring Security. This session explores zero trust architecture principles, OAuth2 best practices, and runtime policy enforcement to create applications that are secure by default.",
+      "type": "Talk",
+      "speakers": ["Ivan Saric"],
+      "session_code": "SIO2026-007",
+      "location": "Track 2"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "12:00",
+      "duration": "50 min",
+      "title": "Testing Spring Boot Applications Demystified",
+      "description": "Testing Spring Boot applications can sometimes feel like navigating a labyrinth of challenges - from managing dependencies and external systems to crafting effective tests. This talk demystifies testing by providing clear explanations, practical insights, and actionable best practices to write comprehensive and effective tests.",
+      "type": "Talk",
+      "speakers": ["Philip Riecks"],
+      "session_code": "SIO2026-008",
+      "location": "Track 3"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "14:00",
+      "duration": "50 min",
+      "title": "Core Resilience Features in Spring Framework 7",
+      "description": "Spring Framework 7 adds a variety of resilience features to the core programming model: RetryTemplate, @Retryable and @ConcurrencyLimit. This session discusses their common applicability and their architectural relationship to Virtual Threads, next to equivalent features for asynchronous tasks.",
+      "type": "Talk",
+      "speakers": ["Juergen Hoeller"],
+      "session_code": "SIO2026-009",
+      "location": "Track 1"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "14:00",
+      "duration": "50 min",
+      "title": "Null-safe applications with Spring Boot 4",
+      "description": "Explore how to turn your existing Spring Boot applications to null-safe ones, by turning the billion dollar mistake into a zero cost abstraction with JSpecify annotations. We will explore nullability features of most popular IDEs, how AI assisted development can help us, and how to configure NullAway with Gradle or Maven to check null-safety at build-time.",
+      "type": "Talk",
+      "speakers": ["Sebastien Deleuze"],
+      "session_code": "SIO2026-010",
+      "location": "Track 2"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "14:00",
+      "duration": "50 min",
+      "title": "Comparing Agentic AI Frameworks for Java",
+      "description": "Agentic AI marks a shift from passive, prompt-driven interactions to autonomous systems that can reason, plan, and execute work. We compare frameworks such as Spring AI, LangChain4j, and Embabel on how they implement core agent capabilities such as reasoning loops, tool invocation, memory, and orchestration. We also look at how the Model Context Protocol (MCP) helps standardize access to data and tools across agents.",
+      "type": "Talk",
+      "speakers": ["Timo Salm", "Sandra Ahlgrimm"],
+      "session_code": "SIO2026-011",
+      "location": "Track 3"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "15:00",
+      "duration": "50 min",
+      "title": "From Chaos to Cohesion: Building Modular Monoliths in the Real World",
+      "description": "Modular monoliths offer a pragmatic middle ground between monolithic and microservices architectures. This session explores practical strategies for decomposing applications into well-defined modules while maintaining the simplicity of a single deployment unit.",
+      "type": "Talk",
+      "speakers": ["Patrick Baumgartner"],
+      "session_code": "SIO2026-012",
+      "location": "Track 1"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "15:00",
+      "duration": "50 min",
+      "title": "What's new in Spring for Apache Kafka 4?",
+      "description": "Spring for Apache Kafka 4 brings significant improvements and new features. This session covers the latest additions including enhanced consumer and producer configurations, improved error handling, and new integration patterns for event-driven architectures.",
+      "type": "Talk",
+      "speakers": ["Tim van Baarsen"],
+      "session_code": "SIO2026-013",
+      "location": "Track 2"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "15:00",
+      "duration": "50 min",
+      "title": "Breaching LLM-Powered Applications: Overcoming Security and Privacy Challenges",
+      "description": "LLM-powered applications introduce novel attack vectors including prompt injection, data exfiltration, and model manipulation. This session explores the security landscape of AI-powered applications and demonstrates practical defense strategies for Spring-based systems.",
+      "type": "Talk",
+      "speakers": ["Brian Vermeer"],
+      "session_code": "SIO2026-014",
+      "location": "Track 3"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "16:30",
+      "duration": "50 min",
+      "title": "Spring Boot: Chapter 4",
+      "description": "Spring Boot 4 is here! This release is packed with great features: improved support for HTTP service clients, API versioning, a new OpenTelemetry starter, support for the RestTestClient, Jackson 3, and goodbye NullPointerExceptions with JSpecify. We will also discuss the modularized auto-configurations and explain why this is a significant improvement.",
+      "type": "Talk",
+      "speakers": ["Moritz Halbritter"],
+      "session_code": "SIO2026-015",
+      "location": "Track 1"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "16:30",
+      "duration": "50 min",
+      "title": "Spec-driven Development: How AI Changed Everything (And Nothing)",
+      "description": "AI tools are transforming how we write code, but the fundamentals of good API design remain unchanged. This session explores how specification-driven development evolves in the age of AI, combining OpenAPI specifications with AI-assisted development workflows.",
+      "type": "Talk",
+      "speakers": ["Simon Martinelli"],
+      "session_code": "SIO2026-016",
+      "location": "Track 2"
+    },
+    {
+      "day": "2026-04-14",
+      "time": "17:30",
+      "duration": "50 min",
+      "title": "Bootiful gRPC",
+      "description": "gRPC is an amazing technology with awesome potential and now has a first-class integration with the Spring ecosystem. Join Spring gRPC lead Dave Syer and Josh Long as they explore the amazing new Spring gRPC project!",
+      "type": "Talk",
+      "speakers": ["Josh Long", "Dave Syer"],
+      "session_code": "SIO2026-017",
+      "location": "Track 1"
+    },
+    {
+      "day": "2026-04-15",
+      "time": "11:00",
+      "duration": "50 min",
+      "title": "Beyond local tools: Deep dive into MCP with Spring AI",
+      "description": "The Model Context Protocol (MCP) standardizes how AI applications connect to external data and tools. Moving beyond local experiments, this talk explores advanced MCP architectures with Spring AI: local vs. remote server deployments, hosting and scaling strategies, MCP gateways for unifying access, and authorization patterns for building MCP-enabled AI systems.",
+      "type": "Talk",
+      "speakers": ["James Ward", "Maximilian Schellhorn"],
+      "session_code": "SIO2026-018",
+      "location": "Track 1"
+    },
+    {
+      "day": "2026-04-15",
+      "time": "11:00",
+      "duration": "50 min",
+      "title": "Hybrid Modernization: Combining OpenRewrite's Precision with LLM Intelligence for Spring",
+      "description": "Modernizing legacy Spring applications requires both precision and intelligence. This session demonstrates how to combine OpenRewrite's deterministic code transformations with LLM-powered analysis for comprehensive Spring application modernization.",
+      "type": "Talk",
+      "speakers": ["Raquel Pau"],
+      "session_code": "SIO2026-019",
+      "location": "Track 2"
+    },
+    {
+      "day": "2026-04-15",
+      "time": "12:00",
+      "duration": "50 min",
+      "title": "New in Spring Security 7: MFA, OAuth2 and more",
+      "description": "Spring Security 7 packages exciting new features including multi-factor authentication - a feature requested for over a decade! The release also includes OAuth2 enhancements for modern authorization flows including AI agent integrations via Model Context Protocol, more secure defaults, and Jackson 3 support.",
+      "type": "Talk",
+      "speakers": ["Daniel Garnier-Moiroux"],
+      "session_code": "SIO2026-020",
+      "location": "Track 1"
+    },
+    {
+      "day": "2026-04-15",
+      "time": "12:00",
+      "duration": "50 min",
+      "title": "Spring Data JPA for Real-World Applications",
+      "description": "Spring Data JPA simplifies data access but real-world applications demand more than basic CRUD. This session covers advanced patterns, performance optimization techniques, and common pitfalls to help you build production-ready data layers with Spring Data JPA.",
+      "type": "Talk",
+      "speakers": ["Thorben Janssen"],
+      "session_code": "SIO2026-021",
+      "location": "Track 2"
+    },
+    {
+      "day": "2026-04-15",
+      "time": "14:00",
+      "duration": "50 min",
+      "title": "OpenAPI and Spring Boot 4 - What's New?",
+      "description": "Spring Boot 4 enters a new era of performance, cloud-native support, and developer productivity. This talk showcases key innovations including built-in API versioning and OpenAPI integration via springdoc-openapi. We will dive into features like Scalar UI support, Spring MVC, WebFlux, GraalVM, Kotlin, actuator integration, Javadoc reuse for API descriptions, HATEOAS, Data REST, and OAuth2 security. The session also covers microservices use cases with Spring Cloud Gateway and serverless integration with Spring Cloud Function.",
+      "type": "Talk",
+      "speakers": ["Badr Nass Lahsen"],
+      "session_code": "SIO2026-022",
+      "location": "Track 1"
+    },
+    {
+      "day": "2026-04-15",
+      "time": "14:00",
+      "duration": "50 min",
+      "title": "REST is for Agents: Rediscovering Spring HATEOAS",
+      "description": "HATEOAS - a largely overlooked part of REST - allows an API to describe allowed actions and constraints at runtime. That makes it a natural fit for AI agents, which need clear, machine-readable guidance about what they can safely do next. Using Spring HATEOAS, an AI agent is guided entirely by the API rather than by hardcoded tools or fragile prompt logic. It turns out the REST purists were not wrong, just 20 years early.",
+      "type": "Talk",
+      "speakers": ["Adib Saikali"],
+      "session_code": "SIO2026-023",
+      "location": "Track 2"
+    },
+    {
+      "day": "2026-04-15",
+      "time": "15:00",
+      "duration": "50 min",
+      "title": "Supercharging Spring AI: Scalable AI Agents with Koog + Spring AI + Spring Boot",
+      "description": "Learn how to build scalable AI agents by combining Koog with Spring AI and Spring Boot. This session covers agent orchestration patterns, scaling strategies, and practical integration techniques for building production-ready agentic systems.",
+      "type": "Talk",
+      "speakers": ["Vadim Briliantov"],
+      "session_code": "SIO2026-024",
+      "location": "Track 1"
+    },
+    {
+      "day": "2026-04-15",
+      "time": "15:00",
+      "duration": "50 min",
+      "title": "How to migrate the legacy project to Spring Boot",
+      "description": "Migrating legacy Java applications to Spring Boot is a common challenge. This session provides a practical roadmap covering assessment strategies, incremental migration approaches, dependency management, and testing strategies to ensure a smooth transition.",
+      "type": "Talk",
+      "speakers": ["Sergei Chernov"],
+      "session_code": "SIO2026-025",
+      "location": "Track 2"
+    }
+  ]
+}
