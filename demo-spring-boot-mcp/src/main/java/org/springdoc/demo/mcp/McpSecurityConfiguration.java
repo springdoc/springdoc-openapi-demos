@@ -13,7 +13,7 @@ import static org.springaicommunity.mcp.security.server.config.McpServerOAuth2Co
 
 @Configuration
 @EnableMethodSecurity
-@Profile("!stdout")
+@Profile("!stdout & !test")
 class McpSecurityConfiguration {
 
 	@Bean
