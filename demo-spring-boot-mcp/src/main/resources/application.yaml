@@ -18,6 +18,7 @@ spring:
         instructions: "This server provides session catalog data for Spring I/O 2026"
 
 server:
+  forward-headers-strategy: framework
   tomcat:
     connection-timeout: 20000
 
