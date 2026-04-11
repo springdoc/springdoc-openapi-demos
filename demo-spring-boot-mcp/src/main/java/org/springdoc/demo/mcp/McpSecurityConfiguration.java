@@ -19,11 +19,12 @@ class McpSecurityConfiguration {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http,
 			@Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}") String issuerUrl) throws Exception {
-		return http.authorizeHttpRequests(auth -> auth
-				.requestMatchers("/sse", "/mcp/message").permitAll()
-				.anyRequest().permitAll())
+		return http.authorizeHttpRequests(auth -> {
+					auth.requestMatchers("/mcp-ui/**", "/api/mcp-admin/**", "/v3/api-docs/**").permitAll();
+					auth.anyRequest().authenticated();
+			})
 			.with(mcpServerOAuth2(), (mcpAuthorization) -> {
-				mcpAuthorization.authorizationServer(issuerUrl).resourcePath("/mcp");
+				mcpAuthorization.authorizationServer(issuerUrl);
 			})
 			.csrf(CsrfConfigurer::disable)
 			.build();

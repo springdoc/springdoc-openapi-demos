@@ -28,6 +28,7 @@ import org.springdoc.demo.mcp.books.model.Book;
 import org.springdoc.demo.mcp.books.repository.BookRepository;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -63,6 +64,7 @@ public class BookController {
 
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
+	@PreAuthorize("isAuthenticated()")
 	public Book updateBook(@PathVariable("id") final String id, @RequestBody final Book book) {
 		return book;
 	}
@@ -76,6 +78,7 @@ public class BookController {
 
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
+	@PreAuthorize("isAuthenticated()")
 	public Book postBook(@NotNull @Valid @RequestBody final Book book) {
 		return book;
 	}
@@ -88,6 +91,7 @@ public class BookController {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
+	@PreAuthorize("isAuthenticated()")
 	public long deleteBook(@PathVariable final long id) {
 		return id;
 	}
