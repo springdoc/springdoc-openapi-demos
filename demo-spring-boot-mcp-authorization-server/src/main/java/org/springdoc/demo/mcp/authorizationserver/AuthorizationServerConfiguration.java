@@ -20,14 +20,11 @@ class AuthorizationServerConfiguration {
 
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		return http.authorizeHttpRequests(auth -> {
-					auth.requestMatchers("/.well-known/**").permitAll();
-					auth.anyRequest().authenticated();
-			})
-			.with(mcpAuthorizationServer(), withDefaults())
-			.formLogin(withDefaults())
-			.cors(cors -> cors.configurationSource(corsConfigurationSource()))
-			.build();
+		return http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
+				.with(mcpAuthorizationServer(), withDefaults())
+				.formLogin(withDefaults())
+				.cors(cors -> cors.configurationSource(corsConfigurationSource()))
+				.build();
 	}
 
 	public CorsConfigurationSource corsConfigurationSource() {
