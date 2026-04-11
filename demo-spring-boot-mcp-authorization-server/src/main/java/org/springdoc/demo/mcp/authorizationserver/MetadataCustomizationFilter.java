@@ -1,14 +1,8 @@
 package org.springdoc.demo.mcp.authorizationserver;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.nio.charset.StandardCharsets;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,8 +20,6 @@ class MetadataCustomizationFilter extends OncePerRequestFilter {
 
 	private static final String METADATA_PATH = "/.well-known/oauth-authorization-server";
 
-	private final ObjectMapper objectMapper = new ObjectMapper();
-
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
 			FilterChain filterChain) throws ServletException, IOException {
@@ -42,25 +34,23 @@ class MetadataCustomizationFilter extends OncePerRequestFilter {
 
 		byte[] body = wrappedResponse.getContentAsByteArray();
 		if (body.length > 0 && wrappedResponse.getStatus() == 200) {
-			@SuppressWarnings("unchecked")
-			Map<String, Object> metadata = objectMapper.readValue(body, LinkedHashMap.class);
+			String json = new String(body, StandardCharsets.UTF_8);
 
 			// Add "none" to token_endpoint_auth_methods_supported
-			Object authMethods = metadata.get("token_endpoint_auth_methods_supported");
-			if (authMethods instanceof List) {
-				@SuppressWarnings("unchecked")
-				List<String> methods = new ArrayList<>((List<String>) authMethods);
-				if (!methods.contains("none")) {
-					methods.add("none");
-				}
-				metadata.put("token_endpoint_auth_methods_supported", methods);
-			}
+			json = json.replace("\"token_endpoint_auth_methods_supported\":[",
+					"\"token_endpoint_auth_methods_supported\":[\"none\",");
 
-			// Remove mTLS and DPoP claims that confuse Claude
-			metadata.remove("tls_client_certificate_bound_access_tokens");
-			metadata.remove("dpop_signing_alg_values_supported");
+			// Remove tls_client_certificate_bound_access_tokens
+			json = json.replaceAll(",?\"tls_client_certificate_bound_access_tokens\":\\s*true,?", ",");
 
-			byte[] modifiedBody = objectMapper.writeValueAsBytes(metadata);
+			// Remove dpop_signing_alg_values_supported
+			json = json.replaceAll(",?\"dpop_signing_alg_values_supported\":\\s*\\[[^]]*],?", ",");
+
+			// Clean up any double commas or trailing commas before }
+			json = json.replace(",,", ",");
+			json = json.replaceAll(",\\s*}", "}");
+
+			byte[] modifiedBody = json.getBytes(StandardCharsets.UTF_8);
 			response.setContentLength(modifiedBody.length);
 			response.setContentType("application/json");
 			response.getOutputStream().write(modifiedBody);
