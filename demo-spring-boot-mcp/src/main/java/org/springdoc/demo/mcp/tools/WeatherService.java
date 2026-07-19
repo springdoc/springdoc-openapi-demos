@@ -18,7 +18,7 @@ package org.springdoc.demo.mcp.tools;
 
 import java.time.LocalDateTime;
 
-import org.springaicommunity.mcp.annotation.McpTool;
+import org.springframework.ai.mcp.annotation.McpTool;
 
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.security.access.prepost.PreAuthorize;

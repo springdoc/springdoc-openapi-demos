@@ -22,13 +22,11 @@ public class SpeakersResource {
 	}
 
 	public List<McpServerFeatures.SyncResourceSpecification> listResources() {
-		var speakerResource = new McpSchema.Resource(
-				"conference://speakers/keynote-speaker",
-				"Biographical information and expertise details for the keynote speaker - use when users ask about speaker background information",
-				"application/json",
-				"conference://speakers/keynote-speaker",
-				null
-		);
+		var speakerResource = McpSchema.Resource.builder()
+				.uri("conference://speakers/keynote-speaker")
+				.name("Biographical information and expertise details for the keynote speaker - use when users ask about speaker background information")
+				.mimeType("application/json")
+				.build();
 
 		return List.of(
 				new McpServerFeatures.SyncResourceSpecification(
