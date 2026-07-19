@@ -6,3 +6,10 @@ spring:
       enabled: false
   config:
     import: "optional:configserver:${CONFIG_SERVER:http://localhost:8088}"
+
+# Eureka server defaults kept locally so a missed/late config-server fetch
+# cannot fall back to client mode and make the server try to self-register.
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
