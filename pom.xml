@@ -86,7 +86,7 @@
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-		<jib-maven-plugin.version>3.4.6</jib-maven-plugin.version>
+		<jib-maven-plugin.version>3.5.2</jib-maven-plugin.version>
 		<springdoc-openapi-maven-plugin.version>1.5
 		</springdoc-openapi-maven-plugin.version>
 		<jib.from.image>mcr.microsoft.com/openjdk/jdk:17-mariner</jib.from.image>
