@@ -3,3 +3,6 @@ server:
 spring:
   profiles:
     active: native
+  cloud:
+    compatibility-verifier:
+      enabled: false

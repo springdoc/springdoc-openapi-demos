@@ -109,7 +109,7 @@
 		<jib-maven-plugin.version>3.5.2</jib-maven-plugin.version>
 		<springdoc-openapi-maven-plugin.version>1.5</springdoc-openapi-maven-plugin.version>
 		<jib.from.image>mcr.microsoft.com/openjdk/jdk:17-mariner</jib.from.image>
-		<spring-cloud.version>2025.1.0-M4</spring-cloud.version>
+		<spring-cloud.version>2025.1.2</spring-cloud.version>
 		<embed.mongo.version>4.18.1</embed.mongo.version>
 		<embed.mongo.spring3x.version>4.18.0</embed.mongo.spring3x.version>
 		<spring-ai.version>2.0.0</spring-ai.version>
