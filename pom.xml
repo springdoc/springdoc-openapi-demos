@@ -80,6 +80,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<springdoc.version>2.8.18-SNAPSHOT</springdoc.version>
+		<!-- override Spring Boot's managed version to remediate commons-lang3 CVEs -->
+		<commons-lang3.version>3.20.0</commons-lang3.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>

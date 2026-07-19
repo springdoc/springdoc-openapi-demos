@@ -22,3 +22,7 @@ springdoc:
 server:
   port: 8081
   forward-headers-strategy: framework
+  error:
+    include-message: always
+    include-stacktrace: always
+    include-exception: true

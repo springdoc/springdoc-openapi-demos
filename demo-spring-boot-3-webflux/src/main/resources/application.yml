@@ -1,6 +1,10 @@
 server:
   port: 8082
   forward-headers-strategy: framework
+  error:
+    include-message: always
+    include-stacktrace: always
+    include-exception: true
 
 spring:
   data:
