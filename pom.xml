@@ -70,6 +70,7 @@
 		<module>demo-spring-cloud-function</module>
 		<module>demo-spring-boot-webflux-scalar</module>
 		<module>demo-spring-boot-webmvc-scalar</module>
+		<module>demo-spring-webmvc-nonboot</module>
 	</modules>
 
 	<properties>
