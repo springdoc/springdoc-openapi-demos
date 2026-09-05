@@ -1,0 +1,12 @@
+# Deploy with: wrangler secret put GCP_SA_KEY   then   wrangler deploy
+name = "springdoc-demos"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+# demos.springdoc.org must exist as a proxied record in the springdoc.org zone.
+routes = [
+	{ pattern = "demos.springdoc.org/*", zone_name = "springdoc.org" },
+]
+
+[observability]
+enabled = true
