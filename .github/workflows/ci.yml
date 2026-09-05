@@ -1,0 +1,34 @@
+# Builds and tests every pull request, without pushing any image.
+name: CI
+
+on:
+  pull_request:
+    paths-ignore: ['**.md']
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  MAVEN_ARGS: -B --no-transfer-progress -Dmaven.artifact.threads=16
+  MAVEN_OPTS: -Xmx3g
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: temurin
+          cache: maven
+
+      # jib has no lifecycle binding, so package alone never touches the registry.
+      - name: Build
+        run: mvn $MAVEN_ARGS -T1C package
