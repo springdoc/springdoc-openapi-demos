@@ -89,6 +89,14 @@ function withPrefix(location, prefix, origin, publicOrigin) {
 export default {
 	async fetch(request, env, ctx) {
 		const url = new URL(request.url);
+
+		// The zone plan has no "Always Use HTTPS" toggle we can set from the API token,
+		// and the identity token must never travel over a plaintext hop.
+		if (url.protocol === 'http:') {
+			url.protocol = 'https:';
+			return Response.redirect(url.toString(), 301);
+		}
+
 		const segments = url.pathname.split('/').filter(Boolean);
 		const service = SERVICES[segments[0]];
 
