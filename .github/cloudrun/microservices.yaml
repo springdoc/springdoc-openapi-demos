@@ -58,12 +58,13 @@ spec:
             # untrusted peer left to distinguish.
             - name: TRUSTED_PROXIES
               value: .*
-          # Serving an aggregated document proves the config server, the registry and at
-          # least one business service are all up. A plain port check would let the first
-          # request in before the routes resolve.
+          # The one call that fans out across all three business services, so answering it
+          # proves the config server, the registry, the routes and discovery between the
+          # services are all working. Anything shallower lets the first visitor through
+          # while the services are still finding each other, and they get a 500.
           startupProbe:
             httpGet:
-              path: /v3/api-docs/employee
+              path: /organization/1/with-departments-and-employees
               port: 8060
             periodSeconds: 3
             timeoutSeconds: 3
@@ -118,6 +119,10 @@ spec:
               value: 'false'
             - name: EUREKA_INSTANCE_LEASE_RENEWAL_INTERVAL_IN_SECONDS
               value: '5'
+            # These three call each other through the registry, so the default half-minute
+            # between fetches is half a minute of failed lookups after every scale-up.
+            - name: EUREKA_CLIENT_REGISTRY_FETCH_INTERVAL_SECONDS
+              value: '5'
           startupProbe:
             tcpSocket:
               port: 8092
@@ -140,6 +145,10 @@ spec:
               value: 'false'
             - name: EUREKA_INSTANCE_LEASE_RENEWAL_INTERVAL_IN_SECONDS
               value: '5'
+            # These three call each other through the registry, so the default half-minute
+            # between fetches is half a minute of failed lookups after every scale-up.
+            - name: EUREKA_CLIENT_REGISTRY_FETCH_INTERVAL_SECONDS
+              value: '5'
           startupProbe:
             tcpSocket:
               port: 8090
@@ -161,6 +170,10 @@ spec:
             - name: EUREKA_INSTANCE_PREFER_IP_ADDRESS
               value: 'false'
             - name: EUREKA_INSTANCE_LEASE_RENEWAL_INTERVAL_IN_SECONDS
+              value: '5'
+            # These three call each other through the registry, so the default half-minute
+            # between fetches is half a minute of failed lookups after every scale-up.
+            - name: EUREKA_CLIENT_REGISTRY_FETCH_INTERVAL_SECONDS
               value: '5'
           startupProbe:
             tcpSocket:
