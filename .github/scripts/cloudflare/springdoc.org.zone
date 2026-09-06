@@ -13,6 +13,10 @@ www.springdoc.org.	3600	IN	CNAME	springdoc.github.io.
 springdoc.org.		3600	IN	MX	10 mx00.ionos.fr.
 springdoc.org.		3600	IN	MX	10 mx01.ionos.fr.
 autodiscover.springdoc.org.	3600	IN	CNAME	adsredir.ionos.info.
+s1-ionos._domainkey.springdoc.org.	3600	IN	CNAME	s1.dkim.ionos.com.
+s2-ionos._domainkey.springdoc.org.	3600	IN	CNAME	s2.dkim.ionos.com.
+s42582890._domainkey.springdoc.org.	3600	IN	CNAME	s42582890.dkim.ionos.com.
+_domainconnect.springdoc.org.	3600	IN	CNAME	_domainconnect.1and1.com.
 springdoc.org.		3600	IN	TXT	"v=spf1 include:_spf-eu.ionos.com ~all"
 _dmarc.springdoc.org.	3600	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:support@springdoc.org; ruf=mailto:support@springdoc.org; fo=1"
 
@@ -23,5 +27,8 @@ springdoc.org.		3600	IN	TXT	"OSSRH-50044"
 
 ; The demos front door. A placeholder address is fine: the worker route intercepts before origin.
 demos.springdoc.org.	3600	IN	A	192.0.2.1
+; IONOS gave this name a mailbox it never used; deny outright rather than inherit the apex policy.
+demos.springdoc.org.	3600	IN	TXT	"v=spf1 -all"
 
-; Dead OCI hosts, dropped on purpose: demos1 (158.101.191.70) and ci-cd (129.159.254.115).
+; Dropped on purpose: the dead OCI hosts demos1 (158.101.191.70) and ci-cd
+; (129.159.254.115), plus the mail records IONOS auto-created under both of them.
