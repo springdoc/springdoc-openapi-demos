@@ -13,15 +13,17 @@
 
 ## [Demo Spring Boot 4 WebFlux with Functional endpoints OpenAPI 3](https://demos.springdoc.org/demo-spring-boot-webflux-functional/swagger-ui.html).
 
+## [Demo Spring Boot 4 and Spring Hateoas with OpenAPI 3](https://demos.springdoc.org/demo-spring-hateoas).
+
 ## [Demo Spring Boot 4 and Spring Cloud Function Web MVC](https://demos.springdoc.org/spring-cloud-function-webmvc).
 
 ## [Demo Spring Boot 4 and Spring Cloud Function WebFlux](https://demos.springdoc.org/spring-cloud-function-webflux/swagger-ui.html).
 
-## [Demo Spring Boot 4 and Spring Cloud Gateway](demo-microservices).
+## [Demo Spring Boot 4 with Spring AI MCP Server and OpenAPI 3](https://demos.springdoc.org/demo-spring-boot-mcp/mcp-ui/index.html).
 
-## [Demo Spring Boot 4 with Spring AI MCP Server and OpenAPI 3](demo-spring-boot-mcp).
+## [Demo Spring Boot 4 and Spring Cloud Gateway (source code)](demo-microservices).
 
-## [Demo Spring Boot 4 MCP Authorization Server](demo-spring-boot-mcp-authorization-server).
+## [Demo Spring Boot 4 MCP Authorization Server (source code)](demo-spring-boot-mcp-authorization-server).
 
 
 ![Branching](https://springdoc.org/img/pets.png)

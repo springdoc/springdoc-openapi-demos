@@ -16,10 +16,29 @@ const SERVICES = {
 	'spring-cloud-function-webflux': 'spring-cloud-function-webflux',
 	'demo-spring-boot-mcp': 'demo-spring-boot-mcp',
 	'demo-spring-boot-mcp-authorization-server': 'demo-spring-boot-mcp-authorization-server',
+	// The Spring Boot 3 demos linked from springdoc.org/v2, built off the spring-boot-3 branch.
+	'demo-spring-boot-3-webmvc': 'demo-spring-boot-3-webmvc',
+	'demo-spring-boot-3-webflux': 'demo-spring-boot-3-webflux',
+	'demo-spring-boot-3-webflux-functional': 'demo-spring-boot-3-webflux-functional',
+};
+
+// The mcp demo resolves its issuer while the security filter chain is being built, and a
+// cold authorization server answers slower than that call is willing to wait. Waking the
+// dependency first turns a boot failure into a slightly slower first request.
+const WARMUP = {
+	'demo-spring-boot-mcp': {
+		service: 'demo-spring-boot-mcp-authorization-server',
+		path: '/.well-known/oauth-authorization-server',
+	},
 };
 
 // Identity tokens last an hour; keep them in module scope so warm isolates reuse them.
 const tokenCache = new Map();
+
+// A Cloud Run instance stays up for a while after its last request, so there is no point
+// pinging the dependency on every single call.
+const warmedAt = new Map();
+const WARM_FOR = 120_000;
 
 function base64url(input) {
 	const bytes = typeof input === 'string' ? new TextEncoder().encode(input) : new Uint8Array(input);
@@ -104,6 +123,29 @@ function resolve(segments, pathname) {
 	};
 }
 
+function originOf(service) {
+	return `https://${service}-${PROJECT_NUMBER}.${REGION}.run.app`;
+}
+
+// Blocks until the dependency answers, so the service that needs it boots against a
+// running instance instead of timing out. A failure here is not fatal on its own.
+async function warmUp(service, credentials) {
+	const warmup = WARMUP[service];
+	if (!warmup) return;
+	if ((warmedAt.get(warmup.service) ?? 0) > Date.now() - WARM_FOR) return;
+
+	const origin = originOf(warmup.service);
+	try {
+		const token = await mintIdentityToken(credentials, origin);
+		const response = await fetch(new URL(warmup.path, origin), {
+			headers: { 'X-Serverless-Authorization': `Bearer ${token}` },
+		});
+		if (response.ok) warmedAt.set(warmup.service, Date.now());
+	} catch {
+		// The dependent service gets its chance to fail with a real error message.
+	}
+}
+
 // Maps a Location header back into the public namespace: rewrites the run.app origin
 // away and prepends the routing prefix when the app forgot it.
 function withPrefix(location, prefix, origin, publicOrigin) {
@@ -146,11 +188,12 @@ export default {
 
 		// X-Forwarded-Prefix lets Spring rebuild the public URLs behind the stripped prefix.
 		const { service, prefix, path } = route;
-		const origin = `https://${service}-${PROJECT_NUMBER}.${REGION}.run.app`;
+		const origin = originOf(service);
 		const target = new URL(path, origin);
 		target.search = url.search;
 
 		const credentials = JSON.parse(env.GCP_SA_KEY);
+		await warmUp(service, credentials);
 		const token = await mintIdentityToken(credentials, origin);
 
 		const headers = new Headers(request.headers);
