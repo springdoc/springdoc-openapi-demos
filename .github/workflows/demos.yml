@@ -93,6 +93,6 @@ jobs:
           region: ${{ env.REGION }}
           env_vars: SERVER_PORT=8080
           flags: >-
-            --no-allow-unauthenticated --port=8080 --cpu=1 --memory=512Mi
-            --min-instances=0 --max-instances=2 --concurrency=80 --timeout=30s
+            --no-allow-unauthenticated --port=8080 --cpu=1 --memory=512Mi --cpu-boost
+            --min-instances=0 --max-instances=2 --concurrency=80 --timeout=60s
             --service-account=cloudrun-runtime@springdoc.iam.gserviceaccount.com
