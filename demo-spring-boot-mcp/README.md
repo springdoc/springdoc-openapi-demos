@@ -56,6 +56,23 @@ This demo includes:
 - `spring-boot-starter-security` + `spring-boot-starter-oauth2-resource-server` — OAuth2 resource server support
 - `mcp-server-security` — MCP-specific OAuth2 integration from Spring AI Community
 
+## Enabling MCP
+
+As of springdoc-openapi 3.1.1 the starter no longer switches itself on. The MCP
+transport, the admin endpoints and the dashboard stay off until the application asks
+for them, so that adding the jar does not publish them by itself
+([GHSA-4v2q-56v7-2cpw](https://github.com/springdoc/springdoc-openapi/security/advisories/GHSA-4v2q-56v7-2cpw)):
+
+```yaml
+springdoc:
+  ai:
+    mcp:
+      enabled: true
+      dashboard-enabled: true
+```
+
+Both are already set in this demo's `application.yaml`.
+
 ## Building
 
 ### Pre-requisites

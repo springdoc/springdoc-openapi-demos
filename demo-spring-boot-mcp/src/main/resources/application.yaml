@@ -23,6 +23,16 @@ spring:
           issuer-uri: ${OAUTH2_ISSUER_URI:http://localhost:9000}
           jwk-set-uri: ${OAUTH2_ISSUER_URI:http://localhost:9000}/oauth2/jwks
 
+springdoc:
+  ai:
+    mcp:
+      # Since 3.1.1 adding the starter is no longer enough: the MCP transport, the admin
+      # endpoints and the dashboard all stay off until they are asked for, so that an
+      # application does not publish them merely because the jar is on the classpath.
+      # A demo whose whole point is showing them has to opt in explicitly.
+      enabled: true
+      dashboard-enabled: true
+
 server:
   port: 8080
   forward-headers-strategy: framework
