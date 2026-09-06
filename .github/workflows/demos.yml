@@ -104,6 +104,10 @@ jobs:
           test -n "$digest"
           echo "ref=${{ env.REGISTRY }}/${{ matrix.service }}@$digest" >> "$GITHUB_OUTPUT"
 
+      - name: Warm the Docker Hub mirror
+        if: ${{ !matrix.definition }}
+        run: .github/scripts/cloudrun/warm-mirror.sh '${{ steps.image.outputs.ref }}'
+
       # A demo that talks to another one at boot cannot wait for it to cold start, and
       # here the dependency is being redeployed by its own job at the same time. Ask for
       # it through the public host, which is the address the demo itself will use, until
@@ -151,10 +155,12 @@ jobs:
         run: |
           .github/scripts/cloudrun/render-service.sh \
             ".github/cloudrun/${{ matrix.definition }}" '${{ matrix.service }}' '${{ github.sha }}' > /tmp/service.yaml
+          .github/scripts/cloudrun/warm-mirror.sh \
+            $(grep -oE 'docker\.io/[^ ]+@sha256:[0-9a-f]+' /tmp/service.yaml | sort -u)
           # A revision imports every one of its containers before it can start, and the
-          # microservices stack has six, so one throttled pull from Docker Hub loses the
-          # whole deploy to "Container import failed". Replacing the same definition
-          # again is safe, so retry rather than fail a run over a transient pull.
+          # microservices stack has six, so one cold mirror entry loses the whole deploy
+          # to "Container import failed". Replacing the same definition again is safe,
+          # so retry rather than fail a run over a transient pull.
           for attempt in 1 2 3; do
             if gcloud run services replace /tmp/service.yaml --region="$REGION" --quiet; then
               exit 0
