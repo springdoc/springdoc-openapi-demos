@@ -1,0 +1,98 @@
+# Builds the Spring Boot 3 demos linked from springdoc.org/v2 and deploys them to Cloud Run.
+name: Demos
+
+on:
+  push:
+    branches: [spring-boot-3]
+    paths-ignore: ['**.md']
+  workflow_dispatch:
+
+# One deploy at a time per branch; a superseded build is not worth finishing.
+concurrency:
+  group: demos-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  MAVEN_ARGS: -B --no-transfer-progress -Dmaven.artifact.threads=16
+  MAVEN_OPTS: -Xmx3g
+  REGISTRY: docker.io/springdocdemos
+  REGION: europe-west1
+  # Only the demos the v2 page links live. The rest of the branch shares module
+  # names with master, and rebuilding them here would publish Boot 3 images into
+  # the repositories the Boot 4 demos already own.
+  MODULES: demo-spring-boot-3-webmvc,demo-spring-boot-3-webflux,demo-spring-boot-3-webflux-functional
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-java@v5
+        with:
+          java-version: '17'
+          distribution: temurin
+          cache: maven
+
+      # jib picks the credentials up from the docker config this action writes.
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # The extra sha tag is what the deploy job pulls, so a redeploy is immutable.
+      - name: Build and push the images
+        run: mvn $MAVEN_ARGS -Pjib -pl $MODULES -am package jib:build -T1C -Djib.to.tags=${{ github.sha }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        service:
+          - demo-spring-boot-3-webmvc
+          - demo-spring-boot-3-webflux
+          - demo-spring-boot-3-webflux-functional
+    steps:
+      # Keyless auth through workload identity federation; no service account key.
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      # Cloud Run fails to import a multi-platform manifest list, and jib publishes
+      # amd64 plus arm64. Pick the amd64 child digest rather than drop arm64 support.
+      - name: Resolve the amd64 digest
+        id: image
+        run: |
+          repo=springdocdemos/${{ matrix.service }}
+          token=$(curl -fsSL "https://auth.docker.io/token?service=registry.docker.io&scope=repository:$repo:pull" | jq -r .token)
+          digest=$(curl -fsSL -H "Authorization: Bearer $token" \
+            -H 'Accept: application/vnd.docker.distribution.manifest.list.v2+json' \
+            "https://registry-1.docker.io/v2/$repo/manifests/${{ github.sha }}" \
+            | jq -r '.manifests[] | select(.platform.architecture == "amd64" and .platform.os == "linux") | .digest')
+          test -n "$digest"
+          echo "ref=${{ env.REGISTRY }}/${{ matrix.service }}@$digest" >> "$GITHUB_OUTPUT"
+
+      # SERVER_PORT overrides the port each demo hardcodes in application.yml.
+      # no-allow-unauthenticated keeps the run.app URL closed: only the Cloudflare
+      # worker holds a service account with run.invoker, so there is no way around it.
+      - uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ matrix.service }}
+          image: ${{ steps.image.outputs.ref }}
+          region: ${{ env.REGION }}
+          env_vars: SERVER_PORT=8080
+          flags: >-
+            --no-allow-unauthenticated --port=8080 --cpu=1 --memory=512Mi
+            --min-instances=0 --max-instances=2 --concurrency=80 --timeout=30s
+            --service-account=cloudrun-runtime@springdoc.iam.gserviceaccount.com
