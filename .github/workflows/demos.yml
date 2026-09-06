@@ -17,12 +17,16 @@ env:
   MAVEN_OPTS: -Xmx3g
   REGISTRY: docker.io/springdocdemos
   REGION: europe-west1
-  # Only the demos the v2 page links live. The rest of the branch shares module names
-  # with master, and rebuilding them here would publish Boot 3 images into the
-  # repositories the Boot 4 demos already own. The microservices modules share their
-  # names too, which is why they push under a prefix; see jib.image.prefix in the poms.
+  # Only the demos the v2 page links live; the rest of the branch is not published.
+  # Most of these modules share their artifactId with a Boot 4 demo on master, so they
+  # would publish Boot 3 images into repositories those demos already own. They each
+  # name the repository they mean instead; see jib.image.name and jib.image.prefix
+  # in the poms.
   MODULES: >-
     demo-spring-boot-3-webmvc,demo-spring-boot-3-webflux,demo-spring-boot-3-webflux-functional,
+    demo-spring-boot-webmvc-scalar,demo-spring-boot-webflux-scalar,demo-spring-hateoas,
+    demo-spring-cloud-function/spring-cloud-function-webmvc,
+    demo-spring-cloud-function/spring-cloud-function-webflux,
     demo-microservices/config-service,demo-microservices/discovery-service,
     demo-microservices/employee-service,demo-microservices/department-service,
     demo-microservices/organization-service,demo-microservices/gateway-service
@@ -70,6 +74,12 @@ jobs:
           - service: demo-spring-boot-3-webflux
             definition: mongo-sidecar.yaml
           - service: demo-spring-boot-3-webflux-functional
+          - service: demo-spring-boot-3-webmvc-scalar
+          - service: demo-spring-boot-3-webflux-scalar
+            definition: mongo-sidecar.yaml
+          - service: demo-spring-boot-3-hateoas
+          - service: demo-spring-boot-3-cloud-function-webmvc
+          - service: demo-spring-boot-3-cloud-function-webflux
           - service: demo-spring-boot-3-microservices
             definition: microservices.yaml
     steps:
@@ -124,4 +134,16 @@ jobs:
         run: |
           .github/scripts/cloudrun/render-service.sh \
             ".github/cloudrun/${{ matrix.definition }}" '${{ matrix.service }}' '${{ github.sha }}' > /tmp/service.yaml
-          gcloud run services replace /tmp/service.yaml --region="$REGION" --quiet
+          # A revision imports every one of its containers before it can start, and the
+          # microservices stack has six, so one throttled pull from Docker Hub loses the
+          # whole deploy to "Container import failed". Replacing the same definition
+          # again is safe, so retry rather than fail a run over a transient pull.
+          for attempt in 1 2 3; do
+            if gcloud run services replace /tmp/service.yaml --region="$REGION" --quiet; then
+              exit 0
+            fi
+            echo "::warning::replace attempt $attempt failed; retrying in $((attempt * 20))s"
+            sleep $((attempt * 20))
+          done
+          echo "::error::gcloud run services replace failed three times"
+          exit 1

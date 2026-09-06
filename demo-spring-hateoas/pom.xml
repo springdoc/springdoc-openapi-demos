@@ -10,6 +10,11 @@
 	</parent>
 	<artifactId>demo-spring-hateoas</artifactId>
 
+	<properties>
+		<!-- Same artifactId as the Boot 4 demo on master; see demo-spring-boot-webmvc-scalar. -->
+		<jib.image.name>demo-spring-boot-3-hateoas</jib.image.name>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

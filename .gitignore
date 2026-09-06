@@ -148,3 +148,5 @@ Desktop.ini
 # Ignore Gradle build output directory
 build
 .java-version
+# Local wrangler state; the account cache is not repository content.
+.wrangler

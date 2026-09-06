@@ -10,6 +10,13 @@
 	<artifactId>demo-spring-boot-webmvc-scalar</artifactId>
 	<name>Demo Spring-boot Webmvc Scalar</name>
 
+	<properties>
+		<!-- The Boot 4 demo on master carries this artifactId too, and publishes the
+		     repository named after it. This one is the Spring Boot 3 demo linked from
+		     springdoc.org/v2, so it says which repository it means. -->
+		<jib.image.name>demo-spring-boot-3-webmvc-scalar</jib.image.name>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

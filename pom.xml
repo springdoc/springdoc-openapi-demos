@@ -92,8 +92,11 @@
 		<jib.from.image>mcr.microsoft.com/openjdk/jdk:17-mariner</jib.from.image>
 		<!-- Most modules here are named apart from their master counterparts and push to
 		     a repository of their own. The ones that are not have to say so, or they
-		     would publish Boot 3 images over the Boot 4 demos' images. -->
+		     would publish Boot 3 images over the Boot 4 demos' images. A whole family
+		     sharing one stem takes the prefix; a module whose artifactId reads nothing
+		     like the demo it publishes names the repository outright. -->
 		<jib.image.prefix/>
+		<jib.image.name>${jib.image.prefix}${project.artifactId}</jib.image.name>
 		<spring-cloud.version>2025.0.0</spring-cloud.version>
 		<spring-security-oauth2-authorization-server.version>1.4.3
 		</spring-security-oauth2-authorization-server.version>
@@ -198,7 +201,7 @@
 							</from>
 							<to>
 								<image>
-									registry.hub.docker.com/springdocdemos/${jib.image.prefix}${project.artifactId}:${project.version}
+									registry.hub.docker.com/springdocdemos/${jib.image.name}:${project.version}
 								</image>
 							</to>
 							<container>

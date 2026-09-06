@@ -11,6 +11,11 @@
 
 	<artifactId>spring-cloud-function-webmvc</artifactId>
 
+	<properties>
+		<!-- Same artifactId as the Boot 4 demo on master; see demo-spring-boot-webmvc-scalar. -->
+		<jib.image.name>demo-spring-boot-3-cloud-function-webmvc</jib.image.name>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

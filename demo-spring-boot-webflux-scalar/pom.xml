@@ -10,6 +10,11 @@
 	<artifactId>demo-spring-boot-webflux-scalar</artifactId>
 	<name>Demo Spring-boot Webflux Scalar</name>
 
+	<properties>
+		<!-- Same artifactId as the Boot 4 demo on master; see the sibling webmvc module. -->
+		<jib.image.name>demo-spring-boot-3-webflux-scalar</jib.image.name>
+	</properties>
+
 	<dependencies>
 		<!-- springdoc ui -->
 		<dependency>
