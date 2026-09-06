@@ -12,9 +12,8 @@ routes = [
 # a burst above this never reaches Cloud Run and never bills a container second.
 # The counter is per data centre, so the effective global ceiling is a multiple of
 # this, which is still far below what max-instances=2 per service can spend.
-[[unsafe.bindings]]
+[[ratelimits]]
 name = "RATE_LIMITER"
-type = "ratelimit"
 namespace_id = "1001"
 simple = { limit = 120, period = 60 }
 

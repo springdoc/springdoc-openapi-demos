@@ -11,6 +11,7 @@ const SERVICES = {
 	'demo-spring-boot-webmvc-scalar': 'demo-spring-boot-webmvc-scalar',
 	'demo-spring-boot-webflux-scalar': 'demo-spring-boot-webflux-scalar',
 	'demo-spring-boot-webflux-functional': 'demo-spring-boot-webflux-functional',
+	'demo-spring-hateoas': 'demo-spring-hateoas',
 	'spring-cloud-function-webmvc': 'spring-cloud-function-webmvc',
 	'spring-cloud-function-webflux': 'spring-cloud-function-webflux',
 	'demo-spring-boot-mcp': 'demo-spring-boot-mcp',

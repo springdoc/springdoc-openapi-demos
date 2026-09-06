@@ -60,6 +60,7 @@ jobs:
           - service: demo-spring-boot-webmvc-scalar
           - service: demo-spring-boot-webflux-scalar
           - service: demo-spring-boot-webflux-functional
+          - service: demo-spring-hateoas
           - service: spring-cloud-function-webmvc
           - service: spring-cloud-function-webflux
           # The mcp demo validates tokens against its companion authorization server,
