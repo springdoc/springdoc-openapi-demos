@@ -35,7 +35,7 @@ jobs:
 
       # jib picks the credentials up from the docker config this action writes.
       - name: Log in to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -83,7 +83,7 @@ jobs:
           fetch-depth: 1
 
       # Keyless auth through workload identity federation; no service account key.
-      - uses: google-github-actions/auth@v2
+      - uses: google-github-actions/auth@v3
         with:
           workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
@@ -128,7 +128,7 @@ jobs:
       # SERVER_PORT overrides the port each demo hardcodes in application.yml.
       # no-allow-unauthenticated keeps the run.app URL closed: only the Cloudflare
       # worker holds a service account with run.invoker, so there is no way around it.
-      - uses: google-github-actions/deploy-cloudrun@v2
+      - uses: google-github-actions/deploy-cloudrun@v3
         if: ${{ !matrix.definition }}
         with:
           service: ${{ matrix.service }}
@@ -150,7 +150,7 @@ jobs:
       # Sidecars cannot be expressed as deploy flags, so the demos that need one go
       # through the service definition instead. Replacing a service carries no IAM,
       # so they stay closed to anyone but the Cloudflare worker.
-      - uses: google-github-actions/setup-gcloud@v2
+      - uses: google-github-actions/setup-gcloud@v3
         if: ${{ matrix.definition }}
 
       - name: Deploy from a service definition

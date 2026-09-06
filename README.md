@@ -23,7 +23,7 @@
 
 ## [Demo Spring Boot 4 and Spring Cloud Gateway](https://demos.springdoc.org/demo-microservices/swagger-ui.html).
 
-## [Demo Spring Boot 4 MCP Authorization Server (source code)](demo-spring-boot-mcp-authorization-server).
+## [Demo Spring Boot 4 MCP Authorization Server](https://demos.springdoc.org/.well-known/oauth-authorization-server/demo-spring-boot-mcp-authorization-server) ([source code](demo-spring-boot-mcp-authorization-server)).
 
 
 ![Branching](https://springdoc.org/img/pets.png)
