@@ -123,6 +123,26 @@ The dashboard lets you:
 - **View tool metadata** — HTTP method, path, input schema, safety classification
 - **Test prompts and resources** registered with the MCP server
 
+Listing the tools needs no credentials, but executing one does, because `/mcp` is an
+OAuth2 resource server. Under **Security Settings** choose **OAuth2** and press **Get
+Token**; the dashboard's defaults already match the local authorization server, so
+nothing has to be filled in.
+
+### Against the hosted demo
+
+The dashboard defaults name the local authorization server, so on
+[the hosted demo](https://demos.springdoc.org/demo-spring-boot-mcp/mcp-ui/index.html)
+three fields have to be pointed at the deployed one before **Get Token** will work:
+
+| Field | Value |
+|-------|-------|
+| Token Endpoint | `https://demos.springdoc.org/demo-spring-boot-mcp-authorization-server/oauth2/token` |
+| Client ID | `mcp-demo-client` |
+| Client Secret | `mcp-demo-secret` |
+
+Grant type stays `client_credentials`. Both applications answer on the same host, so
+the browser treats the token request as same-origin and no CORS setup is involved.
+
 ## OAuth2 Security
 
 The MCP endpoint (`/mcp`) is secured with OAuth2. The `McpSecurityConfiguration` uses `mcp-server-security` to integrate OAuth2 authorization with the MCP transport layer:
