@@ -122,9 +122,12 @@ jobs:
           image: ${{ steps.image.outputs.ref }}
           region: ${{ env.REGION }}
           env_vars: SERVER_PORT=8080
+          # revision-suffix for the same reason the definitions carry a name; see the
+          # comment on REVISION below.
           flags: >-
             --no-allow-unauthenticated --port=8080 --cpu=1 --memory=512Mi --cpu-boost
             --min-instances=0 --max-instances=2 --concurrency=80 --timeout=60s
+            --revision-suffix=${{ github.run_number }}-${{ github.run_attempt }}
             --service-account=cloudrun-runtime@springdoc.iam.gserviceaccount.com
 
       # Sidecars cannot be expressed as deploy flags, so the demos that need one go
@@ -135,6 +138,16 @@ jobs:
 
       - name: Deploy from a service definition
         if: ${{ matrix.definition }}
+        # Left to itself Cloud Run names a revision after the service generation, which
+        # only moves when the spec changes. jib builds reproducibly, so a commit that
+        # leaves a demo's code alone renders a byte-identical definition and replace
+        # resolves to the revision the previous run already created: if that one failed
+        # to import, every later run re-reports its failure in two seconds without ever
+        # attempting a deploy, and nothing short of a code change can free the service.
+        # Naming the revision here makes every attempt a real one. The run number and
+        # attempt keep it unique across re-runs of the same commit.
+        env:
+          REVISION: ${{ matrix.service }}-${{ github.run_number }}-${{ github.run_attempt }}
         run: |
           .github/scripts/cloudrun/render-service.sh \
             ".github/cloudrun/${{ matrix.definition }}" '${{ matrix.service }}' '${{ github.sha }}' > /tmp/service.yaml
@@ -142,10 +155,12 @@ jobs:
             $(grep -oE 'docker\.io/[^ ]+@sha256:[0-9a-f]+' /tmp/service.yaml | sort -u)
           # A revision imports every one of its containers before it can start, and the
           # microservices stack has six, so one cold mirror entry loses the whole deploy
-          # to "Container import failed". Replacing the same definition again is safe,
-          # so retry rather than fail a run over a transient pull.
+          # to "Container import failed". Each retry needs a revision name of its own, or
+          # it would land on the one that just failed and be answered from its status
+          # rather than retried.
           for attempt in 1 2 3; do
-            if gcloud run services replace /tmp/service.yaml --region="$REGION" --quiet; then
+            sed "s|__REVISION__|$REVISION-$attempt|" /tmp/service.yaml > /tmp/revision.yaml
+            if gcloud run services replace /tmp/revision.yaml --region="$REGION" --quiet; then
               exit 0
             fi
             echo "::warning::replace attempt $attempt failed; retrying in $((attempt * 20))s"

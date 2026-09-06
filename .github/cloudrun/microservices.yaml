@@ -18,6 +18,9 @@ metadata:
 spec:
   template:
     metadata:
+      # Named by the deploy rather than left to Cloud Run; see the comment on
+      # REVISION in .github/workflows/demos.yml.
+      name: __REVISION__
       annotations:
         autoscaling.knative.dev/minScale: '0'
         autoscaling.knative.dev/maxScale: '2'
