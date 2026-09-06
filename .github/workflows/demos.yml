@@ -71,13 +71,27 @@ jobs:
           workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
 
+      # Cloud Run fails to import a multi-platform manifest list, and jib publishes
+      # amd64 plus arm64. Pick the amd64 child digest rather than drop arm64 support.
+      - name: Resolve the amd64 digest
+        id: image
+        run: |
+          repo=springdocdemos/${{ matrix.service }}
+          token=$(curl -fsSL "https://auth.docker.io/token?service=registry.docker.io&scope=repository:$repo:pull" | jq -r .token)
+          digest=$(curl -fsSL -H "Authorization: Bearer $token" \
+            -H 'Accept: application/vnd.docker.distribution.manifest.list.v2+json' \
+            "https://registry-1.docker.io/v2/$repo/manifests/${{ github.sha }}" \
+            | jq -r '.manifests[] | select(.platform.architecture == "amd64" and .platform.os == "linux") | .digest')
+          test -n "$digest"
+          echo "ref=${{ env.REGISTRY }}/${{ matrix.service }}@$digest" >> "$GITHUB_OUTPUT"
+
       # SERVER_PORT overrides the port each demo hardcodes in application.yml.
       # no-allow-unauthenticated keeps the run.app URL closed: only the Cloudflare
       # worker holds a service account with run.invoker, so there is no way around it.
       - uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: ${{ matrix.service }}
-          image: ${{ env.REGISTRY }}/${{ matrix.service }}:${{ github.sha }}
+          image: ${{ steps.image.outputs.ref }}
           region: ${{ env.REGION }}
           env_vars: SERVER_PORT=8080
           flags: >-
