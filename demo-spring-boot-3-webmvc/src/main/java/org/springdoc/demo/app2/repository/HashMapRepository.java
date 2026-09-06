@@ -102,14 +102,15 @@ public abstract class HashMapRepository<T, ID> implements CrudRepository<T, ID> 
 		final int size = all.size();
 		final int psize = pageable.getPageSize();
 		final int pnum = pageable.getPageNumber();
-		if (pnum < 1) {
-			throw new IllegalArgumentException("page number must be 1 or more");
+		// Pageable counts pages from zero, so the first page is page 0, not page 1.
+		if (pnum < 0) {
+			throw new IllegalArgumentException("page number must not be negative");
 		}
 		if (psize < 1) {
 			throw new IllegalArgumentException("page size must be 1 or more");
 		}
 		// inclusive
-		final int begin = (pnum - 1) * psize;
+		final int begin = pnum * psize;
 		// exclusive
 		final int end = Math.min(begin + psize, size);
 		if (size < begin) {

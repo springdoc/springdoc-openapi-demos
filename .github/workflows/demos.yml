@@ -58,11 +58,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        service:
-          - demo-spring-boot-3-webmvc
-          - demo-spring-boot-3-webflux
-          - demo-spring-boot-3-webflux-functional
+        include:
+          - service: demo-spring-boot-3-webmvc
+          # The tweets demo needs a MongoDB next to it; see .github/cloudrun.
+          - service: demo-spring-boot-3-webflux
+            mongo: true
+          - service: demo-spring-boot-3-webflux-functional
     steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
+
       # Keyless auth through workload identity federation; no service account key.
       - uses: google-github-actions/auth@v2
         with:
@@ -87,6 +93,7 @@ jobs:
       # no-allow-unauthenticated keeps the run.app URL closed: only the Cloudflare
       # worker holds a service account with run.invoker, so there is no way around it.
       - uses: google-github-actions/deploy-cloudrun@v2
+        if: ${{ !matrix.mongo }}
         with:
           service: ${{ matrix.service }}
           image: ${{ steps.image.outputs.ref }}
@@ -96,3 +103,17 @@ jobs:
             --no-allow-unauthenticated --port=8080 --cpu=1 --memory=512Mi --cpu-boost
             --min-instances=0 --max-instances=2 --concurrency=80 --timeout=60s
             --service-account=cloudrun-runtime@springdoc.iam.gserviceaccount.com
+
+      # A sidecar cannot be expressed as deploy flags, so the demo that needs one
+      # goes through the service definition instead. It carries no IAM, so the
+      # service stays closed to anyone but the Cloudflare worker.
+      - uses: google-github-actions/setup-gcloud@v2
+        if: ${{ matrix.mongo }}
+
+      - name: Deploy alongside MongoDB
+        if: ${{ matrix.mongo }}
+        run: |
+          sed -e 's|__SERVICE__|${{ matrix.service }}|' \
+              -e 's|__IMAGE__|${{ steps.image.outputs.ref }}|' \
+              .github/cloudrun/mongo-sidecar.yaml > /tmp/service.yaml
+          gcloud run services replace /tmp/service.yaml --region="$REGION" --quiet

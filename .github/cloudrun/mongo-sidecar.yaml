@@ -1,0 +1,65 @@
+# The tweets demos talk to a MongoDB on localhost, which used to be a sibling
+# container in docker compose. Cloud Run only accepts sidecars through a whole
+# service definition, so these two are deployed with `gcloud run services replace`
+# rather than the deploy action the single-container demos use.
+#
+# The database is as ephemeral as the compose one was: it lives in the instance's
+# in-memory filesystem and starts empty every time the service scales up from zero.
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: __SERVICE__
+  labels:
+    cloud.googleapis.com/location: europe-west1
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '0'
+        autoscaling.knative.dev/maxScale: '2'
+        run.googleapis.com/startup-cpu-boost: 'true'
+        # Hold the app back until mongo is accepting connections, or the first
+        # request races the database into existence.
+        run.googleapis.com/container-dependencies: '{"app":["mongo"]}'
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 60
+      serviceAccountName: cloudrun-runtime@springdoc.iam.gserviceaccount.com
+      containers:
+        - name: app
+          image: __IMAGE__
+          ports:
+            - name: http1
+              containerPort: 8080
+          env:
+            - name: SERVER_PORT
+              value: '8080'
+            - name: SPRING_DATA_MONGODB_URI
+              value: mongodb://localhost:27017/tweetsdb
+          resources:
+            limits:
+              cpu: '1'
+              memory: 512Mi
+        - name: mongo
+          image: mongo:8.0
+          args:
+            # The startup probe does not come from inside the instance, so binding
+            # to loopback alone leaves the container looking permanently unhealthy.
+            # Only the ingress port is routed, so nothing outside can reach mongo.
+            - --bind_ip_all
+            # The instance filesystem is memory, so keep the cache small enough
+            # that the data and the cache together fit in the container limit.
+            - --wiredTigerCacheSizeGB=0.25
+            - --quiet
+          startupProbe:
+            tcpSocket:
+              port: 27017
+            periodSeconds: 2
+            failureThreshold: 60
+          resources:
+            limits:
+              cpu: '1'
+              memory: 1Gi
+  traffic:
+    - percent: 100
+      latestRevision: true
