@@ -1,0 +1,176 @@
+# The whole spring-cloud stack in a single Cloud Run service.
+#
+# In docker compose these six were separate containers on one network. Eureka only
+# works if the registered address stays reachable, and a Cloud Run service that scales
+# to zero has no stable address to register, so splitting them across services would
+# mean keeping six of them running around the clock. Sidecars share a network namespace
+# instead: every service registers as localhost, discovery and configuration behave
+# exactly as they do locally, and the whole stack still scales to zero between visits.
+#
+# Only the gateway's port is routed, so the config server, Eureka and the three
+# business services are unreachable from outside the instance.
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: __SERVICE__
+  labels:
+    cloud.googleapis.com/location: europe-west1
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '0'
+        autoscaling.knative.dev/maxScale: '2'
+        run.googleapis.com/startup-cpu-boost: 'true'
+        # Configuration has to exist before anything can read it, and the registry has to
+        # exist before anything can register. The rest come up together.
+        run.googleapis.com/container-dependencies: '{"discovery":["config"],"employee":["config","discovery"],"department":["config","discovery"],"organization":["config","discovery"],"gateway":["config","discovery"]}'
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 60
+      serviceAccountName: cloudrun-runtime@springdoc.iam.gserviceaccount.com
+      containers:
+        - name: gateway
+          image: __IMAGE_GATEWAY_SERVICE__
+          ports:
+            - name: http1
+              containerPort: 8060
+          env:
+            - name: CONFIG_SERVER
+              value: http://localhost:8088
+            - name: EUREKA_SERVER
+              value: http://localhost:8761/eureka
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: localhost
+            - name: EUREKA_INSTANCE_PREFER_IP_ADDRESS
+              value: 'false'
+            # The default half-minute would leave the first visitor after a scale-up
+            # waiting on a registry that is already populated.
+            - name: EUREKA_CLIENT_REGISTRY_FETCH_INTERVAL_SECONDS
+              value: '5'
+            # What the gateway tells the business services to advertise. Their own
+            # address is private, so without this the aggregated documents would point
+            # at somewhere nobody can reach.
+            - name: PUBLIC_HOST
+              value: demos.springdoc.org
+            # Nothing but the Cloudflare worker can reach this service, and the loop the
+            # gateway makes through itself comes from inside the instance, so there is no
+            # untrusted peer left to distinguish.
+            - name: TRUSTED_PROXIES
+              value: .*
+          # Serving an aggregated document proves the config server, the registry and at
+          # least one business service are all up. A plain port check would let the first
+          # request in before the routes resolve.
+          startupProbe:
+            httpGet:
+              path: /v3/api-docs/employee
+              port: 8060
+            periodSeconds: 3
+            timeoutSeconds: 3
+            failureThreshold: 40
+          resources:
+            limits:
+              cpu: '1'
+              memory: 512Mi
+        - name: config
+          image: __IMAGE_CONFIG_SERVICE__
+          startupProbe:
+            tcpSocket:
+              port: 8088
+            periodSeconds: 2
+            failureThreshold: 60
+          resources:
+            limits:
+              cpu: '1'
+              memory: 512Mi
+        - name: discovery
+          image: __IMAGE_DISCOVERY_SERVICE__
+          env:
+            - name: CONFIG_SERVER
+              value: http://localhost:8088
+            # An instance that scales to zero never has a quorum to preserve, and the
+            # registry has to answer immediately rather than wait out its usual sync.
+            - name: EUREKA_SERVER_ENABLE_SELF_PRESERVATION
+              value: 'false'
+            - name: EUREKA_SERVER_RESPONSE_CACHE_UPDATE_INTERVAL_MS
+              value: '1000'
+            - name: EUREKA_SERVER_WAIT_TIME_IN_MS_WHEN_SYNC_EMPTY
+              value: '0'
+          startupProbe:
+            tcpSocket:
+              port: 8761
+            periodSeconds: 2
+            failureThreshold: 60
+          resources:
+            limits:
+              cpu: '1'
+              memory: 512Mi
+        - name: employee
+          image: __IMAGE_EMPLOYEE_SERVICE__
+          env:
+            - name: CONFIG_SERVER
+              value: http://localhost:8088
+            - name: EUREKA_SERVER
+              value: http://localhost:8761/eureka
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: localhost
+            - name: EUREKA_INSTANCE_PREFER_IP_ADDRESS
+              value: 'false'
+            - name: EUREKA_INSTANCE_LEASE_RENEWAL_INTERVAL_IN_SECONDS
+              value: '5'
+          startupProbe:
+            tcpSocket:
+              port: 8092
+            periodSeconds: 2
+            failureThreshold: 60
+          resources:
+            limits:
+              cpu: '1'
+              memory: 512Mi
+        - name: department
+          image: __IMAGE_DEPARTMENT_SERVICE__
+          env:
+            - name: CONFIG_SERVER
+              value: http://localhost:8088
+            - name: EUREKA_SERVER
+              value: http://localhost:8761/eureka
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: localhost
+            - name: EUREKA_INSTANCE_PREFER_IP_ADDRESS
+              value: 'false'
+            - name: EUREKA_INSTANCE_LEASE_RENEWAL_INTERVAL_IN_SECONDS
+              value: '5'
+          startupProbe:
+            tcpSocket:
+              port: 8090
+            periodSeconds: 2
+            failureThreshold: 60
+          resources:
+            limits:
+              cpu: '1'
+              memory: 512Mi
+        - name: organization
+          image: __IMAGE_ORGANIZATION_SERVICE__
+          env:
+            - name: CONFIG_SERVER
+              value: http://localhost:8088
+            - name: EUREKA_SERVER
+              value: http://localhost:8761/eureka
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: localhost
+            - name: EUREKA_INSTANCE_PREFER_IP_ADDRESS
+              value: 'false'
+            - name: EUREKA_INSTANCE_LEASE_RENEWAL_INTERVAL_IN_SECONDS
+              value: '5'
+          startupProbe:
+            tcpSocket:
+              port: 8091
+            periodSeconds: 2
+            failureThreshold: 60
+          resources:
+            limits:
+              cpu: '1'
+              memory: 512Mi
+  traffic:
+    - percent: 100
+      latestRevision: true

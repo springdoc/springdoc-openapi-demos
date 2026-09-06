@@ -56,16 +56,19 @@ jobs:
       matrix:
         include:
           - service: demo-spring-boot-webmvc
-          # The tweets demos need a MongoDB next to them; see .github/cloudrun.
+          # A demo with a "definition" needs more than one container, which only a whole
+          # service definition can express; the rest deploy from flags. See .github/cloudrun.
           - service: demo-spring-boot-webflux
-            mongo: true
+            definition: mongo-sidecar.yaml
           - service: demo-spring-boot-webmvc-scalar
           - service: demo-spring-boot-webflux-scalar
-            mongo: true
+            definition: mongo-sidecar.yaml
           - service: demo-spring-boot-webflux-functional
           - service: demo-spring-hateoas
           - service: spring-cloud-function-webmvc
           - service: spring-cloud-function-webflux
+          - service: demo-microservices
+            definition: microservices.yaml
           # The mcp demo validates tokens against its companion authorization server,
           # which used to sit on localhost:9000 next to it in docker compose.
           - service: demo-spring-boot-mcp
@@ -84,8 +87,10 @@ jobs:
 
       # Cloud Run fails to import a multi-platform manifest list, and jib publishes
       # amd64 plus arm64. Pick the amd64 child digest rather than drop arm64 support.
+      # The multi-container demos do the same thing inside render-service.sh.
       - name: Resolve the amd64 digest
         id: image
+        if: ${{ !matrix.definition }}
         run: |
           repo=springdocdemos/${{ matrix.service }}
           token=$(curl -fsSL "https://auth.docker.io/token?service=registry.docker.io&scope=repository:$repo:pull" | jq -r .token)
@@ -100,7 +105,7 @@ jobs:
       # no-allow-unauthenticated keeps the run.app URL closed: only the Cloudflare
       # worker holds a service account with run.invoker, so there is no way around it.
       - uses: google-github-actions/deploy-cloudrun@v2
-        if: ${{ !matrix.mongo }}
+        if: ${{ !matrix.definition }}
         with:
           service: ${{ matrix.service }}
           image: ${{ steps.image.outputs.ref }}
@@ -115,16 +120,15 @@ jobs:
             --min-instances=0 --max-instances=2 --concurrency=80 --timeout=60s
             --service-account=cloudrun-runtime@springdoc.iam.gserviceaccount.com
 
-      # A sidecar cannot be expressed as deploy flags, so the demos that need one
-      # go through the service definition instead. It carries no IAM, so the
-      # services stay closed to anyone but the Cloudflare worker.
+      # Sidecars cannot be expressed as deploy flags, so the demos that need one go
+      # through the service definition instead. Replacing a service carries no IAM,
+      # so they stay closed to anyone but the Cloudflare worker.
       - uses: google-github-actions/setup-gcloud@v2
-        if: ${{ matrix.mongo }}
+        if: ${{ matrix.definition }}
 
-      - name: Deploy alongside MongoDB
-        if: ${{ matrix.mongo }}
+      - name: Deploy from a service definition
+        if: ${{ matrix.definition }}
         run: |
-          sed -e 's|__SERVICE__|${{ matrix.service }}|' \
-              -e 's|__IMAGE__|${{ steps.image.outputs.ref }}|' \
-              .github/cloudrun/mongo-sidecar.yaml > /tmp/service.yaml
+          .github/scripts/cloudrun/render-service.sh \
+            ".github/cloudrun/${{ matrix.definition }}" '${{ matrix.service }}' '${{ github.sha }}' > /tmp/service.yaml
           gcloud run services replace /tmp/service.yaml --region="$REGION" --quiet

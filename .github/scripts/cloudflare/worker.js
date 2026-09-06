@@ -16,6 +16,9 @@ const SERVICES = {
 	'spring-cloud-function-webflux': 'spring-cloud-function-webflux',
 	'demo-spring-boot-mcp': 'demo-spring-boot-mcp',
 	'demo-spring-boot-mcp-authorization-server': 'demo-spring-boot-mcp-authorization-server',
+	// One service holding the whole spring-cloud stack: the gateway answers here and the
+	// config server, Eureka and the three business services sit beside it as sidecars.
+	'demo-microservices': 'demo-microservices',
 	// The Spring Boot 3 demos linked from springdoc.org/v2, built off the spring-boot-3 branch.
 	'demo-spring-boot-3-webmvc': 'demo-spring-boot-3-webmvc',
 	'demo-spring-boot-3-webflux': 'demo-spring-boot-3-webflux',

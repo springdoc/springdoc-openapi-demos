@@ -21,7 +21,21 @@ spring:
     gateway:
       server:
         webflux:
-          trusted-proxies: "192\\.168\\.0\\..*|10\\.88\\.0\\..*|127\\.0\\.0\\.1|158\\.101\\.191\\.70"
+          # Whoever fronts the gateway has to be listed here, or the X-Forwarded headers
+          # are dropped and the aggregated documents advertise the gateway's own address.
+          trusted-proxies: ${TRUSTED_PROXIES:192\\.168\\.0\\..*|10\\.88\\.0\\..*|127\\.0\\.0\\.1}
+          # The gateway copies the incoming Host header downstream, and behind a proxy that
+          # is the proxy's own target rather than the address users typed. Left alone, every
+          # aggregated document would advertise the gateway's private name, so name the
+          # public host once here and stop the copy.
+          # Downstream, RFC 7239 wins over the X-Forwarded family, so both have to stop
+          # repeating the Host header before the replacement below is worth anything.
+          forwarded:
+            enabled: false
+          x-forwarded:
+            host-enabled: false
+          default-filters:
+            - AddRequestHeader=X-Forwarded-Host, ${PUBLIC_HOST:localhost:8060}
           httpclient:
             ssl:
               useInsecureTrustManager: true
@@ -50,8 +64,12 @@ spring:
               filters:
                 - ContextPathRewritePath=/demo-microservices/organization/(?<path>.*), /$\{path}
                 - RewritePath=/organization/(?<path>.*), /$\{path}
+            # When the gateway is published under a prefix, swagger-ui asks for the
+            # aggregated documents with that prefix still attached. Send those back
+            # through the gateway so the per-service routes below can claim them,
+            # rather than out to the public host and back in again.
             - id: openapi-proxy
-              uri: https://demos1.springdoc.org
+              uri: http://localhost:${server.port}
               predicates:
                 - Path=/demo-microservices/v3/api-docs/**
               filters:

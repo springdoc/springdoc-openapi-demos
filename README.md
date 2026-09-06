@@ -21,7 +21,7 @@
 
 ## [Demo Spring Boot 4 with Spring AI MCP Server and OpenAPI 3](https://demos.springdoc.org/demo-spring-boot-mcp/mcp-ui/index.html).
 
-## [Demo Spring Boot 4 and Spring Cloud Gateway (source code)](demo-microservices).
+## [Demo Spring Boot 4 and Spring Cloud Gateway](https://demos.springdoc.org/demo-microservices/swagger-ui.html).
 
 ## [Demo Spring Boot 4 MCP Authorization Server (source code)](demo-spring-boot-mcp-authorization-server).
 
