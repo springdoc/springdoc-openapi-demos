@@ -41,7 +41,7 @@ spec:
               cpu: '1'
               memory: 512Mi
         - name: mongo
-          image: mongo:8.0
+          image: __DIGEST:mongo:8.0__
           args:
             # The startup probe does not come from inside the instance, so binding
             # to loopback alone leaves the container looking permanently unhealthy.
