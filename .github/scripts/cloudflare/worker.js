@@ -77,6 +77,32 @@ async function mintIdentityToken(credentials, audience) {
 	return id_token;
 }
 
+// Works out which service a request belongs to and what path it becomes upstream.
+// Normally the first segment names the demo, but an issuer whose URL carries a path
+// publishes its metadata at /.well-known/<document>/<path> per RFC 8414, so those
+// have to be unwrapped too or discovery lands on the index page.
+function resolve(segments, pathname) {
+	if (segments[0] === '.well-known' && SERVICES[segments[2]]) {
+		const rest = segments.slice(3);
+		return {
+			service: SERVICES[segments[2]],
+			prefix: `/${segments[2]}`,
+			path: `/.well-known/${segments[1]}${rest.length ? `/${rest.join('/')}` : ''}`,
+		};
+	}
+
+	if (!SERVICES[segments[0]]) return null;
+
+	const prefix = `/${segments[0]}`;
+	return {
+		service: SERVICES[segments[0]],
+		prefix,
+		// Slicing the raw path rather than rejoining the segments keeps the trailing slash,
+		// which Spring treats as a different resource from the bare path.
+		path: pathname.slice(prefix.length) || '/',
+	};
+}
+
 // Maps a Location header back into the public namespace: rewrites the run.app origin
 // away and prepends the routing prefix when the app forgot it.
 function withPrefix(location, prefix, origin, publicOrigin) {
@@ -98,9 +124,9 @@ export default {
 		}
 
 		const segments = url.pathname.split('/').filter(Boolean);
-		const service = SERVICES[segments[0]];
+		const route = resolve(segments, url.pathname);
 
-		if (!service) {
+		if (!route) {
 			const links = Object.keys(SERVICES).map((s) => `<li><a href="/${s}/">${s}</a></li>`).join('');
 			return new Response(`<!doctype html><title>springdoc demos</title><ul>${links}</ul>`, {
 				headers: { 'content-type': 'text/html; charset=utf-8' },
@@ -117,17 +143,20 @@ export default {
 			});
 		}
 
-		// Strip the routing prefix; X-Forwarded-Prefix lets Spring rebuild the public URLs.
-		const prefix = `/${segments[0]}`;
+		// X-Forwarded-Prefix lets Spring rebuild the public URLs behind the stripped prefix.
+		const { service, prefix, path } = route;
 		const origin = `https://${service}-${PROJECT_NUMBER}.${REGION}.run.app`;
-		const target = new URL(url.pathname.slice(prefix.length) || '/', origin);
+		const target = new URL(path, origin);
 		target.search = url.search;
 
 		const credentials = JSON.parse(env.GCP_SA_KEY);
 		const token = await mintIdentityToken(credentials, origin);
 
 		const headers = new Headers(request.headers);
-		headers.set('Authorization', `Bearer ${token}`);
+		// Cloud Run consumes X-Serverless-Authorization and does not pass it on, so the
+		// caller keeps its own Authorization header. Putting the identity token in
+		// Authorization instead makes the mcp demos reject it as a malformed OAuth2 token.
+		headers.set('X-Serverless-Authorization', `Bearer ${token}`);
 		headers.set('X-Forwarded-Prefix', prefix);
 		// Cloud Run strips X-Forwarded-Host, so the public hostname has to travel in the
 		// RFC 7239 header; without it swagger-ui advertises the run.app origin instead.
