@@ -70,9 +70,12 @@ jobs:
           - service: demo-microservices
             definition: microservices.yaml
           # The mcp demo validates tokens against its companion authorization server,
-          # which used to sit on localhost:9000 next to it in docker compose.
+          # which used to sit on localhost:9000 next to it in docker compose. It resolves
+          # the issuer while building its filter chain, so the server has to be awake
+          # before the new revision starts or the demo fails to boot at all.
           - service: demo-spring-boot-mcp
             env: OAUTH2_ISSUER_URI=https://demos.springdoc.org/demo-spring-boot-mcp-authorization-server
+            warmup: demo-spring-boot-mcp-authorization-server/.well-known/oauth-authorization-server
           - service: demo-spring-boot-mcp-authorization-server
     steps:
       - uses: actions/checkout@v5
@@ -100,6 +103,23 @@ jobs:
             | jq -r '.manifests[] | select(.platform.architecture == "amd64" and .platform.os == "linux") | .digest')
           test -n "$digest"
           echo "ref=${{ env.REGISTRY }}/${{ matrix.service }}@$digest" >> "$GITHUB_OUTPUT"
+
+      # A demo that talks to another one at boot cannot wait for it to cold start, and
+      # here the dependency is being redeployed by its own job at the same time. Ask for
+      # it through the public host, which is the address the demo itself will use, until
+      # it answers. No credentials: the Cloudflare worker holds the only ones.
+      - name: Wake the dependency
+        if: ${{ matrix.warmup }}
+        run: |
+          url=https://demos.springdoc.org/${{ matrix.warmup }}
+          for _ in $(seq 1 40); do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' -m 30 "$url" || true)
+            echo "$url -> ${code:-no answer}"
+            [ "$code" = 200 ] && exit 0
+            sleep 5
+          done
+          echo "::error::$url never answered; the demo would fail to boot against it"
+          exit 1
 
       # SERVER_PORT overrides the port each demo hardcodes in application.yml.
       # no-allow-unauthenticated keeps the run.app URL closed: only the Cloudflare
