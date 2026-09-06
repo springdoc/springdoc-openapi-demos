@@ -8,5 +8,15 @@ routes = [
 	{ pattern = "demos.springdoc.org/*", zone_name = "springdoc.org" },
 ]
 
+# Per-IP flood guard. The zone plan has no rate limiting rules, so it lives here:
+# a burst above this never reaches Cloud Run and never bills a container second.
+# The counter is per data centre, so the effective global ceiling is a multiple of
+# this, which is still far below what max-instances=2 per service can spend.
+[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1001"
+simple = { limit = 120, period = 60 }
+
 [observability]
 enabled = true

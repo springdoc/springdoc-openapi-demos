@@ -54,16 +54,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        service:
-          - demo-spring-boot-webmvc
-          - demo-spring-boot-webflux
-          - demo-spring-boot-webmvc-scalar
-          - demo-spring-boot-webflux-scalar
-          - demo-spring-boot-webflux-functional
-          - spring-cloud-function-webmvc
-          - spring-cloud-function-webflux
-          - demo-spring-boot-mcp
-          - demo-spring-boot-mcp-authorization-server
+        include:
+          - service: demo-spring-boot-webmvc
+          - service: demo-spring-boot-webflux
+          - service: demo-spring-boot-webmvc-scalar
+          - service: demo-spring-boot-webflux-scalar
+          - service: demo-spring-boot-webflux-functional
+          - service: spring-cloud-function-webmvc
+          - service: spring-cloud-function-webflux
+          # The mcp demo validates tokens against its companion authorization server,
+          # which used to sit on localhost:9000 next to it in docker compose.
+          - service: demo-spring-boot-mcp
+            env: OAUTH2_ISSUER_URI=https://demos.springdoc.org/demo-spring-boot-mcp-authorization-server
+          - service: demo-spring-boot-mcp-authorization-server
     steps:
       # Keyless auth through workload identity federation; no service account key.
       - uses: google-github-actions/auth@v2
@@ -93,7 +96,9 @@ jobs:
           service: ${{ matrix.service }}
           image: ${{ steps.image.outputs.ref }}
           region: ${{ env.REGION }}
-          env_vars: SERVER_PORT=8080
+          env_vars: |
+            SERVER_PORT=8080
+            ${{ matrix.env }}
           flags: >-
             --no-allow-unauthenticated --port=8080 --cpu=1 --memory=512Mi
             --min-instances=0 --max-instances=2 --concurrency=80 --timeout=30s

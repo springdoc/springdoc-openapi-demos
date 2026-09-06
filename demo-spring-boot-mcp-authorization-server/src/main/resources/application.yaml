@@ -20,7 +20,7 @@ spring:
                 - "client_credentials"
               redirect-uris:
                 - "http://localhost:8089/authorize/oauth2/code/authserver"
-                - "https://demos1.springdoc.org/demo-spring-boot-mcp/authorize/oauth2/code/authserver"
+                - "https://demos.springdoc.org/demo-spring-boot-mcp/authorize/oauth2/code/authserver"
                 - "http://localhost:6274/oauth/callback"
                 - "https://claude.ai/api/mcp/auth_callback"
     user:

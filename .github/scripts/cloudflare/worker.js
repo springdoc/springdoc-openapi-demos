@@ -77,6 +77,15 @@ async function mintIdentityToken(credentials, audience) {
 	return id_token;
 }
 
+// Maps a Location header back into the public namespace: rewrites the run.app origin
+// away and prepends the routing prefix when the app forgot it.
+function withPrefix(location, prefix, origin, publicOrigin) {
+	let value = location.startsWith(origin) ? location.slice(origin.length) || '/' : location;
+	if (value.startsWith(publicOrigin)) value = value.slice(publicOrigin.length) || '/';
+	if (!value.startsWith('/') || value.startsWith(`${prefix}/`) || value === prefix) return value;
+	return prefix + value;
+}
+
 export default {
 	async fetch(request, env, ctx) {
 		const url = new URL(request.url);
@@ -87,6 +96,16 @@ export default {
 			const links = Object.keys(SERVICES).map((s) => `<li><a href="/${s}/">${s}</a></li>`).join('');
 			return new Response(`<!doctype html><title>springdoc demos</title><ul>${links}</ul>`, {
 				headers: { 'content-type': 'text/html; charset=utf-8' },
+			});
+		}
+
+		// Throttle before touching Cloud Run: a refused request costs no container time.
+		const ip = request.headers.get('cf-connecting-ip') ?? 'unknown';
+		const { success } = await env.RATE_LIMITER.limit({ key: ip });
+		if (!success) {
+			return new Response('Too many requests\n', {
+				status: 429,
+				headers: { 'retry-after': '60', 'content-type': 'text/plain; charset=utf-8' },
 			});
 		}
 
@@ -102,15 +121,24 @@ export default {
 		const headers = new Headers(request.headers);
 		headers.set('Authorization', `Bearer ${token}`);
 		headers.set('X-Forwarded-Prefix', prefix);
-		headers.set('X-Forwarded-Host', url.host);
-		headers.set('X-Forwarded-Proto', 'https');
-		headers.delete('cookie');
+		// Cloud Run strips X-Forwarded-Host, so the public hostname has to travel in the
+		// RFC 7239 header; without it swagger-ui advertises the run.app origin instead.
+		headers.set('Forwarded', `host=${url.host};proto=https`);
 
-		return fetch(new Request(target, {
+		const upstream = await fetch(new Request(target, {
 			method: request.method,
 			headers,
 			body: request.body,
 			redirect: 'manual',
 		}));
+
+		// WebFlux builds redirects from the request path and ignores X-Forwarded-Prefix,
+		// so a bare /swagger-ui.html would land on the index instead of the demo.
+		const location = upstream.headers.get('location');
+		if (!location) return upstream;
+
+		const redirected = new Response(upstream.body, upstream);
+		redirected.headers.set('location', withPrefix(location, prefix, origin, url.origin));
+		return redirected;
 	},
 };
