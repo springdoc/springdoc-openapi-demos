@@ -1,0 +1,1 @@
+[engine:junit-jupiter]/[class:org.springdoc.demo.mcp.authorizationserver.ApplicationTests]/[method:contextLoads()]

@@ -22,7 +22,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
@@ -39,6 +38,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.multipart.MultipartFile;
@@ -117,15 +117,32 @@ public class PetApiDelegateImpl implements PetApiDelegate {
 
 	@Override
 	public ResponseEntity<List<Pet>> findPetsByStatus(List<String> statusList) {
-		List<Pet.StatusEnum> statusEnums = statusList.stream()
-				.map(s -> Optional.ofNullable(Pet.StatusEnum.fromValue(s))
-						.orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid status: " + s)))
-				.collect(Collectors.toList());
+		// The parameter is optional and the document advertises available as its default,
+		// so an absent status is not an error.
+		List<Pet.StatusEnum> statusEnums = CollectionUtils.isEmpty(statusList)
+				? List.of(Pet.StatusEnum.AVAILABLE)
+				: statusList.stream().map(PetApiDelegateImpl::toStatus).collect(Collectors.toList());
 		return ResponseEntity.ok(petRepository.findPetsByStatus(statusEnums));
+	}
+
+	// fromValue throws instead of returning null, so the 400 the document promises for an
+	// unknown status has to come from catching it.
+	private static Pet.StatusEnum toStatus(String status) {
+		try {
+			return Pet.StatusEnum.fromValue(status);
+		}
+		catch (IllegalArgumentException ex) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid status: " + status);
+		}
 	}
 
 	@Override
 	public ResponseEntity<List<Pet>> findPetsByTags(List<String> tags) {
+		// Unlike status, tags carries no default, and the document promises a 400 rather
+		// than every pet in the store.
+		if (tags == null) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid tag value");
+		}
 		return ResponseEntity.ok(petRepository.findPetsByTags(tags));
 	}
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="org.springdoc.demo.mcp.authorizationserver.ApplicationTests" time="0.007" tests="1" errors="0" skipped="1" failures="0" flakes="0">
+  <properties/>
+  <testcase name="contextLoads" classname="org.springdoc.demo.mcp.authorizationserver.ApplicationTests" time="0.0">
+    <skipped message="System property [mcp.auth.server.test] does not exist"/>
+  </testcase>
+</testsuite>

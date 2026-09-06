@@ -1,0 +1,16 @@
+org/springdoc/demo/app4/user/UserRepository.class
+org/springdoc/demo/app4/coffee/RouteConfig.class
+org/springdoc/demo/app4/coffee/CoffeeRepository.class
+org/springdoc/demo/app4/user/RoutingConfiguration.class
+org/springdoc/demo/app4/coffee/CoffeeOrder.class
+org/springdoc/demo/app4/WebfluxFunctionalDemoApplication.class
+org/springdoc/demo/app4/user/UserRepositoryImpl.class
+org/springdoc/demo/app4/employee/EmployeeRepository.class
+org/springdoc/demo/app4/user/UserHandler.class
+org/springdoc/demo/app4/employee/EmployeeFunctionalConfig.class
+org/springdoc/demo/app4/employee/Employee.class
+org/springdoc/demo/app4/AppNativeConfiguration.class
+org/springdoc/demo/app4/AppNativeConfiguration$AppNativeRuntimeHints.class
+org/springdoc/demo/app4/coffee/Coffee.class
+org/springdoc/demo/app4/coffee/CoffeeService.class
+org/springdoc/demo/app4/user/User.class

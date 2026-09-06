@@ -1,0 +1,15 @@
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/Application.java
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/McpSecurityConfiguration.java
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/books/controller/BookController.java
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/books/exception/BookNotFoundException.java
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/books/exception/GlobalControllerExceptionHandler.java
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/books/model/Book.java
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/books/repository/BookRepository.java
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/tools/Conference.java
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/tools/ConferencePrompts.java
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/tools/Session.java
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/tools/SessionTools.java
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/tools/SpeakersResource.java
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/tools/WeatherService.java
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/users/HelloController.java
+/Users/bnasslahsen/Documents/workspace/main/springdoc-openapi-demos/demo-spring-boot-mcp/src/main/java/org/springdoc/demo/mcp/users/TrackerData.java

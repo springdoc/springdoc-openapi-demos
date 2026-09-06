@@ -1,0 +1,4 @@
+[engine:junit-jupiter]/[class:org.springdoc.demo.mcp.SessionToolsTest]/[method:testSessionDataConsistency()]
+[engine:junit-jupiter]/[class:org.springdoc.demo.mcp.SessionToolsTest]/[method:testFindAllSessions()]
+[engine:junit-jupiter]/[class:org.springdoc.demo.mcp.SessionToolsTest]/[method:testCountSessionsByDate()]
+[engine:junit-jupiter]/[class:org.springdoc.demo.mcp.ApplicationTests]/[method:contextLoads()]

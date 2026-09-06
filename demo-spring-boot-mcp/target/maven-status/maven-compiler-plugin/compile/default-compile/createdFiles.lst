@@ -1,0 +1,17 @@
+org/springdoc/demo/mcp/tools/WeatherService.class
+org/springdoc/demo/mcp/books/controller/BookController.class
+org/springdoc/demo/mcp/tools/SessionTools.class
+org/springdoc/demo/mcp/McpSecurityConfiguration.class
+org/springdoc/demo/mcp/Application.class
+org/springdoc/demo/mcp/books/model/Book.class
+org/springdoc/demo/mcp/books/exception/GlobalControllerExceptionHandler.class
+org/springdoc/demo/mcp/users/TrackerData.class
+org/springdoc/demo/mcp/books/repository/BookRepository.class
+org/springdoc/demo/mcp/tools/Conference.class
+org/springdoc/demo/mcp/tools/Session.class
+org/springdoc/demo/mcp/users/HelloController.class
+org/springdoc/demo/mcp/tools/WeatherService$WeatherResponse$Current.class
+org/springdoc/demo/mcp/tools/WeatherService$WeatherResponse.class
+org/springdoc/demo/mcp/tools/ConferencePrompts.class
+org/springdoc/demo/mcp/tools/SpeakersResource.class
+org/springdoc/demo/mcp/books/exception/BookNotFoundException.class
