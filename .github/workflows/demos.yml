@@ -15,7 +15,7 @@ concurrency:
 env:
   MAVEN_ARGS: -B --no-transfer-progress -Dmaven.artifact.threads=16
   MAVEN_OPTS: -Xmx3g
-  REGISTRY: registry.hub.docker.com/springdocdemos
+  REGISTRY: docker.io/springdocdemos
   REGION: europe-west1
 
 jobs:
