@@ -219,10 +219,11 @@
 								</image>
 							</to>
 							<container>
+								<!-- No lazy initialization here: beans nothing else depends on,
+								     such as the SQL script initializer, would never be created,
+								     and the demo would answer on an empty database. -->
 								<jvmFlags>
 									<jvmFlag>-XshowSettings:vm</jvmFlag>
-									<jvmFlag>-Dspring.main.lazy-initialization=true
-									</jvmFlag>
 									<jvmFlag>-XX:TieredStopAtLevel=1</jvmFlag>
 									<jvmFlag>-XX:+UseSerialGC</jvmFlag>
 								</jvmFlags>
