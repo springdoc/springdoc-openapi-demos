@@ -48,6 +48,14 @@ spec:
             # waiting on a registry that is already populated.
             - name: EUREKA_CLIENT_REGISTRY_FETCH_INTERVAL_SECONDS
               value: '5'
+            # Cloud Run gives the instance CPU only while it is serving a request, so
+            # between visits every heartbeat thread in here is frozen while the registry's
+            # lease clock keeps running. On the default 90s expiry the first request after
+            # a quiet spell arrives to find the services evicted, and re-registering takes
+            # a minute of 503s. Nothing outlives the instance it is registered from, so a
+            # lease that never expires costs nothing and removes the whole race.
+            - name: EUREKA_INSTANCE_LEASE_EXPIRATION_DURATION_IN_SECONDS
+              value: '86400'
             # What the gateway tells the business services to advertise. Their own
             # address is private, so without this the aggregated documents would point
             # at somewhere nobody can reach.
@@ -123,6 +131,14 @@ spec:
             # between fetches is half a minute of failed lookups after every scale-up.
             - name: EUREKA_CLIENT_REGISTRY_FETCH_INTERVAL_SECONDS
               value: '5'
+            # Cloud Run gives the instance CPU only while it is serving a request, so
+            # between visits every heartbeat thread in here is frozen while the registry's
+            # lease clock keeps running. On the default 90s expiry the first request after
+            # a quiet spell arrives to find the services evicted, and re-registering takes
+            # a minute of 503s. Nothing outlives the instance it is registered from, so a
+            # lease that never expires costs nothing and removes the whole race.
+            - name: EUREKA_INSTANCE_LEASE_EXPIRATION_DURATION_IN_SECONDS
+              value: '86400'
           startupProbe:
             tcpSocket:
               port: 8092
@@ -149,6 +165,14 @@ spec:
             # between fetches is half a minute of failed lookups after every scale-up.
             - name: EUREKA_CLIENT_REGISTRY_FETCH_INTERVAL_SECONDS
               value: '5'
+            # Cloud Run gives the instance CPU only while it is serving a request, so
+            # between visits every heartbeat thread in here is frozen while the registry's
+            # lease clock keeps running. On the default 90s expiry the first request after
+            # a quiet spell arrives to find the services evicted, and re-registering takes
+            # a minute of 503s. Nothing outlives the instance it is registered from, so a
+            # lease that never expires costs nothing and removes the whole race.
+            - name: EUREKA_INSTANCE_LEASE_EXPIRATION_DURATION_IN_SECONDS
+              value: '86400'
           startupProbe:
             tcpSocket:
               port: 8090
@@ -175,6 +199,14 @@ spec:
             # between fetches is half a minute of failed lookups after every scale-up.
             - name: EUREKA_CLIENT_REGISTRY_FETCH_INTERVAL_SECONDS
               value: '5'
+            # Cloud Run gives the instance CPU only while it is serving a request, so
+            # between visits every heartbeat thread in here is frozen while the registry's
+            # lease clock keeps running. On the default 90s expiry the first request after
+            # a quiet spell arrives to find the services evicted, and re-registering takes
+            # a minute of 503s. Nothing outlives the instance it is registered from, so a
+            # lease that never expires costs nothing and removes the whole race.
+            - name: EUREKA_INSTANCE_LEASE_EXPIRATION_DURATION_IN_SECONDS
+              value: '86400'
           startupProbe:
             tcpSocket:
               port: 8091
