@@ -21,41 +21,64 @@ spring:
     gateway:
       server:
         webflux:
-          trusted-proxies: "192\\.168\\.0\\..*|10\\.88\\.0\\..*|127\\.0\\.0\\.1|144\\.24\\.171\\.248"
+          # Whoever fronts the gateway has to be listed here, or the X-Forwarded headers
+          # are dropped and the aggregated documents advertise the gateway's own address.
+          trusted-proxies: ${TRUSTED_PROXIES:192\\.168\\.0\\..*|10\\.88\\.0\\..*|127\\.0\\.0\\.1}
+          # The gateway copies the incoming Host header downstream, and behind a proxy that
+          # is the proxy's own target rather than the address users typed. Left alone, every
+          # aggregated document would advertise the gateway's private name, so name the
+          # public host once here and stop the copy.
+          # Downstream, RFC 7239 wins over the X-Forwarded family, so both have to stop
+          # repeating the Host header before the replacement below is worth anything.
+          forwarded:
+            enabled: false
+          x-forwarded:
+            host-enabled: false
+          default-filters:
+            - AddRequestHeader=X-Forwarded-Host, ${PUBLIC_HOST:localhost:8060}
           httpclient:
             ssl:
               useInsecureTrustManager: true
           discovery:
             locator:
               enabled: true
+          # Every route is claimed twice: once at the root, for running this stack on its
+          # own, and once under the prefix it is published at, because the proxy in front
+          # announces that prefix and Spring folds it back into the request path. The Boot 4
+          # copy of this demo already owns /demo-microservices, so this one answers
+          # elsewhere and the prefix cannot be hardcoded.
           routes:
             - id: employee-service
               uri: lb://employee-service
               predicates:
-                - Path=/employee/**, /demo-microservices/employee/**
+                - Path=/employee/**, ${PUBLIC_PREFIX:/demo-microservices}/employee/**
               filters:
-                - ContextPathRewritePath=/demo-microservices/employee/(?<path>.*), /$\{path}
+                - ContextPathRewritePath=${PUBLIC_PREFIX:/demo-microservices}/employee/(?<path>.*), /$\{path}
                 - RewritePath=/employee/(?<path>.*), /$\{path}
             - id: department-service
               uri: lb://department-service
               predicates:
-                - Path=/department/**, /demo-microservices/department/**
+                - Path=/department/**, ${PUBLIC_PREFIX:/demo-microservices}/department/**
               filters:
-                - ContextPathRewritePath=/demo-microservices/department/(?<path>.*), /$\{path}
+                - ContextPathRewritePath=${PUBLIC_PREFIX:/demo-microservices}/department/(?<path>.*), /$\{path}
                 - RewritePath=/department/(?<path>.*), /$\{path}
             - id: organization-service
               uri: lb://organization-service
               predicates:
-                - Path=/organization/**, /demo-microservices/organization/**
+                - Path=/organization/**, ${PUBLIC_PREFIX:/demo-microservices}/organization/**
               filters:
-                - ContextPathRewritePath=/demo-microservices/organization/(?<path>.*), /$\{path}
+                - ContextPathRewritePath=${PUBLIC_PREFIX:/demo-microservices}/organization/(?<path>.*), /$\{path}
                 - RewritePath=/organization/(?<path>.*), /$\{path}
+            # When the gateway is published under a prefix, swagger-ui asks for the
+            # aggregated documents with that prefix still attached. Send those back
+            # through the gateway so the per-service routes above can claim them,
+            # rather than out to the public host and back in again.
             - id: openapi-proxy
-              uri: https://demos.springdoc.org
+              uri: http://localhost:${server.port}
               predicates:
-                - Path=/demo-microservices/v3/api-docs/**
+                - Path=${PUBLIC_PREFIX:/demo-microservices}/v3/api-docs/**
               filters:
-                - RewritePath=/demo-microservices/v3/api-docs/(?<path>.*), /demo-microservices/$\{path}/v3/api-docs
+                - RewritePath=${PUBLIC_PREFIX:/demo-microservices}/v3/api-docs/(?<path>.*), ${PUBLIC_PREFIX:/demo-microservices}/$\{path}/v3/api-docs
             - id: openapi
               uri: http://localhost:${server.port}
               predicates:

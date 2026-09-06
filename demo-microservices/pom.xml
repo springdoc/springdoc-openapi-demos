@@ -12,6 +12,12 @@
 
 	<artifactId>demo-microservices</artifactId>
 
+	<properties>
+		<!-- These six carry the same names as their Boot 4 counterparts on master, so
+		     without a prefix they would push over the images those demos run from. -->
+		<jib.image.prefix>demo-spring-boot-3-</jib.image.prefix>
+	</properties>
+
 	<modules>
 		<module>config-service</module>
 		<module>discovery-service</module>

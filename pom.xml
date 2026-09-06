@@ -90,6 +90,10 @@
 		<springdoc-openapi-maven-plugin.version>1.5
 		</springdoc-openapi-maven-plugin.version>
 		<jib.from.image>mcr.microsoft.com/openjdk/jdk:17-mariner</jib.from.image>
+		<!-- Most modules here are named apart from their master counterparts and push to
+		     a repository of their own. The ones that are not have to say so, or they
+		     would publish Boot 3 images over the Boot 4 demos' images. -->
+		<jib.image.prefix/>
 		<spring-cloud.version>2025.0.0</spring-cloud.version>
 		<spring-security-oauth2-authorization-server.version>1.4.3
 		</spring-security-oauth2-authorization-server.version>
@@ -194,7 +198,7 @@
 							</from>
 							<to>
 								<image>
-									registry.hub.docker.com/springdocdemos/${project.artifactId}:${project.version}
+									registry.hub.docker.com/springdocdemos/${jib.image.prefix}${project.artifactId}:${project.version}
 								</image>
 							</to>
 							<container>

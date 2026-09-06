@@ -19,7 +19,7 @@
 
 ## [Demo Spring Boot 3 and Spring Cloud Function WebFlux](https://demos.springdoc.org/spring-cloud-function-webflux/swagger-ui.html).
 
-## [Demo Spring Boot 3 and Spring Cloud Gateway (source code)](demo-microservices).
+## [Demo Spring Boot 3 and Spring Cloud Gateway](https://demos.springdoc.org/demo-spring-boot-3-microservices/swagger-ui.html).
 
 
 ![Branching](https://springdoc.org/img/pets.png)

@@ -17,10 +17,15 @@ env:
   MAVEN_OPTS: -Xmx3g
   REGISTRY: docker.io/springdocdemos
   REGION: europe-west1
-  # Only the demos the v2 page links live. The rest of the branch shares module
-  # names with master, and rebuilding them here would publish Boot 3 images into
-  # the repositories the Boot 4 demos already own.
-  MODULES: demo-spring-boot-3-webmvc,demo-spring-boot-3-webflux,demo-spring-boot-3-webflux-functional
+  # Only the demos the v2 page links live. The rest of the branch shares module names
+  # with master, and rebuilding them here would publish Boot 3 images into the
+  # repositories the Boot 4 demos already own. The microservices modules share their
+  # names too, which is why they push under a prefix; see jib.image.prefix in the poms.
+  MODULES: >-
+    demo-spring-boot-3-webmvc,demo-spring-boot-3-webflux,demo-spring-boot-3-webflux-functional,
+    demo-microservices/config-service,demo-microservices/discovery-service,
+    demo-microservices/employee-service,demo-microservices/department-service,
+    demo-microservices/organization-service,demo-microservices/gateway-service
 
 jobs:
   build:
@@ -46,7 +51,7 @@ jobs:
 
       # The extra sha tag is what the deploy job pulls, so a redeploy is immutable.
       - name: Build and push the images
-        run: mvn $MAVEN_ARGS -Pjib -pl $MODULES -am package jib:build -T1C -Djib.to.tags=${{ github.sha }}
+        run: mvn $MAVEN_ARGS -Pjib -pl "${MODULES// /}" -am package jib:build -T1C -Djib.to.tags=${{ github.sha }}
 
   deploy:
     needs: build
@@ -60,10 +65,13 @@ jobs:
       matrix:
         include:
           - service: demo-spring-boot-3-webmvc
-          # The tweets demo needs a MongoDB next to it; see .github/cloudrun.
+          # A demo with a "definition" needs more than one container, which only a whole
+          # service definition can express; the rest deploy from flags. See .github/cloudrun.
           - service: demo-spring-boot-3-webflux
-            mongo: true
+            definition: mongo-sidecar.yaml
           - service: demo-spring-boot-3-webflux-functional
+          - service: demo-spring-boot-3-microservices
+            definition: microservices.yaml
     steps:
       - uses: actions/checkout@v5
         with:
@@ -79,6 +87,7 @@ jobs:
       # amd64 plus arm64. Pick the amd64 child digest rather than drop arm64 support.
       - name: Resolve the amd64 digest
         id: image
+        if: ${{ !matrix.definition }}
         run: |
           repo=springdocdemos/${{ matrix.service }}
           token=$(curl -fsSL "https://auth.docker.io/token?service=registry.docker.io&scope=repository:$repo:pull" | jq -r .token)
@@ -93,7 +102,7 @@ jobs:
       # no-allow-unauthenticated keeps the run.app URL closed: only the Cloudflare
       # worker holds a service account with run.invoker, so there is no way around it.
       - uses: google-github-actions/deploy-cloudrun@v2
-        if: ${{ !matrix.mongo }}
+        if: ${{ !matrix.definition }}
         with:
           service: ${{ matrix.service }}
           image: ${{ steps.image.outputs.ref }}
@@ -104,16 +113,15 @@ jobs:
             --min-instances=0 --max-instances=2 --concurrency=80 --timeout=60s
             --service-account=cloudrun-runtime@springdoc.iam.gserviceaccount.com
 
-      # A sidecar cannot be expressed as deploy flags, so the demo that needs one
-      # goes through the service definition instead. It carries no IAM, so the
-      # service stays closed to anyone but the Cloudflare worker.
+      # Sidecars cannot be expressed as deploy flags, so the demos that need one go
+      # through the service definition instead. Replacing a service carries no IAM,
+      # so they stay closed to anyone but the Cloudflare worker.
       - uses: google-github-actions/setup-gcloud@v2
-        if: ${{ matrix.mongo }}
+        if: ${{ matrix.definition }}
 
-      - name: Deploy alongside MongoDB
-        if: ${{ matrix.mongo }}
+      - name: Deploy from a service definition
+        if: ${{ matrix.definition }}
         run: |
-          sed -e 's|__SERVICE__|${{ matrix.service }}|' \
-              -e 's|__IMAGE__|${{ steps.image.outputs.ref }}|' \
-              .github/cloudrun/mongo-sidecar.yaml > /tmp/service.yaml
+          .github/scripts/cloudrun/render-service.sh \
+            ".github/cloudrun/${{ matrix.definition }}" '${{ matrix.service }}' '${{ github.sha }}' > /tmp/service.yaml
           gcloud run services replace /tmp/service.yaml --region="$REGION" --quiet
