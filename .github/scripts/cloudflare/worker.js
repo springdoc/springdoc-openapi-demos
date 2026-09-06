@@ -23,6 +23,7 @@ const SERVICES = {
 	'demo-spring-boot-3-webmvc': 'demo-spring-boot-3-webmvc',
 	'demo-spring-boot-3-webflux': 'demo-spring-boot-3-webflux',
 	'demo-spring-boot-3-webflux-functional': 'demo-spring-boot-3-webflux-functional',
+	'demo-spring-boot-3-microservices': 'demo-spring-boot-3-microservices',
 };
 
 // The mcp demo resolves its issuer while the security filter chain is being built, and a
