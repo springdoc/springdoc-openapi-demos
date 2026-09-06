@@ -24,6 +24,11 @@ const SERVICES = {
 	'demo-spring-boot-3-webflux': 'demo-spring-boot-3-webflux',
 	'demo-spring-boot-3-webflux-functional': 'demo-spring-boot-3-webflux-functional',
 	'demo-spring-boot-3-microservices': 'demo-spring-boot-3-microservices',
+	'demo-spring-boot-3-webmvc-scalar': 'demo-spring-boot-3-webmvc-scalar',
+	'demo-spring-boot-3-webflux-scalar': 'demo-spring-boot-3-webflux-scalar',
+	'demo-spring-boot-3-hateoas': 'demo-spring-boot-3-hateoas',
+	'demo-spring-boot-3-cloud-function-webmvc': 'demo-spring-boot-3-cloud-function-webmvc',
+	'demo-spring-boot-3-cloud-function-webflux': 'demo-spring-boot-3-cloud-function-webflux',
 };
 
 // The mcp demo resolves its issuer while the security filter chain is being built, and a
