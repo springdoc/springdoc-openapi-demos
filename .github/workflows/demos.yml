@@ -129,7 +129,11 @@ jobs:
       # no-allow-unauthenticated keeps the run.app URL closed: only the Cloudflare
       # worker holds a service account with run.invoker, so there is no way around it.
       - uses: google-github-actions/deploy-cloudrun@v3
+        id: deploy
         if: ${{ !matrix.definition }}
+        # A cold mirror entry can still lose the import race (see warm-mirror.sh), so a
+        # failure here gets one more attempt below rather than failing the job.
+        continue-on-error: true
         with:
           service: ${{ matrix.service }}
           image: ${{ steps.image.outputs.ref }}
@@ -145,6 +149,27 @@ jobs:
             --no-allow-unauthenticated --port=8080 --cpu=1 --memory=512Mi --cpu-boost
             --min-instances=0 --max-instances=2 --concurrency=80 --timeout=60s
             --revision-suffix=${{ github.run_number }}-${{ github.run_attempt }}
+            --service-account=cloudrun-runtime@springdoc.iam.gserviceaccount.com
+
+      # Same deploy under a revision name of its own, or it would land on the one that
+      # just failed and be answered from its status rather than retried.
+      - name: Give the mirror time to catch up
+        if: ${{ steps.deploy.outcome == 'failure' }}
+        run: sleep 30
+
+      - uses: google-github-actions/deploy-cloudrun@v3
+        if: ${{ steps.deploy.outcome == 'failure' }}
+        with:
+          service: ${{ matrix.service }}
+          image: ${{ steps.image.outputs.ref }}
+          region: ${{ env.REGION }}
+          env_vars: |
+            SERVER_PORT=8080
+            ${{ matrix.env }}
+          flags: >-
+            --no-allow-unauthenticated --port=8080 --cpu=1 --memory=512Mi --cpu-boost
+            --min-instances=0 --max-instances=2 --concurrency=80 --timeout=60s
+            --revision-suffix=${{ github.run_number }}-${{ github.run_attempt }}-retry
             --service-account=cloudrun-runtime@springdoc.iam.gserviceaccount.com
 
       # Sidecars cannot be expressed as deploy flags, so the demos that need one go
