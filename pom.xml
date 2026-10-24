@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.1.0</version>
+		<version>4.1.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -101,7 +101,7 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<springdoc.version>3.1.2-SNAPSHOT</springdoc.version>
+		<springdoc.version>3.2.0</springdoc.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
@@ -109,10 +109,10 @@
 		<jib-maven-plugin.version>3.5.2</jib-maven-plugin.version>
 		<springdoc-openapi-maven-plugin.version>1.5</springdoc-openapi-maven-plugin.version>
 		<jib.from.image>mcr.microsoft.com/openjdk/jdk:17-mariner</jib.from.image>
-		<spring-cloud.version>2025.1.2</spring-cloud.version>
+		<spring-cloud.version>2025.1.4</spring-cloud.version>
 		<embed.mongo.version>4.18.1</embed.mongo.version>
 		<embed.mongo.spring3x.version>4.18.0</embed.mongo.spring3x.version>
-		<spring-ai.version>2.0.0</spring-ai.version>
+		<spring-ai.version>2.0.1</spring-ai.version>
 		<mcp-security.version>0.1.13</mcp-security.version>
 	</properties>
 
