@@ -79,9 +79,9 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<springdoc.version>2.9.2-SNAPSHOT</springdoc.version>
+		<springdoc.version>2.10.0</springdoc.version>
 		<!-- override Spring Boot's managed version to remediate commons-lang3 CVEs -->
-		<commons-lang3.version>3.20.0</commons-lang3.version>
+		<commons-lang3.version>3.21.0</commons-lang3.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
@@ -97,7 +97,7 @@
 		     like the demo it publishes names the repository outright. -->
 		<jib.image.prefix/>
 		<jib.image.name>${jib.image.prefix}${project.artifactId}</jib.image.name>
-		<spring-cloud.version>2025.0.0</spring-cloud.version>
+		<spring-cloud.version>2025.0.3</spring-cloud.version>
 		<spring-security-oauth2-authorization-server.version>1.4.3
 		</spring-security-oauth2-authorization-server.version>
 		<embed.mongo.version>4.18.1</embed.mongo.version>
