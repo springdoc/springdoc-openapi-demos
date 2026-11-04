@@ -1,41 +1,129 @@
-[![Demos](https://github.com/springdoc/springdoc-openapi-demos/actions/workflows/demos.yml/badge.svg)](https://github.com/springdoc/springdoc-openapi-demos/actions/workflows/demos.yml)
+<p align="center">
+  <a href="https://springdoc.org">
+    <img src="https://springdoc.org/img/banner-logo.svg" alt="springdoc-openapi" width="420">
+  </a>
+</p>
 
+<h3 align="center">🎮 Live demos and sample applications for springdoc-openapi</h3>
 
-# Spring-boot with OpenAPI Demo applications.
+<p align="center">
+  <a href="https://github.com/springdoc/springdoc-openapi-demos/actions/workflows/demos.yml"><img src="https://img.shields.io/github/actions/workflow/status/springdoc/springdoc-openapi-demos/demos.yml?branch=master&style=flat-square&logo=googlecloud&logoColor=white&label=demos%20deploy" alt="Demos deploy"></a>
+  <a href="https://github.com/springdoc/springdoc-openapi-demos/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/springdoc/springdoc-openapi-demos/ci.yml?branch=master&style=flat-square&logo=githubactions&logoColor=white&label=build" alt="Build"></a>
+  <a href="https://central.sonatype.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui"><img src="https://img.shields.io/maven-central/v/org.springdoc/springdoc-openapi-starter-webmvc-ui?style=flat-square&logo=apachemaven&label=springdoc-openapi&color=blue" alt="springdoc-openapi on Maven Central"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/springdoc/springdoc-openapi-demos?style=flat-square&logo=apache&color=blue" alt="License"></a>
+  <a href="https://github.com/springdoc/springdoc-openapi-demos"><img src="https://img.shields.io/github/stars/springdoc/springdoc-openapi-demos?style=flat-square&logo=github&color=yellow" alt="GitHub stars"></a>
+</p>
 
-## [Demo Spring Boot 4 Web MVC with OpenAPI 3](https://demos.springdoc.org/demo-spring-boot-webmvc).
+<p align="center">
+  <img src="https://img.shields.io/badge/Spring%20Boot-4.1-6DB33F?style=flat-square&logo=springboot&logoColor=white" alt="Spring Boot 4.1">
+  <img src="https://img.shields.io/badge/Java-17%2B-ED8B00?style=flat-square&logo=openjdk&logoColor=white" alt="Java 17+">
+  <img src="https://img.shields.io/badge/Swagger%20UI-included-85EA2D?style=flat-square&logo=swagger&logoColor=black" alt="Swagger UI">
+  <img src="https://img.shields.io/badge/Scalar-supported-1A1A1A?style=flat-square" alt="Scalar">
+  <img src="https://img.shields.io/badge/MCP-Spring%20AI-6DB33F?style=flat-square&logo=spring&logoColor=white" alt="MCP with Spring AI">
+</p>
 
-## [Demo Spring Boot 4 WebFlux with OpenAPI 3](https://demos.springdoc.org/demo-spring-boot-webflux/swagger-ui.html).
+<p align="center">
+  <a href="https://springdoc.org"><b>📖 Documentation</b></a> ·
+  <a href="https://github.com/springdoc/springdoc-openapi">📦 springdoc-openapi</a> ·
+  <a href="https://springdoc.org/getting-started.html">🚀 Getting started</a> ·
+  <a href="https://springdoc.org/properties.html">⚙️ Properties</a> ·
+  <a href="https://springdoc.org/faq.html">❓ FAQ</a>
+</p>
 
-## [Demo Spring Boot 4 Web MVC with OpenAPI 3 and Scalar](https://demos.springdoc.org/demo-spring-boot-webmvc-scalar/scalar).
+<h3 align="center">💖 Sponsored by</h3>
 
-## [Demo Spring Boot 4 WebFlux with OpenAPI 3 and Scalar](https://demos.springdoc.org/demo-spring-boot-webflux-scalar/scalar).
+<p align="center">
+  <a href="https://opensource.mercedes-benz.com/"><img src="https://springdoc.org/img/mercedes-benz.webp" alt="Mercedes-Benz" height="56"></a>&nbsp;&nbsp;&nbsp;
+  <a href="https://www.dm-jobs.com/dmTECH/?locale=de_DE&wt_mc=.display.github.sponsoring.logo"><img src="https://springdoc.org/img/dmTECH_Logo.webp" alt="dmTECH" height="56"></a>&nbsp;&nbsp;&nbsp;
+  <a href="https://www.contrastsecurity.com/"><img src="https://springdoc.org/img/contrastsecurity.svg" alt="Contrast Security" height="40"></a>&nbsp;&nbsp;&nbsp;
+  <a href="https://www.lvm.de/"><img src="https://springdoc.org/img/lvm-logo.webp" alt="LVM Versicherung" height="48"></a>&nbsp;&nbsp;&nbsp;
+  <a href="https://gdnext.com/"><img src="https://springdoc.org/img/gdnext.webp" alt="GDNext" height="40"></a>
+</p>
 
-## [Demo Spring Boot 4 WebFlux with Functional endpoints OpenAPI 3](https://demos.springdoc.org/demo-spring-boot-webflux-functional/swagger-ui.html).
+<p align="center">
+  <a href="https://github.com/sponsors/springdoc"><img src="https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-EA4AAA?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor on GitHub"></a>
+  <a href="https://opencollective.com/springdoc"><img src="https://img.shields.io/badge/Support-Open%20Collective-7FADF2?style=for-the-badge&logo=opencollective&logoColor=white" alt="Support on Open Collective"></a>
+</p>
 
-## [Demo Spring Boot 4 and Spring Hateoas with OpenAPI 3](https://demos.springdoc.org/demo-spring-hateoas).
+<p align="center"><sub>If you ❤️ springdoc-openapi, <a href="https://springdoc.org/sponsor.html">become a sponsor</a>: it covers the project expenses and helps it grow.</sub></p>
 
-## [Demo Spring Boot 4 and Spring Cloud Function Web MVC](https://demos.springdoc.org/spring-cloud-function-webmvc).
+---
 
-## [Demo Spring Boot 4 and Spring Cloud Function WebFlux](https://demos.springdoc.org/spring-cloud-function-webflux/swagger-ui.html).
+This repository holds the demo applications of [springdoc-openapi](https://github.com/springdoc/springdoc-openapi):
+small Spring Boot applications that show how springdoc-openapi documents Web MVC, WebFlux, Spring Cloud and
+MCP applications. Every push to `master` builds them and deploys the public ones, so you can try them right
+now in your browser. ✨
 
-## [Demo Spring Boot 4 with Spring AI MCP Server and OpenAPI 3](https://demos.springdoc.org/demo-spring-boot-mcp/mcp-ui/index.html).
+<p align="center">
+  <img src="https://springdoc.org/img/pets.webp" alt="Swagger UI generated by springdoc-openapi" width="760">
+</p>
 
-## [Demo Spring Boot 4 and Spring Cloud Gateway](https://demos.springdoc.org/demo-microservices/swagger-ui.html).
+## 🌐 Live demos
 
-## [Demo Spring Boot 4 MCP Authorization Server](https://demos.springdoc.org/.well-known/oauth-authorization-server/demo-spring-boot-mcp-authorization-server) ([source code](demo-spring-boot-mcp-authorization-server)).
+| Demo | What it shows | Try it | Source |
+|---|---|:---:|:---:|
+| 🍃 Web MVC | A Spring Web MVC API documented with Swagger UI | [▶️ Open](https://demos.springdoc.org/demo-spring-boot-webmvc) | [📂](demo-spring-boot-webmvc) |
+| ⚡ WebFlux | A reactive Spring WebFlux API documented with Swagger UI | [▶️ Open](https://demos.springdoc.org/demo-spring-boot-webflux/swagger-ui.html) | [📂](demo-spring-boot-webflux) |
+| 🎨 Web MVC and Scalar | The Web MVC demo with the Scalar API reference | [▶️ Open](https://demos.springdoc.org/demo-spring-boot-webmvc-scalar/scalar) | [📂](demo-spring-boot-webmvc-scalar) |
+| 🎨 WebFlux and Scalar | The WebFlux demo with the Scalar API reference | [▶️ Open](https://demos.springdoc.org/demo-spring-boot-webflux-scalar/scalar) | [📂](demo-spring-boot-webflux-scalar) |
+| 🔀 WebFlux functional endpoints | Router functions documented with springdoc's `SpringdocRouteBuilder` | [▶️ Open](https://demos.springdoc.org/demo-spring-boot-webflux-functional/swagger-ui.html) | [📂](demo-spring-boot-webflux-functional) |
+| 🔗 Spring HATEOAS | Hypermedia APIs with HAL links | [▶️ Open](https://demos.springdoc.org/demo-spring-hateoas) | [📂](demo-spring-hateoas) |
+| ☁️ Spring Cloud Function, Web MVC | Functions exposed as REST endpoints | [▶️ Open](https://demos.springdoc.org/spring-cloud-function-webmvc) | [📂](demo-spring-cloud-function/spring-cloud-function-webmvc) |
+| ☁️ Spring Cloud Function, WebFlux | Reactive functions exposed as REST endpoints | [▶️ Open](https://demos.springdoc.org/spring-cloud-function-webflux/swagger-ui.html) | [📂](demo-spring-cloud-function/spring-cloud-function-webflux) |
+| 🚪 Microservices | Spring Cloud Gateway, Eureka and Config, with the API docs of every service in one Swagger UI | [▶️ Open](https://demos.springdoc.org/demo-microservices/swagger-ui.html) | [📂](demo-microservices) |
+| 🤖 MCP server | Spring AI MCP Server: REST endpoints exposed as MCP tools for AI agents, with an MCP UI | [▶️ Open](https://demos.springdoc.org/demo-spring-boot-mcp/mcp-ui/index.html) | [📂](demo-spring-boot-mcp) |
+| 🔐 MCP authorization server | The OAuth 2 authorization server that secures the MCP demo | [▶️ Open](https://demos.springdoc.org/.well-known/oauth-authorization-server/demo-spring-boot-mcp-authorization-server) | [📂](demo-spring-boot-mcp-authorization-server) |
 
+> [!TIP]
+> The demos run on Cloud Run and scale to zero: the first request after a quiet period can take a few seconds. ⏳
 
-![Branching](https://springdoc.org/img/pets.png)
+## 📦 More samples
 
-# **Thank you for the support**
+These samples are not deployed, but you can run them locally:
 
-* Thanks a lot [JetBrains](https://www.jetbrains.com/?from=springdoc-openapi) for
-  supporting springdoc-openapi project.
+| Sample | What it shows |
+|---|---|
+| 📚 [demo-book-service](demo-book-service) | A CRUD REST API with a global exception handler |
+| 🧑 [demo-person-service](demo-person-service) | Bean Validation constraints (`@Valid`, `@NotBlank`, `@Size`) in the generated schemas |
+| 🗄️ [demo-spring-data-rest](demo-spring-data-rest) | Spring Data REST repositories documented automatically |
+| 🔐 [demo-oauth2](demo-oauth2) | OAuth 2 resource servers, Web MVC and WebFlux, with an authorization server |
 
-![JenBrains logo](https://springdoc.org/img/jetbrains.svg)
+## 🏃 Run a demo locally
 
+You need Java 17+ and Maven:
 
+```bash
+git clone https://github.com/springdoc/springdoc-openapi-demos.git
+cd springdoc-openapi-demos
+mvn -pl demo-spring-boot-webmvc spring-boot:run
+```
 
+Then open the Swagger UI on the port set in the demo's `application.yml` (for this one 👉 `http://localhost:8081`).
 
+## 🧭 Branches
 
+| Branch | Spring Boot | springdoc-openapi |
+|:---:|:---:|:---:|
+| 🍃 `master` | 4.x | 3.x |
+| 🍃 [`spring-boot-3`](https://github.com/springdoc/springdoc-openapi-demos/tree/spring-boot-3) | 3.x | 2.x |
+| 🍂 [`2.x`](https://github.com/springdoc/springdoc-openapi-demos/tree/2.x) | 2.x | 1.x |
+
+## 💬 Getting help
+
+- 📖 Read the [springdoc-openapi documentation](https://springdoc.org) and the [FAQ](https://springdoc.org/faq.html)
+- 🙋 Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/springdoc) with the `springdoc` tag
+- 🐛 Report a problem with a demo in [this repository's issues](https://github.com/springdoc/springdoc-openapi-demos/issues),
+  and a problem with springdoc-openapi itself in [its issues](https://github.com/springdoc/springdoc-openapi/issues)
+
+## 🙏 Thanks
+
+Special thanks to [the Spring team](https://spring.io/team) and [JetBrains](https://www.jetbrains.com/?from=springdoc-openapi)
+for their support.
+
+<p align="center">
+  <a href="https://www.jetbrains.com/?from=springdoc-openapi"><img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg" alt="JetBrains logo" height="56"></a>
+</p>
+
+## 📄 License
+
+The demos are Open Source software released under the [Apache 2.0 license](LICENSE).
