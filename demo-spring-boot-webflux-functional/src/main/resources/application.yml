@@ -8,7 +8,11 @@ server:
   http2:
     enabled: true
   port: 8084
-  forward-headers-strategy: framework
+  request:
+    header:
+      forwarded:
+        strategy: framework
+        use-prefix: true
 springdoc:
   version: '@springdoc.version@'
   swagger-ui:

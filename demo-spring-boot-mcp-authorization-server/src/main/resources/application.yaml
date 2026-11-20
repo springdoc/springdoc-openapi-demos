@@ -29,7 +29,11 @@ spring:
 
 server:
   port: ${PORT:9000}
-  forward-headers-strategy: framework
+  request:
+    header:
+      forwarded:
+        strategy: framework
+        use-prefix: true
   servlet:
     session:
       cookie:

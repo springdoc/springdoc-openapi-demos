@@ -1,6 +1,10 @@
 server:
   port: 8060
-  forward-headers-strategy: framework
+  request:
+    header:
+      forwarded:
+        strategy: framework
+        use-prefix: true
 
 eureka:
   client:
