@@ -1,10 +1,6 @@
 server:
   port: 8090
-  request:
-    header:
-      forwarded:
-        strategy: framework
-        use-prefix: true
+  forward-headers-strategy: framework
 eureka:
   client:
     serviceUrl:

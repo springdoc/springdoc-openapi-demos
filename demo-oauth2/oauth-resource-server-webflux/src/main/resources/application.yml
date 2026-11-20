@@ -1,9 +1,5 @@
 server:
-  request:
-    header:
-      forwarded:
-        strategy: framework
-        use-prefix: true
+  forward-headers-strategy: framework
   port: 8082
 
 ####### resource server configuration properties

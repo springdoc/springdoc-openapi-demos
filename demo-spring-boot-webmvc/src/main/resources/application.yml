@@ -21,8 +21,4 @@ springdoc:
     disabled: true
 server:
   port: 8081
-  request:
-    header:
-      forwarded:
-        strategy: framework
-        use-prefix: true
+  forward-headers-strategy: framework

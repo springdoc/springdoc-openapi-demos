@@ -3,8 +3,4 @@ springdoc:
   swagger-ui:
     use-root-path: true
 server:
-  request:
-    header:
-      forwarded:
-        strategy: framework
-        use-prefix: true
+  forward-headers-strategy: framework

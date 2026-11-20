@@ -7,10 +7,7 @@ spring:
       minimum-idle: 1
 
 server:
-  request:
-    header:
-      forwarded:
-        strategy: web-server
+  forward-headers-strategy: native
   port: 8083
 logging:
   level:

@@ -1,9 +1,5 @@
 server:
-  request:
-    header:
-      forwarded:
-        strategy: framework
-        use-prefix: true
+  forward-headers-strategy: framework
 
 springdoc:
   version: '@springdoc.version@'
