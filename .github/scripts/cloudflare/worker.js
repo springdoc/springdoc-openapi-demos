@@ -137,7 +137,6 @@ function resolve(segments, pathname) {
 			prefix,
 			servedUnderPrefix: SERVED_UNDER_PREFIX.has(segments[2]),
 			path: SERVED_UNDER_PREFIX.has(segments[2]) ? prefix + path : path,
-			strippedPath: path,
 		};
 	}
 
@@ -152,7 +151,6 @@ function resolve(segments, pathname) {
 		prefix,
 		servedUnderPrefix: SERVED_UNDER_PREFIX.has(segments[0]),
 		path: SERVED_UNDER_PREFIX.has(segments[0]) ? pathname : strippedPath,
-		strippedPath,
 	};
 }
 
@@ -170,12 +168,10 @@ async function warmUp(service, credentials) {
 	const origin = originOf(warmup.service);
 	try {
 		const token = await mintIdentityToken(credentials, origin);
-		const ping = (path) => fetch(new URL(path, origin), {
+		const path = SERVED_UNDER_PREFIX.has(warmup.service) ? `/${warmup.service}${warmup.path}` : warmup.path;
+		const response = await fetch(new URL(path, origin), {
 			headers: { 'X-Serverless-Authorization': `Bearer ${token}` },
 		});
-		let response = await ping(SERVED_UNDER_PREFIX.has(warmup.service) ? `/${warmup.service}${warmup.path}` : warmup.path);
-		// Transitional, as in fetch below: an older revision still answers without the prefix.
-		if (response.status === 404 && SERVED_UNDER_PREFIX.has(warmup.service)) response = await ping(warmup.path);
 		if (response.ok) warmedAt.set(warmup.service, Date.now());
 	} catch {
 		// The dependent service gets its chance to fail with a real error message.
@@ -222,36 +218,32 @@ export default {
 			});
 		}
 
-		const { service, prefix, path, strippedPath, servedUnderPrefix } = route;
+		const { service, prefix, path, servedUnderPrefix } = route;
 		const origin = originOf(service);
+		const target = new URL(path, origin);
+		target.search = url.search;
 
 		const credentials = JSON.parse(env.GCP_SA_KEY);
 		await warmUp(service, credentials);
 		const token = await mintIdentityToken(credentials, origin);
 
-		// The body is read once so that the request can be sent a second time below.
-		const body = ['GET', 'HEAD'].includes(request.method) ? null : await request.arrayBuffer();
-		const send = (upstreamPath, stripped) => {
-			const target = new URL(upstreamPath, origin);
-			target.search = url.search;
-			const headers = new Headers(request.headers);
-			// Cloud Run consumes X-Serverless-Authorization and does not pass it on, so the
-			// caller keeps its own Authorization header. Putting the identity token in
-			// Authorization instead makes the mcp demos reject it as a malformed OAuth2 token.
-			headers.set('X-Serverless-Authorization', `Bearer ${token}`);
-			// X-Forwarded-Prefix lets Spring rebuild the public URLs behind the stripped prefix.
-			if (stripped) headers.set('X-Forwarded-Prefix', prefix);
-			// Cloud Run strips X-Forwarded-Host, so the public hostname has to travel in the
-			// RFC 7239 header; without it swagger-ui advertises the run.app origin instead.
-			headers.set('Forwarded', `host=${url.host};proto=https`);
-			return fetch(new Request(target, { method: request.method, headers, body, redirect: 'manual' }));
-		};
+		const headers = new Headers(request.headers);
+		// Cloud Run consumes X-Serverless-Authorization and does not pass it on, so the
+		// caller keeps its own Authorization header. Putting the identity token in
+		// Authorization instead makes the mcp demos reject it as a malformed OAuth2 token.
+		headers.set('X-Serverless-Authorization', `Bearer ${token}`);
+		// X-Forwarded-Prefix lets Spring rebuild the public URLs behind the stripped prefix.
+		if (!servedUnderPrefix) headers.set('X-Forwarded-Prefix', prefix);
+		// Cloud Run strips X-Forwarded-Host, so the public hostname has to travel in the
+		// RFC 7239 header; without it swagger-ui advertises the run.app origin instead.
+		headers.set('Forwarded', `host=${url.host};proto=https`);
 
-		let upstream = await send(path, !servedUnderPrefix);
-		// Transitional: a revision deployed before its service was moved under its own path
-		// answers 404 to the prefixed path, so ask it the old way. Remove this once every
-		// service of SERVED_UNDER_PREFIX runs a revision that sets its path.
-		if (servedUnderPrefix && upstream.status === 404) upstream = await send(strippedPath, true);
+		const upstream = await fetch(new Request(target, {
+			method: request.method,
+			headers,
+			body: request.body,
+			redirect: 'manual',
+		}));
 
 		// WebFlux builds redirects from the request path and ignores X-Forwarded-Prefix,
 		// so a bare /swagger-ui.html would land on the index instead of the demo.
