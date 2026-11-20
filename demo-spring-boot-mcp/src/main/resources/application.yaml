@@ -35,7 +35,11 @@ springdoc:
 
 server:
   port: 8080
-  forward-headers-strategy: framework
+  request:
+    header:
+      forwarded:
+        strategy: framework
+        naming: rfc-7239
   tomcat:
     connection-timeout: 20000
 

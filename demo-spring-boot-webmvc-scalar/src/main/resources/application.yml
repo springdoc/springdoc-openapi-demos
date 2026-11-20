@@ -1,5 +1,9 @@
 server:
-  forward-headers-strategy: framework
+  request:
+    header:
+      forwarded:
+        strategy: framework
+        naming: rfc-7239
 
 springdoc:
   version: '@springdoc.version@'

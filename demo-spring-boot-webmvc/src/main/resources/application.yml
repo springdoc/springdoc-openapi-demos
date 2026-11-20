@@ -21,4 +21,8 @@ springdoc:
     disabled: true
 server:
   port: 8081
-  forward-headers-strategy: framework
+  request:
+    header:
+      forwarded:
+        strategy: framework
+        naming: rfc-7239

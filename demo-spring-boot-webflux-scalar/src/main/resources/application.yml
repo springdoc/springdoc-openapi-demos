@@ -1,6 +1,10 @@
 server:
   port: 8082
-  forward-headers-strategy: framework
+  request:
+    header:
+      forwarded:
+        strategy: framework
+        naming: rfc-7239
 
 spring:
   data:
