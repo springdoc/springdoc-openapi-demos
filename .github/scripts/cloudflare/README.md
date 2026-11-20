@@ -33,5 +33,12 @@ uploads but the route binding fails, and the hostname stays unrouted.
 ## Adding a demo
 
 Add the service to the `SERVICES` map in `worker.js` and to the deploy matrix in
-`.github/workflows/demos.yml`. The map key is the first path segment, which the
-worker strips before forwarding and re-advertises through `X-Forwarded-Prefix`.
+`.github/workflows/demos.yml`. The map key is the first path segment.
+
+A demo listed in `SERVED_UNDER_PREFIX` runs under that path on Cloud Run
+(`server.servlet.context-path` or `spring.webflux.base-path`, set by the deploy
+workflow), so the worker forwards the public path unchanged and the demo only needs
+the public host, from the RFC 7239 `Forwarded` header:
+`server.request.header.forwarded.strategy=framework` and `naming=rfc-7239`. For the
+other demos the worker strips the segment and re-advertises it through
+`X-Forwarded-Prefix`.

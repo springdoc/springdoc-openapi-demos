@@ -125,7 +125,9 @@ jobs:
           echo "::error::$url never answered; the demo would fail to boot against it"
           exit 1
 
-      # SERVER_PORT overrides the port each demo hardcodes in application.yml.
+      # SERVER_PORT overrides the port each demo hardcodes in application.yml. The context
+      # path (servlet) or base path (WebFlux) serves each demo under /<service>, the path the
+      # Cloudflare worker forwards unchanged, so the demos only need the public host.
       # no-allow-unauthenticated keeps the run.app URL closed: only the Cloudflare
       # worker holds a service account with run.invoker, so there is no way around it.
       - uses: google-github-actions/deploy-cloudrun@v3
@@ -140,6 +142,8 @@ jobs:
           region: ${{ env.REGION }}
           env_vars: |
             SERVER_PORT=8080
+            SERVER_SERVLET_CONTEXT_PATH=/${{ matrix.service }}
+            SPRING_WEBFLUX_BASE_PATH=/${{ matrix.service }}
             ${{ matrix.env }}
           # Startup CPU boost cuts the Spring Boot cold start roughly in half, which
           # matters when every demo scales to zero between visits.
@@ -165,6 +169,8 @@ jobs:
           region: ${{ env.REGION }}
           env_vars: |
             SERVER_PORT=8080
+            SERVER_SERVLET_CONTEXT_PATH=/${{ matrix.service }}
+            SPRING_WEBFLUX_BASE_PATH=/${{ matrix.service }}
             ${{ matrix.env }}
           flags: >-
             --no-allow-unauthenticated --port=8080 --cpu=1 --memory=512Mi --cpu-boost

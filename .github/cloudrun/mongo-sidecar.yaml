@@ -37,6 +37,9 @@ spec:
           env:
             - name: SERVER_PORT
               value: '8080'
+            # Served under /<service>, the path the Cloudflare worker forwards unchanged.
+            - name: SPRING_WEBFLUX_BASE_PATH
+              value: '/__SERVICE__'
             - name: SPRING_DATA_MONGODB_URI
               value: mongodb://localhost:27017/tweetsdb
           resources:
