@@ -36,10 +36,16 @@ spring:
           # repeating the Host header before the replacement below is worth anything.
           forwarded:
             enabled: false
+          # The scheme and port of the gateway's own request are not the public ones either:
+          # name them once here as well, so that the downstream services build the public URL.
           x-forwarded:
             host-enabled: false
+            proto-enabled: false
+            port-enabled: false
           default-filters:
             - AddRequestHeader=X-Forwarded-Host, ${PUBLIC_HOST:localhost:8060}
+            - AddRequestHeader=X-Forwarded-Proto, ${PUBLIC_PROTO:http}
+            - AddRequestHeader=X-Forwarded-Port, ${PUBLIC_PORT:8060}
           httpclient:
             ssl:
               useInsecureTrustManager: true

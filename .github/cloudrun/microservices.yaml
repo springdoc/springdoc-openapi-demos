@@ -64,6 +64,10 @@ spec:
             # at somewhere nobody can reach.
             - name: PUBLIC_HOST
               value: demos.springdoc.org
+            - name: PUBLIC_PROTO
+              value: https
+            - name: PUBLIC_PORT
+              value: "443"
             # Nothing but the Cloudflare worker can reach this service, and the loop the
             # gateway makes through itself comes from inside the instance, so there is no
             # untrusted peer left to distinguish.
